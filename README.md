@@ -1,4 +1,7 @@
-# Euler [WIP]
+<div align="center"><img src="./Euler.svg" alt="Logo" height="200"><h1>Euler [WIP]</h1>
+A computanional framework written in Swift
+</div>
+
 Euler is a mathematical framework that is packed up with tons of useful mathematical functions. It is composed of functions in most mathematical fields such as algebra, number theory, statistics, etc... It was designed to help you turn your computer into a mathematical guru.
 
 ### Inspiration
