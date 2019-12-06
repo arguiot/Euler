@@ -6,7 +6,7 @@
 //
 import Foundation
 
-public class BigNumber: Equatable {
+public class BigNumber: Comparable {
     
     /// See `BigNumber.config` (alias `BigNumber.set`) and `BigNumber.clone`
     struct Config {
@@ -94,6 +94,24 @@ public class BigNumber: Equatable {
         c.insert(Int(approx), at: 0)
     }
     
+    /// Making sure that two BigNumbers are equals
+    /// - Parameters:
+    ///   - lhs: The left side of the operator
+    ///   - rhs: The right side of the operator
+    public static func == (lhs: BigNumber, rhs: BigNumber) -> Bool {
+        return lhs.c.elementsEqual(rhs.c) && lhs.e == rhs.e && lhs.s == rhs.s
+    }
+    /// Comparing two BigNumbers
+    /// - Parameters:
+    ///   - lhs: The left side of the operator
+    ///   - rhs: The right side of the operator
+    public static func < (lhs: BigNumber, rhs: BigNumber) -> Bool {
+        var undertermined = false
+        for i in 0..<min(lhs.c.count, rhs.c.count) {
+            undertermined = lhs.c[i] < rhs.c[i]
+        }
+        return undertermined && lhs.e < rhs.e && lhs.s < rhs.s
+    }
     
     /// Return a new BigNumber whose value is the absolute value of this BigNumber.
     public func abs() -> BigNumber {
@@ -101,7 +119,4 @@ public class BigNumber: Equatable {
         return self
     }
     
-    public static func == (lhs: BigNumber, rhs: BigNumber) -> Bool {
-        return lhs.c == rhs.c && lhs.e == rhs.e && lhs.s == rhs.s
-    }
 }
