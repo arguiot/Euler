@@ -14,10 +14,10 @@ class EulerTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        //// XCTAssertEqual(Euler().text, "Hello, World!")
+        XCTAssertEqual(BigNumber(123456789).c, [123456789])
     }
     
     static var allTests = [
-        ("testExample", testExample),
+        ("Big Number", testExample),
     ]
 }
