@@ -406,15 +406,14 @@ public struct BigDouble:
      */
     public func isZero() -> Bool { return self.numerator.equalTo(0) }
     
-    public mutating func minimize()
-    {
+    public mutating func minimize() {
         if self.numerator.equalTo(0)
         {
             self.denominator = [1]
             return
         }
         
-        let gcd = BigNumberMath.steinGcd(self.numerator, self.denominator)
+        let gcd = steinGcd(self.numerator, self.denominator)
         
         if gcd[0] > 1 || gcd.count > 1
         {
