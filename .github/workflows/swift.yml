@@ -1,11 +1,14 @@
 name: Swift
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
 
-    runs-on: macOS-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v1
