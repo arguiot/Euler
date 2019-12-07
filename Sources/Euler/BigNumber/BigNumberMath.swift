@@ -169,15 +169,15 @@ internal class BigNumberMath {
     let random = randomBigNumber
     
     func isPrime(_ n: BigInt) -> Bool {
-        if n <= 3 { return n > 1 }
-        
-        if ((n % 2) == 0) || ((n % 3) == 0) { return false }
+        let n = abs(n)
+        guard n.isNotZero() else { return false }
+        if n < 3 { return n > 1 }
+        if n % 2 == 0 || n % 3 == 0 { return false }
         
         var i = 5
-        while (i * i) <= n
-        {
-            if ((n % i) == 0) || ((n % (i + 2)) == 0)
-            {
+        
+        while n > i * i {
+            if n % i == 0 || n % (i + 2) == 0 {
                 return false
             }
             i += 6

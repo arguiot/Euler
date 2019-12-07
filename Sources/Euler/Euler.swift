@@ -7,3 +7,6 @@
 //
 
 import Foundation
+
+public typealias BigNumber = BigDouble
+public typealias BigFloat = BigDouble
