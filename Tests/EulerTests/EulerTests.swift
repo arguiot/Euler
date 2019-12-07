@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-import Euler
+@testable import Euler
 
 class EulerTests: XCTestCase {
     func testBigNum() {
@@ -16,12 +16,13 @@ class EulerTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         /// BigNumber constructor
-        XCTAssertEqual(BigNumber(123456789).c, [123456789])
+        XCTAssertEqual(BigNumber(123456789).limbs, [123456789])
 
         /// Comparable
-        XCTAssertEqual(BigNumber(123456789) < BigNumber(1e14), false)
+        XCTAssertEqual(BigNumber(123456789) < BigNumber(1e14), true)
         XCTAssertEqual(BigNumber(123456789) < BigNumber(123456789.1), false)
         XCTAssertEqual(BigNumber(123456789) == BigNumber(123456789.000), true)
+        XCTAssertEqual(BigDouble(3.14) != BigDouble(3.15), true)
         
         /// # API
         
