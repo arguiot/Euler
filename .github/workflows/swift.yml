@@ -1,14 +1,20 @@
 name: Swift
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
 
-    runs-on: macOS-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v1
+    - name: Install Swift
+      run: sudo apt-get install clang libicu-dev git && mkdir ~/.swiftenv && git clone https://github.com/kylef/swiftenv ~/.swiftenv && echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.bashrc && echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(swiftenv init -)"' >> ~/.bashrc && source ~/.bashrc && ~/.swiftenv/bin/swiftenv install 5.1.2
+      if: runner.os == 'Linux'
     - name: Build
       run: swift build -v
     - name: Run tests
