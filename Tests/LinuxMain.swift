@@ -1,6 +1,6 @@
 import XCTest
-@testable import EulerTests
+@testable import BigIntTests
 
 XCTMain([
-    testCase(EulerTests.allTests),
+    testCase(BigIntTests.allTests),
 ])
