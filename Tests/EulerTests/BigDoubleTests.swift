@@ -462,7 +462,7 @@ class BigDoubleTests : XCTestCase {
         ("Precision", testPrecision),
         ("Nearly Equal", testNearlyEqual),
         ("Radix", testRadix),
-        ("Operations", testOperations)
+        ("Operations", testOperations),
         ("String Performance", testPerformanceStringInit),
         ("String multiple performances", testPerformanceStringRadixInit)
     ]
