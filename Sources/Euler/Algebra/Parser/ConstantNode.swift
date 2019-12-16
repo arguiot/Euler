@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ConstantNode: Node {
+public class ConstantNode: Node {    
     /// Gives String representation of the node
     public func toString() -> String {
         return self.content
@@ -17,7 +17,7 @@ public class ConstantNode: Node {
         return self.content
     }
     
-    internal var content: String
+    public var content: String
     
     public var type: String = "ConstantNode"
     
@@ -44,8 +44,12 @@ public class ConstantNode: Node {
         self.content = String(double)
     }
     
+    /// Compiles ConstantNode to simpler node (useless here, but required by protocol)
+    public func compile() -> Node {
+        return self
+    }
     /// Converts ConstantNode to BigNumber
-    public func evaluate() -> BigNumber? {
-        return BigNumber(self.content)
+    public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
+        return BigNumber(self.content) ?? .zero
     }
 }

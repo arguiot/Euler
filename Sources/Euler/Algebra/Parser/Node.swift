@@ -7,10 +7,12 @@
 
 import Foundation
 public protocol Node {
-    internal var content: String { get }
-    public var type: String { get }
-    public var children: [Node] { get }
+    var content: String { get }
+    var type: String { get }
+    var children: [Node] { get }
     
-    public func toString() -> String
-    public func toTex() -> String
+    func evaluate(_ params: [String: BigNumber]) -> BigNumber
+    func compile() -> Node
+    func toString() -> String
+    func toTex() -> String
 }
