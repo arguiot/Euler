@@ -66,6 +66,8 @@ class OperatorNode: Node {
                 return ConstantNode(ev1 / ev2)
             case "*":
                 return ConstantNode(ev1 * ev2)
+            case "^":
+                return ConstantNode(ev1 ** ev2)
             default:
                 return ConstantNode(ev1 + ev2)
             }
@@ -89,6 +91,8 @@ class OperatorNode: Node {
             return ev1 / ev2
         case "*":
             return ev1 * ev2
+        case "^":
+            return ev1 ** ev2
         default:
             return ev1 + ev2
         }
