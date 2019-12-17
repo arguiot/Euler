@@ -20,6 +20,12 @@ internal func gcdFactors(_ lhs: Limbs, rhs: Limbs) -> (ax: Limbs, bx: Limbs) {
     return (lhs.divMod(gcd).quotient, rhs.divMod(gcd).quotient)
 }
 
+/// The binary GCD algorithm, also known as Stein's algorithm, is an algorithm that computes the greatest common divisor of two nonnegative integers. Stein's algorithm uses simpler arithmetic operations than the conventional Euclidean algorithm; it replaces division with arithmetic shifts, comparisons, and subtraction.
+/// - Parameters:
+///   - a: Any limbs Number
+///   - b: Any limbs Numbers
+/// - Returns: GCD of a and b as a Limbs
+///
 public func steinGcd(_ a: Limbs, _ b: Limbs) -> Limbs {
     if a == [0] { return b }
     if b == [0] { return a }
@@ -59,6 +65,10 @@ public func gcd(_ a: BigInt, _ b: BigInt) -> BigInt {
 }
 
 /// Do not use this, extremely slow. Only for testing purposes.
+/// - Parameters:
+///   - a: Any  BigInt
+///   - b: Any BigInt
+/// - Returns: GCD of a and b as a BigInt
 public func gcdEuclid(_ a: BigInt, _ b: BigInt) -> BigInt {
     let limbRes = euclid(a.limbs, b.limbs)
     return BigInt(sign: a.sign && !limbRes.equalTo(0), limbs: limbRes)

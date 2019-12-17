@@ -8,6 +8,9 @@
 import Foundation
 
 extension BigInt {
+    /// Check if the BigInt is a prime.
+    ///
+    /// > Uses the multiple of 6 method (which is fairly quick and 100% safe)
     var isPrime: Bool {
         let n = abs(self)
         guard n.isNotZero() else { return false }
