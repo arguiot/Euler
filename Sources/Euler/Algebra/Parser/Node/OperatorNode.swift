@@ -76,7 +76,7 @@ class OperatorNode: Node {
         }
         return self
     }
-    /// Converts ConstantNode to BigNumber
+    /// Converts OperatorNode to BigNumber
     public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
         guard self.children.count == 2 else { return .zero }
         let ev1 = self.children[0].evaluate(params)
