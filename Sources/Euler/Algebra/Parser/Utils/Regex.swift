@@ -8,7 +8,7 @@
 import Foundation
 
 var expressions = [String: NSRegularExpression]()
-public extension String {
+internal extension String {
     func match(regex: String) -> String? {
         let expression: NSRegularExpression
         if let exists = expressions[regex] {
@@ -24,4 +24,7 @@ public extension String {
         }
         return nil
     }
+}
+internal func multiline(x: String...) -> String {
+    return x.joined(separator: "\n")
 }
