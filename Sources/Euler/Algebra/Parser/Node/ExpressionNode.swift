@@ -39,3 +39,4 @@ public class ExpressionNode: Node {
         return self.children.first?.evaluate(params) ?? .zero
     }
 }
+public typealias ParenthesisNode = ExpressionNode

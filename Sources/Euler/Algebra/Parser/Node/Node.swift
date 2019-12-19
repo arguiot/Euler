@@ -6,6 +6,7 @@
 //
 
 import Foundation
+/// An entity that helps build a tree when parsing math expressions
 public protocol Node {
     var content: String { get }
     var type: String { get }
