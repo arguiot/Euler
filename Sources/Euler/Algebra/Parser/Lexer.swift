@@ -8,23 +8,20 @@
 import Foundation
 
 public enum Token {
-    case Define
-    case Identifier(String)
+    case Symbol(String)
     case Number(Float)
     case ParensOpen
     case ParensClose
-    case Comma
     case Other(String)
 }
 
 typealias TokenGenerator = (String) -> Token?
 let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
-    ("[a-zA-Z][a-zA-Z0-9]*", { .Identifier($0) }),
+    ("[a-zA-Z][a-zA-Z0-9]*", { .Symbol($0) }),
     ("[0-9.]+", { (r: String) in .Number((r as NSString).floatValue) }),
     ("\\(", { _ in .ParensOpen }),
     ("\\)", { _ in .ParensClose }),
-    (",", { _ in .Comma }),
 ]
 
 public class Lexer {

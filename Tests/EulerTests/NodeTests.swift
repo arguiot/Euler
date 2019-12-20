@@ -41,15 +41,15 @@ class NodeTests: XCTestCase {
         XCTAssertEqual(op2.toString(), "5 + 2 * x")
     }
     func testParser() {
-        let src = "x+2 - (3*4)"
+        let src = "x+2 - (3*4)=2"
         let lexer = Lexer(input: src)
         let tokens = lexer.tokenize()
         
         print(tokens)
         
-        let parser = Parser(tokens: tokens)
+        let grouper = Grouper(tokens: tokens)
         do {
-            print(try parser.parse())
+            print(try grouper.group())
         }
         catch {
             print(error)
