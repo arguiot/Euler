@@ -10,11 +10,17 @@ import Foundation
 public class ExpressionNode: NSObject, Node {
     /// Gives String representation of the node
     public func toString() -> String {
-        return children.reduce("") { $0 + $1.toString() }
+        let map = children.map { $0.toString() }
+        return map.joined(separator: " = ")
     }
     /// Gives Tex (String) representation of the node
     public func toTex() -> String {
-        return children.reduce("") { $0 + $1.toTex() }
+        let map = children.map { $0.toTex() }
+        return map.joined(separator: " = ")
+    }
+    
+    override public var description: String {
+        return "\(self.type)[ \(self.toString()) ]"
     }
     
     public var content: String = ""

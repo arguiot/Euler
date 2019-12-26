@@ -17,6 +17,10 @@ public class FunctionNode: NSObject, Node {
         return self.content
     }
     
+    override public var description: String {
+        return "\(self.type)[ \(self.toString()) ]"
+    }
+    
     public var content: String
     
     public var type: String = "FunctionNode"

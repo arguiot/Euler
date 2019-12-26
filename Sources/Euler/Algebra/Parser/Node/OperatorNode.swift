@@ -7,7 +7,7 @@
 
 import Foundation
 
-class OperatorNode: NSObject, Node {
+public class OperatorNode: NSObject, Node {
     
     /// Gives String representation of the node
     public func toString() -> String {
@@ -33,7 +33,7 @@ class OperatorNode: NSObject, Node {
         return "\(c1) \(op) \(c2)"
     }
     
-    override var description: String {
+    override public var description: String {
         return "\(self.type)[ \(self.toString()) ]"
     }
     public var content: String
