@@ -30,7 +30,7 @@ class NodeTests: XCTestCase {
     }
     func testSymboleNode() {
         let c1 = ConstantNode(2)
-        let c2 = SymboleNode("x")
+        let c2 = SymbolNode("x")
         let op = OperatorNode("*", children: [c1, c2])
         
         XCTAssertEqual(op.evaluate(["x": BigNumber(4)]), BigNumber(8))
@@ -50,6 +50,7 @@ class NodeTests: XCTestCase {
         let grouper = Grouper(tokens: tokens)
         do {
             print(try grouper.group())
+            print(try grouper.group().map { try? $0.toNode(lhs: nil, rhs: nil) })
         }
         catch {
             print(error)

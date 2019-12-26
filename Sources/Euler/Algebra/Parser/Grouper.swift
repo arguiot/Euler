@@ -15,6 +15,7 @@ enum ParseError: Error {
     case ExpectedExpression
     case ExpectedArgumentList
     case ExpectedFunctionName
+    case UnexpectedError
 }
 
 class Group: NSObject {
@@ -24,6 +25,7 @@ class Group: NSObject {
         case Operator
         case Number
         case UnParsed
+        case Equal
     }
     var tokens: [Token]
     var type: Type
@@ -32,6 +34,60 @@ class Group: NSObject {
         self.type = type
     }
     
+    func compile() throws {
+        if self.type == .UnParsed {
+            let ops = [
+                "+",
+                "-",
+                "*",
+                "/",
+                "^"
+            ]
+            guard tokens.count == 1 else { throw ParseError.UnexpectedError }
+            guard case let Token.Other(token) = tokens[0] else { throw ParseError.UnexpectedError }
+            
+            if ops.contains(token) {
+                self.type = .Operator
+            } else if token == "=" {
+                self.type = .Equal
+            }
+        }
+    }
+    func toNode(lhs: Node?, rhs: Node?) throws -> Node {
+        try self.compile()
+        switch self.type {
+        case .Symbol:
+            return try self.toSymbol()
+        case .Function:
+            throw ParseError.ExpectedExpression
+        case .Operator:
+            guard lhs != nil && rhs != nil else { throw ParseError.ExpectedArgumentList }
+            return try self.toOperator(lhs: lhs!, rhs: rhs!)
+        case .Number:
+            return try self.toNumber()
+        case .UnParsed:
+            throw ParseError.ExpectedExpression
+        case .Equal:
+            guard lhs != nil && rhs != nil else { throw ParseError.ExpectedArgumentList }
+            return ExpressionNode(lhs!, rhs!)
+        }
+    }
+    
+    func toSymbol() throws -> SymbolNode {
+        guard tokens.count == 1 else { throw ParseError.UnexpectedError }
+        guard case let Token.Symbol(token) = tokens[0] else { throw ParseError.UnexpectedError }
+        return SymbolNode(token)
+    }
+    func toOperator(lhs: Node, rhs: Node) throws -> OperatorNode {
+        guard tokens.count == 1 else { throw ParseError.UnexpectedError }
+        guard case let Token.Other(token) = tokens[0] else { throw ParseError.UnexpectedError }
+        return OperatorNode(token, children: [lhs, rhs])
+    }
+    func toNumber() throws -> ConstantNode {
+        guard tokens.count == 1 else { throw ParseError.UnexpectedError }
+        guard case let Token.Number(token) = tokens[0] else { throw ParseError.UnexpectedError }
+        return ConstantNode(token)
+    }
     
     override var description : String {
         get {
@@ -108,5 +164,4 @@ class Grouper {
         
         return groups
     }
-    
 }

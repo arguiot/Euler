@@ -34,7 +34,7 @@ public class FunctionNode: Node {
     public func compile() -> Node {
         return self
     }
-    /// Converts SymboleNode to BigNumber by replacing unknown value by their parameters. If it fails, it will return 0.
+    /// Converts SymbolNode to BigNumber by replacing unknown value by their parameters. If it fails, it will return 0.
     public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
         guard let n = params[self.content] else { return .zero }
         return n

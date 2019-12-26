@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SymbolNode.swift
 //  
 //
 //  Created by Arthur Guiot on 2019-12-16.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SymboleNode: Node {
+public class SymbolNode: Node {
     /// Gives String representation of the node
     public func toString() -> String {
         return self.content
