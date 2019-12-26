@@ -41,7 +41,7 @@ class NodeTests: XCTestCase {
         XCTAssertEqual(op2.toString(), "5 + 2 * x")
     }
     func testParser() {
-        let src = "x+2 - (3*4)=2"
+        let src = "x+2 - 3*4=2"
         let lexer = Lexer(input: src)
         let tokens = lexer.tokenize()
         
@@ -51,6 +51,9 @@ class NodeTests: XCTestCase {
         do {
             print(try grouper.group())
             print(try grouper.group().map { try? $0.toNode(lhs: nil, rhs: nil) })
+            
+            let p = Parser(tokens: tokens)
+            print(try p.parse())
         }
         catch {
             print(error)

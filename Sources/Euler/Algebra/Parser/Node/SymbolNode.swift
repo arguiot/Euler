@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SymbolNode: Node {
+public class SymbolNode: NSObject, Node {
     /// Gives String representation of the node
     public func toString() -> String {
         return self.content

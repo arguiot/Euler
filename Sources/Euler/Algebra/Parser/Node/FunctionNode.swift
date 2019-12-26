@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class FunctionNode: Node {
+public class FunctionNode: NSObject, Node {
     /// Gives String representation of the node
     public func toString() -> String {
         return self.content

@@ -7,7 +7,7 @@
 
 import Foundation
 /// An entity that helps build a tree when parsing math expressions
-public protocol Node {
+public protocol Node: NSObject {
     var content: String { get }
     var type: String { get }
     var children: [Node] { get }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ExpressionNode: Node {
+public class ExpressionNode: NSObject, Node {
     /// Gives String representation of the node
     public func toString() -> String {
         return children.reduce("") { $0 + $1.toString() }

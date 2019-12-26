@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ConstantNode: Node {    
+public class ConstantNode: NSObject, Node {    
     /// Gives String representation of the node
     public func toString() -> String {
         return self.content

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ParseError: Error {
+fileprivate enum ParseError: Error {
     case UnexpectedToken
     case UndefinedOperator(String)
     
