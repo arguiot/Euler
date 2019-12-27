@@ -29,7 +29,7 @@ public class Parser {
     
     internal var grouper: Grouper
     internal var groups: [Group]!
-    public func parse() throws -> [Node] {
+    public func parse() throws -> ExpressionNode {
         self.groups = try grouper.group()
         // Creates an array of Node. If it's an operator or something else, it will give a `nil`
         let chain = try chainMaker()
@@ -38,7 +38,7 @@ public class Parser {
         return link
     }
     
-    internal func linker(chain: [Node]) throws -> [Node] {
+    internal func linker(chain: [Node]) throws -> ExpressionNode {
         let priorities = [
             "+": 1,
             "-": 1,
@@ -67,9 +67,10 @@ public class Parser {
 //                        throw ParseError.FailedToParse
 //                    }
                     
-                    let op1 = OperatorNode(choosedSign, children: [mhs, rhs])
-                    let op2 = OperatorNode(next.content, children: [lhs, op1])
+                    let op1 = OperatorNode(choosedSign, children: [lhs, mhs])
+                    let op2 = OperatorNode(next.content, children: [op1, rhs])
                     
+                    nodes.remove(at: 0) // Empty array
                     nodes.append(op2)
                 } else {
                     let choosedSign = next.content
@@ -84,13 +85,14 @@ public class Parser {
                     let op1 = OperatorNode(current.content, children: [lhs, mhs])
                     let op2 = OperatorNode(choosedSign, children: [op1, rhs])
                     
+                    nodes.remove(at: 0) // Empty array
                     nodes.append(op2)
                 }
             }
             
             index += 1
         }
-        return nodes
+        return ExpressionNode(nodes)
     }
     internal func chainMaker() throws -> [Node] {
         let qp = self.quickParsing(self.groups)

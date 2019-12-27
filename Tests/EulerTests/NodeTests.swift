@@ -45,19 +45,11 @@ class NodeTests: XCTestCase {
         let lexer = Lexer(input: src)
         let tokens = lexer.tokenize()
         
-        print(tokens)
+        let p = Parser(tokens: tokens)
         
-        let grouper = Grouper(tokens: tokens)
-        do {
-            print(try grouper.group())
-            print(try grouper.group().map { try? $0.toNode(lhs: nil, rhs: nil) })
-            
-            let p = Parser(tokens: tokens)
-            print(try p.parse())
-        }
-        catch {
-            print(error)
-        }
+        let expression = try? p.parse()
+        let str = expression?.toString()
+        XCTAssertEqual(str, "x + 2.0 - 3.0 * 4.0 = 2.0")
     }
     static var allTests = [
         ("Constant Node", testConstantNode),

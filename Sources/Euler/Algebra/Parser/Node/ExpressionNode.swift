@@ -34,6 +34,11 @@ public class ExpressionNode: NSObject, Node {
     public init(_ nodes: Node...) {
         self.children = nodes
     }
+    /// Create a ExpressionNode
+    /// - Parameter nodes: an array of Node of any type
+    public init(_ nodes: [Node]) {
+        self.children = nodes
+    }
     
     /// Compiles ExpressionNode to simpler node (useless here, but required by protocol)
     public func compile() -> Node {
