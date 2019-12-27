@@ -16,8 +16,7 @@ fileprivate enum ParseError: Error {
 public class Parser {
     internal var tokens: [Token]
     public init(_ str: String) {
-        let src = "x+2 - (3*4)=2"
-        let lexer = Lexer(input: src)
+        let lexer = Lexer(input: str)
         self.tokens = lexer.tokenize()
         
         self.grouper = Grouper(tokens: tokens)

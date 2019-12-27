@@ -26,6 +26,7 @@ class Group: NSObject {
         case Number
         case UnParsed
         case Equal
+        case Parenthesis
     }
     var tokens: [Token]
     var type: Type
@@ -43,7 +44,10 @@ class Group: NSObject {
                 "/",
                 "^"
             ]
-            guard tokens.count == 1 else { throw GroupError.UnexpectedError }
+            guard tokens.count == 1 else {
+                self.type = .Parenthesis
+                return
+            }
             guard case let Token.Other(token) = tokens[0] else { throw GroupError.UnexpectedError }
             
             if ops.contains(token) {
@@ -65,6 +69,11 @@ class Group: NSObject {
             return try self.toOperator(lhs: lhs!, rhs: rhs!)
         case .Number:
             return try self.toNumber()
+        case .Parenthesis:
+            // Parsing
+            let p = Parser(tokens: tokens)
+            let expr = try p.parse()
+            return ParenthesisNode(expr.children)
         case .UnParsed:
             throw GroupError.ExpectedExpression
         case .Equal:

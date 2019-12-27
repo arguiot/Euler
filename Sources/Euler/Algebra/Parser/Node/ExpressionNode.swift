@@ -50,4 +50,15 @@ public class ExpressionNode: NSObject, Node {
         return self.children.first?.evaluate(params) ?? .zero
     }
 }
-public typealias ParenthesisNode = ExpressionNode
+public class ParenthesisNode: ExpressionNode {
+    /// Gives String representation of the node
+    public override func toString() -> String {
+        let map = children.map { $0.toString() }
+        return "(\(map.joined(separator: ", ")))"
+    }
+    /// Gives Tex (String) representation of the node
+    public override func toTex() -> String {
+        let map = children.map { $0.toTex() }
+        return "(\(map.joined(separator: ", ")))"
+    }
+}

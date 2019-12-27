@@ -41,7 +41,7 @@ class NodeTests: XCTestCase {
         XCTAssertEqual(op2.toString(), "5 + 2 * x")
     }
     func testParser() {
-        let src = "x+2 - 3*4=2"
+        let src = "x+2 - (3*4)=2"
         let lexer = Lexer(input: src)
         let tokens = lexer.tokenize()
         
@@ -49,7 +49,7 @@ class NodeTests: XCTestCase {
         
         let expression = try? p.parse()
         let str = expression?.toString()
-        XCTAssertEqual(str, "x + 2.0 - 3.0 * 4.0 = 2.0")
+        XCTAssertEqual(str, "x + 2.0 - (3.0 * 4.0) = 2.0")
     }
     static var allTests = [
         ("Constant Node", testConstantNode),
