@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate enum ParseError: Error {
+fileprivate enum GroupError: Error {
     case UnexpectedToken
     case UndefinedOperator(String)
     
@@ -43,8 +43,8 @@ class Group: NSObject {
                 "/",
                 "^"
             ]
-            guard tokens.count == 1 else { throw ParseError.UnexpectedError }
-            guard case let Token.Other(token) = tokens[0] else { throw ParseError.UnexpectedError }
+            guard tokens.count == 1 else { throw GroupError.UnexpectedError }
+            guard case let Token.Other(token) = tokens[0] else { throw GroupError.UnexpectedError }
             
             if ops.contains(token) {
                 self.type = .Operator
@@ -59,33 +59,34 @@ class Group: NSObject {
         case .Symbol:
             return try self.toSymbol()
         case .Function:
-            throw ParseError.ExpectedExpression
+            throw GroupError.ExpectedExpression
         case .Operator:
-            guard lhs != nil && rhs != nil else { throw ParseError.ExpectedArgumentList }
+            guard lhs != nil && rhs != nil else { throw GroupError.ExpectedArgumentList }
             return try self.toOperator(lhs: lhs!, rhs: rhs!)
         case .Number:
             return try self.toNumber()
         case .UnParsed:
-            throw ParseError.ExpectedExpression
+            throw GroupError.ExpectedExpression
         case .Equal:
-            guard lhs != nil && rhs != nil else { throw ParseError.ExpectedArgumentList }
-            return ExpressionNode(lhs!, rhs!)
+            guard lhs != nil && rhs != nil else { throw GroupError.ExpectedArgumentList }
+//            return ExpressionNode(lhs!, rhs!)
+            return OperatorNode("=", children: [lhs!, rhs!])
         }
     }
     
     func toSymbol() throws -> SymbolNode {
-        guard tokens.count == 1 else { throw ParseError.UnexpectedError }
-        guard case let Token.Symbol(token) = tokens[0] else { throw ParseError.UnexpectedError }
+        guard tokens.count == 1 else { throw GroupError.UnexpectedError }
+        guard case let Token.Symbol(token) = tokens[0] else { throw GroupError.UnexpectedError }
         return SymbolNode(token)
     }
     func toOperator(lhs: Node, rhs: Node) throws -> OperatorNode {
-        guard tokens.count == 1 else { throw ParseError.UnexpectedError }
-        guard case let Token.Other(token) = tokens[0] else { throw ParseError.UnexpectedError }
+        guard tokens.count == 1 else { throw GroupError.UnexpectedError }
+        guard case let Token.Other(token) = tokens[0] else { throw GroupError.UnexpectedError }
         return OperatorNode(token, children: [lhs, rhs])
     }
     func toNumber() throws -> ConstantNode {
-        guard tokens.count == 1 else { throw ParseError.UnexpectedError }
-        guard case let Token.Number(token) = tokens[0] else { throw ParseError.UnexpectedError }
+        guard tokens.count == 1 else { throw GroupError.UnexpectedError }
+        guard case let Token.Number(token) = tokens[0] else { throw GroupError.UnexpectedError }
         return ConstantNode(token)
     }
     
