@@ -94,14 +94,16 @@ public class Parser {
         return ExpressionNode(nodes)
     }
     internal func chainMaker() throws -> [Node] {
-        let qp = self.quickParsing(self.groups)
-                
+        let quick = self.quickParsing(self.groups)
+        let qp = try detectFunctions(parsed: quick)
+        
         var nodes = [Node]()
         
         while index < qp.count {
             let current = qp[index]
             if current == nil {
                 let m1 = qp[index - 1]
+                guard index + 1 <= qp.count - 1 else { throw ParseError.FailedToParse }
                 let p1 = qp[index + 1]
                 
                 let node = try self.groups[index].toNode(lhs: m1, rhs: p1)
@@ -119,5 +121,29 @@ public class Parser {
     
     private func quickParsing(_ gs: [Group]) -> [Node?] {
         return gs.map { try? $0.toNode(lhs: nil, rhs: nil) }
+    }
+    
+    func detectFunctions(parsed: [Node?]) throws -> [Node?] {
+        var nodes = parsed
+        while index < nodes.count {
+            let current = nodes[index]
+            guard index + 1 <= nodes.count - 1 else {
+                // Resetting the index
+                index = 0
+                return nodes
+            }
+            let next = nodes[index + 1]
+            if current is SymbolNode && next is ParenthesisNode {
+                self.groups.remove(at: index + 1)
+                nodes.remove(at: index + 1)
+                guard let name = current?.content else { throw ParseError.FailedToParse }
+                guard let children = next?.children else { throw ParseError.FailedToParse }
+                nodes[index] = FunctionNode(name, args: children)
+            }
+            index += 1
+        }
+        // Resetting the index
+        index = 0
+        return nodes
     }
 }

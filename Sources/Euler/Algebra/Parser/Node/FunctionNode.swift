@@ -10,11 +10,13 @@ import Foundation
 public class FunctionNode: NSObject, Node {
     /// Gives String representation of the node
     public func toString() -> String {
-        return self.content
+        let map = children.map { $0.toString() }
+        return "\(self.content)(\(map.joined(separator: ", ")))"
     }
     /// Gives Tex (String) representation of the node
     public func toTex() -> String {
-        return self.content
+        let map = children.map { $0.toTex() }
+        return "\(self.content)(\(map.joined(separator: ", ")))"
     }
     
     override public var description: String {

@@ -134,6 +134,7 @@ public struct BigDouble:
                         } else {
                             safeAfterExp = safeAfterExp - beforeExp.count + 1
                         }
+                        guard safeAfterExp > 0 else { return nil }
                         let den = ["1"] + [Character](repeating: "0", count: safeAfterExp)
                         self.init(beforeExp, over: String(den))
                         return
