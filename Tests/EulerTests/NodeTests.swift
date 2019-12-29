@@ -51,6 +51,7 @@ class NodeTests: XCTestCase {
             let str = expression.toString()
             XCTAssertEqual(str, "x + 2.0 - sqrt(3.0 * 4.0) = 2.0")
             XCTAssertEqual(try Parser("5.0 - sqrt(8) * 5 = x^2 - factorial(4)").parse().toString(), "5.0 - sqrt(8.0) * 5.0 = x ^ 2.0 - factorial(4.0)")
+            XCTAssertEqual(try Parser("((4*2) - 3) +sqrt(4)").parse().toString(), "((4.0 * 2.0) - 3.0) + sqrt(4.0)")
         } catch {
             print(error.localizedDescription)
         }

@@ -133,7 +133,7 @@ class Grouper {
     func group() throws -> [Group] {
         index = 0
         
-        var temp = [[Token]]()
+        var temp: [[Token]] = [[]]
         var groups = [Group]()
         
         var nested = 0
@@ -144,20 +144,12 @@ class Grouper {
                 temp[level].append(token)
                 switch token {
                 case .ParensOpen:
-                    if nested == 0 {
-                        temp.append([Token]())
-                    }
                     nested += 1
+                    continue
                 case .ParensClose:
                     nested -= 1
-                    if nested == 0 {
-                        groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis))
-                    }
-                    level += 1
-                default: break
-                    
+                default: continue
                 }
-                continue
             }
             switch token {
             case .Symbol(_):
@@ -167,16 +159,13 @@ class Grouper {
                 let g = Group(tokens: [token], type: .Number)
                  groups.append(g)
             case .ParensOpen:
-                if nested == 0 {
-                    temp.append([Token]())
-                }
                 nested += 1
             case .ParensClose:
-                nested -= 1
                 if nested == 0 {
                     groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis))
+                    level += 1
+                    temp.append([Token]()) // Adding empty array in case there is a list
                 }
-                level += 1
             case .Other(_):
                 let g = Group(tokens: [token], type: .UnParsed)
                 groups.append(g)
