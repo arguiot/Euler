@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// This is a Node object that represents a number as a BigDouble
 public class ConstantNode: NSObject, Node {    
     /// Gives String representation of the node
     public func toString() -> String {

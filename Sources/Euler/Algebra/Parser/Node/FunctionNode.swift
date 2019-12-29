@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A Node that represents a mathematical function
 public class FunctionNode: NSObject, Node {
     /// Gives String representation of the node
     public func toString() -> String {
@@ -19,14 +20,18 @@ public class FunctionNode: NSObject, Node {
         return "\(self.content)(\(map.joined(separator: ", ")))"
     }
     
+    /// The `print()` description
     override public var description: String {
         return "\(self.type)[ \(self.toString()) ]"
     }
     
+    /// The name of the function (ex: `sqrt`, or `factorial`)
     public var content: String
     
+    /// The name of the node
     public var type: String = "FunctionNode"
     
+    /// The arguments of the function
     public var children = [Node]()
     
     /// Create a SymbolNode
