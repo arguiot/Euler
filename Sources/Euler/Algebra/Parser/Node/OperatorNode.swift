@@ -32,14 +32,17 @@ public class OperatorNode: NSObject, Node {
         
         return "\(c1) \(op) \(c2)"
     }
-    
+    /// The `print()` description
     override public var description: String {
         return "\(self.type)[ \(self.toString()) ]"
     }
+    /// The sign of the operator (ex: `"+"` or `"*"`)
     public var content: String
     
+    /// The name of the node
     public var type: String = "OperatorNode"
     
+    /// The left and right hand sides of the operator
     public var children = [Node]()
     
     /// Creates an OperatorNode

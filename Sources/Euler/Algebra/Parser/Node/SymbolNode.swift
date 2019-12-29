@@ -17,14 +17,17 @@ public class SymbolNode: NSObject, Node {
         return self.content
     }
     
+    /// The `print()` description
     override public var description: String {
         return "\(self.type)[ \(self.toString()) ]"
     }
-    
+    /// The name of the Symbol (ex: `x` or `y`)
     public var content: String
     
+    /// The name of the node
     public var type: String = "SymbolNode"
     
+    /// Useless here, but it's to conform to the Node protocol
     public var children = [Node]()
     
     /// Create a SymbolNode

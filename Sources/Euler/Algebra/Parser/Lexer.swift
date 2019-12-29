@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Possible Tokens in a mathematical expression.
+///
+/// > This is part of the `Lexer`
 public enum Token {
     case Symbol(String)
     case Number(Float)
@@ -16,6 +19,7 @@ public enum Token {
 }
 
 typealias TokenGenerator = (String) -> Token?
+/// Helps the `Lexer` to convert text to `Token`
 let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
     ("[a-zA-Z][a-zA-Z0-9]*", { .Symbol($0) }),
@@ -24,11 +28,15 @@ let tokenList: [(String, TokenGenerator)] = [
     ("\\)", { _ in .ParensClose }),
 ]
 
+/// The `Lexer` is converting a sequence of characters (mathematical expression) into a sequence of `Token`
 public class Lexer {
     let input: String
+    /// Initializes the `Lexer`
+    /// - Parameter input: The mathematical expression you want to parse
     init(input: String) {
         self.input = input
     }
+    /// Tokenize the String input
     public func tokenize() -> [Token] {
         var tokens = [Token]()
         var content = input

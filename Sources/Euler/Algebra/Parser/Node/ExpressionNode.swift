@@ -29,7 +29,7 @@ public class ExpressionNode: NSObject, Node {
     public var content: String = ""
     
     /// Name of the Node
-    public var type: String = "ExpressionNode"
+    public var type: String { "ExpressionNode" }
     
     /// Array of Node, containing the expressions
     public var children = [Node]()
@@ -69,5 +69,5 @@ public class ParenthesisNode: ExpressionNode {
     }
     
     /// Name of the Node
-    public var type: String = "ParenthesisNode"
+    public override var type: String { "ParenthesisNode" }
 }

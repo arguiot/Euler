@@ -19,7 +19,10 @@ fileprivate enum GroupError: Error {
     case ExpectedSymbol
 }
 
-class Group: NSObject {
+/// A `Group` is a intermediate representation object for representing a mathematical expression.
+/// This is the object that allows the tokens to be grouped together to convert them into nodes.
+/// In particular, it is in charge of recognizing parentheses and preanalysing them before passing the expression to `Parser`.
+public class Group: NSObject {
     enum `Type` {
         case Symbol
         case Function
@@ -100,37 +103,45 @@ class Group: NSObject {
         return ConstantNode(token)
     }
     
-    override var description : String {
+    override public var description : String {
         get {
             return "Euler.Group(tokens: \(self.tokens), type: \(self.type))"
         }
     }
 }
 
-class Grouper {
+/// The `Grouper` is the class that will be in charged of converting an array of `Token` into an array of `Group` in the process of parsing a mathematical expression.
+public class Grouper {
     let tokens: [Token]
     var index = 0
-
+    
+    /// Initiatlize the `Grouper` class
+    /// - Parameter tokens: the array of `Token` given by the `Lexer`
     init(tokens: [Token]) {
         self.tokens = tokens
     }
-
+    
+    /// Gives current `Token`
     func peekCurrentToken() -> Token {
         return tokens[index]
     }
-
+    
+    /// Gives the next `Token`
     func popCurrentToken() -> Token {
         index += 1
         return tokens[index]
     }
     
+    /// Return a `Bool` telling us if we can go any further
     var tokensAvailable: Bool {
         return index < tokens.count
     }
     
-    var level = 0
+    /// Stores the current parenthesis level
+    internal var level = 0
     
-    func group() throws -> [Group] {
+    /// Groups the given tokens into an array of `Group`
+    public func group() throws -> [Group] {
         index = 0
         
         var temp: [[Token]] = [[]]
