@@ -46,12 +46,15 @@ class NodeTests: XCTestCase {
         let tokens = lexer.tokenize()
         
         let p = Parser(tokens: tokens)
+        do {
+            let expression = try p.parse()
+            let str = expression.toString()
+            XCTAssertEqual(str, "x + 2.0 - sqrt(3.0 * 4.0) = 2.0")
+            XCTAssertEqual(try Parser("5.0 - sqrt(8) * 5 = x^2 - factorial(4)").parse().toString(), "5.0 - sqrt(8.0) * 5.0 = x ^ 2.0 - factorial(4.0)")
+        } catch {
+            print(error.localizedDescription)
+        }
         
-        let expression = try? p.parse()
-        let str = expression?.toString()
-        XCTAssertEqual(str, "x + 2.0 - sqrt(3.0 * 4.0) = 2.0")
-        
-//        XCTAssertEqual(try? Parser("5.0 - sqrt(8) * 5 = x^2 - factorial(4)").parse().toString(), "5.0 - sqrt(8.0) * 5.0 = x^2.0 - factorial(4.0)")
     }
     static var allTests = [
         ("Constant Node", testConstantNode),

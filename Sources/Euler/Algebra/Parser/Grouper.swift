@@ -16,6 +16,7 @@ fileprivate enum GroupError: Error {
     case ExpectedArgumentList
     case ExpectedFunctionName
     case UnexpectedError
+    case ExpectedSymbol
 }
 
 class Group: NSObject {
@@ -48,7 +49,7 @@ class Group: NSObject {
                 self.type = .Parenthesis
                 return
             }
-            guard case let Token.Other(token) = tokens[0] else { throw GroupError.UnexpectedError }
+            guard case let Token.Other(token) = tokens[0] else { throw GroupError.ExpectedSymbol }
             
             if ops.contains(token) {
                 self.type = .Operator
@@ -133,22 +134,28 @@ class Grouper {
         index = 0
         
         var temp = [[Token]]()
-        
         var groups = [Group]()
+        
+        var nested = 0
         while tokensAvailable {
             let token = peekCurrentToken()
             index += 1
-            if level > 0 {
+            if nested > 0 {
+                temp[level].append(token)
                 switch token {
                 case .ParensOpen:
-                    level += 1
-                    temp.append([Token]())
+                    if nested == 0 {
+                        temp.append([Token]())
+                    }
+                    nested += 1
                 case .ParensClose:
-                    level -= 1
+                    nested -= 1
+                    if nested == 0 {
+                        groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis))
+                    }
+                    level += 1
+                default: break
                     
-                    groups.append(Group(tokens: temp[level], type: .UnParsed))
-                default:
-                    temp[level - 1].append(token)
                 }
                 continue
             }
@@ -160,12 +167,16 @@ class Grouper {
                 let g = Group(tokens: [token], type: .Number)
                  groups.append(g)
             case .ParensOpen:
-                level += 1
-                temp.append([Token]())
+                if nested == 0 {
+                    temp.append([Token]())
+                }
+                nested += 1
             case .ParensClose:
-                level -= 1
-                
-                groups.append(Group(tokens: temp[level], type: .UnParsed))
+                nested -= 1
+                if nested == 0 {
+                    groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis))
+                }
+                level += 1
             case .Other(_):
                 let g = Group(tokens: [token], type: .UnParsed)
                 groups.append(g)

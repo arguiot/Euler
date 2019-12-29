@@ -97,6 +97,10 @@ public class Parser {
         let quick = self.quickParsing(self.groups)
         let qp = try detectFunctions(parsed: quick)
         
+        if qp.count == 1 {
+            return qp.map{ $0! }
+        }
+        
         var nodes = [Node]()
         
         while index < qp.count {
