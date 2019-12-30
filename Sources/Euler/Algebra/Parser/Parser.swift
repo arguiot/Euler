@@ -13,21 +13,53 @@ fileprivate enum ParseError: Error {
     case UnexpectedError
 }
 
+/// The `Parser` converts a mathematical expression to a tree.
+///
+/// As humans, we read and write math as a line of text. If you were to type a math expression, it would probably look something like this:
+/// ```
+/// (1 + 2) - abs(-3) * x²
+/// ```
+/// You could also just look at that math expression and use your intuition to prioritize where to start simplifying. But a computer will understand the expression best when it’s stored in a tree. These trees can be surprisingly complicated — even a short expression like `(1 + 2) - abs(-3) * x²` becomes this tree:
+/// ```
+///           (-)
+///          /   \
+///         ( )   (*)
+///        /     /   \
+///      (+)    abs   (^)
+///     /   \    |   /   \
+///    1     2  -3  x     2
+/// ```
+///
 public class Parser {
+    /// List of used tokens by the `Parser`
     internal var tokens: [Token]
+    /// Initialize `Parser` with a mathematical expression as a String ( ASCIIMath)
+    /// - Parameter str: ASCIIMath expression
     public init(_ str: String) {
         let lexer = Lexer(input: str)
         self.tokens = lexer.tokenize()
         
         self.grouper = Grouper(tokens: tokens)
     }
+    /// Initialize `Parser` with a list of tokens given by the `Lexer`
+    /// - Parameter tokens: Array of `Token` given by the `Lexer`
     public init(tokens: [Token]) {
         self.tokens = tokens
         self.grouper = Grouper(tokens: tokens)
     }
     
+    /// Grouper object containing the `Token`
     internal var grouper: Grouper
+    /// The array of `Group` given by the Grouper. It becomes active after `parse()`
     internal var groups: [Group]!
+    /// This function will be in charge of parsing the expression.
+    ///
+    /// After, initializing the `Parser`, use this function to get an ExpressionNode (aka expression tree).
+    /// Here is a code example:
+    /// ```swift
+    /// let p = Parser("5.0 - sqrt(8) * 5 = x^2 - factorial(4)")
+    /// let expression = try p.parse()
+    /// ```
     public func parse() throws -> ExpressionNode {
         self.groups = try grouper.group()
         // Creates an array of Node. If it's an operator or something else, it will give a `nil`
@@ -37,6 +69,8 @@ public class Parser {
         return link
     }
     
+    /// Links the nodes to create a tree
+    /// - Parameter chain: The chain given by `chainMaker`
     internal func linker(chain: [Node]) throws -> ExpressionNode {
         let priorities = [
             "+": 1,
@@ -93,6 +127,7 @@ public class Parser {
         }
         return ExpressionNode(nodes)
     }
+    /// Quickly grouping groups and Nodes together
     internal func chainMaker() throws -> [Node] {
         let quick = self.quickParsing(self.groups)
         let qp = try detectFunctions(parsed: quick)
@@ -121,13 +156,18 @@ public class Parser {
         return nodes
     }
     
+    /// `Parser` index
     private var index = 0
     
+    /// Transform Groups to Node
+    /// - Parameter gs: Array of `Group` given by the `Grouper`
     private func quickParsing(_ gs: [Group]) -> [Node?] {
         return gs.map { try? $0.toNode(lhs: nil, rhs: nil) }
     }
     
-    func detectFunctions(parsed: [Node?]) throws -> [Node?] {
+    /// Detects functions and returning an array of Optional Node to work on.
+    /// - Parameter parsed: Array of Node parsed by `quickParsing`
+    private func detectFunctions(parsed: [Node?]) throws -> [Node?] {
         var nodes = parsed
         while index < nodes.count {
             let current = nodes[index]
