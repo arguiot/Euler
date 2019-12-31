@@ -47,8 +47,8 @@ public class ExpressionNode: NSObject, Node {
     
     /// Compiles ExpressionNode to simpler node (useless here, but required by protocol)
     public func compile() -> Node {
-        self.children = self.children.map { $0.compile() }
-        return self
+        guard let first = self.children.first else { return self }
+        return first.compile()
     }
     /// Converts ExpressionNode to BigNumber
     public func evaluate(_ params: [String: BigNumber]) -> BigNumber {

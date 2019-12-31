@@ -54,12 +54,29 @@ class NodeTests: XCTestCase {
             XCTAssertEqual(try Parser("((4*2) - 3) +sqrt(4)").parse().toString(), "((4.0 * 2.0) - 3.0) + sqrt(4.0)")
         } catch {
             print(error.localizedDescription)
+            XCTFail()
+        }
+        
+    }
+    func testCompile() {
+        do {
+            let p = Parser("x+y*2 + (4+5)/3")
+            let expression = try p.parse()
+            let comp = expression.compile()
+            XCTAssertEqual(comp.toString(), "x + y * 2.0 + 3.0")
+            
+            XCTAssertEqual(try Parser("(4*2)").parse().compile().toString(), "8.0000")
+        } catch {
+            print(error.localizedDescription)
+            XCTFail()
         }
         
     }
     static var allTests = [
         ("Constant Node", testConstantNode),
         ("Operator Node", testOperatorNode),
-        ("Symbol Node", testSymboleNode)
+        ("Symbol Node", testSymboleNode),
+        ("Parser", testParser),
+        ("Compiler", testCompile)
     ]
 }

@@ -31,7 +31,7 @@ public class ConstantNode: NSObject, Node {
     /// Create a ConstantNode
     /// - Parameter bn: BigNumber/BigDouble
     public init(_ bn: BigNumber) {
-        self.content = bn.decimalDescription
+        self.content = bn.description
     }
     /// Create a ConstantNode
     /// - Parameter int: Integer

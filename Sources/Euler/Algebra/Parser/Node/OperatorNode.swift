@@ -60,7 +60,7 @@ public class OperatorNode: NSObject, Node {
         let c1 = self.children[0].compile()
         let c2 = self.children[1].compile()
         
-        if c1.type == "ContantNode" && c2.type == "ContantNode" {
+        if c1.type == "ConstantNode" && c2.type == "ConstantNode" {
             let ev1 = c1.evaluate([:])
             let ev2 = c2.evaluate([:])
             switch self.content {
@@ -80,7 +80,7 @@ public class OperatorNode: NSObject, Node {
             
             
         }
-        return self
+        return OperatorNode(self.content, children: [c1, c2])
     }
     /// Converts OperatorNode to BigNumber
     public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
