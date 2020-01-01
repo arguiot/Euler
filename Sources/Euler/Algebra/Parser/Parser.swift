@@ -100,8 +100,8 @@ public class Parser {
 //                        throw ParseError.FailedToParse
 //                    }
                     
-                    let op1 = OperatorNode(choosedSign, children: [lhs, mhs])
-                    let op2 = OperatorNode(next.content, children: [op1, rhs])
+                    let op1 = OperatorNode(next.content, children: [mhs, rhs])
+                    let op2 = OperatorNode(choosedSign, children: [lhs, op1])
                     
                     nodes.remove(at: 0) // Empty array
                     nodes.append(op2)
