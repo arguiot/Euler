@@ -8,7 +8,13 @@
 import Foundation
 
 class Simplify {
-//    func simple(_ expr: ExpressionNode) -> ExpressionNode {
-//        return expr.compile()
-//    }
+    var expression: ExpressionNode
+    init(_ expr: ExpressionNode) {
+        self.expression = expr
+    }
+    
+    func simple() -> ExpressionNode {
+        let compiled = expression.compile()
+        return compiled
+    }
 }

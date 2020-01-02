@@ -77,8 +77,6 @@ public class OperatorNode: NSObject, Node {
             default:
                 return ConstantNode(ev1 + ev2)
             }
-            
-            
         }
         return OperatorNode(self.content, children: [c1, c2])
     }
