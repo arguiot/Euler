@@ -15,6 +15,7 @@ class Simplify {
     
     func simple() -> ExpressionNode {
         let compiled = expression.compile()
-        return compiled
+        guard compiled is ExpressionNode else { return ExpressionNode(compiled) }
+        return compiled as! ExpressionNode
     }
 }
