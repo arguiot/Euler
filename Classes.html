@@ -23,7 +23,7 @@
         <a class="header-link" href="index.html">
           Euler Docs
         </a>
-         (59% documented)
+         (74% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -61,6 +61,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/FunctionNode.html">FunctionNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Group.html">Group</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Grouper.html">Grouper</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/Lexer.html">Lexer</a>
@@ -210,6 +216,64 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@Euler@objc(cs)Group"></a>
+                    <a name="//apple_ref/swift/Class/Group" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)Group">Group</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A <code>Group</code> is a intermediate representation object for representing a mathematical expression.
+This is the object that allows the tokens to be grouped together to convert them into nodes.
+In particular, it is in charge of recognizing parentheses and preanalysing them before passing the expression to <code><a href="Classes/Parser.html">Parser</a></code>.</p>
+
+                        <a href="Classes/Group.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Group</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler7GrouperC"></a>
+                    <a name="//apple_ref/swift/Class/Grouper" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler7GrouperC">Grouper</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>Grouper</code> is the class that will be in charged of converting an array of <code><a href="Enums/Token.html">Token</a></code> into an array of <code><a href="Classes/Group.html">Group</a></code> in the process of parsing a mathematical expression.</p>
+
+                        <a href="Classes/Grouper.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Grouper</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Euler5LexerC"></a>
                     <a name="//apple_ref/swift/Class/Lexer" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Euler5LexerC">Lexer</a>
@@ -220,7 +284,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The <code>Lexer</code> is converting a sequence of characters (mathematical expression) into a sequence of <code><a href="Enums/Token.html">Token</a></code></p>
 
                         <a href="Classes/Lexer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -248,7 +312,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This is a Node object that represents a number as a BigDouble</p>
 
                         <a href="Classes/ConstantNode.html" class="slightly-smaller">See more</a>
                       </div>
@@ -276,7 +340,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An ExpressionNode is a Node containing 1 or more expression.</p>
 
                         <a href="Classes/ExpressionNode.html" class="slightly-smaller">See more</a>
                       </div>
@@ -304,7 +368,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A ParenthesisNode is an ExpressionNode used to treat parenthesis</p>
 
                         <a href="Classes/ParenthesisNode.html" class="slightly-smaller">See more</a>
                       </div>
@@ -332,7 +396,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A Node that represents a mathematical function</p>
 
                         <a href="Classes/FunctionNode.html" class="slightly-smaller">See more</a>
                       </div>
@@ -416,7 +480,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The <code>Parser</code> converts a mathematical expression to a tree.</p>
+
+<p>As humans, we read and write math as a line of text. If you were to type a math expression, it would probably look something like this:</p>
+<pre class="highlight swift"><code><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="err">²</span>
+</code></pre>
+
+<p>You could also just look at that math expression and use your intuition to prioritize where to start simplifying. But a computer will understand the expression best when it’s stored in a tree. These trees can be surprisingly complicated — even a short expression like <code>(1 + 2) - abs(-3) * x²</code> becomes this tree:</p>
+<pre class="highlight swift"><code>          <span class="p">(</span><span class="o">-</span><span class="p">)</span>
+         <span class="o">/</span>   <span class="err">\</span>
+        <span class="p">(</span> <span class="p">)</span>   <span class="p">(</span><span class="o">*</span><span class="p">)</span>
+       <span class="o">/</span>     <span class="o">/</span>   <span class="err">\</span>
+     <span class="p">(</span><span class="o">+</span><span class="p">)</span>    <span class="nf">abs</span>   <span class="p">(</span><span class="o">^</span><span class="p">)</span>
+    <span class="o">/</span>   <span class="err">\</span>    <span class="o">|</span>   <span class="o">/</span>   <span class="err">\</span>
+   <span class="mi">1</span>     <span class="mi">2</span>  <span class="o">-</span><span class="mi">3</span>  <span class="n">x</span>     <span class="mi">2</span>
+</code></pre>
 
                         <a href="Classes/Parser.html" class="slightly-smaller">See more</a>
                       </div>
@@ -439,7 +517,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2019-12-29)</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-01-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

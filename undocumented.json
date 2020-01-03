@@ -1,220 +1,52 @@
 {
   "warnings": [
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 10,
-      "symbol": "Token",
-      "symbol_kind": "source.lang.swift.decl.enum",
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Grouper.swift",
+      "line": 106,
+      "symbol": "Group.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 11,
+      "line": 14,
       "symbol": "Token.Symbol(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 12,
+      "line": 15,
       "symbol": "Token.Number(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 13,
+      "line": 16,
       "symbol": "Token.ParensOpen",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 14,
+      "line": 17,
       "symbol": "Token.ParensClose",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 15,
+      "line": 18,
       "symbol": "Token.Other(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 27,
-      "symbol": "Lexer",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 32,
-      "symbol": "Lexer.tokenize()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ConstantNode.swift",
-      "line": 10,
-      "symbol": "ConstantNode",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ConstantNode.swift",
-      "line": 20,
+      "line": 21,
       "symbol": "ConstantNode.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ConstantNode.swift",
-      "line": 24,
-      "symbol": "ConstantNode.content",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ConstantNode.swift",
-      "line": 26,
-      "symbol": "ConstantNode.type",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ConstantNode.swift",
-      "line": 28,
-      "symbol": "ConstantNode.children",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift",
-      "line": 10,
-      "symbol": "ExpressionNode",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift",
-      "line": 22,
-      "symbol": "ExpressionNode.description",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift",
-      "line": 26,
-      "symbol": "ExpressionNode.content",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift",
-      "line": 28,
-      "symbol": "ExpressionNode.type",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift",
-      "line": 30,
-      "symbol": "ExpressionNode.children",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift",
-      "line": 53,
-      "symbol": "ParenthesisNode",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/FunctionNode.swift",
-      "line": 10,
-      "symbol": "FunctionNode",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/FunctionNode.swift",
-      "line": 22,
-      "symbol": "FunctionNode.description",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/FunctionNode.swift",
-      "line": 26,
-      "symbol": "FunctionNode.content",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/FunctionNode.swift",
-      "line": 28,
-      "symbol": "FunctionNode.type",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/FunctionNode.swift",
-      "line": 30,
-      "symbol": "FunctionNode.children",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 11,
-      "symbol": "Node.content",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 12,
-      "symbol": "Node.type",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 13,
-      "symbol": "Node.children",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 15,
-      "symbol": "Node.evaluate(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 16,
-      "symbol": "Node.compile()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 17,
-      "symbol": "Node.toString()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 18,
-      "symbol": "Node.toTex()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -225,94 +57,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/OperatorNode.swift",
-      "line": 36,
-      "symbol": "OperatorNode.description",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/OperatorNode.swift",
-      "line": 39,
-      "symbol": "OperatorNode.content",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/OperatorNode.swift",
-      "line": 41,
-      "symbol": "OperatorNode.type",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/OperatorNode.swift",
-      "line": 43,
-      "symbol": "OperatorNode.children",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/SymbolNode.swift",
       "line": 10,
       "symbol": "SymbolNode",
       "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/SymbolNode.swift",
-      "line": 20,
-      "symbol": "SymbolNode.description",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/SymbolNode.swift",
-      "line": 24,
-      "symbol": "SymbolNode.content",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/SymbolNode.swift",
-      "line": 26,
-      "symbol": "SymbolNode.type",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/SymbolNode.swift",
-      "line": 28,
-      "symbol": "SymbolNode.children",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Parser.swift",
-      "line": 16,
-      "symbol": "Parser",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Parser.swift",
-      "line": 18,
-      "symbol": "Parser.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Parser.swift",
-      "line": 24,
-      "symbol": "Parser.init(tokens:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Parser.swift",
-      "line": 31,
-      "symbol": "Parser.parse()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
