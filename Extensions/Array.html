@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ParenthesisNode Class Reference</title>
+    <title>Array Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/ParenthesisNode" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Extension/Array" class="dashAnchor"></a>
 
-    <a title="ParenthesisNode Class Reference"></a>
+    <a title="Array Extension Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      ParenthesisNode Class Reference
+      Array Extension Reference
     </p>
 
     <div class="content-wrapper">
@@ -214,15 +214,14 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>ParenthesisNode</h1>
+            <h1>Array</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ParenthesisNode</span> <span class="p">:</span> <span class="kt"><a href="../Classes/ExpressionNode.html">ExpressionNode</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Array</span></code></pre>
 
                 </div>
               </div>
-            <p>A ParenthesisNode is an ExpressionNode used to treat parenthesis</p>
-
+            
           </div>
         </section>
 
@@ -233,9 +232,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler15ParenthesisNodeC8toStringSSyF"></a>
-                    <a name="//apple_ref/swift/Method/toString()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler15ParenthesisNodeC8toStringSSyF">toString()</a>
+                    <a name="/s:Sa5EulerE7flattenySayqd__GSilF"></a>
+                    <a name="//apple_ref/swift/Method/flatten(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sa5EulerE7flattenySayqd__GSilF">flatten(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -243,68 +242,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gives String representation of the node</p>
+                        <p>Flattens the current Array of any type</p>
+
+<p>This method will help you convert an array like [ [1, 2], [3, 4], 5 ] to [1, 2, 3, 4, 5]
+Here is how you use it:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">array</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span>
+<span class="p">]</span>
+
+<span class="n">array</span><span class="o">.</span><span class="nf">flatten</span><span class="p">()</span> <span class="c1">// =&gt; [1, 2, 3, 4, 5]</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">toString</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler15ParenthesisNodeC5toTexSSyF"></a>
-                    <a name="//apple_ref/swift/Method/toTex()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler15ParenthesisNodeC5toTexSSyF">toTex()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gives Tex (String) representation of the node</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">toTex</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler15ParenthesisNodeC4typeSSvp"></a>
-                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler15ParenthesisNodeC4typeSSvp">type</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Name of the Node</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">flatten</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
