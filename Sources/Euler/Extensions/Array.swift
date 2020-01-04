@@ -21,6 +21,7 @@ public extension Array {
     /// array.flatten() // => [1, 2, 3, 4, 5]
     /// ```
     ///
+    /// - Parameter index: The starting index of the array
     func flatten<T>(_ index: Int = 0) -> [T] {
          guard index < self.count else { 
              return []
