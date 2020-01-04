@@ -50,6 +50,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/NullNode.swift",
+      "line": 21,
+      "symbol": "NullNode.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/OperatorNode.swift",
       "line": 10,
       "symbol": "OperatorNode",
