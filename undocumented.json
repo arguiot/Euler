@@ -692,6 +692,20 @@
       "symbol": "BigFloat",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/NumberTheory/fibonacci.swift",
+      "line": 11,
+      "symbol": "BigInt.fibonacci",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/NumberTheory/random.swift",
+      "line": 44,
+      "symbol": "BigInt.random",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
     }
   ],
   "source_directory": "/Users/travis/build/arguiot/Euler"
