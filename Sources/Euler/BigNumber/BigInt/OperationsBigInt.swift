@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BigInt {
+public extension BigInt {
     //
     //
     //    MARK: - BigNumber Addition
@@ -18,12 +18,12 @@ extension BigInt {
     //
     //
     
-    public prefix static func +(x: BigInt) -> BigInt {
+    prefix static func +(x: BigInt) -> BigInt {
         return x
     }
     
     // Required by protocol Numeric
-    public static func +=(lhs: inout BigInt, rhs: BigInt) {
+    static func +=(lhs: inout BigInt, rhs: BigInt) {
         if lhs.sign == rhs.sign
         {
             lhs.limbs.addLimbs(rhs.limbs)
@@ -38,7 +38,7 @@ extension BigInt {
     }
     
     // Required by protocol Numeric
-    public static func +(lhs: BigInt, rhs: BigInt) -> BigInt {
+    static func +(lhs: BigInt, rhs: BigInt) -> BigInt {
         var lhs = lhs
         lhs += rhs
         return lhs
@@ -61,12 +61,12 @@ extension BigInt {
     //
     
     // Required by protocol SignedNumeric
-    public mutating func negate() {
+    mutating func negate() {
         if self.isNotZero() { self.sign = !self.sign }
     }
     
     // Required by protocol SignedNumeric
-    public static prefix func -(n: BigInt) -> BigInt {
+    static prefix func -(n: BigInt) -> BigInt {
         var n = n
         n.negate()
         return n
@@ -83,7 +83,7 @@ extension BigInt {
     //
     
     // Required by protocol Numeric
-    public static func -(lhs: BigInt, rhs: BigInt) -> BigInt {
+    static func -(lhs: BigInt, rhs: BigInt) -> BigInt {
         return lhs + -rhs
     }
     
@@ -91,7 +91,7 @@ extension BigInt {
     static func -(lhs: BigInt, rhs:  Int) -> BigInt { return lhs - BigInt(rhs) }
     
     // Required by protocol Numeric
-    public static func -=(lhs: inout BigInt, rhs: BigInt) { lhs += -rhs                        }
+    static func -=(lhs: inout BigInt, rhs: BigInt) { lhs += -rhs                        }
     static func -=(lhs: inout  Int, rhs: BigInt)  { lhs  = (BigInt(lhs) - rhs).asInt()! }
     static func -=(lhs: inout BigInt, rhs:  Int)  { lhs -= BigInt(rhs)                  }
     
@@ -106,7 +106,7 @@ extension BigInt {
     //
     
     // Required by protocol Numeric
-    public static func *(lhs: BigInt, rhs: BigInt) -> BigInt {
+    static func *(lhs: BigInt, rhs: BigInt) -> BigInt {
         let sign = !(lhs.sign == rhs.sign || lhs.isZero() || rhs.isZero())
         return BigInt(sign: sign, limbs: lhs.limbs.multiplyingBy(rhs.limbs))
     }
@@ -115,7 +115,7 @@ extension BigInt {
     static func *(lhs: BigInt, rhs: Int) -> BigInt { return lhs * BigInt(rhs) }
     
     // Required by protocol SignedNumeric
-    public static func *=(lhs: inout BigInt, rhs: BigInt) { lhs = lhs * rhs           }
+    static func *=(lhs: inout BigInt, rhs: BigInt) { lhs = lhs * rhs           }
     static func *=(lhs: inout  Int, rhs: BigInt) { lhs = (BigInt(lhs) * rhs).asInt()! }
     static func *=(lhs: inout BigInt, rhs:  Int) { lhs = lhs * BigInt(rhs)            }
     
@@ -151,12 +151,12 @@ extension BigInt {
     //
     
     ///    Returns the quotient and remainder of this value divided by the given value.
-    public func quotientAndRemainder(dividingBy rhs: BigInt) -> (quotient: BigInt, remainder: BigInt) {
+    func quotientAndRemainder(dividingBy rhs: BigInt) -> (quotient: BigInt, remainder: BigInt) {
         let limbRes = self.limbs.divMod(rhs.limbs)
         return (BigInt(limbs: limbRes.quotient), BigInt(limbs: limbRes.remainder))
     }
     
-    public static func /(lhs: BigInt, rhs:BigInt) -> BigInt {
+    static func /(lhs: BigInt, rhs:BigInt) -> BigInt {
         let limbs = lhs.limbs.divMod(rhs.limbs).quotient
         let sign = (lhs.sign != rhs.sign) && !limbs.equalTo(0)
         
@@ -166,7 +166,7 @@ extension BigInt {
     static func /(lhs:  Int, rhs: BigInt) -> BigInt { return BigInt(lhs) / rhs }
     static func /(lhs: BigInt, rhs:  Int) -> BigInt { return lhs / BigInt(rhs) }
     
-    public static func /=(lhs: inout BigInt, rhs: BigInt) { lhs = lhs / rhs }
+    static func /=(lhs: inout BigInt, rhs: BigInt) { lhs = lhs / rhs }
     static func /=(lhs: inout BigInt, rhs:  Int) { lhs = lhs / BigInt(rhs)  }
     //
     //
@@ -178,7 +178,7 @@ extension BigInt {
     //
     //
     
-    public static func %(lhs: BigInt, rhs: BigInt) -> BigInt {
+    static func %(lhs: BigInt, rhs: BigInt) -> BigInt {
         let limbs = lhs.limbs.divMod(rhs.limbs).remainder
         let sign = lhs.sign && !limbs.equalTo(0)
         
@@ -188,7 +188,7 @@ extension BigInt {
     static func %(lhs:  Int, rhs: BigInt) -> BigInt { return BigInt(lhs) % rhs  }
     static func %(lhs: BigInt, rhs:  Int) -> BigInt { return lhs  % BigInt(rhs) }
     
-    public static func %=(lhs: inout BigInt, rhs: BigInt)  { lhs = lhs % rhs }
+    static func %=(lhs: inout BigInt, rhs: BigInt)  { lhs = lhs % rhs }
     static func %=(lhs: inout BigInt, rhs:  Int)  { lhs = lhs % BigInt(rhs)  }
     
     //
@@ -202,7 +202,7 @@ extension BigInt {
     //
     
     // Required by protocol Equatable
-    public static func ==(lhs: BigInt, rhs: BigInt) -> Bool {
+    static func ==(lhs: BigInt, rhs: BigInt) -> Bool {
         if lhs.sign != rhs.sign { return false }
         return lhs.limbs == rhs.limbs
     }
@@ -227,7 +227,7 @@ extension BigInt {
     static func !=<T: BinaryInteger>(lhs: T, rhs: BigInt) -> Bool { return rhs != lhs }
     
     // Required by protocol Comparable
-    public static func <(lhs: BigInt, rhs: BigInt) -> Bool {
+    static func <(lhs: BigInt, rhs: BigInt) -> Bool {
         if lhs.sign != rhs.sign { return lhs.sign }
         
         if lhs.sign { return rhs.limbs.lessThan(lhs.limbs) }
@@ -251,17 +251,17 @@ extension BigInt {
     static func <(lhs: BigInt, rhs:  Int) -> Bool { return lhs < BigInt(rhs) }
     
     // Required by protocol Comparable
-    public static func >(lhs: BigInt, rhs: BigInt) -> Bool { return rhs < lhs }
+    static func >(lhs: BigInt, rhs: BigInt) -> Bool { return rhs < lhs }
     static func >(lhs:  Int, rhs: BigInt) -> Bool { return BigInt(lhs) > rhs  }
     static func >(lhs: BigInt, rhs:  Int) -> Bool { return lhs > BigInt(rhs)  }
     
     // Required by protocol Comparable
-    public static func <=(lhs: BigInt, rhs: BigInt) -> Bool { return !(rhs < lhs) }
+    static func <=(lhs: BigInt, rhs: BigInt) -> Bool { return !(rhs < lhs) }
     static func <=(lhs:  Int, rhs: BigInt) -> Bool { return !(rhs < BigInt(lhs))  }
     static func <=(lhs: BigInt, rhs:  Int) -> Bool { return !(BigInt(rhs) < lhs)  }
     
     // Required by protocol Comparable
-    public static func >=(lhs: BigInt, rhs: BigInt) -> Bool { return !(lhs < rhs) }
+    static func >=(lhs: BigInt, rhs: BigInt) -> Bool { return !(lhs < rhs) }
     static func >=(lhs:  Int, rhs: BigInt) -> Bool { return !(BigInt(lhs) < rhs)  }
     static func >=(lhs: BigInt, rhs:  Int) -> Bool { return !(lhs < BigInt(rhs))  }
 }

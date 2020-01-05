@@ -49,7 +49,7 @@ public extension Array {
     ///   - n: The length of the outputed array
     static func linspace(start: Double, end: Double, n: Int) -> [Double] {
         let diff = end - start
-        let step = diff / n
+        let step = diff / Double(n)
         return self.arange(start: start, end: end, step: step)
     }
     
