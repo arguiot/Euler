@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BigInt {
+public extension BigInt {
     /// Check if the BigInt is a prime.
     ///
     /// > Uses the multiple of 6 method (which is fairly quick and 100% safe)

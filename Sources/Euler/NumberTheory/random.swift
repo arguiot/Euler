@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BigInt {
+public extension BigInt {
     /// Generate a random BigInt
     ///
     /// ⚠️ This isn't crypto secure

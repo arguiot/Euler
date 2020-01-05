@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BigInt {
+public extension BigInt {
     var fibonacci: BigInt {
         let n = self
         var a: Limbs = [0], b: Limbs = [1], t: Limbs
