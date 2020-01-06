@@ -680,6 +680,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Cryptography/md5.swift",
+      "line": 11,
+      "symbol": "Byte",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Cryptography/md5.swift",
+      "line": 16,
+      "symbol": "Digest.digest",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Euler.swift",
       "line": 11,
       "symbol": "BigNumber",

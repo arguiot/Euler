@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Token Enumeration Reference</title>
+    <title>Data Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/Token" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Extension/Data" class="dashAnchor"></a>
 
-    <a title="Token Enumeration Reference"></a>
+    <a title="Data Extension Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Token Enumeration Reference
+      Data Extension Reference
     </p>
 
     <div class="content-wrapper">
@@ -229,19 +229,14 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Token</h1>
+            <h1>Data</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Token</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Data</span></code></pre>
 
                 </div>
               </div>
-            <p>Possible Tokens in a mathematical expression.</p>
-
-<blockquote>
-<p>This is part of the <code><a href="../Classes/Lexer.html">Lexer</a></code></p>
-</blockquote>
-
+            
           </div>
         </section>
 
@@ -252,9 +247,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler5TokenO6SymbolyACSScACmF"></a>
-                    <a name="//apple_ref/swift/Element/Symbol(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5TokenO6SymbolyACSScACmF">Symbol(_:)</a>
+                    <a name="/s:10Foundation4DataV5EulerE6sha256ACyF"></a>
+                    <a name="//apple_ref/swift/Method/sha256()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Foundation4DataV5EulerE6sha256ACyF">sha256()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -262,122 +257,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Gives the sha256 hash of any Data</p>
+
+<p>Example: <code>Data().sha256()</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">Symbol</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler5TokenO6NumberyACSfcACmF"></a>
-                    <a name="//apple_ref/swift/Element/Number(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5TokenO6NumberyACSfcACmF">Number(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">Number</span><span class="p">(</span><span class="kt">Float</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler5TokenO10ParensOpenyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/ParensOpen" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5TokenO10ParensOpenyA2CmF">ParensOpen</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">ParensOpen</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler5TokenO11ParensCloseyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/ParensClose" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5TokenO11ParensCloseyA2CmF">ParensClose</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">ParensClose</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler5TokenO5OtheryACSScACmF"></a>
-                    <a name="//apple_ref/swift/Element/Other(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5TokenO5OtheryACSScACmF">Other(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">Other</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sha256</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
 
                         </div>
                       </div>

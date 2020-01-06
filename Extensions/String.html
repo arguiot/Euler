@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SymbolNode Class Reference</title>
+    <title>String Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/SymbolNode" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Extension/String" class="dashAnchor"></a>
 
-    <a title="SymbolNode Class Reference"></a>
+    <a title="String Extension Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SymbolNode Class Reference
+      String Extension Reference
     </p>
 
     <div class="content-wrapper">
@@ -229,15 +229,14 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>SymbolNode</h1>
+            <h1>String</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SymbolNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/Node.html">Node</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">String</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
-
+            
           </div>
         </section>
 
@@ -248,9 +247,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler10SymbolNodeC8toStringSSyF"></a>
-                    <a name="//apple_ref/swift/Method/toString()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeC8toStringSSyF">toString()</a>
+                    <a name="/s:SS5EulerE3md5SSvp"></a>
+                    <a name="//apple_ref/swift/Property/md5" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS5EulerE3md5SSvp">md5</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -258,14 +257,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gives String representation of the node</p>
+                        <p>MD5 encoding of the String</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toString</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">md5</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -275,9 +274,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler10SymbolNodeC5toTexSSyF"></a>
-                    <a name="//apple_ref/swift/Method/toTex()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeC5toTexSSyF">toTex()</a>
+                    <a name="/s:SS5EulerE9md5DigestSays5UInt8VGvp"></a>
+                    <a name="//apple_ref/swift/Property/md5Digest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS5EulerE9md5DigestSays5UInt8VGvp">md5Digest</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -285,14 +284,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gives Tex (String) representation of the node</p>
+                        <p>MD5 Digest of the String as an array of <code><a href="../Typealiases.html#/s:5Euler4Bytea">Byte</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toTex</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">md5Digest</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Typealiases.html#/s:5Euler4Bytea">Byte</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -302,9 +301,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@Euler@objc(cs)SymbolNode(py)description"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@Euler@objc(cs)SymbolNode(py)description">description</a>
+                    <a name="/s:SS5EulerE6sha256SSvp"></a>
+                    <a name="//apple_ref/swift/Property/sha256" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS5EulerE6sha256SSvp">sha256</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -312,195 +311,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The <code>print()</code> description</p>
+                        <p>Gives the sha256 hash of a String</p>
+
+<p>Example: <code>&quot;Hello World!&quot;.sha256</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler10SymbolNodeC7contentSSvp"></a>
-                    <a name="//apple_ref/swift/Property/content" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeC7contentSSvp">content</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The name of the Symbol (ex: <code>x</code> or <code>y</code>)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">content</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler10SymbolNodeC4typeSSvp"></a>
-                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeC4typeSSvp">type</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The name of the node</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler10SymbolNodeC8childrenSayAA0C0_pGvp"></a>
-                    <a name="//apple_ref/swift/Property/children" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeC8childrenSayAA0C0_pGvp">children</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Useless here, but it&rsquo;s to conform to the Node protocol</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">children</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Node.html">Node</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler10SymbolNodeCyACSScfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeCyACSScfc">init(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Create a SymbolNode</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">variable</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>double</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Floating point number</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler10SymbolNodeC7compileAA0C0_pyF"></a>
-                    <a name="//apple_ref/swift/Method/compile()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeC7compileAA0C0_pyF">compile()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Compiles SymbolNode to simpler node (useless here, but required by protocol)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">compile</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Node.html">Node</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler10SymbolNodeC8evaluateyAA9BigDoubleVSDySSAFGF"></a>
-                    <a name="//apple_ref/swift/Method/evaluate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler10SymbolNodeC8evaluateyAA9BigDoubleVSDySSAFGF">evaluate(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Converts SymboleNode to BigNumber by replacing unknown value by their parameters. If it fails, it will return 0.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">_</span> <span class="nv">params</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">sha256</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
