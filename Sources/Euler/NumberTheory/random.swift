@@ -8,6 +8,17 @@
 import Foundation
 
 public extension BigInt {
+    //
+    //
+    //    MARK: - BigNumber Utility Functions
+    //    ————————————————————————————————————————————————————————————————————————————————————————
+    //    ||||||||        BigNumber Utility Functions        |||||||||||||||||||||||||||||||||||||
+    //    ————————————————————————————————————————————————————————————————————————————————————————
+    //
+    //
+    //
+    //
+    
     /// Generate a random BigInt
     ///
     /// ⚠️ This isn't crypto secure
@@ -41,5 +52,6 @@ public extension BigInt {
         
         return BigInt(limbs: res)
     }
+    /// Alias of `randomBigNumber`
     static let random = randomBigNumber
 }

@@ -10,9 +10,27 @@ import Foundation
 public extension BigInt {
     //
     //
+    //    MARK: - BigNumber Utility Functions
+    //    ————————————————————————————————————————————————————————————————————————————————————————
+    //    ||||||||        BigNumber Utility Functions        |||||||||||||||||||||||||||||||||||||
+    //    ————————————————————————————————————————————————————————————————————————————————————————
+    //
+    //
+    //
+    //
+    
+    func factorial() -> BigInt {
+        precondition(!self.sign, "Can't calculate the factorial of an negative number")
+        
+        return BigInt(limbs: Limbs.recursiveMul(0, Limb(self.asInt()!)))
+    }
+    
+    
+    
+    //
     //    MARK: - BigNumber Addition
     //    ————————————————————————————————————————————————————————————————————————————————————————
-    //    ||||||||        BigNumber Addition        |||||||||||||||||||||||||||||||||||||||||||||||||||
+    //    ||||||||        BigNumber Addition        ||||||||||||||||||||||||||||||||||||||||||||||
     //    ————————————————————————————————————————————————————————————————————————————————————————
     //
     //
@@ -132,12 +150,6 @@ public extension BigInt {
     static func **(lhs: BigInt, rhs: Int) -> BigInt {
         precondition(rhs >= 0, "BigNumbers can't be exponentiated with exponents < 0")
         return BigInt(sign: lhs.sign && (rhs % 2 != 0), limbs: lhs.limbs.exponentiating(rhs))
-    }
-    
-    func factorial() -> BigInt {
-        precondition(!self.sign, "Can't calculate the factorial of an negative number")
-        
-        return BigInt(limbs: Limbs.recursiveMul(0, Limb(self.asInt()!)))
     }
     
     //
