@@ -137,12 +137,14 @@ infix operator ** : ExponentiationPrecedence
 //    ————————————————————————————————————————————————————————————————————————————————————————————
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//    ||||||||        BigNumber        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//    ||||||||        BigNumber        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ————————————————————————————————————————————————————————————————————————————————————————————
 ///    BigNumber is an arbitrary precision integer value type. It stores a number in base 2^64 notation
-///    as an array. Each element of the array is called a limb, which is of type UInt64, the whole
+///    as an array.
+///
+///    Each element of the array is called a limb, which is of type UInt64, the whole
 ///    array is called limbs and has the type [UInt64]. A boolean sign variable determines if the
 ///    number is positive or negative. If sign == true, then the number is smaller than 0,
 ///    otherwise it is greater or equal to 0. It stores the 64 bit digits in little endian, that

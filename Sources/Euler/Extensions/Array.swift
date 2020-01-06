@@ -22,16 +22,16 @@ public extension Array {
     /// ```
     ///
     /// - Parameter index: The starting index of the array
-    func flatten<T>(_ index: Int = 0) -> [T] {
+    func flatten(_ index: Int = 0) -> [Any] {
          guard index < self.count else { 
              return []
          }
 
-         var flatten: [T] = []
+         var flatten: [Any] = []
 
-         if let itemArr = self[index] as? [T] {
+         if let itemArr = self[index] as? [Any] {
              flatten += itemArr.flatten()
-         } else if let element = self[index] as? T {
+         } else if let element = self[index] as? Any {
              flatten.append(element)
          }
          return flatten + self.flatten(index + 1)
@@ -41,7 +41,7 @@ public extension Array {
     ///
     /// If you don't have any idea of how it works, the example may help you:
     /// ```swift
-    /// Array.linspace(start: 0, end: 100, n: 10) // => [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    /// Array<Any>.linspace(start: 0, end: 100, n: 10) // => [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
     /// ```
     /// - Parameters:
     ///   - start: The start of the array
@@ -57,7 +57,7 @@ public extension Array {
     ///
     /// Example:
     /// ```swift
-    /// Array.arange(start: 1, end: 11, step: 2, offset: 0) // => [ 1, 3, 5, 7, 9, 11 ]
+    /// Array<Any>.arange(start: 1, end: 11, step: 2, offset: 0) // => [ 1, 3, 5, 7, 9, 11 ]
     /// ```
     /// - Parameters:
     ///   - start: The start of the array
@@ -84,7 +84,7 @@ public extension Array {
     ///
     /// Example:
     /// ```swift
-    /// Array.range(10) // => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    /// Array<Any>.range(10) // => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     /// ```
     /// - Parameter n: The number `n` represent the end of the range
     static func range(_ n: Int) -> [Int] {
@@ -95,7 +95,7 @@ public extension Array {
     ///
     /// Example:
     /// ```swift
-    /// Array.range(10).reshape(part: 2)
+    /// Array<Any>.range(10).reshape(part: 2)
     /// /* => [
     ///     [0, 1],
     ///     [2, 3],
@@ -103,13 +103,19 @@ public extension Array {
     ///     [6, 7],
     ///     [8, 9],
     ///     [10]
-    /// ]) */
+    /// ] */
     /// ```
     /// - Parameter part: The length of each part
     func reshape(part: Int) -> [[Element]] {
         var tmp = Array<[Element]>()
         var i = 0
         while i < self.count {
+            if i + part > self.count {
+                let slice = self[i..<self.count]
+                let out = Array(slice)
+                tmp.append(out)
+                return tmp
+            }
             let slice = self[i..<(i + part)]
             let out = Array(slice)
             tmp.append(out)
