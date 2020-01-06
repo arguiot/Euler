@@ -84,10 +84,37 @@ public extension Array {
     ///
     /// Example:
     /// ```swift
-    /// Array.range(n: 10) // => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    /// Array.range(10) // => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     /// ```
     /// - Parameter n: The number `n` represent the end of the range
-    static func range(n: Int) -> [Int] {
+    static func range(_ n: Int) -> [Int] {
         return self.arange(start: 0, end: Double(n)).map { Int($0) }
+    }
+    
+    /// The reshape function is the opposite of the `Array.flatten` function. It will group items in an array by `x` items:
+    ///
+    /// Example:
+    /// ```swift
+    /// Array.range(10).reshape(part: 2)
+    /// /* => [
+    ///     [0, 1],
+    ///     [2, 3],
+    ///     [4, 5],
+    ///     [6, 7],
+    ///     [8, 9],
+    ///     [10]
+    /// ]) */
+    /// ```
+    /// - Parameter part: The length of each part
+    func reshape(part: Int) -> [[Element]] {
+        var tmp = Array<[Element]>()
+        var i = 0
+        while i < self.count {
+            let slice = self[i..<(i + part)]
+            let out = Array(slice)
+            tmp.append(out)
+            i += part
+        }
+        return tmp
     }
 }
