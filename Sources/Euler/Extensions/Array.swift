@@ -31,8 +31,8 @@ public extension Array {
 
          if let itemArr = self[index] as? [Any] {
              flatten += itemArr.flatten()
-         } else if let element = self[index] as? Any {
-             flatten.append(element)
+         } else {
+             flatten.append(self[index])
          }
          return flatten + self.flatten(index + 1)
     }

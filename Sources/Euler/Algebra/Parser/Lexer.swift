@@ -51,7 +51,7 @@ public class Lexer {
                     }
                     let firstIndex = String.Index(encodedOffset: m.count - 1)
                     let index = content.index(after: firstIndex)
-                    content = content.substring(from: index)
+                    content = String(content[index...])
                     matched = true
                     break
                 }
@@ -60,8 +60,8 @@ public class Lexer {
             if !matched {
                 let firstIndex = content.startIndex
                 let index = content.index(after: firstIndex)
-                tokens.append(.Other(content.substring(to: index)))
-                content = content.substring(from: index)
+                tokens.append(.Other(String(content[..<index])))
+                content = String(content[index...])
             }
         }
         return tokens
