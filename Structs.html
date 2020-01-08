@@ -23,7 +23,7 @@
         <a class="header-link" href="index.html">
           Euler Docs
         </a>
-         (67% documented)
+         (68% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -193,7 +193,16 @@
                 <a class="nav-group-task-link" href="Structs/BigInt.html">BigInt</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Collatz.html">Collatz</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Digest.html">Digest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Fibonacci.html">Fibonacci</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Sieve.html">Sieve</a>
               </li>
             </ul>
           </li>
@@ -386,6 +395,100 @@ is, the least significant digit is stored in the array index 0:</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler7CollatzV"></a>
+                    <a name="//apple_ref/swift/Struct/Collatz" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler7CollatzV">Collatz</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An Iterator for the Collatz conjecture</p>
+
+<p>The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined as follows: start with any positive integer n. Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.</p>
+
+<p>After it reaches 1, the iterator will return <code>nil</code></p>
+
+                        <a href="Structs/Collatz.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Collatz</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler9FibonacciV"></a>
+                    <a name="//apple_ref/swift/Struct/Fibonacci" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler9FibonacciV">Fibonacci</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An Iterator for the Fibonacci sequence</p>
+
+<p>In mathematics, the Fibonacci numbers, commonly denoted Fn form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1.</p>
+
+<p>Since the sequence is infinite, the iterator will always return a <code><a href="Structs/BigInt.html">BigInt</a></code>.</p>
+
+                        <a href="Structs/Fibonacci.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Fibonacci</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler5SieveV"></a>
+                    <a name="//apple_ref/swift/Struct/Sieve" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5SieveV">Sieve</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A generator for finding prime numbers</p>
+
+<p>A prime sieve or prime number sieve is a fast type of algorithm for finding primes. It does so by iterating over the natural integers, and returning every number that is indeed prime.</p>
+
+                        <a href="Structs/Sieve.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Sieve</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -394,8 +497,8 @@ is, the least significant digit is stored in the array index 0:</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-01-07)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-01-08)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
