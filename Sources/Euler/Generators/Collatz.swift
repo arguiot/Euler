@@ -14,13 +14,13 @@ import Foundation
 ///
 /// After it reaches 1, the iterator will return `nil`
 ///
-public struct Collatz: IteratorProtocol {
+public struct Collatz: IteratorProtocol, Sequence {
     /// Current value
     var n: BigInt
     
     /// Initialize the collatz sequence
     /// - Parameter n: Any `BigInt`
-    init(_ n: BigInt) {
+    public init(_ n: BigInt) {
         self.n = n
     }
     
@@ -33,5 +33,10 @@ public struct Collatz: IteratorProtocol {
             n = 3 * n + 1
         }
         return n
+    }
+    
+    /// Makes Collatz conforming to the `Sequence` protocol
+    public func makeIterator() -> Collatz {
+        return self
     }
 }

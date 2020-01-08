@@ -33,7 +33,7 @@ public class Lexer {
     let input: String
     /// Initializes the `Lexer`
     /// - Parameter input: The mathematical expression you want to parse
-    init(input: String) {
+    public init(input: String) {
         self.input = input
     }
     /// Tokenize the String input

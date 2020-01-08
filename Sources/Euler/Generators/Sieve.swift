@@ -15,6 +15,9 @@ public struct Sieve: IteratorProtocol {
     /// The current Prime number
     var n = BigInt(1)
     
+    /// Creates a Sieve `IteratorProtocol` / `Sequence`
+    public init() {}
+    
     /// Return the next prime number
     mutating public func next() -> BigInt? {
         n += 1
@@ -22,5 +25,9 @@ public struct Sieve: IteratorProtocol {
             n += 1
         }
         return n
+    }
+    /// Makes Sieve conforming to the `Sequence` protocol
+    public func makeIterator() -> Sieve {
+        return self
     }
 }

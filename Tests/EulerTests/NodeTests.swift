@@ -8,7 +8,7 @@
 import Foundation
 
 import XCTest
-@testable import Euler
+import Euler
 
 class NodeTests: XCTestCase {
     func testConstantNode() {
