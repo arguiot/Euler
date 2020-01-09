@@ -1,0 +1,78 @@
+{
+    "author": "Arthur Guiot",
+    "author_url": "https://arguiot.com",
+    "module": "Euler",
+    "readme": "README.md",
+    "theme": "fullwidth",
+
+    "custom_categories": [{
+        "name": "Numbers",
+        "children": [
+            "BigInt",
+            "BigDouble",
+            "BigFloat",
+            "BigNumber"
+        ]
+    }, {
+        "name": "Operations / Functions",
+        "children": [
+            "abs(_:)",
+            "ceil(_:)",
+            "combinations(_:_:)",
+            "combinationsWithRepitition(_:_:)",
+            "encodeMD5(digest:)",
+            "floor(_:)",
+            "gcd(_:_:)",
+            "gcdEuclid(_:_:)",
+            "lcm(_:_:)",
+            "max(_:_:)",
+            "min(_:_:)",
+            "mod_add(_:_:_:)",
+            "mod_exp(_:_:_:)",
+            "nnmod(_:_:)",
+            "permutations(_:_:)",
+            "permutationsWithRepitition(_:_:)",
+            "pow(_:_:)",
+            "pow(_:_:)",
+            "pow(_:_:)",
+            "steinGcd(_:_:)"
+        ]
+    }, {
+        "name": "Statistics",
+        "children": [
+            "Statistics",
+        ]
+    }, {
+        "name": "Generators",
+        "children": [
+            "Collatz",
+            "Fibonacci",
+            "Sieve",
+        ]
+    }, {
+        "name": "Algebra Parser",
+        "children": [
+            "Parser",
+            "Lexer",
+            "Grouper",
+            "Group",
+            "Node",
+            "ExpressionNode",
+            "ParenthesisNode",
+            "ConstantNode",
+            "SymboleNode",
+            "OperatorNode",
+            "FunctionNode"
+        ]
+    }, {
+        "name": "Cryptography",
+        "children": [
+            "String"
+        ]
+    }, {
+        "name": "Array manipulation",
+        "children": [
+            "Array"
+        ]
+    }],
+}
