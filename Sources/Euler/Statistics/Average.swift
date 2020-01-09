@@ -36,7 +36,7 @@ public extension Statistics {
     /// - Parameter coefficients: The weighted coefficients you want to use to multiply the original list.
     func average(coefficients: [BigNumber]) throws -> BigNumber {
         guard coefficients.count == list.count else { throw AverageError.CoefficientIssue }
-        var tmp: [BigNumber]
+        var tmp = [BigNumber]()
         
         var i = 0
         
