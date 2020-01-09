@@ -5,7 +5,7 @@ install:
   # Install Jazzy and dependencies
   - gem install jazzy
 script:
-  - "jazzy --clean --no-objc --author 'Arthur Guiot' --author_url https://arguiot.com --github_url https://github.com/arguiot/Euler --output docs --theme fullwidth --swift-build-tool spm --build-tool-arguments -Xswiftc,-swift-version,-Xswiftc,5"
+  - "jazzy --clean --no-objc --author 'Arthur Guiot' --author_url https://arguiot.com --github_url https://github.com/arguiot/Euler --github-file-prefix https://github.com/arguiot/Euler/blob/master/ --output docs --theme fullwidth --swift-build-tool spm --build-tool-arguments -Xswiftc,-swift-version,-Xswiftc,5"
 #  - xcodebuild -project SearchKit-Swift.xcodeproj -scheme SearchKit-Swift test
 deploy:
   provider:     pages
