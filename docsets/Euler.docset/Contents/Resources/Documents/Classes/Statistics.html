@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ConstantNode Class Reference</title>
+    <title>Statistics Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/ConstantNode" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/Statistics" class="dashAnchor"></a>
 
-    <a title="ConstantNode Class Reference"></a>
+    <a title="Statistics Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      ConstantNode Class Reference
+      Statistics Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -241,14 +241,16 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>ConstantNode</h1>
+            <h1>Statistics</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConstantNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/Node.html">Node</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Statistics</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>This is a Node object that represents a number as a BigDouble</p>
+            <p>The class that helps to process numerical data</p>
+
+<p><code>Statistics</code> was designed to help with the mathematics of the collection, organization, and interpretation of numerical data, especially the analysis of population characteristics by inference from sampling.</p>
 
           </div>
         </section>
@@ -260,9 +262,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler12ConstantNodeC8toStringSSyF"></a>
-                    <a name="//apple_ref/swift/Method/toString()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeC8toStringSSyF">toString()</a>
+                    <a name="/s:5Euler10StatisticsC4listSayAA9BigDoubleVGvp"></a>
+                    <a name="//apple_ref/swift/Property/list" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC4listSayAA9BigDoubleVGvp">list</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -270,14 +272,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gives String representation of the node</p>
+                        <p>The list used for statistical computations</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toString</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -287,9 +289,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler12ConstantNodeC5toTexSSyF"></a>
-                    <a name="//apple_ref/swift/Method/toTex()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeC5toTexSSyF">toTex()</a>
+                    <a name="/s:5Euler10StatisticsC4listACSayAA9BigDoubleVG_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(list:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC4listACSayAA9BigDoubleVG_tcfc">init(list:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -297,146 +299,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gives Tex (String) representation of the node</p>
+                        <p>Creates a <code>Statistics</code> object</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toTex</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@Euler@objc(cs)ConstantNode(py)description"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@Euler@objc(cs)ConstantNode(py)description">description</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler4NodeP7contentSSvp"></a>
-                    <a name="//apple_ref/swift/Property/content" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler4NodeP7contentSSvp">content</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">content</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler4NodeP4typeSSvp"></a>
-                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler4NodeP4typeSSvp">type</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler4NodeP8childrenSayAaB_pGvp"></a>
-                    <a name="//apple_ref/swift/Property/children" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler4NodeP8childrenSayAaB_pGvp">children</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">children</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/Node.html">Node</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler12ConstantNodeCyAcA9BigDoubleVcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeCyAcA9BigDoubleVcfc">init(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Create a ConstantNode</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">bn</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -447,12 +317,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>bn</em>
+                                <em>list</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>BigNumber/BigDouble</p>
+                                  <p>A list of <code><a href="../Structs/BigDouble.html">BigDouble</a></code> used for statistical computations</p>
                                 </div>
                               </td>
                             </tr>
@@ -465,9 +335,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler12ConstantNodeCyACSicfc"></a>
+                    <a name="/s:5Euler10StatisticsCyACSdd_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeCyACSicfc">init(_:)</a>
+                    <a class="token" href="#/s:5Euler10StatisticsCyACSdd_tcfc">init(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -475,14 +345,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create a ConstantNode</p>
+                        <p>Creates a <code>Statistics</code> object</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="kt">Statistics</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">int</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">list</span><span class="p">:</span> <span class="kt">Double</span><span class="o">...</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -493,12 +367,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>int</em>
+                                <em>list</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Integer</p>
+                                  <p>A list of <code>Double</code> used for statistical computations</p>
                                 </div>
                               </td>
                             </tr>
@@ -511,9 +385,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler12ConstantNodeCyACSfcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeCyACSfcfc">init(_:)</a>
+                    <a name="/s:5Euler10StatisticsC7averageAA9BigDoubleVvp"></a>
+                    <a name="//apple_ref/swift/Property/average" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC7averageAA9BigDoubleVvp">average</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -521,14 +395,47 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create a ConstantNode</p>
+                        <p>Return the arithmetic mean (average) of the list</p>
+
+<p>The arithmetic mean of a set of values is the quantity commonly called &ldquo;the&rdquo; mean or the average. It&rsquo;s simply the sum of all the terms in a list, divided by the number of elements in the list.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">float</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">average</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC7average12coefficientsAA9BigDoubleVSayAGG_tKF"></a>
+                    <a name="//apple_ref/swift/Method/average(coefficients:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC7average12coefficientsAA9BigDoubleVSayAGG_tKF">average(coefficients:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return the weighted arithmetic mean (average) of the list with the given coefficients</p>
+
+<p>The weighted arithmetic mean is similar to an ordinary arithmetic mean (the most common type of average), except that instead of each of the data points contributing equally to the final average, some data points contribute more than others. The notion of weighted mean plays a role in descriptive statistics and also occurs in a more general form in several other areas of mathematics.</p>
+
+<p>If all the weights are equal, then the weighted mean is the same as the arithmetic mean. While weighted means generally behave in a similar fashion to arithmetic means, they do have a few counterintuitive properties, as captured for instance in Simpson&rsquo;s paradox.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">average</span><span class="p">(</span><span class="nv">coefficients</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span></code></pre>
 
                         </div>
                       </div>
@@ -539,117 +446,17 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>float</em>
+                                <em>coefficients</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Floating point number</p>
+                                  <p>The weighted coefficients you want to use to multiply the original list.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler12ConstantNodeCyACSdcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeCyACSdcfc">init(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Create a ConstantNode</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">double</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>double</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Floating point number</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler12ConstantNodeC7compileAA0C0_pyF"></a>
-                    <a name="//apple_ref/swift/Method/compile()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeC7compileAA0C0_pyF">compile()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Compiles ConstantNode to simpler node (useless here, but required by protocol)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">compile</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Node.html">Node</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler12ConstantNodeC8evaluateyAA9BigDoubleVSDySSAFGF"></a>
-                    <a name="//apple_ref/swift/Method/evaluate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler12ConstantNodeC8evaluateyAA9BigDoubleVSDySSAFGF">evaluate(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Converts ConstantNode to BigNumber</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">_</span> <span class="nv">params</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:5Euler9BigNumbera">BigNumber</a></span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>
