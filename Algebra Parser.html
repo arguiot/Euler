@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Algebra Parser  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Section/Algebra Parser" class="dashAnchor"></a>
+
+    <a title="Algebra Parser  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Euler Docs
+        </a>
+         (69% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/arguiot/Euler">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Euler Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Algebra Parser  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Numbers.html">Numbers</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BigInt.html">BigInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BigDouble.html">BigDouble</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Numbers.html#/s:5Euler8BigFloata">BigFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Numbers.html#/s:5Euler9BigNumbera">BigNumber</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Operations%20%2F%20Functions.html">Operations / Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3absyAA9BigDoubleVADF">abs(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler4ceilyAA6BigIntVAA0C6DoubleVF">ceil(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler12combinationsyAA6BigIntVSi_SitF">combinations(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler26combinationsWithRepititionyAA6BigIntVSi_SitF">combinationsWithRepitition(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler9encodeMD56digestSSSays5UInt8VG_tF">encodeMD5(digest:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler5flooryAA6BigIntVAA0C6DoubleVF">floor(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3gcdyAA6BigIntVAD_ADtF">gcd(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler9gcdEuclidyAA6BigIntVAD_ADtF">gcdEuclid(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3lcmyAA6BigIntVAD_ADtF">lcm(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3maxyAA9BigDoubleVAD_ADtF">max(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3minyAA9BigDoubleVAD_ADtF">min(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler7mod_addyAA6BigIntVAD_A2DtF">mod_add(_:_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler7mod_expyAA6BigIntVAD_A2DtF">mod_exp(_:_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler5nnmodyAA6BigIntVAD_ADtF">nnmod(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler12permutationsyAA6BigIntVSi_SitF">permutations(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler26permutationsWithRepititionyAA6BigIntVSi_SitF">permutationsWithRepitition(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3powyAA9BigDoubleVAD_SitF">pow(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3powyAA9BigDoubleVAD_AA0C3IntVtF">pow(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3powyAA9BigDoubleVAD_ADtF">pow(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler8steinGcdySays6UInt64VGAE_AEtF">steinGcd(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Statistics.html">Statistics</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Statistics.html">Statistics</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Generators.html">Generators</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Collatz.html">Collatz</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Fibonacci.html">Fibonacci</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Sieve.html">Sieve</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Algebra%20Parser.html">Algebra Parser</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Parser.html">Parser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Lexer.html">Lexer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Grouper.html">Grouper</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Group.html">Group</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Token.html">Token</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Node.html">Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ExpressionNode.html">ExpressionNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ParenthesisNode.html">ParenthesisNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ConstantNode.html">ConstantNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SymbolNode.html">SymbolNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/OperatorNode.html">OperatorNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/FunctionNode.html">FunctionNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NullNode.html">NullNode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Cryptography.html">Cryptography</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Array%20manipulation.html">Array manipulation</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Data.html">Data</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Digest.html">Digest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Typealiases.html#/s:5Euler4Bytea">Byte</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Typealiases.html#/s:5Euler5Digita">Digit</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Typealiases.html#/s:5Euler6Digitsa">Digits</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Typealiases.html#/s:5Euler4Limba">Limb</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Typealiases.html#/s:5Euler5Limbsa">Limbs</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Algebra Parser</h1>
+            
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6ParserC"></a>
+                    <a name="//apple_ref/swift/Class/Parser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6ParserC">Parser</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>Parser</code> converts a mathematical expression to a tree.</p>
+
+<p>As humans, we read and write math as a line of text. If you were to type a math expression, it would probably look something like this:</p>
+<pre class="highlight swift"><code><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="err">²</span>
+</code></pre>
+
+<p>You could also just look at that math expression and use your intuition to prioritize where to start simplifying. But a computer will understand the expression best when it’s stored in a tree. These trees can be surprisingly complicated — even a short expression like <code>(1 + 2) - abs(-3) * x²</code> becomes this tree:</p>
+<pre class="highlight swift"><code>          <span class="p">(</span><span class="o">-</span><span class="p">)</span>
+         <span class="o">/</span>   <span class="err">\</span>
+        <span class="p">(</span> <span class="p">)</span>   <span class="p">(</span><span class="o">*</span><span class="p">)</span>
+       <span class="o">/</span>     <span class="o">/</span>   <span class="err">\</span>
+     <span class="p">(</span><span class="o">+</span><span class="p">)</span>    <span class="nf">abs</span>   <span class="p">(</span><span class="o">^</span><span class="p">)</span>
+    <span class="o">/</span>   <span class="err">\</span>    <span class="o">|</span>   <span class="o">/</span>   <span class="err">\</span>
+   <span class="mi">1</span>     <span class="mi">2</span>  <span class="o">-</span><span class="mi">3</span>  <span class="n">x</span>     <span class="mi">2</span>
+</code></pre>
+
+                        <a href="Classes/Parser.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Parser</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Parser.swift#L33-L193">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler5LexerC"></a>
+                    <a name="//apple_ref/swift/Class/Lexer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5LexerC">Lexer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>Lexer</code> is converting a sequence of characters (mathematical expression) into a sequence of <code><a href="Enums/Token.html">Token</a></code></p>
+
+                        <a href="Classes/Lexer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Lexer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Lexer.swift#L32-L69">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler7GrouperC"></a>
+                    <a name="//apple_ref/swift/Class/Grouper" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler7GrouperC">Grouper</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>Grouper</code> is the class that will be in charged of converting an array of <code><a href="Enums/Token.html">Token</a></code> into an array of <code><a href="Classes/Group.html">Group</a></code> in the process of parsing a mathematical expression.</p>
+
+                        <a href="Classes/Grouper.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Grouper</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Grouper.swift#L114-L188">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)Group"></a>
+                    <a name="//apple_ref/swift/Class/Group" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)Group">Group</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A <code>Group</code> is a intermediate representation object for representing a mathematical expression.
+This is the object that allows the tokens to be grouped together to convert them into nodes.
+In particular, it is in charge of recognizing parentheses and preanalysing them before passing the expression to <code><a href="Classes/Parser.html">Parser</a></code>.</p>
+
+                        <a href="Classes/Group.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Group</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Grouper.swift#L25-L111">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler5TokenO"></a>
+                    <a name="//apple_ref/swift/Enum/Token" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5TokenO">Token</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Possible Tokens in a mathematical expression.</p>
+
+<blockquote>
+<p>This is part of the <code><a href="Classes/Lexer.html">Lexer</a></code></p>
+</blockquote>
+
+                        <a href="Enums/Token.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Token</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Lexer.swift#L13-L19">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler4NodeP"></a>
+                    <a name="//apple_ref/swift/Protocol/Node" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler4NodeP">Node</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An entity that helps build a tree when parsing math expressions</p>
+
+                        <a href="Protocols/Node.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Node</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/Node.swift#L10-L28">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)ExpressionNode"></a>
+                    <a name="//apple_ref/swift/Class/ExpressionNode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)ExpressionNode">ExpressionNode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An ExpressionNode is a Node containing 1 or more expression.</p>
+
+                        <a href="Classes/ExpressionNode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ExpressionNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/Node.html">Node</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift#L11-L57">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)ParenthesisNode"></a>
+                    <a name="//apple_ref/swift/Class/ParenthesisNode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)ParenthesisNode">ParenthesisNode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A ParenthesisNode is an ExpressionNode used to treat parenthesis</p>
+
+                        <a href="Classes/ParenthesisNode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ParenthesisNode</span> <span class="p">:</span> <span class="kt"><a href="Classes/ExpressionNode.html">ExpressionNode</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/ExpressionNode.swift#L59-L73">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)ConstantNode"></a>
+                    <a name="//apple_ref/swift/Class/ConstantNode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)ConstantNode">ConstantNode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a Node object that represents a number as a BigDouble</p>
+
+                        <a href="Classes/ConstantNode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConstantNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/Node.html">Node</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/ConstantNode.swift#L11-L60">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)SymbolNode"></a>
+                    <a name="//apple_ref/swift/Class/SymbolNode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)SymbolNode">SymbolNode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/SymbolNode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SymbolNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/Node.html">Node</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/SymbolNode.swift#L10-L48">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)OperatorNode"></a>
+                    <a name="//apple_ref/swift/Class/OperatorNode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)OperatorNode">OperatorNode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/OperatorNode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OperatorNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/Node.html">Node</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/OperatorNode.swift#L10-L104">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)FunctionNode"></a>
+                    <a name="//apple_ref/swift/Class/FunctionNode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)FunctionNode">FunctionNode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Node that represents a mathematical function</p>
+
+                        <a href="Classes/FunctionNode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FunctionNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/Node.html">Node</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/FunctionNode.swift#L11-L53">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Euler@objc(cs)NullNode"></a>
+                    <a name="//apple_ref/swift/Class/NullNode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)NullNode">NullNode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a Node object that represents an empty Node</p>
+
+                        <a href="Classes/NullNode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NullNode</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/Node.html">Node</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Node/NullNode.swift#L11-L44">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-01-10)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
