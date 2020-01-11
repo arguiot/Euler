@@ -239,6 +239,9 @@ public struct BigDouble:
         self.init(value)
     }
     
+    public init(constant: Constant) {
+        self.init(constant.rawValue)!
+    }
     //
     //
     //    MARK: - Descriptions

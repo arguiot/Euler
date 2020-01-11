@@ -8,6 +8,12 @@
 import Foundation
 
 public class OperatorNode: NSObject, Node {
+    /// The depth of the deepest children of the `Node` in a `Tree`
+    public var maxDepth: Int?
+    
+    /// The depth of the `Node` in a `Tree`
+    public var depth: Int?
+    
     
     /// Gives String representation of the node
     public func toString() -> String {

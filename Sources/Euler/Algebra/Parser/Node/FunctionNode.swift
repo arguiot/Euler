@@ -9,6 +9,12 @@ import Foundation
 
 /// A Node that represents a mathematical function
 public class FunctionNode: NSObject, Node {
+    /// The depth of the deepest children of the `Node` in a `Tree`
+    public var maxDepth: Int?
+    
+    /// The depth of the `Node` in a `Tree`
+    public var depth: Int?
+    
     /// Gives String representation of the node
     public func toString() -> String {
         let map = children.map { $0.toString() }

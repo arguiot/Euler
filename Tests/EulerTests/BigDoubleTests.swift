@@ -249,6 +249,8 @@ class BigDoubleTests : XCTestCase {
         XCTAssertEqual(ceil(BigDouble(1.1)), BigInt("2"))
         XCTAssertEqual(ceil(BigDouble(1.5)), BigInt("2"))
         XCTAssertEqual(ceil(BigDouble(1.6)), BigInt("2"))
+        XCTAssertEqual(ceil(BigDouble(constant: .pi)), BigInt("4"))
+        XCTAssertEqual(ceil(e), BigInt(3))
     }
     
     func testPrecision() {

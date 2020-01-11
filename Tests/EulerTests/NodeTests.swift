@@ -8,7 +8,7 @@
 import Foundation
 
 import XCTest
-import Euler
+@testable import Euler
 
 class NodeTests: XCTestCase {
     func testConstantNode() {
@@ -52,11 +52,15 @@ class NodeTests: XCTestCase {
             XCTAssertEqual(str, "x + 2 - sqrt(3 * 4) = 2")
             XCTAssertEqual(try Parser("5.0 - sqrt(8) * 5 = x^2 - factorial(4)").parse().toString(), "5 - sqrt(8) * 5 = x ^ 2 - factorial(4)")
             XCTAssertEqual(try Parser("((4*2) - 3) +sqrt(4)").parse().toString(), "((4 * 2) - 3) + sqrt(4)")
+            
+            
+            let expr = try Parser("x + 2 - sqrt(3 * 4)").parse()
+            let tree = Tree.computeDepth(node: expr)
+            print(tree)
         } catch {
             print(error.localizedDescription)
             XCTFail()
         }
-        
     }
     func testCompile() {
         do {

@@ -9,6 +9,12 @@ import Foundation
 
 /// An ExpressionNode is a Node containing 1 or more expression.
 public class ExpressionNode: NSObject, Node {
+    /// The depth of the deepest children of the `Node` in a `Tree`
+    public var maxDepth: Int?
+    
+    /// The depth of the `Node` in a `Tree`
+    public var depth: Int?
+    
     /// Gives String representation of the node
     public func toString() -> String {
         let map = children.map { $0.toString() }

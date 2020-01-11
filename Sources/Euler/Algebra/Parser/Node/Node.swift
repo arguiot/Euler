@@ -25,4 +25,9 @@ public protocol Node: NSObject {
     func toString() -> String
     /// Gives Tex (String) representation of the node
     func toTex() -> String
+    
+    /// The depth of the `Node` in a `Tree`
+    var depth: Int? { get set }
+    /// The depth of the deepest children of the `Node` in a `Tree`
+    var maxDepth: Int? { get set }
 }

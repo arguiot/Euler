@@ -14,6 +14,11 @@ custom_categories:
   - BigDouble
   - BigFloat
   - BigNumber
+- name: Constant
+  children:
+  - pi
+  - e
+  - Constant
 - name: Operations / Functions
   children:
   - abs(_:)
