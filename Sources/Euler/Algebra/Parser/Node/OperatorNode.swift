@@ -60,6 +60,21 @@ public class OperatorNode: NSObject, Node {
         let c1 = self.children[0].compile()
         let c2 = self.children[1].compile()
         
+        if c1.toString() == c2.toString() {
+            switch self.content {
+            case "+":
+                return OperatorNode("*", children: [ConstantNode(2), c1]).compile()
+            case "-":
+                return NullNode()
+            case "/":
+                return ConstantNode(1)
+            case "*":
+                return OperatorNode("^", children: [c1, ConstantNode(2)])
+            default:
+                break
+            }
+        }
+        
         if c1.type == "ConstantNode" && c2.type == "ConstantNode" {
             let ev1 = c1.evaluate([:])
             let ev2 = c2.evaluate([:])

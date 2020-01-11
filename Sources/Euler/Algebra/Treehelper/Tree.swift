@@ -18,4 +18,9 @@ class Tree: NSObject {
         node.children.reverse() // Switch all children
         return node
     }
+    
+    
+//    static func treeCallback(node: Node, _ callback: (Node) -> Node) -> Node {
+//        //
+//    }
 }
