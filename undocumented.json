@@ -44,14 +44,14 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ConstantNode.swift",
-      "line": 21,
+      "line": 27,
       "symbol": "ConstantNode.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/NullNode.swift",
-      "line": 21,
+      "line": 27,
       "symbol": "NullNode.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -135,14 +135,21 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 393,
+      "line": 242,
+      "symbol": "BigDouble.init(constant:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
+      "line": 396,
       "symbol": "BigDouble.rawData()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 410,
+      "line": 413,
       "symbol": "BigDouble.minimize()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
