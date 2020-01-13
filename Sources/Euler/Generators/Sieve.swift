@@ -30,4 +30,18 @@ public struct Sieve: IteratorProtocol {
     public func makeIterator() -> Sieve {
         return self
     }
+    
+    /// Gives the nth prime
+    /// - Parameter n: The nth prime in the list
+    public static func nthPrime(n: BigInt) -> BigInt? {
+        guard n >= 1 else { return nil }
+        var iterator = Sieve()
+        var prevPrime = iterator.next()
+        var i = 1
+        while i < n {
+            prevPrime = iterator.next()
+            i += 1
+        }
+        return prevPrime
+    }
 }

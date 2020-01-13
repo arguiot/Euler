@@ -98,6 +98,21 @@ class BigIntTests: XCTestCase {
         }
     }
     
+    func testNumberTheory() {
+        // MARK: Fibonacci
+        XCTAssertEqual(BigInt(20).fibonacci, 6765)
+        // MARK: GCD
+        XCTAssertEqual(gcd(572, 33), 11)
+        // MARK: Prime
+        XCTAssertEqual(BigInt("4979354969")?.isPrime, true) // 10 digits prime
+        // MARK: Least Factor
+        XCTAssertEqual(leastFactor(50), 2)
+        // MARK: Modulo
+        XCTAssertEqual(mod_exp(56, 24, 5), 1)
+        // MARK: Random
+        XCTAssert(BigInt.randomBigNumber(bits: 64) > 0)
+    }
+    
     static var allTests = [
         ("Initialisation", testRadixInitializerAndGetter),
         ("Radix", testRadix),
