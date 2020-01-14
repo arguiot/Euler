@@ -67,17 +67,22 @@ public extension BigInt {
     ///
     var primeFactors: [BigInt] {
         var list = [BigInt]()
-        var n = BigInt(limbs: self.limbs) // duplicates the number
-        var i: BigInt = 2
-        while i <= n {
-            if n % i == 0 {
-                if i.isPrime {
-                    n /= i
-                    list.append(i)
-                    i = i - 1 // check for number twice (example 100 = 2*2*5*5)
-                }
+        if let int = self.asInt() {
+            var n = int // duplicates the number
+            var minFactor = 1
+            while minFactor != n {
+                n /= minFactor
+                minFactor = leastFactor(n)
+                list.append(BigInt(minFactor))
             }
-            i += 1
+            return list
+        }
+        var n = BigInt(limbs: self.limbs) // duplicates the number
+        var minFactor: BigInt = 1
+        while minFactor != n {
+            n /= minFactor
+            minFactor = leastFactor(n)
+            list.append(minFactor)
         }
         return list
     }

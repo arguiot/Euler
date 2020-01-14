@@ -36,7 +36,7 @@ class GeneratorsTests: XCTestCase {
             tmp.append(si.next()!)
             i += 1
         }
-        XCTAssertEqual(tmp, [2, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31])
+        XCTAssertEqual(tmp, [2, 3, 5, 7, 11, 13, 17, 19, 23, 25, 29])
         
         XCTAssertEqual(Sieve.nthPrime(n: BigInt(10)), 29)
     }
