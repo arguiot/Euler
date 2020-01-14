@@ -25,7 +25,7 @@ public extension BigInt {
     var isPrime: Bool {
         let n = abs(self)
         guard n.isNotZero() else { return false }
-        if n < 3 { return n > 1 }
+        if n <= 3 { return n > 1 }
         if n % 2 == 0 || n % 3 == 0 { return false }
         
         var i = 5
@@ -55,5 +55,30 @@ public extension BigInt {
         }
         
         return res.equalTo(0)
+    }
+    
+    
+    /// "Prime Factorization" is finding which prime numbers multiply together to make the original number.
+    ///
+    /// Here are some examples:
+    /// ```swift
+    /// BigInt(12).primeFactors //=> [2, 2, 3] because 12 = 2 * 2 * 3
+    /// ```
+    ///
+    var primeFactors: [BigInt] {
+        var list = [BigInt]()
+        var n = BigInt(limbs: self.limbs) // duplicates the number
+        var i: BigInt = 2
+        while i <= n {
+            if n % i == 0 {
+                if i.isPrime {
+                    n /= i
+                    list.append(i)
+                    i = i - 1 // check for number twice (example 100 = 2*2*5*5)
+                }
+            }
+            i += 1
+        }
+        return list
     }
 }

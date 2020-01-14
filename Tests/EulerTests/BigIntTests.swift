@@ -105,6 +105,7 @@ class BigIntTests: XCTestCase {
         XCTAssertEqual(gcd(572, 33), 11)
         // MARK: Prime
         XCTAssertEqual(BigInt("4979354969")?.isPrime, true) // 10 digits prime
+        XCTAssertEqual(BigInt(12).primeFactors, [2, 2, 3])
         // MARK: Least Factor
         XCTAssertEqual(leastFactor(50), 2)
         // MARK: Modulo
