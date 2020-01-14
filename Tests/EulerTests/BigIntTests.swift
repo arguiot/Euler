@@ -107,6 +107,9 @@ class BigIntTests: XCTestCase {
         XCTAssertEqual(BigInt("4979354969")?.isPrime, true) // 10 digits prime
         XCTAssertEqual(BigInt(12).primeFactors, [2, 2, 3])
         XCTAssertEqual(BigInt(9007199254740991).primeFactors, [6361, 69431, 20394401])
+        XCTAssertEqual(BigInt(178426363).millerRabin(), false)
+        XCTAssertEqual(BigInt(178426363).millerRabin(accuracy: 10), false)
+        XCTAssertEqual(BigInt(15487361).millerRabin(), true)
         // MARK: Least Factor
         XCTAssertEqual(leastFactor(50), 2)
         // MARK: Modulo

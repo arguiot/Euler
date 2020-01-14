@@ -24,19 +24,10 @@ public extension BigInt {
     /// > Uses the multiple of 6 method (which is fairly quick and 100% safe)
     var isPrime: Bool {
         let n = abs(self)
-        guard n.isNotZero() else { return false }
-        if n <= 3 { return n > 1 }
-        if n % 2 == 0 || n % 3 == 0 { return false }
-        
-        var i = 5
-        
-        while n > i * i {
-            if n % i == 0 || n % (i + 2) == 0 {
-                return false
-            }
-            i += 6
+        guard n.asInt() == nil else {
+            return n == leastFactor(n.asInt()!) // quicker when using native Int
         }
-        return true
+        return n.millerRabin(accuracy: 30) // 30 is quick but also precise
     }
     /// Returns true iff (2 ** exp) - 1 is a mersenne prime.
     var isMersenne: Bool {
@@ -85,5 +76,53 @@ public extension BigInt {
             list.append(minFactor)
         }
         return list
+    }
+    
+    /**
+     The Miller–Rabin test relies on an equality or set of equalities that
+     hold true for prime values, then checks whether or not they hold for
+     a number that we want to test for primality.
+     - Parameter k: a parameter that determines the accuracy of the test
+     - Returns: composite if `self` is composite, otherwise probably prime
+    */
+    func millerRabin(accuracy k: BigInt = 30) -> Bool {
+        let n = abs(self)
+        guard n > 3 else { return true }
+
+        // return false for all even numbers bigger than 2
+        if n % 2 == 0 {
+            return false
+        }
+        
+        let s = (n - 1).trailingZeroBitCount
+        let d = (n - 1) >> s
+
+        guard pow(2, s) * d == BigDouble(n - 1) else { return false }
+
+        /// Inspect whether a given witness will reveal the true identity of n.
+        func tryComposite(_ a: BigInt, d: BigInt, n: BigInt) -> Bool? {
+            var x = mod_exp(a, d, n)
+            if x == 1 || x == (n - 1) {
+                return nil
+            }
+            for _ in 1..<s {
+                x = mod_exp(x, 2, n)
+                if x == 1 {
+                    return false
+                } else if x == (n - 1) {
+                    return nil
+                }
+            }
+            return false
+        }
+
+        for _ in 0..<k {
+            let a = BigInt.randomBigNumber(bits: (n-2).bitWidth) + 2 // random between 2 and n-2
+            if let composite = tryComposite(a, d: d, n: n) {
+                return composite
+            }
+        }
+
+        return true
     }
 }
