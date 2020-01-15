@@ -39,6 +39,8 @@ class GeneratorsTests: XCTestCase {
         XCTAssertEqual(tmp, [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31])
         
         XCTAssertEqual(Sieve.nthPrime(n: BigInt(10)), 29)
+        
+        XCTAssertEqual(BigInt(100).primePi, 25)
     }
     static var allTests = [
         ("Collatz", testCollatz),

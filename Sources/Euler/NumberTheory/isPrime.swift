@@ -125,4 +125,15 @@ public extension BigInt {
 
         return true
     }
+    
+    /// Counts the numbr of prime number before itself
+    var primePi: Int {
+        let n = self
+        var sieve = Sieve()
+        var out = 0
+        while n > sieve.next()! {
+            out += 1
+        }
+        return out
+    }
 }
