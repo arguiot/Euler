@@ -63,4 +63,19 @@ public class ConstantNode: NSObject, Node {
     public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
         return BigNumber(self.content) ?? .zero
     }
+    
+    /// Make sure that two `ConstantNode` are equals (used in pattern matching)
+    ///
+    /// If you want to search for patterns, build a sample tree with a `ConstantNode` with `"Any"` as `content`
+    /// - Parameters:
+    ///   - lhs: Any `ConstantNode`
+    ///   - rhs: Any `ConstantNode`
+    static func ==(lhs: ConstantNode, rhs: ConstantNode) -> Bool {
+        guard lhs.content == rhs.content || lhs.content == "Any" || rhs.content == "Any" else { return false }
+        guard lhs.children.count == rhs.children.count else { return false }
+        for i in 0..<lhs.children.count {
+            guard lhs.children[i] == rhs.children[i] else { return false }
+        }
+        return true
+    }
 }
