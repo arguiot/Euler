@@ -55,3 +55,17 @@ public func nnmod(_ a: BigInt, _ m: BigInt) -> BigInt {
 public func mod_add(_ a: BigInt, _ b: BigInt, _ m: BigInt) -> BigInt {
     return nnmod(a + b, m)
 }
+
+extension BigDouble {
+    /// Simple modulo operation on `BigDouble` using Donald Knuth's algorithm
+    /// - Parameters:
+    ///   - rhs: The right hand side
+    ///   - lhs: The left hand side
+    static func %(rhs: BigDouble, lhs: BigDouble) -> BigDouble {
+        let div = rhs / lhs
+        let int = ceil(div)
+        let floatRest = div - int
+        let rest = lhs * floatRest
+        return rest
+    }
+}

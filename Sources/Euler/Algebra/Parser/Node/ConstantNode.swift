@@ -28,6 +28,12 @@ public class ConstantNode: NSObject, Node {
         return "\(self.type)[ \(self.toString()) ]"
     }
     
+    public static var any: ConstantNode {
+        let c = ConstantNode(0)
+        c.content = "Any"
+        return c
+    }
+    
     public var content: String
     
     public var type: String = "ConstantNode"
