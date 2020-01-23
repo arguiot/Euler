@@ -50,6 +50,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/ConstantNode.swift",
+      "line": 31,
+      "symbol": "ConstantNode.any",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/NullNode.swift",
       "line": 27,
       "symbol": "NullNode.description",
