@@ -55,6 +55,8 @@ public extension Tables {
         return BigDouble(0.5 * log(double + 1) / (double - 1))
     }
     
+    // MARK: TODO: AGGREGATE + ARABIC
+    
     /// Arc-Sinus of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
     func ASIN(_ number: BigNumber) -> BigNumber {
@@ -128,5 +130,93 @@ public extension Tables {
     ///     - significance: The multiple to which you want to round.
     func CEILING(_ number: BigDouble, significance: BigDouble = 1) -> BigDouble {
         return ceil(number / significance) * significance
+    }
+    
+    /// Returns the number of combinations for a given number of items. Use COMBIN to determine the total possible number of groups for a given number of items.
+    ///
+    /// It uses combinations with repetitions: `n! / (k! * (n - k)!)`
+    /// - Parameters:
+    ///   - n: The number of items.
+    ///   - k: The number of items in each combination.
+    func COMBIN(_ n: BigInt, k: BigInt) -> BigInt {
+        guard let ni = n.asInt() else { return .zero }
+        guard let ki = k.asInt() else { return .zero }
+        return combinations(ni, ki)
+    }
+    
+    /// Returns the number of combinations (with repetitions) for a given number of items.
+    ///
+    /// It uses combinations with repetitions: `(n + k - 1)! / (k! * (n - 1)!)`
+    /// - Parameters:
+    ///   - n: The number of items.
+    ///   - k: The number of items in each combination.
+    func COMBINA(_ n: BigInt, k: BigInt) -> BigInt {
+        guard let ni = n.asInt() else { return .zero }
+        guard let ki = k.asInt() else { return .zero }
+        return combinationsWithRepetitions(ni, ki)
+    }
+    
+    /// Cosinus of a number.
+    /// - Parameter number: Any `BigDouble` less than 2pi
+    func COS(_ number: BigNumber) -> BigNumber {
+        let mod = number % (2 * pi)
+        let tentimes = mod * 10
+        let intPart = tentimes.rounded()
+        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
+        let double = Double(doubleExpressible.description) ?? 0.0
+        return BigDouble(cos(double))
+    }
+    
+    /// Hyperbolic Cosinus of a number.
+    /// - Parameter number: Any `BigDouble`
+    func COSH(_ number: BigNumber) -> BigNumber {
+        let tentimes = number * 10
+        let intPart = tentimes.rounded()
+        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
+        let double = Double(doubleExpressible.description) ?? 0.0
+        return BigDouble(cosh(double))
+    }
+    
+    /// Cotangent of a number.
+    /// - Parameter number: Any `BigDouble`
+    func COT(_ number: BigNumber) -> BigNumber {
+        let tentimes = number * 10
+        let intPart = tentimes.rounded()
+        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
+        let double = Double(doubleExpressible.description) ?? 0.0
+        return BigDouble(1) / BigDouble(tan(double))
+    }
+    
+    /// Hyperbolic Cotangent of a number.
+    /// - Parameter number: Any `BigDouble`
+    func COTH(_ number: BigNumber) -> BigNumber {
+        let e2 = e ** (2 * number)
+        
+        return (e2 + 1) / (e2 - 1)
+    }
+    /// Cosecant of a number.
+    /// - Parameter number: Any `BigDouble`
+    func CSC(_ number: BigNumber) -> BigNumber {
+        let tentimes = number * 10
+        let intPart = tentimes.rounded()
+        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
+        let double = Double(doubleExpressible.description) ?? 0.0
+        return BigDouble(1) / BigDouble(sin(double))
+    }
+
+    /// Hyperbolic Cosecant of a number.
+    /// - Parameter number: Any `BigDouble`
+    func CSCH(_ number: BigNumber) -> BigNumber {
+        let e1 = e ** number
+        let e2 = e ** (-number)
+        return BigDouble(2) / (e1 - e2)
+    }
+    
+    /// Converts a text representation of a number in a given base into a decimal number.
+    /// - Parameters:
+    ///   - str: Required
+    ///   - radix: Radix must be an integer.
+    func DECIMAL(_ str: String, _ radix: Int) -> BigNumber {
+        return BigDouble(str, radix: radix) ?? 0
     }
 }

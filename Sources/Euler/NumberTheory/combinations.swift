@@ -24,18 +24,20 @@ public func permutationsWithRepitition(_ n: Int, _ k: Int) -> BigInt {
     
 }
 
-/// Combinations: `(n + k - 1)! / (k! * (n - 1)!)`
+/// Combinations with repetitions: `(n + k - 1)! / (k! * (n - 1)!)`.
 ///
 /// Order matters, repetition allowed.
-public func combinations(_ n: Int, _ k: Int) -> BigInt {
+public func combinationsWithRepetitions(_ n: Int, _ k: Int) -> BigInt {
     // (n + k - 1)! / (k! * (n - 1)!)
     return BigInt(n + k - 1).factorial() / (BigInt(k).factorial() * BigInt(n - 1).factorial())
 }
 
-/// Combinations with repetitions: `(n + k - 1)! / (k! * (n - 1)!)`
+/// Combinations: `n! / (k! * (n - k)!)`.
+///
+/// See `combinationsWithRepitition` for the other method.
 ///
 /// Order matters, repetition allowed.
-public func combinationsWithRepitition(_ n: Int, _ k: Int) -> BigInt {
+public func combinations(_ n: Int, _ k: Int) -> BigInt {
     // n! / (k! * (n - k)!)
     return BigInt(n).factorial() / (BigInt(k).factorial() * BigInt(n - k).factorial())
 }
