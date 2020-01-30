@@ -12,7 +12,7 @@ import Foundation
 /// Order matters, repetition allowed.
 public func permutations(_ n: Int, _ k: Int) -> BigInt {
     // n! / (n-k)!
-    return BigInt(n).factorial() / BigInt(n - k).factorial()
+    return factorial(BigInt(n)) / factorial(BigInt(n - k))
 }
 
 /// Permutations with repetition: `n ** k`
@@ -29,7 +29,7 @@ public func permutationsWithRepitition(_ n: Int, _ k: Int) -> BigInt {
 /// Order matters, repetition allowed.
 public func combinationsWithRepetitions(_ n: Int, _ k: Int) -> BigInt {
     // (n + k - 1)! / (k! * (n - 1)!)
-    return BigInt(n + k - 1).factorial() / (BigInt(k).factorial() * BigInt(n - 1).factorial())
+    return factorial(BigInt(n + k - 1)) / factorial(BigInt(k)) * factorial(BigInt(n - 1))
 }
 
 /// Combinations: `n! / (k! * (n - k)!)`.
@@ -39,5 +39,5 @@ public func combinationsWithRepetitions(_ n: Int, _ k: Int) -> BigInt {
 /// Order matters, repetition allowed.
 public func combinations(_ n: Int, _ k: Int) -> BigInt {
     // n! / (k! * (n - k)!)
-    return BigInt(n).factorial() / (BigInt(k).factorial() * BigInt(n - k).factorial())
+    return factorial(BigInt(n)) / factorial(BigInt(k)) * factorial(BigInt(n - k))
 }

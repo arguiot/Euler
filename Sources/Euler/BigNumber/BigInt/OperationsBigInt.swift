@@ -9,25 +9,6 @@ import Foundation
 
 public extension BigInt {
     //
-    //
-    //    MARK: - BigNumber Utility Functions
-    //    ————————————————————————————————————————————————————————————————————————————————————————
-    //    ||||||||        BigNumber Utility Functions        |||||||||||||||||||||||||||||||||||||
-    //    ————————————————————————————————————————————————————————————————————————————————————————
-    //
-    //
-    //
-    //
-    
-    func factorial() -> BigInt {
-        precondition(!self.sign, "Can't calculate the factorial of an negative number")
-        
-        return BigInt(limbs: Limbs.recursiveMul(0, Limb(self.asInt()!)))
-    }
-    
-    
-    
-    //
     //    MARK: - BigNumber Addition
     //    ————————————————————————————————————————————————————————————————————————————————————————
     //    ||||||||        BigNumber Addition        ||||||||||||||||||||||||||||||||||||||||||||||

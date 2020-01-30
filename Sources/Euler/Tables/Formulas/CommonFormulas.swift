@@ -128,8 +128,15 @@ public extension Tables {
     /// - Parameters:
     ///     - number: The number you want to use
     ///     - significance: The multiple to which you want to round.
-    func CEILING(_ number: BigDouble, significance: BigDouble = 1) -> BigDouble {
-        return ceil(number / significance) * significance
+    ///     - mode: Either 0 or 1 (0 by default, flooring). It will choose between flooring or ceiling the number if it's negative.
+    func CEILING(_ number: BigDouble, significance: BigDouble = 1, mode: Int = 0) -> BigDouble {
+        if number.isPositive() {
+            return ceil(number / significance) * significance
+        }
+        if mode == 0 {
+            return -1 * floor(abs(number) / significance) * significance
+        }
+        return -1 * ceil(abs(number) / significance) * significance
     }
     
     /// Returns the number of combinations for a given number of items. Use COMBIN to determine the total possible number of groups for a given number of items.
@@ -218,5 +225,36 @@ public extension Tables {
     ///   - radix: Radix must be an integer.
     func DECIMAL(_ str: String, _ radix: Int) -> BigNumber {
         return BigDouble(str, radix: radix) ?? 0
+    }
+    
+    /// Converts radians into degrees.
+    /// - Parameter rad: The angle in radians that you want to convert.
+    func DEGREES(_ rad: BigDouble) -> BigNumber {
+        let abs = rad * 180 / pi
+        let mod = abs % 360
+        return mod
+    }
+    
+    /// Returns number rounded up to the nearest even integer.
+    ///
+    /// You can use this function for processing items that come in twos. For example, a packing crate accepts rows of one or two items. The crate is full when the number of items, rounded up to the nearest two, matches the crate's capacity.
+    /// - Parameter number: The value to round.
+    func EVEN(_ number: BigDouble) -> BigInt {
+        return CEILING(number, significance: -2, mode: 1).rounded()
+    }
+    
+    /// Returns e raised to the power of number.
+    /// The constant e equals 2.71828182845904, the base of the natural logarithm.
+    /// - Parameter number: The exponent applied to the base e.
+    func EXP(_ number: BigDouble) -> BigDouble {
+        return e ** number
+    }
+    
+    /// Returns the factorial of a number. The factorial of a number is equal to `1*2*3*...*` number.
+    ///
+    ///
+    /// - Parameter int: The nonnegative number for which you want the factorial. If number is not an integer, it is truncated.
+    func FACT(_ int: BigInt) -> BigInt {
+        return factorial(int)
     }
 }

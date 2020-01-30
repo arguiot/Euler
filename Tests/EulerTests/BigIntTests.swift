@@ -116,6 +116,10 @@ class BigIntTests: XCTestCase {
         XCTAssertEqual(mod_exp(56, 24, 5), 1)
         // MARK: Random
         XCTAssert(BigInt.randomBigNumber(bits: 64) > 0)
+        // MARK: Gamma
+        XCTAssertEqual(factorial(3), 6)
+        XCTAssertEqual(factorial(11), 39916800)
+        XCTAssert(gamma(3 / 2).nearlyEquals(0.8862269254527576))
     }
     
     static var allTests = [

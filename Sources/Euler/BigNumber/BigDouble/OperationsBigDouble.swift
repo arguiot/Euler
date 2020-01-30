@@ -273,9 +273,15 @@ extension BigDouble {
             return diff / min((absLhs + absRhs), BigDouble(Double.greatestFiniteMagnitude)) < epsilon;
         }
     }
-    
-    public static func ==(lhs: BigDouble, rhs: BigDouble) -> Bool
-    {
+    /**
+    * An == comparison with an epsilon (fixed then a calculated "ULPs")
+    * Reference: http://floating-point-gui.de/errors/comparison/
+    * Reference: https://bitbashing.io/comparing-floats.html
+    */
+    public func nearlyEquals(_ rhs: BigDouble, epsilon: Double = 0.00001) -> Bool {
+        return BigDouble.nearlyEqual(self, rhs, epsilon: epsilon)
+    }
+    public static func ==(lhs: BigDouble, rhs: BigDouble) -> Bool {
         if lhs.sign != rhs.sign { return false }
         if lhs.numerator != rhs.numerator { return false }
         if lhs.denominator != rhs.denominator { return false }

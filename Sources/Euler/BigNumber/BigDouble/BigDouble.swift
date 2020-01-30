@@ -116,8 +116,7 @@ public struct BigDouble:
         if let bi = BigInt(nStr) {
             self.init(bi, over: 1)
         } else {
-            if let exp = nStr.firstIndex(of: "e")?.utf16Offset(in: nStr)
-            {
+            if let exp = nStr.firstIndex(of: "e")?.utf16Offset(in: nStr) {
                 let beforeExp = String(Array(nStr)[..<exp].filter{ $0 != "." })
                 var afterExp = String(Array(nStr)[(exp + 1)...])
                 var sign = false
@@ -468,8 +467,7 @@ public struct BigDouble:
      *
      * - warning: This may take a while. This is only precise up until precision. When comparing results after this function ` use` nearlyEqual`
      */
-    public func nthroot(_ root: Int) -> BigDouble
-    {
+    public func nthroot(_ root: Int) -> BigDouble {
         return self ** BigDouble(BigInt(1), over: BigInt(root))
     }
     
@@ -478,8 +476,18 @@ public struct BigDouble:
      *
      * - warning: This may take a while. This is only precise up until precision. When comparing results after this function ` use` nearlyEqual`
      */
-    public func squareRoot() -> BigDouble
-    {
+    public func squareRoot() -> BigDouble {
         return self ** BigDouble(BigInt(1), over: BigInt(2))
+    }
+    
+    /// Returns BigNumber's value as an integer. Conversion only works when self has only one limb
+    /// that's within the range of the type "Int".
+    public func asDouble(precision: BigInt = 10) -> Double? {
+        let powed = self * 10 ** precision
+        let rounded = powed.rounded()
+        guard let integer = rounded.asInt() else { return nil }
+        guard let pre = precision.asInt() else { return nil }
+        let double = Double(integer) / pow(10, Double(pre))
+        return double
     }
 }

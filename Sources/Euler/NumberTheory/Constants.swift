@@ -22,7 +22,13 @@ public var pi: BigNumber {
 public var e: BigNumber {
     return BigNumber("2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427427466391932003059921817413596629043572900334295260595630738132328627943490763233829880753195251019011573834187930702154089149934884167509244761460668")!
 }
-
+public func exp(_ r: BigNumber) -> BigNumber {
+    if let d = r.asDouble() {
+        return BigDouble(exp(d))
+    }
+    let a = BigNumber(constant: .e)
+    return a ** r
+}
 /// A list of important mathematical and physical constants
 public enum Constant: String {
     /// The mass in `kg` of alpha particles
