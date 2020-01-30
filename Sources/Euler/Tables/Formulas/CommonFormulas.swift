@@ -16,42 +16,29 @@ public extension Tables {
     
     /// Arc-Cosinus of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
-    func ACOS(_ number: BigNumber) -> BigNumber {
-        let mod = number % (2 * pi)
-        let tentimes = mod * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ACOS(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(acos(double))
     }
     /// Hyperbolic Arc-Cosinus of a number.
     /// - Parameter number: Any `BigDouble`
-    func ACOSH(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ACOSH(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(acosh(double))
     }
     
     /// Arc-Cotangent of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
-    func ACOT(_ number: BigNumber) -> BigNumber {
-        let mod = number % (2 * pi)
-        let tentimes = mod * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ACOT(_ number: BigNumber) throws -> BigNumber {
+        let mod = number % (2 * BigDouble(constant: .pi))
+        guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(atan(1 / double))
     }
     
     /// Hyperbolic Arc-Cotangent of a number.
     /// - Parameter number: Any `BigDouble`
-    func ACOTH(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ACOTH(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(0.5 * log(double + 1) / (double - 1))
     }
     
@@ -59,31 +46,22 @@ public extension Tables {
     
     /// Arc-Sinus of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
-    func ASIN(_ number: BigNumber) -> BigNumber {
-        let mod = number % (2 * pi)
-        let tentimes = mod * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ASIN(_ number: BigNumber) throws -> BigNumber {
+        let mod = number % (2 * BigDouble(constant: .pi))
+        guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(asin(double))
     }
     
     /// Hyperbolic Arc-Sinus of a number.
     /// - Parameter number: Any `BigDouble`
-    func ASINH(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ASINH(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(asinh(double))
     }
     /// Arc-Tangent of a number.
     /// - Parameter number: Any `BigDouble`
-    func ATAN(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ATAN(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(atan(double))
     }
     
@@ -91,26 +69,16 @@ public extension Tables {
     /// - Parameters:
     ///   - n1: X coordinate
     ///   - n2: Y coordinate
-    func ATAN2(_ n1: BigNumber, _ n2: BigNumber) -> BigNumber {
-        let tentimes1 = n1 * 10
-        let ip1 = tentimes1.rounded()
-        let de1 = BigDouble(ip1) / BigDouble(10)
-        let d1 = Double(de1.description) ?? 0.0
-        let tentimes2 = n2 * 10
-        let ip2 = tentimes2.rounded()
-        let de2 = BigDouble(ip2) / BigDouble(10)
-        let d2 = Double(de2.description) ?? 0.0
-        
+    func ATAN2(_ n1: BigNumber, _ n2: BigNumber) throws -> BigNumber {
+        guard let d1 = n1.asDouble() else { throw TablesError.Overflow }
+        guard let d2 = n2.asDouble() else { throw TablesError.Overflow }
         return BigDouble(atan2(d1, d2))
     }
     
     /// Hyperbolic Arc-Tangent of a number.
     /// - Parameter number: Any `BigDouble`
-    func ATANH(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func ATANH(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(asinh(double))
     }
     
@@ -145,9 +113,9 @@ public extension Tables {
     /// - Parameters:
     ///   - n: The number of items.
     ///   - k: The number of items in each combination.
-    func COMBIN(_ n: BigInt, k: BigInt) -> BigInt {
-        guard let ni = n.asInt() else { return .zero }
-        guard let ki = k.asInt() else { return .zero }
+    func COMBIN(_ n: BigInt, k: BigInt) throws -> BigInt {
+        guard let ni = n.asInt() else { throw TablesError.Overflow }
+        guard let ki = k.asInt() else { throw TablesError.Overflow }
         return combinations(ni, ki)
     }
     
@@ -157,65 +125,53 @@ public extension Tables {
     /// - Parameters:
     ///   - n: The number of items.
     ///   - k: The number of items in each combination.
-    func COMBINA(_ n: BigInt, k: BigInt) -> BigInt {
-        guard let ni = n.asInt() else { return .zero }
-        guard let ki = k.asInt() else { return .zero }
+    func COMBINA(_ n: BigInt, k: BigInt) throws -> BigInt {
+        guard let ni = n.asInt() else { throw TablesError.Overflow }
+        guard let ki = k.asInt() else { throw TablesError.Overflow }
         return combinationsWithRepetitions(ni, ki)
     }
     
     /// Cosinus of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
-    func COS(_ number: BigNumber) -> BigNumber {
-        let mod = number % (2 * pi)
-        let tentimes = mod * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func COS(_ number: BigNumber) throws -> BigNumber {
+        let mod = number % (2 * BigDouble(constant: .pi))
+        guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(cos(double))
     }
     
     /// Hyperbolic Cosinus of a number.
     /// - Parameter number: Any `BigDouble`
-    func COSH(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func COSH(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(cosh(double))
     }
     
     /// Cotangent of a number.
     /// - Parameter number: Any `BigDouble`
-    func COT(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func COT(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(1) / BigDouble(tan(double))
     }
     
     /// Hyperbolic Cotangent of a number.
     /// - Parameter number: Any `BigDouble`
     func COTH(_ number: BigNumber) -> BigNumber {
-        let e2 = e ** (2 * number)
+        let e2 = exp(2 * number)
         
         return (e2 + 1) / (e2 - 1)
     }
     /// Cosecant of a number.
     /// - Parameter number: Any `BigDouble`
-    func CSC(_ number: BigNumber) -> BigNumber {
-        let tentimes = number * 10
-        let intPart = tentimes.rounded()
-        let doubleExpressible = BigDouble(intPart) / BigDouble(10)
-        let double = Double(doubleExpressible.description) ?? 0.0
+    func CSC(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(1) / BigDouble(sin(double))
     }
 
     /// Hyperbolic Cosecant of a number.
     /// - Parameter number: Any `BigDouble`
     func CSCH(_ number: BigNumber) -> BigNumber {
-        let e1 = e ** number
-        let e2 = e ** (-number)
+        let e1 = exp(number)
+        let e2 = exp(-number)
         return BigDouble(2) / (e1 - e2)
     }
     
@@ -247,7 +203,7 @@ public extension Tables {
     /// The constant e equals 2.71828182845904, the base of the natural logarithm.
     /// - Parameter number: The exponent applied to the base e.
     func EXP(_ number: BigDouble) -> BigDouble {
-        return e ** number
+        return exp(number)
     }
     
     /// Returns the factorial of a number. The factorial of a number is equal to `1*2*3*...*` number.
@@ -256,5 +212,40 @@ public extension Tables {
     /// - Parameter int: The nonnegative number for which you want the factorial. If number is not an integer, it is truncated.
     func FACT(_ int: BigInt) -> BigInt {
         return factorial(int)
+    }
+    /// Returns the double factorial of a number. The factorial of a number is equal to `1*2*3*...*` number.
+    ///
+    ///
+    /// - Parameter int: The value for which to return the double factorial. If number is not an integer, it is truncated.
+    func FACTDOUBLE(_ int: BigInt) -> BigInt {
+        return factorial(factorial(int))
+    }
+    /// Rounds number down, toward zero, to the nearest multiple of significance.
+    ///
+    /// For example, if you want to avoid using pennies in your prices and your product is priced at $4.42, use the formula `=FLOOR(4.42,0.05)` to round prices up to the nearest nickel.
+    /// - Parameters:
+    ///     - number: The numeric value you want to round.
+    ///     - significance: The multiple to which you want to round.
+    ///     - mode: Either 0 or 1 (0 by default, ceiling). It will choose between flooring or ceiling the number if it's negative.
+    func FLOOR(_ number: BigDouble, significance: BigDouble = 1, mode: Int = 0) -> BigDouble {
+        if number.isPositive() {
+            return floor(number / significance) * significance
+        }
+        if mode == 0 {
+            return -1 * ceil(abs(number) / significance) * significance
+        }
+        return -1 * floor(abs(number) / significance) * significance
+    }
+    
+    /// Returns the greatest common divisor of two or more integers.
+    ///
+    /// The greatest common divisor is the largest integer that divides both number1 and number2 without a remainder.
+    /// - Parameter n: Number1 and 2 are required, subsequent numbers are optional. 1 to 255 values. If any value is not an integer, it is truncated.
+    func GCD(_ n: BigInt...) throws -> BigInt {
+        guard n.count >= 2 else { throw TablesError.Arguments }
+        let r = n.reduce(n.first!) { (r, i) -> BigInt in
+            return gcd(r, i)
+        }
+        return r
     }
 }
