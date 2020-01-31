@@ -248,4 +248,24 @@ public extension Tables {
         }
         return r
     }
+    
+    /// Rounds a number down to the nearest integer.
+    /// - Parameter n: The real number you want to round down to an integer.
+    func INT(_ n: BigDouble) -> BigInt {
+        return FLOOR(n).rounded()
+    }
+    
+    /// Returns the least common multiple of integers.
+    /// The least common multiple is the smallest positive integer that is a multiple of all integer arguments number1, number2, and so on. Use LCM to add fractions with different denominators.
+    ///
+    /// - Parameter n: Number1 and 2 are required, subsequent numbers are optional. 1 to 255 values. If any value is not an integer, it is truncated.
+    func LCM(_ n: BigInt...) throws -> BigInt {
+        guard n.count >= 2 else { throw TablesError.Arguments }
+        let r = n.reduce(n.first!) { (r, i) -> BigInt in
+            return lcm(r, i)
+        }
+        return r
+    }
+    
+    
 }

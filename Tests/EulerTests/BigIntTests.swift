@@ -120,6 +120,8 @@ class BigIntTests: XCTestCase {
         XCTAssertEqual(factorial(3), 6)
         XCTAssertEqual(factorial(11), 39916800)
         XCTAssert(gamma(3 / 2).nearlyEquals(0.8862269254527576))
+        // MARK: Logarithms
+        XCTAssert(ln(15).nearlyEquals(2.708050201102210))
     }
     
     static var allTests = [

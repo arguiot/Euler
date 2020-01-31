@@ -224,16 +224,22 @@ public struct BigDouble:
         self.init(z, over: 1)
     }
     
-    public init(_ d: Double) {
-        let nStr = String(d)
-        
-        self.init(nStr)!
+    public init(_ d: Double, withPrecision eps: Double = 1.0E-15) {
+        var x = d
+        var a = floor(x)
+        var (h1, k1, h, k) = (1, 0, Int(a), 1)
+
+        while x - a > eps * Double(k) * Double(k) {
+            x = 1.0/(x - a)
+            a = floor(x)
+            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+        }
+        self.init(h, over: k)
     }
     
     public init(integerLiteral value: Int) {
         self.init(value)
     }
-    
     public init(floatLiteral value: Double) {
         self.init(value)
     }
