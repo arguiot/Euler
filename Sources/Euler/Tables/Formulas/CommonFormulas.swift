@@ -186,8 +186,8 @@ public extension Tables {
     /// Converts radians into degrees.
     /// - Parameter rad: The angle in radians that you want to convert.
     func DEGREES(_ rad: BigDouble) -> BigNumber {
-        let abs = rad * 180 / pi
-        let mod = abs % 360
+        let abs = rad * BigInt(180) / BigDouble(constant: .pi)
+        let mod = abs % BigDouble(360)
         return mod
     }
     
