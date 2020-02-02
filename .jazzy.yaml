@@ -24,11 +24,12 @@ custom_categories:
   - abs(_:)
   - ceil(_:)
   - combinations(_:_:)
-  - combinationsWithRepitition(_:_:)
+  - combinationsWithRepititions(_:_:)
   - encodeMD5(digest:)
   - floor(_:)
   - gcd(_:_:)
   - gcdEuclid(_:_:)
+  - leastFactor
   - lcm(_:_:)
   - max(_:_:)
   - min(_:_:)
@@ -67,6 +68,9 @@ custom_categories:
 - name: Cryptography
   children:
   - String
+- name: Tables
+  children:
+  - Tables
 - name: Array manipulation
   children:
   - Array
