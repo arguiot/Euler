@@ -722,13 +722,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/NumberTheory/Logarithms.swift",
-      "line": 10,
-      "symbol": "ln(_:precision:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/NumberTheory/fibonacci.swift",
       "line": 22,
       "symbol": "BigInt.fibonacci",
