@@ -6,6 +6,7 @@ install:
   - gem install jazzy
 script:
   - jazzy --clean --no-objc
+  - cd docs && echo "euler.arguiot.com" > CNAME # Keeps the URL
 #  - xcodebuild -project SearchKit-Swift.xcodeproj -scheme SearchKit-Swift test
 deploy:
   provider:     pages
