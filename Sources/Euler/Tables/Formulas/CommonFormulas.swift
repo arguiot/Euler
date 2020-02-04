@@ -267,5 +267,22 @@ public extension Tables {
         return r
     }
     
+    /// Returns the natural logarithm of a number. Natural logarithms are based on the constant e (2.71828182845904)
+    ///
+    /// LN is the inverse of the EXP function.
+    /// - Parameter n: The positive real number for which you want the natural logarithm.
+    func LN(_ n: BigDouble) -> BigDouble {
+        if let a = n.asDouble() {
+            return BigDouble(log(a))
+        }
+        return ln(n)
+    }
     
+    /// Returns the logarithm of a number to the base you specify.
+    /// - Parameters:
+    ///   - n: The positive real number for which you want the logarithm.
+    ///   - base: The base of the logarithm. If base is omitted, it is assumed to be 10.
+    func LOG(_ n: BigDouble, base: Int = 10) -> BigDouble {
+        return LN(n) / LN(BigDouble(base))
+    }
 }

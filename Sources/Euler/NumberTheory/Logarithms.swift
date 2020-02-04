@@ -7,6 +7,12 @@
 
 import Foundation
 
+/// Returns the natural logarithm of a number. Natural logarithms are based on the constant e (2.71828182845904)
+///
+/// LN is the inverse of the EXP function.
+/// - Parameters:
+///   - n: The positive real number for which you want the natural logarithm.
+///   - precision: The precision you want to use (number of cycles). Higher precision means better result, but slower compute time
 public func ln(_ n: BigDouble, precision: BigInt = 15) -> BigDouble {
     var buffer: BigNumber = 0
     var i: BigInt = 0
