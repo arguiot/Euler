@@ -285,4 +285,41 @@ public extension Tables {
     func LOG(_ n: BigDouble, base: Int = 10) -> BigDouble {
         return LN(n) / LN(BigDouble(base))
     }
+    /// Returns the logarithm base 10
+    /// - Parameters:
+    ///   - n: The positive real number for which you want the logarithm.
+    func LOG10(_ n: BigDouble) -> BigDouble {
+        return LOG(n)
+    }
+    // MARK: TODO MATRICES
+    
+    /// Returns the remainder after number is divided by divisor.
+    ///
+    /// The result has the same sign as divisor.
+    /// - Parameters:
+    ///   - a: The number for which you want to find the remainder.
+    ///   - b: The number by which you want to divide number.
+    func MOD(_ a: BigDouble, b: BigDouble) -> BigDouble {
+        return a % b
+    }
+    
+    /// Returns the ratio of the factorial of a sum of values to the product of factorials.
+    /// - Parameter numbers: Number1 is required, subsequent numbers are optional. 1 to 255 values for which you want the multinomial.
+    func MULTINOMIAL(_ numbers: BigInt...) -> BigDouble {
+        let sum = numbers.reduce(BigInt.zero) { $0 + $1 }
+        let upperFac = BigDouble(factorial(sum))
+        let fac = BigDouble(numbers.reduce(BigInt.zero) { $0 + factorial($1) })
+        let div = upperFac / fac
+        return div
+    }
+    
+    /// Returns number rounded up to the nearest odd integer.
+    /// 
+    /// Regardless of the sign of number, a value is rounded up when adjusted away from zero. If number is an odd integer, no rounding occurs.
+    /// - Parameter n: The value to round.
+    func ODD(_ n: BigDouble) -> BigInt {
+        let r = ceil(abs(n))
+        guard !r.isOdd() else { return BigInt(sign: n.sign, limbs: (r).limbs) }
+        return BigInt(sign: n.sign, limbs: (r + 1).limbs)
+    }
 }

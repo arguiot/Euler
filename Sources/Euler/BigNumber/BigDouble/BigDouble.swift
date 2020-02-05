@@ -435,8 +435,7 @@ public struct BigDouble:
      * If the right side of the decimal is greater than 0.5 then it will round up (ceil),
      * otherwise round down (floor) to the nearest BigNumber
      */
-    public func rounded() -> BigInt
-    {
+    public func rounded() -> BigInt {
         if self.isZero() {
             return BigInt(0)
         }
