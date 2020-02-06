@@ -729,6 +729,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Formulas/CommonFormulas.swift",
+      "line": 378,
+      "symbol": "Tables.RANDBETWEEN(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
       "line": 12,
       "symbol": "Tables.TablesError",
