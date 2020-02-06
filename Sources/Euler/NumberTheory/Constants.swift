@@ -12,7 +12,7 @@ import Foundation
 /// Originally defined as the ratio of a circle's circumference to its diameter, it now has various equivalent definitions and appears in many formulas in all areas of mathematics and physics. It is approximately equal to 3.14159. It has been represented by the Greek letter "π" since the mid-18th century, though it is also sometimes spelled out as "pi". It is also called Archimedes' constant.
 ///
 public var pi: BigNumber {
-    return BigNumber("3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909")!
+    return BigNumber("3.141592653589793238")!
 }
 
 /// The mathematical constant
@@ -20,7 +20,7 @@ public var pi: BigNumber {
 /// The number e is a mathematical constant that is the base of the natural logarithm: the unique number whose natural logarithm is equal to one. It is approximately equal to 2.71828, and is the limit of (1 + 1/n)n as n approaches infinity, an expression that arises in the study of compound interest. It can also be calculated as the sum of the infinite series
 ///
 public var e: BigNumber {
-    return BigNumber("2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427427466391932003059921817413596629043572900334295260595630738132328627943490763233829880753195251019011573834187930702154089149934884167509244761460668")!
+    return BigNumber("2.718281828459045235")!
 }
 public func exp(_ r: BigNumber) -> BigNumber {
     if let d = r.asDouble() {

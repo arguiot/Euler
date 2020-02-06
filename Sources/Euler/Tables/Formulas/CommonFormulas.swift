@@ -322,4 +322,103 @@ public extension Tables {
         guard !r.isOdd() else { return BigInt(sign: n.sign, limbs: (r).limbs) }
         return BigInt(sign: n.sign, limbs: (r + 1).limbs)
     }
+    
+    /// Returns the mathematical constant
+    ///
+    /// Originally defined as the ratio of a circle’s circumference to its diameter, it now has various equivalent definitions and appears in many formulas in all areas of mathematics and physics. It is approximately equal to 3.14159. It has been represented by the Greek letter “π” since the mid-18th century, though it is also sometimes spelled out as “pi”. It is also called Archimedes’ constant.
+    ///
+    func PI() -> BigDouble {
+        return pi
+    }
+    
+    /// Returns the result of a number raised to a power.
+    ///
+    /// Let's say you want to calculate an extremely small tolerance level for a machined part or the vast distance between two galaxies. To raise a number to a power, use the POWER function.
+    ///
+    /// > The "^" operator can be used instead of POWER to indicate to what power the base number is to be raised, such as in 5^2.
+    /// - Parameters:
+    ///   - a: The base number. It can be any real number.
+    ///   - b: The exponent to which the base number is raised.
+    func POWER(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
+        return pow(a, b)
+    }
+    
+    /// The PRODUCT function multiplies all the numbers given as arguments and returns the product. For example, if cells A1 and A2 contain numbers, you can use the formula =PRODUCT(A1, A2) to multiply those two numbers together. You can also perform the same operation by using the multiply (*) mathematical operator; for example, =A1 * A2.
+
+    /// The PRODUCT function is useful when you need to multiply many cells together. For example, the formula =PRODUCT(A1:A3, C1:C3) is equivalent to =A1 * A2 * A3 * C1 * C2 * C3.
+    /// - Parameter ns: The first number or range that you want to multiply. Continue by adding additional numbers or ranges that you want to multiply, up to a maximum of 255 arguments.
+    func PRODUCT(_ ns: BigDouble...) -> BigDouble {
+        return ns.reduce(BigDouble(1)) { $0 * $1 }
+    }
+    
+    /// Returns the integer portion of a division. Use this function when you want to discard the remainder of a division.
+    ///
+    /// > Tip: If you want to divide numeric values, you should use the "/" operator as there isn't a DIVIDE function in `Euler.Tables`. For example, to divide 5 by 2, you would type =5/2 into a cell, which returns 2.5. The QUOTIENT function for these same numbers =QUOTIENT(5,2) returns 2, since QUOTIENT doesn't return a remainder.
+    /// - Parameters:
+    ///   - numerator: The dividend.
+    ///   - denominator: The divisor.
+    func QUOTIENT(_ numerator: BigDouble, _ denominator: BigDouble) -> BigInt {
+        let div = numerator / denominator
+        return ceil(div)
+    }
+    
+    /// Converts degrees to radians.
+    /// - Parameter angle: An angle in degrees that you want to convert.
+    func RADIANS(_ angle: BigDouble) -> BigDouble {
+        return angle * pi / BigDouble(180)
+    }
+    
+    /// RAND returns an evenly distributed random real number greater than or equal to 0 and less than 1.
+    ///
+    /// A new random real number is returned every time the worksheet is calculated.
+    func RAND() -> BigDouble {
+        return BigDouble(Double.random(in: 0..<1))
+    }
+    
+    func RANDBETWEEN(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
+        guard let c = a.asDouble(), let d = b.asDouble() else { return RAND() * (b - a) + a }
+        return BigDouble(Double.random(in: c..<d))
+    }
+    // MARK: Todo Roman
+    /// The ROUND function rounds a number to a specified number of digits.
+    ///
+    /// For example, if cell A1 contains 23.7825, and you want to round that value to two decimal places, you can use the following formula:
+    ///
+    /// `=ROUND(A1, 2)`
+    /// The result of this function is 23.78.
+    ///
+    /// - If `digits` is greater than 0 (zero), then number is rounded to the specified number of decimal places.
+    /// - If `digits` is 0, the number is rounded to the nearest integer.
+    /// - If `digits` is less than 0, the number is rounded to the left of the decimal point.
+    /// - To always round up (away from zero), use the ROUNDUP function.
+    /// - To always round down (toward zero), use the ROUNDDOWN function.
+    /// - To round a number to a specific multiple (for example, to round to the nearest 0.5), use the MROUND function.
+    /// - Parameters:
+    ///   - n: The number that you want to round.
+    ///   - digits: The number of digits to which you want to round the number argument.
+    func ROUND(_ n: BigDouble, digits: BigInt) -> BigDouble {
+        let powed = pow(10, digits)
+        let times = n * powed
+        return BigDouble(times.rounded()) / powed
+    }
+    
+    /// Rounds a number down, toward zero.
+    /// - Parameters:
+    ///   - n: Any real number that you want rounded down.
+    ///   - digits: The number of digits to which you want to round number.
+    func ROUNDDOWN(_ n: BigDouble, digits: BigInt) -> BigDouble {
+        let sign: BigDouble = (n > 0) ? 1 : -1
+        let powed = pow(10, digits)
+        return sign * BigDouble(floor(abs(n) * powed)) / powed
+    }
+    
+    /// Rounds a number up, away from zero.
+    /// - Parameters:
+    ///   - n: Any real number that you want rounded up.
+    ///   - digits: The number of digits to which you want to round number.
+    func ROUNDUP(_ n: BigDouble, digits: BigInt) -> BigDouble {
+        let sign: BigDouble = (n > 0) ? 1 : -1
+        let powed = pow(10, digits)
+        return sign * BigDouble(ceil(abs(n) * powed)) / powed
+    }
 }
