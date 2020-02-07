@@ -29,7 +29,7 @@ public extension BigInt {
         }
         return n.millerRabin(accuracy: 30) // 30 is quick but also precise
     }
-    /// Returns true iff (2 ** exp) - 1 is a mersenne prime.
+    /// Returns true if (2 ** exp) - 1 is a mersenne prime.
     var isMersenne: Bool {
         let exp = self
         guard let int = exp.asInt() else { return false }

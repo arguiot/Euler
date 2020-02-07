@@ -28,6 +28,11 @@ public extension Statistics {
         return av
     }
     
+    /// Alias for average
+    var mean: BigNumber {
+        return average
+    }
+    
     /// Return the weighted arithmetic mean (average) of the list with the given coefficients
     ///
     /// The weighted arithmetic mean is similar to an ordinary arithmetic mean (the most common type of average), except that instead of each of the data points contributing equally to the final average, some data points contribute more than others. The notion of weighted mean plays a role in descriptive statistics and also occurs in a more general form in several other areas of mathematics.

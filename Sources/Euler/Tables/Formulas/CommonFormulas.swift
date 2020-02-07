@@ -375,6 +375,10 @@ public extension Tables {
         return BigDouble(Double.random(in: 0..<1))
     }
     
+    /// Returns a random integer number between the numbers you specify. A new random integer number is returned every time the worksheet is calculated.
+    /// - Parameters:
+    ///   - a: The smallest integer RANDBETWEEN will return.
+    ///   - b: The largest integer RANDBETWEEN will return.
     func RANDBETWEEN(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
         guard let c = a.asDouble(), let d = b.asDouble() else { return RAND() * (b - a) + a }
         return BigDouble(Double.random(in: c..<d))
@@ -437,7 +441,7 @@ public extension Tables {
     
     /// Many functions can be approximated by a power series expansion.
     /// Returns the sum of a power series based on the formula:
-    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)
+    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)$$`
     /// - Parameters:
     ///   - x: The input value to the power series.
     ///   - n: The initial power to which you want to raise x.

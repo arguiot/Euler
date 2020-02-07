@@ -54,4 +54,20 @@ public extension BigInt {
     }
     /// Alias of `randomBigNumber`
     static let random = randomBigNumber
+    
+    /// RAND returns an evenly distributed random real number greater than or equal to 0 and less than 1.
+    ///
+    /// A new random real number is returned every time the worksheet is calculated.
+    static func rand() -> BigDouble {
+        return BigDouble(Double.random(in: 0..<1))
+    }
+    
+    /// Returns a random integer number between the numbers you specify. A new random integer number is returned every time the worksheet is calculated.
+    /// - Parameters:
+    ///   - a: The smallest integer RANDBETWEEN will return.
+    ///   - b: The largest integer RANDBETWEEN will return.
+    static func randbetween(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
+        guard let c = a.asDouble(), let d = b.asDouble() else { return rand() * (b - a) + a }
+        return BigDouble(Double.random(in: c..<d))
+    }
 }

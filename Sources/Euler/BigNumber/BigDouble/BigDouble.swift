@@ -227,14 +227,24 @@ public struct BigDouble:
     public init(_ d: Double, withPrecision eps: Double = 1.0E-15) {
         var x = d
         var a = floor(x)
-        var (h1, k1, h, k) = (1, 0, Int(a), 1)
+        var (h1, k1, h, k) = (1.0, 0.0, a, 1.0)
 
         while x - a > eps * Double(k) * Double(k) {
             x = 1.0/(x - a)
             a = floor(x)
-            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+            (h1, k1, h, k) = (h, k, h1 + a * h, k1 + a * k)
         }
-        self.init(h, over: k)
+        if (abs(h) < Double(Int.max) && abs(k) < Double(Int.max)) {
+            self.init(Int(h), over: Int(k))
+            return
+        }
+        let sh = String(h)
+        let sk = String(k)
+        if k == 1.0 {
+            self.init(sh)!
+            return
+        }
+        self.init(sh, over: sk)!
     }
     
     public init(integerLiteral value: Int) {
@@ -300,12 +310,10 @@ public struct BigDouble:
      * the precision for the current value
      */
     public var precision : Int {
-        get
-        {
+        get {
             return _precision
         }
-        set
-        {
+        set {
             var nv = newValue
             if nv < 0 {
                 nv = 0
