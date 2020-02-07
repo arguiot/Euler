@@ -489,6 +489,36 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Euler10StatisticsC4meanAA9BigDoubleVvp"></a>
+                    <a name="//apple_ref/swift/Property/mean" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC4meanAA9BigDoubleVvp">mean</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Alias for average</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">mean</span><span class="p">:</span> <span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Average.swift#L32-L34">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Euler10StatisticsC7average12coefficientsAA9BigDoubleVSayAGG_tKF"></a>
                     <a name="//apple_ref/swift/Method/average(coefficients:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Euler10StatisticsC7average12coefficientsAA9BigDoubleVSayAGG_tKF">average(coefficients:)</a>
@@ -534,7 +564,141 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Average.swift#L37-L51">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Average.swift#L42-L56">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC11correlation4withAA9BigDoubleVSayAGG_tKF"></a>
+                    <a name="//apple_ref/swift/Method/correlation(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC11correlation4withAA9BigDoubleVSayAGG_tKF">correlation(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This function returns the correlation coefficient of two cell ranges.</p>
+
+<p>Use the correlation coefficient to determine the relationship between two properties. For example, you can examine the relationship between a location&rsquo;s average temperature and the use of air conditioners.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">correlation</span><span class="p">(</span><span class="n">with</span> <span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>list</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A second array to be compared with.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Correlation.swift#L25-L39">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC6medianAA9BigDoubleVvp"></a>
+                    <a name="//apple_ref/swift/Property/median" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC6medianAA9BigDoubleVvp">median</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the median of the given numbers. The median is the number in the middle of a set of numbers.</p>
+
+<p>If there is an even number of numbers in the set, then MEDIAN calculates the average of the two numbers in the middle. See the second formula in the example.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">median</span><span class="p">:</span> <span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Quantile.swift#L28-L39">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC8quantile10percentageAA9BigDoubleVSd_tKF"></a>
+                    <a name="//apple_ref/swift/Method/quantile(percentage:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC8quantile10percentageAA9BigDoubleVSd_tKF">quantile(percentage:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns corresponding quantile</p>
+
+<p>In statistics and probability quantiles are cut points dividing the range of a probability distribution into continuous intervals with equal probabilities, or dividing the observations in a sample in the same way. There is one fewer quantile than the number of groups created. Thus quartiles are the three cut points that will divide a dataset into four equal-sized groups. Common quantiles have special names: for instance quartile, decile (creating 10 groups: see below for more). The groups created are termed halves, thirds, quarters, etc., though sometimes the terms for the quantile are used for the groups created, rather than for the cut points.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">quantile</span><span class="p">(</span><span class="nv">percentage</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>percentage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The percentage of distribution (ex:  0.25 is the first quartile)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Quantile.swift#L45-L61">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

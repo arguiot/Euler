@@ -142,21 +142,21 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 247,
+      "line": 257,
       "symbol": "BigDouble.init(constant:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 401,
+      "line": 409,
       "symbol": "BigDouble.rawData()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 418,
+      "line": 426,
       "symbol": "BigDouble.minimize()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -719,20 +719,6 @@
       "line": 25,
       "symbol": "exp(_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/NumberTheory/fibonacci.swift",
-      "line": 22,
-      "symbol": "BigInt.fibonacci",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Formulas/CommonFormulas.swift",
-      "line": 378,
-      "symbol": "Tables.RANDBETWEEN(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
