@@ -166,7 +166,7 @@ public extension Tables {
         guard let double = number.asDouble() else { throw TablesError.Overflow }
         return BigDouble(1) / BigDouble(sin(double))
     }
-
+    
     /// Hyperbolic Cosecant of a number.
     /// - Parameter number: Any `BigDouble`
     func CSCH(_ number: BigNumber) -> BigNumber {
@@ -344,7 +344,7 @@ public extension Tables {
     }
     
     /// The PRODUCT function multiplies all the numbers given as arguments and returns the product. For example, if cells A1 and A2 contain numbers, you can use the formula =PRODUCT(A1, A2) to multiply those two numbers together. You can also perform the same operation by using the multiply (*) mathematical operator; for example, =A1 * A2.
-
+    
     /// The PRODUCT function is useful when you need to multiply many cells together. For example, the formula =PRODUCT(A1:A3, C1:C3) is equivalent to =A1 * A2 * A3 * C1 * C2 * C3.
     /// - Parameter ns: The first number or range that you want to multiply. Continue by adding additional numbers or ranges that you want to multiply, up to a maximum of 255 arguments.
     func PRODUCT(_ ns: BigDouble...) -> BigDouble {
@@ -420,5 +420,49 @@ public extension Tables {
         let sign: BigDouble = (n > 0) ? 1 : -1
         let powed = pow(10, digits)
         return sign * BigDouble(ceil(abs(n) * powed)) / powed
+    }
+    
+    /// Returns the secant of an angle.
+    /// - Parameter n: Number is the angle in radians for which you want the secant.
+    func SEC(_ n: BigDouble) throws -> BigDouble {
+        let cos = try COS(n)
+        return BigDouble(1) / cos
+    }
+    
+    /// Returns the hyperbolic secant of an angle.
+    /// - Parameter n: Number is the angle in radians for which you want the hyperbolic secant.
+    func SECH(_ n: BigDouble) -> BigDouble {
+        return 2 / (EXP(n) + EXP(-n))
+    }
+    
+    /// Many functions can be approximated by a power series expansion.
+    /// Returns the sum of a power series based on the formula:
+    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)
+    /// - Parameters:
+    ///   - x: The input value to the power series.
+    ///   - n: The initial power to which you want to raise x.
+    ///   - m: The step by which to increase n for each term in the series.
+    ///   - coefficients: A set of coefficients by which each successive power of x is multiplied. The number of values in coefficients determines the number of terms in the power series. For example, if there are three values in coefficients, then there will be three terms in the power series.
+    func SERIESSUM(_ x: BigDouble, _ n: BigDouble, _ m: BigDouble, _ coefficients: BigDouble...) throws -> BigDouble {
+        guard coefficients.count >= 1 else { throw TablesError.Arguments }
+        var result = coefficients[0] * pow(x, n)
+        var i = 1
+        while i < coefficients.count {
+            result += coefficients[i] * pow(x, n + BigDouble(i) * m)
+            i += 1
+        }
+        return result
+    }
+    
+    /// Determines the sign of a number. Returns 1 if the number is positive, zero (0) if the number is 0, and -1 if the number is negative.
+    /// - Parameter n: Any real number.
+    func SIGN(_ n: BigDouble) -> BigInt {
+        if (n.sign == false) {
+            return -1;
+        } else if (n == .zero) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }
