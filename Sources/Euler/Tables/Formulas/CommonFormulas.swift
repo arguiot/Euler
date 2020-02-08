@@ -461,7 +461,7 @@ public extension Tables {
     /// Determines the sign of a number. Returns 1 if the number is positive, zero (0) if the number is 0, and -1 if the number is negative.
     /// - Parameter n: Any real number.
     func SIGN(_ n: BigDouble) -> BigInt {
-        if (n.sign == false) {
+        if (n.sign == true) {
             return -1;
         } else if (n == .zero) {
             return 0;
