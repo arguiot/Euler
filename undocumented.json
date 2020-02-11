@@ -744,105 +744,98 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 46,
-      "symbol": "′(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
+      "line": 51,
+      "symbol": "Matrix.′(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 117,
-      "symbol": "+=(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
+      "line": 122,
+      "symbol": "Matrix.+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 143,
-      "symbol": "+=(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
+      "line": 148,
+      "symbol": "Matrix.+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 219,
-      "symbol": "-=(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
+      "line": 229,
+      "symbol": "Matrix.-=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 228,
-      "symbol": "-=(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 662,
+      "line": 661,
       "symbol": "Matrix.min(row:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 683,
+      "line": 682,
       "symbol": "Matrix.max(row:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 704,
+      "line": 703,
       "symbol": "Matrix.minRows()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 712,
+      "line": 711,
       "symbol": "Matrix.maxRows()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 720,
+      "line": 719,
       "symbol": "Matrix.min(column:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 741,
+      "line": 740,
       "symbol": "Matrix.max(column:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 762,
+      "line": 761,
       "symbol": "Matrix.minColumns()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 770,
+      "line": 769,
       "symbol": "Matrix.maxColumns()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 778,
+      "line": 777,
       "symbol": "Matrix.min()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
-      "line": 789,
+      "line": 788,
       "symbol": "Matrix.max()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
