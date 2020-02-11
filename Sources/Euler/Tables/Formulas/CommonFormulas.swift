@@ -293,6 +293,32 @@ public extension Tables {
     }
     // MARK: TODO MATRICES
     
+//    func MDETERM(_ m: Matrix) -> BigDouble {
+//        return .zero
+//    }
+    
+    /// The MINVERSE function returns the inverse matrix for a matrix stored in a `Matrix` object (Tables will convert that when using the parser).
+    /// - Parameter m: A numeric Matrix with an equal number of rows and columns.
+    func MINVERSE(_ m: Matrix) -> Matrix {
+        return m.inverse()
+    }
+    
+    /// The MMULT function returns the matrix product of two `Matrix`. The result is an array with the same number of rows as lhs and the same number of columns as rhs.
+    /// - Parameters:
+    ///   - lhs: The `Matrix` you want to multiply.
+    ///   - rhs: The `Matrix` you want to multiply.
+    func MMULT(_ lhs: Matrix, _ rhs: Matrix) -> Matrix {
+        return lhs * rhs
+    }
+    
+    /// MROUND returns a number rounded to the desired multiple.
+    /// - Parameters:
+    ///   - n: The value to round.
+    ///   - m: The multiple to which you want to round number.
+    func MROUND(_ n: BigDouble, _ m: BigDouble) throws -> BigDouble {
+        guard (n * m).isPositive() else { throw TablesError.Arguments }
+        return BigDouble((n / m).rounded()) * m
+    }
     /// Returns the remainder after number is divided by divisor.
     ///
     /// The result has the same sign as divisor.
