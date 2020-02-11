@@ -41,463 +41,462 @@ extension Matrix {
         return results
     }
 }
-
+// MARK: Operators
+infix operator </> : MultiplicationPrecedence
 postfix operator ′
-public postfix func ′ (value: Matrix) -> Matrix {
-    return value.transpose()
-}
-
-// MARK: - Arithmetic
-/**
- Element-by-element addition.
- Either:
- - both matrices have the same size
- - rhs is a row vector with an equal number of columns as lhs
- - rhs is a column vector with an equal number of rows as lhs
- */
-public func + (lhs: Matrix, rhs: Matrix) -> Matrix {
-    if lhs.columns == rhs.columns {
-        if rhs.rows == 1 {   // rhs is row vector
-            /**
-             var results = lhs
-             for r in 0..<results.rows {
-             for c in 0..<results.columns {
-             results[r, c] += rhs[0, c]
-             }
-             }
-             return results
-             */
-            
-            var results = Matrix.zeros(size: lhs.size)
-            lhs.grid.withUnsafeBufferPointer{ src in
-                results.grid.withUnsafeMutableBufferPointer{ dst in
-                    for c in 0..<lhs.columns {
-                        var v = rhs[c]
-                        vDSP_vsaddD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
-                    }
-                }
-            }
-            return results
-            
-        } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
-            var results = rhs
-            lhs.grid.withUnsafeBufferPointer { lhsPtr in
-                results.grid.withUnsafeMutableBufferPointer { resultsPtr in
-                    cblas_daxpy(Int32(lhs.grid.count), 1, lhsPtr.baseAddress, 1, resultsPtr.baseAddress, 1)
-                }
-            }
-            return results
-        }
-    } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
-        /**
-         var results = lhs
-         for c in 0..<results.columns {
-         for r in 0..<results.rows {
-         results[r, c] += rhs[r, 0]
-         }
-         }
-         return results
-         */
-        
-        var results = Matrix.zeros(size: lhs.size)
-        lhs.grid.withUnsafeBufferPointer{ src in
-            results.grid.withUnsafeMutableBufferPointer{ dst in
-                for r in 0..<lhs.rows {
-                    var v = rhs[r]
-                    vDSP_vsaddD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
-                }
-            }
-        }
-        return results
-    }
-    
-    fatalError("Cannot add \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
-}
-
-public func += (lhs: inout Matrix, rhs: Matrix) {
-    lhs = lhs + rhs
-}
-
-/** Adds a scalar to each element of the matrix. */
-public func + (lhs: Matrix, rhs: Double) -> Matrix {
-    /**
-     var m = lhs
-     for r in 0..<m.rows {
-     for c in 0..<m.columns {
-     m[r, c] += rhs
-     }
-     }
-     return m
-     */
-    
-    var results = lhs
-    lhs.grid.withUnsafeBufferPointer { src in
-        results.grid.withUnsafeMutableBufferPointer { dst in
-            var scalar = rhs
-            vDSP_vsaddD(src.baseAddress!, 1, &scalar, dst.baseAddress!, 1, vDSP_Length(lhs.rows * lhs.columns))
-        }
-    }
-    return results
-}
-
-public func += (lhs: inout Matrix, rhs: Double) {
-    lhs = lhs + rhs
-}
-
-/** Adds a scalar to each element of the matrix. */
-public func + (lhs: Double, rhs: Matrix) -> Matrix {
-    return rhs + lhs
-}
-
-/**
- Element-by-element subtraction.
- Either:
- - both matrices have the same size
- - rhs is a row vector with an equal number of columns as lhs
- - rhs is a column vector with an equal number of rows as lhs
- */
-public func - (lhs: Matrix, rhs: Matrix) -> Matrix {
-    if lhs.columns == rhs.columns {
-        if rhs.rows == 1 {   // rhs is row vector
-            /**
-             var results = lhs
-             for r in 0..<results.rows {
-             for c in 0..<results.columns {
-             results[r, c] -= rhs[0, c]
-             }
-             }
-             return results
-             */
-            
-            var results = Matrix.zeros(size: lhs.size)
-            lhs.grid.withUnsafeBufferPointer{ src in
-                results.grid.withUnsafeMutableBufferPointer{ dst in
-                    for c in 0..<lhs.columns {
-                        var v = -rhs[c]
-                        vDSP_vsaddD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
-                    }
-                }
-            }
-            return results
-            
-        } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
-            var results = lhs
-            rhs.grid.withUnsafeBufferPointer { rhsPtr in
-                results.grid.withUnsafeMutableBufferPointer { resultsPtr in
-                    cblas_daxpy(Int32(rhs.grid.count), -1, rhsPtr.baseAddress, 1, resultsPtr.baseAddress, 1)
-                }
-            }
-            return results
-        }
-        
-    } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
-        /**
-         var results = lhs
-         for c in 0..<results.columns {
-         for r in 0..<results.rows {
-         results[r, c] -= rhs[r, 0]
-         }
-         }
-         return results
-         */
-        
-        var results = Matrix.zeros(size: lhs.size)
-        lhs.grid.withUnsafeBufferPointer{ src in
-            results.grid.withUnsafeMutableBufferPointer{ dst in
-                for r in 0..<lhs.rows {
-                    var v = -rhs[r]
-                    vDSP_vsaddD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
-                }
-            }
-        }
-        return results
-    }
-    
-    fatalError("Cannot subtract \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
-}
-
-public func -= (lhs: inout Matrix, rhs: Matrix) {
-    lhs = lhs - rhs
-}
-
-/** Subtracts a scalar from each element of the matrix. */
-public func - (lhs: Matrix, rhs: Double) -> Matrix {
-    return lhs + (-rhs)
-}
-
-public func -= (lhs: inout Matrix, rhs: Double) {
-    lhs = lhs - rhs
-}
-
-/** Subtracts each element of the matrix from a scalar. */
-public func - (lhs: Double, rhs: Matrix) -> Matrix {
-    /**
-     var m = rhs
-     for r in 0..<m.rows {
-     for c in 0..<m.columns {
-     m[r, c] = lhs - rhs[r, c]
-     }
-     }
-     return m
-     */
-    
-    var results = rhs
-    var scalar = lhs
-    let length = vDSP_Length(rhs.rows * rhs.columns)
-    results.grid.withUnsafeMutableBufferPointer { ptr in
-        vDSP_vnegD(ptr.baseAddress!, 1, ptr.baseAddress!, 1, length)
-        vDSP_vsaddD(ptr.baseAddress!, 1, &scalar, ptr.baseAddress!, 1, length)
-    }
-    return results
-}
-
-/** Negates each element of the matrix. */
-prefix public func -(m: Matrix) -> Matrix {
-    /**
-     var results = m
-     for r in 0..<m.rows {
-     for c in 0..<m.columns {
-     results[r, c] = -m[r, c]
-     }
-     }
-     return results
-     */
-    
-    var results = m
-    m.grid.withUnsafeBufferPointer { src in
-        results.grid.withUnsafeMutableBufferPointer { dst in
-            vDSP_vnegD(src.baseAddress!, 1, dst.baseAddress!, 1, vDSP_Length(m.rows * m.columns))
-        }
-    }
-    return results
-}
-
 infix operator <*> : MultiplicationPrecedence
 
-/** Multiplies two matrices, or a matrix with a vector. */
-public func <*> (lhs: Matrix, rhs: Matrix) -> Matrix {
-    precondition(lhs.columns == rhs.rows, "Cannot multiply \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
+public extension Matrix {
     
-    var results = Matrix(rows: lhs.rows, columns: rhs.columns, repeatedValue: 0)
-    lhs.grid.withUnsafeBufferPointer { lhsPtr in
-        rhs.grid.withUnsafeBufferPointer { rhsPtr in
-            cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, Int32(lhs.rows), Int32(rhs.columns), Int32(lhs.columns), 1, lhsPtr.baseAddress, Int32(lhs.columns), rhsPtr.baseAddress, Int32(rhs.columns), 0, &results.grid, Int32(results.columns))
-        }
+    static postfix func ′ (value: Matrix) -> Matrix {
+        return value.transpose()
     }
-    return results
-}
 
-/**
- Multiplies each element of the lhs matrix by each element of the rhs matrix.
- Either:
- - both matrices have the same size
- - rhs is a row vector with an equal number of columns as lhs
- - rhs is a column vector with an equal number of rows as lhs
- */
-public func * (lhs: Matrix, rhs: Matrix) -> Matrix {
-    if lhs.columns == rhs.columns {
-        if rhs.rows == 1 {   // rhs is row vector
-            /**
-             var results = lhs
-             for r in 0..<results.rows {
-             for c in 0..<results.columns {
-             results[r, c] *= rhs[0, c]
-             }
-             }
-             return results
-             */
-            
-            var results = Matrix.zeros(size: lhs.size)
-            lhs.grid.withUnsafeBufferPointer{ src in
-                results.grid.withUnsafeMutableBufferPointer{ dst in
-                    for c in 0..<lhs.columns {
-                        var v = rhs[c]
-                        vDSP_vsmulD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
-                    }
-                }
-            }
-            return results
-            
-        } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
-            /**
-             var results = lhs
-             for r in 0..<results.rows {
-             for c in 0..<results.columns {
-             results[r, c] *= rhs[r, c]
-             }
-             }
-             return results
-             */
-            
-            var results = Matrix.zeros(size: lhs.size)
-            rhs.grid.withUnsafeBufferPointer{ srcX in
-                lhs.grid.withUnsafeBufferPointer{ srcY in
-                    results.grid.withUnsafeMutableBufferPointer{ dstZ in
-                        vDSP_vmulD(srcX.baseAddress!, 1, srcY.baseAddress!, 1, dstZ.baseAddress!, 1, vDSP_Length(lhs.rows * lhs.columns))
-                    }
-                }
-            }
-            return results
-        }
-        
-    } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
-        /**
-         var results = lhs
-         for c in 0..<results.columns {
-         for r in 0..<results.rows {
-         results[r, c] *= rhs[r, 0]
-         }
-         }
-         return results
-         */
-        
-        var results = Matrix.zeros(size: lhs.size)
-        lhs.grid.withUnsafeBufferPointer{ src in
-            results.grid.withUnsafeMutableBufferPointer{ dst in
-                for r in 0..<lhs.rows {
-                    var v = rhs[r]
-                    vDSP_vsmulD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
-                }
-            }
-        }
-        return results
-    }
-    
-    fatalError("Cannot element-wise multiply \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
-}
-
-/** Multiplies each element of the matrix with a scalar. */
-public func * (lhs: Matrix, rhs: Double) -> Matrix {
-    var results = lhs
-    results.grid.withUnsafeMutableBufferPointer { ptr in
-        cblas_dscal(Int32(lhs.grid.count), rhs, ptr.baseAddress, 1)
-    }
-    return results
-}
-
-/** Multiplies each element of the matrix with a scalar. */
-public func * (lhs: Double, rhs: Matrix) -> Matrix {
-    return rhs * lhs
-}
-
-infix operator </> : MultiplicationPrecedence
-
-/** Divides a matrix by another. This is the same as multiplying with the inverse. */
-public func </> (lhs: Matrix, rhs: Matrix) -> Matrix {
-    let inv = rhs.inverse()
-    precondition(lhs.columns == inv.rows, "Cannot divide \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
-    return lhs <*> inv
-}
-
-/**
- Divides each element of the lhs matrix by each element of the rhs matrix.
- Either:
- - both matrices have the same size
- - rhs is a row vector with an equal number of columns as lhs
- - rhs is a column vector with an equal number of rows as lhs
- */
-public func / (lhs: Matrix, rhs: Matrix) -> Matrix {
-    if lhs.columns == rhs.columns {
-        if rhs.rows == 1 {   // rhs is row vector
-            /**
-             var results = lhs
-             for r in 0..<results.rows {
-             for c in 1..<results.columns {
-             results[r, c] /= rhs[0, c]
-             }
-             }
-             return results
-             */
-            
-            var results = Matrix.zeros(size: lhs.size)
-            lhs.grid.withUnsafeBufferPointer{ src in
-                results.grid.withUnsafeMutableBufferPointer{ dst in
-                    for c in 0..<lhs.columns {
-                        var v = rhs[c]
-                        vDSP_vsdivD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
-                    }
-                }
-            }
-            return results
-            
-        } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
-            /**
-             var results = lhs
-             for r in 0..<results.rows {
-             for c in 0..<results.columns {
-             results[r, c] /= rhs[r, c]
-             }
-             }
-             return results
-             */
-            
-            var results = Matrix.zeros(size: lhs.size)
-            rhs.grid.withUnsafeBufferPointer{ srcX in
-                lhs.grid.withUnsafeBufferPointer{ srcY in
-                    results.grid.withUnsafeMutableBufferPointer{ dstZ in
-                        vDSP_vdivD(srcX.baseAddress!, 1, srcY.baseAddress!, 1, dstZ.baseAddress!, 1, vDSP_Length(lhs.rows * lhs.columns))
-                    }
-                }
-            }
-            return results
-        }
-        
-    } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
-        /**
-         var results = lhs
-         for c in 0..<results.columns {
-         for r in 0..<results.rows {
-         results[r, c] /= rhs[r, 0]
-         }
-         }
-         return results
-         */
-        
-        var results = Matrix.zeros(size: lhs.size)
-        lhs.grid.withUnsafeBufferPointer{ src in
-            results.grid.withUnsafeMutableBufferPointer{ dst in
-                for r in 0..<lhs.rows {
-                    var v = rhs[r]
-                    vDSP_vsdivD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
-                }
-            }
-        }
-        return results
-    }
-    
-    fatalError("Cannot element-wise divide \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
-}
-
-/** Divides each element of the matrix by a scalar. */
-public func / (lhs: Matrix, rhs: Double) -> Matrix {
-    var results = lhs
-    results.grid.withUnsafeMutableBufferPointer { ptr in
-        cblas_dscal(Int32(lhs.grid.count), 1/rhs, ptr.baseAddress, 1)
-    }
-    return results
-}
-
-/** Divides a scalar by each element of the matrix. */
-public func / (lhs: Double, rhs: Matrix) -> Matrix {
+    // MARK: - Arithmetic
     /**
-     var m = rhs
-     for r in 0..<m.rows {
-     for c in 0..<m.columns {
-     m[r, c] = lhs / rhs[r, c]
-     }
-     }
-     return m
+     Element-by-element addition.
+     Either:
+     - both matrices have the same size
+     - rhs is a row vector with an equal number of columns as lhs
+     - rhs is a column vector with an equal number of rows as lhs
      */
-    
-    var results = rhs
-    rhs.grid.withUnsafeBufferPointer { src in
-        results.grid.withUnsafeMutableBufferPointer { dst in
-            var scalar = lhs
-            vDSP_svdivD(&scalar, src.baseAddress!, 1, dst.baseAddress!, 1, vDSP_Length(rhs.rows * rhs.columns))
+    static func + (lhs: Matrix, rhs: Matrix) -> Matrix {
+        if lhs.columns == rhs.columns {
+            if rhs.rows == 1 {   // rhs is row vector
+                /**
+                 var results = lhs
+                 for r in 0..<results.rows {
+                 for c in 0..<results.columns {
+                 results[r, c] += rhs[0, c]
+                 }
+                 }
+                 return results
+                 */
+                
+                var results = Matrix.zeros(size: lhs.size)
+                lhs.grid.withUnsafeBufferPointer{ src in
+                    results.grid.withUnsafeMutableBufferPointer{ dst in
+                        for c in 0..<lhs.columns {
+                            var v = rhs[c]
+                            vDSP_vsaddD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                        }
+                    }
+                }
+                return results
+                
+            } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
+                var results = rhs
+                lhs.grid.withUnsafeBufferPointer { lhsPtr in
+                    results.grid.withUnsafeMutableBufferPointer { resultsPtr in
+                        cblas_daxpy(Int32(lhs.grid.count), 1, lhsPtr.baseAddress, 1, resultsPtr.baseAddress, 1)
+                    }
+                }
+                return results
+            }
+        } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
+            /**
+             var results = lhs
+             for c in 0..<results.columns {
+             for r in 0..<results.rows {
+             results[r, c] += rhs[r, 0]
+             }
+             }
+             return results
+             */
+            
+            var results = Matrix.zeros(size: lhs.size)
+            lhs.grid.withUnsafeBufferPointer{ src in
+                results.grid.withUnsafeMutableBufferPointer{ dst in
+                    for r in 0..<lhs.rows {
+                        var v = rhs[r]
+                        vDSP_vsaddD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
+                    }
+                }
+            }
+            return results
         }
+        
+        fatalError("Cannot add \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
     }
-    return results
+
+    static func += (lhs: inout Matrix, rhs: Matrix) {
+        lhs = lhs + rhs
+    }
+
+    /** Adds a scalar to each element of the matrix. */
+    static func + (lhs: Matrix, rhs: Double) -> Matrix {
+        /**
+         var m = lhs
+         for r in 0..<m.rows {
+         for c in 0..<m.columns {
+         m[r, c] += rhs
+         }
+         }
+         return m
+         */
+        
+        var results = lhs
+        lhs.grid.withUnsafeBufferPointer { src in
+            results.grid.withUnsafeMutableBufferPointer { dst in
+                var scalar = rhs
+                vDSP_vsaddD(src.baseAddress!, 1, &scalar, dst.baseAddress!, 1, vDSP_Length(lhs.rows * lhs.columns))
+            }
+        }
+        return results
+    }
+
+    static func += (lhs: inout Matrix, rhs: Double) {
+        lhs = lhs + rhs
+    }
+
+    /** Adds a scalar to each element of the matrix. */
+    static func + (lhs: Double, rhs: Matrix) -> Matrix {
+        return rhs + lhs
+    }
+
+    /**
+     Element-by-element subtraction.
+     Either:
+     - both matrices have the same size
+     - rhs is a row vector with an equal number of columns as lhs
+     - rhs is a column vector with an equal number of rows as lhs
+     */
+    static func - (lhs: Matrix, rhs: Matrix) -> Matrix {
+        if lhs.columns == rhs.columns {
+            if rhs.rows == 1 {   // rhs is row vector
+                /**
+                 var results = lhs
+                 for r in 0..<results.rows {
+                 for c in 0..<results.columns {
+                 results[r, c] -= rhs[0, c]
+                 }
+                 }
+                 return results
+                 */
+                
+                var results = Matrix.zeros(size: lhs.size)
+                lhs.grid.withUnsafeBufferPointer{ src in
+                    results.grid.withUnsafeMutableBufferPointer{ dst in
+                        for c in 0..<lhs.columns {
+                            var v = -rhs[c]
+                            vDSP_vsaddD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                        }
+                    }
+                }
+                return results
+                
+            } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
+                var results = lhs
+                rhs.grid.withUnsafeBufferPointer { rhsPtr in
+                    results.grid.withUnsafeMutableBufferPointer { resultsPtr in
+                        cblas_daxpy(Int32(rhs.grid.count), -1, rhsPtr.baseAddress, 1, resultsPtr.baseAddress, 1)
+                    }
+                }
+                return results
+            }
+            
+        } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
+            /**
+             var results = lhs
+             for c in 0..<results.columns {
+             for r in 0..<results.rows {
+             results[r, c] -= rhs[r, 0]
+             }
+             }
+             return results
+             */
+            
+            var results = Matrix.zeros(size: lhs.size)
+            lhs.grid.withUnsafeBufferPointer{ src in
+                results.grid.withUnsafeMutableBufferPointer{ dst in
+                    for r in 0..<lhs.rows {
+                        var v = -rhs[r]
+                        vDSP_vsaddD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
+                    }
+                }
+            }
+            return results
+        }
+        
+        fatalError("Cannot subtract \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
+    }
+
+    /** Subtracts a scalar from each element of the matrix. */
+    static func - (lhs: Matrix, rhs: Double) -> Matrix {
+        return lhs + (-rhs)
+    }
+
+    static func -= (lhs: inout Matrix, rhs: Double) {
+        lhs = lhs - rhs
+    }
+
+    /** Subtracts each element of the matrix from a scalar. */
+    static func - (lhs: Double, rhs: Matrix) -> Matrix {
+        /**
+         var m = rhs
+         for r in 0..<m.rows {
+         for c in 0..<m.columns {
+         m[r, c] = lhs - rhs[r, c]
+         }
+         }
+         return m
+         */
+        
+        var results = rhs
+        var scalar = lhs
+        let length = vDSP_Length(rhs.rows * rhs.columns)
+        results.grid.withUnsafeMutableBufferPointer { ptr in
+            vDSP_vnegD(ptr.baseAddress!, 1, ptr.baseAddress!, 1, length)
+            vDSP_vsaddD(ptr.baseAddress!, 1, &scalar, ptr.baseAddress!, 1, length)
+        }
+        return results
+    }
+
+    /** Negates each element of the matrix. */
+    static prefix func -(m: Matrix) -> Matrix {
+        /**
+         var results = m
+         for r in 0..<m.rows {
+         for c in 0..<m.columns {
+         results[r, c] = -m[r, c]
+         }
+         }
+         return results
+         */
+        
+        var results = m
+        m.grid.withUnsafeBufferPointer { src in
+            results.grid.withUnsafeMutableBufferPointer { dst in
+                vDSP_vnegD(src.baseAddress!, 1, dst.baseAddress!, 1, vDSP_Length(m.rows * m.columns))
+            }
+        }
+        return results
+    }
+
+    /** Multiplies two matrices, or a matrix with a vector. */
+    static func <*> (lhs: Matrix, rhs: Matrix) -> Matrix {
+        precondition(lhs.columns == rhs.rows, "Cannot multiply \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
+        
+        var results = Matrix(rows: lhs.rows, columns: rhs.columns, repeatedValue: 0)
+        lhs.grid.withUnsafeBufferPointer { lhsPtr in
+            rhs.grid.withUnsafeBufferPointer { rhsPtr in
+                cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, Int32(lhs.rows), Int32(rhs.columns), Int32(lhs.columns), 1, lhsPtr.baseAddress, Int32(lhs.columns), rhsPtr.baseAddress, Int32(rhs.columns), 0, &results.grid, Int32(results.columns))
+            }
+        }
+        return results
+    }
+
+    /**
+     Multiplies each element of the lhs matrix by each element of the rhs matrix.
+     Either:
+     - both matrices have the same size
+     - rhs is a row vector with an equal number of columns as lhs
+     - rhs is a column vector with an equal number of rows as lhs
+     */
+    static func * (lhs: Matrix, rhs: Matrix) -> Matrix {
+        if lhs.columns == rhs.columns {
+            if rhs.rows == 1 {   // rhs is row vector
+                /**
+                 var results = lhs
+                 for r in 0..<results.rows {
+                 for c in 0..<results.columns {
+                 results[r, c] *= rhs[0, c]
+                 }
+                 }
+                 return results
+                 */
+                
+                var results = Matrix.zeros(size: lhs.size)
+                lhs.grid.withUnsafeBufferPointer{ src in
+                    results.grid.withUnsafeMutableBufferPointer{ dst in
+                        for c in 0..<lhs.columns {
+                            var v = rhs[c]
+                            vDSP_vsmulD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                        }
+                    }
+                }
+                return results
+                
+            } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
+                /**
+                 var results = lhs
+                 for r in 0..<results.rows {
+                 for c in 0..<results.columns {
+                 results[r, c] *= rhs[r, c]
+                 }
+                 }
+                 return results
+                 */
+                
+                var results = Matrix.zeros(size: lhs.size)
+                rhs.grid.withUnsafeBufferPointer{ srcX in
+                    lhs.grid.withUnsafeBufferPointer{ srcY in
+                        results.grid.withUnsafeMutableBufferPointer{ dstZ in
+                            vDSP_vmulD(srcX.baseAddress!, 1, srcY.baseAddress!, 1, dstZ.baseAddress!, 1, vDSP_Length(lhs.rows * lhs.columns))
+                        }
+                    }
+                }
+                return results
+            }
+            
+        } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
+            /**
+             var results = lhs
+             for c in 0..<results.columns {
+             for r in 0..<results.rows {
+             results[r, c] *= rhs[r, 0]
+             }
+             }
+             return results
+             */
+            
+            var results = Matrix.zeros(size: lhs.size)
+            lhs.grid.withUnsafeBufferPointer{ src in
+                results.grid.withUnsafeMutableBufferPointer{ dst in
+                    for r in 0..<lhs.rows {
+                        var v = rhs[r]
+                        vDSP_vsmulD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
+                    }
+                }
+            }
+            return results
+        }
+        
+        fatalError("Cannot element-wise multiply \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
+    }
+
+    /** Multiplies each element of the matrix with a scalar. */
+    static func * (lhs: Matrix, rhs: Double) -> Matrix {
+        var results = lhs
+        results.grid.withUnsafeMutableBufferPointer { ptr in
+            cblas_dscal(Int32(lhs.grid.count), rhs, ptr.baseAddress, 1)
+        }
+        return results
+    }
+
+    /** Multiplies each element of the matrix with a scalar. */
+    static func * (lhs: Double, rhs: Matrix) -> Matrix {
+        return rhs * lhs
+    }
+
+    /** Divides a matrix by another. This is the same as multiplying with the inverse. */
+    static func </> (lhs: Matrix, rhs: Matrix) -> Matrix {
+        let inv = rhs.inverse()
+        precondition(lhs.columns == inv.rows, "Cannot divide \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
+        return lhs <*> inv
+    }
+
+    /**
+     Divides each element of the lhs matrix by each element of the rhs matrix.
+     Either:
+     - both matrices have the same size
+     - rhs is a row vector with an equal number of columns as lhs
+     - rhs is a column vector with an equal number of rows as lhs
+     */
+    static func / (lhs: Matrix, rhs: Matrix) -> Matrix {
+        if lhs.columns == rhs.columns {
+            if rhs.rows == 1 {   // rhs is row vector
+                /**
+                 var results = lhs
+                 for r in 0..<results.rows {
+                 for c in 1..<results.columns {
+                 results[r, c] /= rhs[0, c]
+                 }
+                 }
+                 return results
+                 */
+                
+                var results = Matrix.zeros(size: lhs.size)
+                lhs.grid.withUnsafeBufferPointer{ src in
+                    results.grid.withUnsafeMutableBufferPointer{ dst in
+                        for c in 0..<lhs.columns {
+                            var v = rhs[c]
+                            vDSP_vsdivD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                        }
+                    }
+                }
+                return results
+                
+            } else if lhs.rows == rhs.rows {   // lhs and rhs are same size
+                /**
+                 var results = lhs
+                 for r in 0..<results.rows {
+                 for c in 0..<results.columns {
+                 results[r, c] /= rhs[r, c]
+                 }
+                 }
+                 return results
+                 */
+                
+                var results = Matrix.zeros(size: lhs.size)
+                rhs.grid.withUnsafeBufferPointer{ srcX in
+                    lhs.grid.withUnsafeBufferPointer{ srcY in
+                        results.grid.withUnsafeMutableBufferPointer{ dstZ in
+                            vDSP_vdivD(srcX.baseAddress!, 1, srcY.baseAddress!, 1, dstZ.baseAddress!, 1, vDSP_Length(lhs.rows * lhs.columns))
+                        }
+                    }
+                }
+                return results
+            }
+            
+        } else if lhs.rows == rhs.rows && rhs.columns == 1 {  // rhs is column vector
+            /**
+             var results = lhs
+             for c in 0..<results.columns {
+             for r in 0..<results.rows {
+             results[r, c] /= rhs[r, 0]
+             }
+             }
+             return results
+             */
+            
+            var results = Matrix.zeros(size: lhs.size)
+            lhs.grid.withUnsafeBufferPointer{ src in
+                results.grid.withUnsafeMutableBufferPointer{ dst in
+                    for r in 0..<lhs.rows {
+                        var v = rhs[r]
+                        vDSP_vsdivD(src.baseAddress! + r*lhs.columns, 1, &v, dst.baseAddress! + r*lhs.columns, 1, vDSP_Length(lhs.columns))
+                    }
+                }
+            }
+            return results
+        }
+        
+        fatalError("Cannot element-wise divide \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
+    }
+
+    /** Divides each element of the matrix by a scalar. */
+    static func / (lhs: Matrix, rhs: Double) -> Matrix {
+        var results = lhs
+        results.grid.withUnsafeMutableBufferPointer { ptr in
+            cblas_dscal(Int32(lhs.grid.count), 1/rhs, ptr.baseAddress, 1)
+        }
+        return results
+    }
+
+    /** Divides a scalar by each element of the matrix. */
+    static func / (lhs: Double, rhs: Matrix) -> Matrix {
+        /**
+         var m = rhs
+         for r in 0..<m.rows {
+         for c in 0..<m.columns {
+         m[r, c] = lhs / rhs[r, c]
+         }
+         }
+         return m
+         */
+        
+        var results = rhs
+        rhs.grid.withUnsafeBufferPointer { src in
+            results.grid.withUnsafeMutableBufferPointer { dst in
+                var scalar = lhs
+                vDSP_svdivD(&scalar, src.baseAddress!, 1, dst.baseAddress!, 1, vDSP_Length(rhs.rows * rhs.columns))
+            }
+        }
+        return results
+    }
 }
+
 
 // MARK: - Other maths
 extension Matrix {
