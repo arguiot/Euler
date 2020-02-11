@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Accelerate
 
 public extension Tables {
     /// Absolute value of a number
@@ -293,9 +294,12 @@ public extension Tables {
     }
     // MARK: TODO MATRICES
     
-//    func MDETERM(_ m: Matrix) -> BigDouble {
-//        return .zero
-//    }
+    /// Returns the matrix determinant
+    /// - Parameter lhs: The `Matrix` you want to use.
+    func MDETERM(_ lhs: Matrix) throws -> BigDouble {
+        guard let det = lhs.determinant() else { throw TablesError.NULL }
+        return det
+    }
     
     /// The MINVERSE function returns the inverse matrix for a matrix stored in a `Matrix` object (Tables will convert that when using the parser).
     /// - Parameter m: A numeric Matrix with an equal number of rows and columns.

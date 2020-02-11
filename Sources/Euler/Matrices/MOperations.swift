@@ -10,6 +10,14 @@ import Accelerate
 
 // MARK: - Operations
 extension Matrix {
+    /// Inverse of the Matrix
+    ///
+    /// In linear algebra, an n-by-n square matrix A is called invertible (also nonsingular or nondegenerate) if there exists an n-by-n square matrix B such that
+    /// ```$
+    /// AB = BA = I_n
+    /// $```
+    /// where In denotes the n-by-n identity matrix and the multiplication used is ordinary matrix multiplication.
+    ///
     public func inverse() -> Matrix {
         precondition(rows == columns, "Matrix must be square")
         
@@ -33,6 +41,9 @@ extension Matrix {
 }
 
 extension Matrix {
+    /// Transpose the `Matrix` by flipping it diagonally
+    ///
+    /// In linear algebra, the transpose of a matrix is an operator which flips a matrix over its diagonal, that is it switches the row and column indices of the matrix by producing another matrix denoted as A'
     public func transpose() -> Matrix {
         var results = Matrix(rows: columns, columns: rows, repeatedValue: 0)
         grid.withUnsafeBufferPointer { srcPtr in
@@ -48,6 +59,8 @@ infix operator <*> : MultiplicationPrecedence
 
 public extension Matrix {
     
+    /// Transpose the `Matrix` by flipping it diagonally
+    /// - Parameter value: The `Matrix` you want to transpose
     static postfix func ′ (value: Matrix) -> Matrix {
         return value.transpose()
     }
@@ -118,7 +131,7 @@ public extension Matrix {
         
         fatalError("Cannot add \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
     }
-
+    /** Element-by-element addition of the same `Matrix` with another */
     static func += (lhs: inout Matrix, rhs: Matrix) {
         lhs = lhs + rhs
     }
@@ -144,7 +157,7 @@ public extension Matrix {
         }
         return results
     }
-
+    /** Adds a scalar to each element of the same matrix. */
     static func += (lhs: inout Matrix, rhs: Double) {
         lhs = lhs + rhs
     }
@@ -225,7 +238,7 @@ public extension Matrix {
     static func - (lhs: Matrix, rhs: Double) -> Matrix {
         return lhs + (-rhs)
     }
-
+    /** Subtracts a scalar from each element of the same matrix. */
     static func -= (lhs: inout Matrix, rhs: Double) {
         lhs = lhs - rhs
     }
@@ -594,7 +607,7 @@ extension Matrix {
     }
     
     /** Adds up all the elements in the matrix. */
-    public func sum() -> Double {
+    public func sum() -> BigDouble {
         var result = 0.0
         
         /**
@@ -608,7 +621,7 @@ extension Matrix {
         grid.withUnsafeBufferPointer { src in
             vDSP_sveD(src.baseAddress!, 1, &result, vDSP_Length(rows * columns))
         }
-        return result
+        return BigDouble(result)
     }
     
     /** Adds up the elements in each row. Returns a column vector. */
@@ -653,6 +666,39 @@ extension Matrix {
             }
         }
         return result
+    }
+    
+    /// Returns the matrix determinant
+    ///
+    /// In linear algebra, the determinant is a scalar value that can be computed from the elements of a square matrix and encodes certain properties of the linear transformation described by the matrix. The determinant of a matrix A is denoted det(A), det A, or |A|. Geometrically, it can be viewed as the volume scaling factor of the linear transformation described by the matrix. This is also the signed volume of the n-dimensional parallelepiped spanned by the column or row vectors of the matrix. The determinant is positive or negative according to whether the linear mapping preserves or reverses the orientation of n-space.
+    ///
+    public func determinant() -> BigDouble? {
+        let lhs = self
+        var decomposed = lhs
+        let c = [decomposed.rows, decomposed.columns]
+        var pivots = [__CLPK_integer](repeating: 0, count: c.min()!)
+        var info = __CLPK_integer()
+        var m = __CLPK_integer(decomposed.rows)
+        var n = __CLPK_integer(decomposed.columns)
+        _ = withUnsafeMutableMemory(&pivots, &(decomposed.grid)) { ipiv, grid in
+            withUnsafeMutablePointers(&m, &n, &info) { m, n, info in
+                dgetrf_(m, n, grid.pointer, m, ipiv.pointer, info)
+            }
+        }
+
+        if info != 0 {
+            return nil
+        }
+
+        var det = 1 as Double
+        for (i, p) in zip(pivots.indices, pivots) {
+            if p != i + 1 {
+                det = -det * decomposed[i, i]
+            } else {
+                det = det * decomposed[i, i]
+            }
+        }
+        return BigDouble(det)
     }
 }
 
