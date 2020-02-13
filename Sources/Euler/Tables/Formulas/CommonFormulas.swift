@@ -499,4 +499,98 @@ public extension Tables {
             return 1;
         }
     }
+    
+    /// Sinus function
+    /// - Parameter n: Any real less than 2pi
+    func SIN(_ n: BigDouble) throws -> BigDouble {
+        let mod = n % (2 * BigDouble(constant: .pi))
+        guard let double = mod.asDouble() else { throw TablesError.Overflow }
+        return BigDouble(cos(double))
+    }
+    
+    /// Hyperbolic sinus function
+    /// - Parameter n: Any real
+    func SINH(_ n: BigDouble) -> BigDouble {
+        return (exp(n) - exp(-n)) / 2
+    }
+    
+    /// Returns a positive square root.
+    /// - Parameter n: The number for which you want the square root.
+    func SQRT(_ n: BigDouble) -> BigDouble {
+        return abs(n).squareRoot()
+    }
+    
+    /// Returns the square root of (number * pi).
+    /// - Parameter n: The number by which pi is multiplied.
+    func SQRTPI(_ n: BigDouble) -> BigDouble {
+        return abs(n * pi).squareRoot()
+    }
+    // MARK: Todo: SUBTOTAL
+    
+    /// Add 2 numbers
+    /// - Parameters:
+    ///   - a: Any real
+    ///   - b: Any real
+    func ADD(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
+        return a + b
+    }
+    
+    /// Substract 2 numbers
+    /// - Parameters:
+    ///   - a: Any real
+    ///   - b: Any real
+    func MINUS(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
+        return a - b
+    }
+    
+    /// Divide 2 numbers
+    /// - Parameters:
+    ///   - a: Any real
+    ///   - b: Any real
+    func DIVIDE(_ a: BigDouble, _ b: BigDouble) throws -> BigDouble {
+        guard b != 0 else { throw TablesError.DivisionByZero }
+        return a / b
+    }
+    
+    /// Multiply 2 numbers
+    /// - Parameters:
+    ///   - a: Any real
+    ///   - b: Any real
+    func MULTIPLY(_ a: BigDouble, _ b: BigDouble) throws -> BigDouble {
+        guard b != 0 else { throw TablesError.DivisionByZero }
+        return a * b
+    }
+    /// Greater than or equal (`>=`)
+    func GTE(_ a: BigDouble, _ b: BigDouble) -> Bool {
+        return a >= b
+    }
+    /// Less than (`<`)
+    func LT(_ a: BigDouble, _ b: BigDouble) -> Bool {
+        return a < b
+    }
+    /// Less than or equal (`<=`)
+    func LTE(_ a: BigDouble, _ b: BigDouble) -> Bool {
+        return a <= b
+    }
+    /// Equal (`==`)
+    func EQ(_ a: BigDouble, _ b: BigDouble) -> Bool {
+        return a == b
+    }
+    /// Not equal (`==`)
+    func NE(_ a: BigDouble, _ b: BigDouble) -> Bool {
+        return a != b
+    }
+    
+    /// Returns the result of a number raised to a power. Same as `POWER`
+    ///
+    /// Let's say you want to calculate an extremely small tolerance level for a machined part or the vast distance between two galaxies. To raise a number to a power, use the POWER function.
+    ///
+    /// > The "^" operator can be used instead of POWER to indicate to what power the base number is to be raised, such as in 5^2.
+    /// - Parameters:
+    ///   - a: The base number. It can be any real number.
+    ///   - b: The exponent to which the base number is raised.
+    func POW(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
+        return POWER(a, b)
+    }
+    
 }
