@@ -1919,6 +1919,123 @@ Any columns not in the range are set to 0.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Euler6MatrixV20solveEquationsSystem6vectorACSaySdG_tKF"></a>
+                    <a name="//apple_ref/swift/Method/solveEquationsSystem(vector:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6MatrixV20solveEquationsSystem6vectorACSaySdG_tKF">solveEquationsSystem(vector:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Solve any system of equations.</p>
+
+<p>Equations involving matrices and vectors of real numbers can often be solved by using methods from linear algebra. A finite set of linear equations in a finite set of variables, for example <code>$x_1, x_2,..., x_n$</code> or <code>$x, y, ..., z$</code>, is called a system of linear equations or a linear system. Systems of linear equations form a fundamental part of linear algebra. Historically, linear algebra and matrix theory has been developed for solving such systems. In the modern presentation of linear algebra through vector spaces and matrices, many problems may be interpreted in terms of linear systems.</p>
+
+<p>For example, let</p>
+<pre class="highlight swift"><code><span class="err">$$</span>
+ <span class="mi">2</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">-</span>  <span class="n">z</span> <span class="o">=</span>  <span class="mi">8</span>
+<span class="o">-</span><span class="mi">3</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span>
+<span class="o">-</span><span class="mi">2</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="err">$$</span>
+</code></pre>
+
+<p>be a linear system.
+To such a system, one may associate its matrix</p>
+<pre class="highlight swift"><code>  <span class="err">⎛</span>  <span class="mi">2</span>         <span class="mi">1</span>        <span class="o">-</span><span class="mi">1</span> <span class="err">⎞</span>
+<span class="kt">M</span> <span class="err">⎜</span> <span class="o">-</span><span class="mi">3</span>        <span class="o">-</span><span class="mi">1</span>         <span class="mi">2</span> <span class="err">⎥</span>
+  <span class="err">⎝</span> <span class="o">-</span><span class="mi">2</span>         <span class="mi">1</span>         <span class="mi">2</span> <span class="err">⎠</span>
+</code></pre>
+
+<p>and its right member vector</p>
+<pre class="highlight swift"><code>  <span class="err">⎛</span>  <span class="mi">8</span>  <span class="err">⎞</span>
+<span class="n">v</span> <span class="err">⎜</span> <span class="o">-</span><span class="mi">11</span> <span class="err">⎥</span>
+  <span class="err">⎝</span> <span class="o">-</span><span class="mi">3</span>  <span class="err">⎠</span>
+</code></pre>
+
+<p>Let T be the linear transformation associated to the matrix M. A solution of the system (S) is a vector</p>
+<pre class="highlight swift"><code>  <span class="err">⎛</span> <span class="n">x</span> <span class="err">⎞</span>
+<span class="kt">X</span> <span class="err">⎜</span> <span class="n">y</span> <span class="err">⎥</span>
+  <span class="err">⎝</span> <span class="n">z</span> <span class="err">⎠</span>
+</code></pre>
+
+<p>such that <code>$T(X)=v$</code></p>
+
+<p>that is an element of the preimage of v by T.
+Let (S&rsquo;) be the associated homogeneous system, where the right-hand sides of the equations are put to zero:</p>
+<pre class="highlight swift"><code><span class="err">$$</span>
+ <span class="mi">2</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">-</span>  <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">3</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">2</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="err">$$</span>
+</code></pre>
+
+<p>The solutions of (S&rsquo;) are exactly the elements of the kernel of T or, equivalently, M.
+The Gaussian-elimination consists of performing elementary row operations on the augmented matrix</p>
+<pre class="highlight swift"><code>  <span class="err">⎛</span>  <span class="mi">2</span>         <span class="mi">1</span>        <span class="o">-</span><span class="mi">1</span>  <span class="o">|</span>  <span class="mi">8</span>  <span class="err">⎞</span>
+<span class="kt">M</span> <span class="err">⎜</span> <span class="o">-</span><span class="mi">3</span>        <span class="o">-</span><span class="mi">1</span>         <span class="mi">2</span>  <span class="o">|</span> <span class="o">-</span><span class="mi">11</span> <span class="err">⎥</span>
+  <span class="err">⎝</span> <span class="o">-</span><span class="mi">2</span>         <span class="mi">1</span>         <span class="mi">2</span>  <span class="o">|</span> <span class="o">-</span><span class="mi">3</span>  <span class="err">⎠</span>
+</code></pre>
+
+<p>for putting it in reduced row echelon form. These row operations do not change the set of solutions of the system of equations. In the example, the reduced echelon form is</p>
+<pre class="highlight swift"><code>  <span class="err">⎛</span>  <span class="mi">1</span>        <span class="mi">0</span>        <span class="mi">0</span>  <span class="o">|</span>  <span class="mi">2</span> <span class="err">⎞</span>
+<span class="kt">M</span> <span class="err">⎜</span> <span class="mi">0</span>         <span class="mi">1</span>        <span class="mi">0</span>  <span class="o">|</span>  <span class="mi">3</span> <span class="err">⎥</span>
+  <span class="err">⎝</span> <span class="mi">0</span>         <span class="mi">0</span>        <span class="mi">1</span>  <span class="o">|</span> <span class="o">-</span><span class="mi">1</span> <span class="err">⎠</span>
+</code></pre>
+
+<p>showing that the system (S) has the unique solution</p>
+<pre class="highlight swift"><code><span class="err">$$</span>
+ <span class="n">x</span> <span class="o">=</span>  <span class="mi">2</span>
+ <span class="n">y</span> <span class="o">=</span>  <span class="mi">3</span>
+ <span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="err">$$</span>
+</code></pre>
+
+<p>It follows from this matrix interpretation of linear systems that the same methods can be applied for solving linear systems and for many operations on matrices and linear transformations, which include the computation of the ranks, kernels, matrix inverses.</p>
+
+<p>So, you can reproduce the exact same process with:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">m</span> <span class="o">=</span> <span class="kt">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span> <span class="k">as</span> <span class="p">[[</span><span class="kt">Double</span><span class="p">]])</span> <span class="c1">// Creating the Matrix</span>
+<span class="k">let</span> <span class="nv">s</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="nf">solveEquationsSystem</span><span class="p">(</span><span class="nv">vector</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span> <span class="c1">// Solving the system</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">solveEquationsSystem</span><span class="p">(</span><span class="nv">vector</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Matrix</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vector</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result vector</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MOperations.swift#L1043-L1058">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Euler6MatrixV5zeros4rows7columnsACSi_SitFZ"></a>
                     <a name="//apple_ref/swift/Method/zeros(rows:columns:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Euler6MatrixV5zeros4rows7columnsACSi_SitFZ">zeros(rows:columns:)</a>
@@ -3084,7 +3201,7 @@ Any columns not in the range are set to 0.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-02-13)</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-02-14)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
