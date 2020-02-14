@@ -29,7 +29,7 @@ public extension Statistics {
         return try Polynomial(slope, intercept)
     }
     
-//    static func polynomialRegression(points: [Point], deg: Int = 2) -> Polynomial {
+//    static func polynomialRegression(points: [Point], deg: Int = 2) throws -> Polynomial {
 //        var lhs = [BigDouble]()
 //        var rhs = [[BigDouble]]()
 //        
@@ -57,5 +57,11 @@ public extension Statistics {
 //            rhs.append(c)
 //        }
 //        rhs.append(lhs)
+//        
+//        let matrix = Matrix(rhs)
+//        
+//        let eq = try matrix.gaussElimination(vector: [Double(k)])
+//        let grid = eq.grid.map { BigDouble($0) }
+//        return try Polynomial(grid)
 //    }
 }

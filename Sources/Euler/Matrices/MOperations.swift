@@ -64,7 +64,7 @@ public extension Matrix {
     static postfix func ′ (value: Matrix) -> Matrix {
         return value.transpose()
     }
-
+    
     // MARK: - Arithmetic
     /**
      Element-by-element addition.
@@ -135,7 +135,7 @@ public extension Matrix {
     static func += (lhs: inout Matrix, rhs: Matrix) {
         lhs = lhs + rhs
     }
-
+    
     /** Adds a scalar to each element of the matrix. */
     static func + (lhs: Matrix, rhs: Double) -> Matrix {
         /**
@@ -161,12 +161,12 @@ public extension Matrix {
     static func += (lhs: inout Matrix, rhs: Double) {
         lhs = lhs + rhs
     }
-
+    
     /** Adds a scalar to each element of the matrix. */
     static func + (lhs: Double, rhs: Matrix) -> Matrix {
         return rhs + lhs
     }
-
+    
     /**
      Element-by-element subtraction.
      Either:
@@ -233,7 +233,7 @@ public extension Matrix {
         
         fatalError("Cannot subtract \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
     }
-
+    
     /** Subtracts a scalar from each element of the matrix. */
     static func - (lhs: Matrix, rhs: Double) -> Matrix {
         return lhs + (-rhs)
@@ -242,7 +242,7 @@ public extension Matrix {
     static func -= (lhs: inout Matrix, rhs: Double) {
         lhs = lhs - rhs
     }
-
+    
     /** Subtracts each element of the matrix from a scalar. */
     static func - (lhs: Double, rhs: Matrix) -> Matrix {
         /**
@@ -264,7 +264,7 @@ public extension Matrix {
         }
         return results
     }
-
+    
     /** Negates each element of the matrix. */
     static prefix func -(m: Matrix) -> Matrix {
         /**
@@ -285,7 +285,7 @@ public extension Matrix {
         }
         return results
     }
-
+    
     /** Multiplies two matrices, or a matrix with a vector. */
     static func <*> (lhs: Matrix, rhs: Matrix) -> Matrix {
         precondition(lhs.columns == rhs.rows, "Cannot multiply \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
@@ -298,7 +298,7 @@ public extension Matrix {
         }
         return results
     }
-
+    
     /**
      Multiplies each element of the lhs matrix by each element of the rhs matrix.
      Either:
@@ -377,7 +377,7 @@ public extension Matrix {
         
         fatalError("Cannot element-wise multiply \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
     }
-
+    
     /** Multiplies each element of the matrix with a scalar. */
     static func * (lhs: Matrix, rhs: Double) -> Matrix {
         var results = lhs
@@ -386,19 +386,19 @@ public extension Matrix {
         }
         return results
     }
-
+    
     /** Multiplies each element of the matrix with a scalar. */
     static func * (lhs: Double, rhs: Matrix) -> Matrix {
         return rhs * lhs
     }
-
+    
     /** Divides a matrix by another. This is the same as multiplying with the inverse. */
     static func </> (lhs: Matrix, rhs: Matrix) -> Matrix {
         let inv = rhs.inverse()
         precondition(lhs.columns == inv.rows, "Cannot divide \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
         return lhs <*> inv
     }
-
+    
     /**
      Divides each element of the lhs matrix by each element of the rhs matrix.
      Either:
@@ -477,7 +477,7 @@ public extension Matrix {
         
         fatalError("Cannot element-wise divide \(lhs.rows)×\(lhs.columns) matrix and \(rhs.rows)×\(rhs.columns) matrix")
     }
-
+    
     /** Divides each element of the matrix by a scalar. */
     static func / (lhs: Matrix, rhs: Double) -> Matrix {
         var results = lhs
@@ -486,7 +486,7 @@ public extension Matrix {
         }
         return results
     }
-
+    
     /** Divides a scalar by each element of the matrix. */
     static func / (lhs: Double, rhs: Matrix) -> Matrix {
         /**
@@ -685,11 +685,11 @@ extension Matrix {
                 dgetrf_(m, n, grid.pointer, m, ipiv.pointer, info)
             }
         }
-
+        
         if info != 0 {
             return nil
         }
-
+        
         var det = 1 as Double
         for (i, p) in zip(pivots.indices, pivots) {
             if p != i + 1 {
@@ -961,5 +961,120 @@ extension Matrix {
      */
     public func std(_ range: CountableClosedRange<Int>) -> Matrix{
         return std(CountableRange(range))
+    }
+    
+    
+    fileprivate enum MatrixSystemError: Error {
+        case SolveError
+    }
+    
+    /// Solve any system of equations.
+    ///
+    /// Equations involving matrices and vectors of real numbers can often be solved by using methods from linear algebra. A finite set of linear equations in a finite set of variables, for example `$x_1, x_2,..., x_n$` or `$x, y, ..., z$`, is called a system of linear equations or a linear system. Systems of linear equations form a fundamental part of linear algebra. Historically, linear algebra and matrix theory has been developed for solving such systems. In the modern presentation of linear algebra through vector spaces and matrices, many problems may be interpreted in terms of linear systems.
+    ///
+    /// For example, let
+    /// ```
+    /// $$
+    ///  2x + y -  z =  8
+    /// -3x - y + 2z = -11
+    /// -2x + y + 2z = -3
+    /// $$
+    /// ```
+    /// be a linear system.
+    /// To such a system, one may associate its matrix
+    /// ```
+    ///   ⎛  2         1        -1 ⎞
+    /// M ⎜ -3        -1         2 ⎥
+    ///   ⎝ -2         1         2 ⎠
+    /// ```
+    /// and its right member vector
+    /// ```
+    ///   ⎛  8  ⎞
+    /// v ⎜ -11 ⎥
+    ///   ⎝ -3  ⎠
+    /// ```
+    /// Let T be the linear transformation associated to the matrix M. A solution of the system (S) is a vector
+    /// ```
+    ///   ⎛ x ⎞
+    /// X ⎜ y ⎥
+    ///   ⎝ z ⎠
+    /// ```
+    /// such that `$T(X)=v$`
+    ///
+    /// that is an element of the preimage of v by T.
+    /// Let (S') be the associated homogeneous system, where the right-hand sides of the equations are put to zero:
+    /// ```
+    /// $$
+    ///  2x + y -  z = 0
+    /// -3x - y + 2z = 0
+    /// -2x + y + 2z = 0
+    /// $$
+    /// ```
+    /// The solutions of (S') are exactly the elements of the kernel of T or, equivalently, M.
+    /// The Gaussian-elimination consists of performing elementary row operations on the augmented matrix
+    /// ```
+    ///   ⎛  2         1        -1  |  8  ⎞
+    /// M ⎜ -3        -1         2  | -11 ⎥
+    ///   ⎝ -2         1         2  | -3  ⎠
+    /// ```
+    /// for putting it in reduced row echelon form. These row operations do not change the set of solutions of the system of equations. In the example, the reduced echelon form is
+    /// ```
+    ///   ⎛  1        0        0  |  2 ⎞
+    /// M ⎜ 0         1        0  |  3 ⎥
+    ///   ⎝ 0         0        1  | -1 ⎠
+    /// ```
+    /// showing that the system (S) has the unique solution
+    /// ```
+    /// $$
+    ///  x =  2
+    ///  y =  3
+    ///  z = -1
+    /// $$
+    /// ```
+    /// It follows from this matrix interpretation of linear systems that the same methods can be applied for solving linear systems and for many operations on matrices and linear transformations, which include the computation of the ranks, kernels, matrix inverses.
+    ///
+    /// So, you can reproduce the exact same process with:
+    /// ```swift
+    /// let m = Matrix([[2,1-1],[-3,-1,2],[-2,1,2]] as [[Double]]) // Creating the Matrix
+    /// let s = m.solveEquationsSystem(vector: [8, -11, -3]) // Solving the system
+    /// ```
+    ///
+    /// - Parameter vector: The result vector
+    public func solveEquationsSystem(vector: [Double]) throws -> Matrix {
+        let flatMatrix = self.grid
+        let matrix = self.array
+        let laMatrix:la_object_t =
+            la_matrix_from_double_buffer(flatMatrix,  la_count_t(matrix.count),  la_count_t(matrix[0].count),  la_count_t(matrix[0].count), la_hint_t(LA_NO_HINT), la_attribute_t(LA_DEFAULT_ATTRIBUTES))
+        let laVector = la_matrix_from_double_buffer(vector, la_count_t(vector.count), 1, 1, la_hint_t(LA_NO_HINT), la_attribute_t(LA_DEFAULT_ATTRIBUTES))
+        let vecCj = la_solve(laMatrix, laVector)
+        var result: [Double] = Array(repeating: 0.0, count: matrix.count)
+        let status = la_matrix_to_double_buffer(&result, 1, vecCj)
+
+        if status == la_status_t(LA_SUCCESS) {
+           return Matrix(result)
+        } else {
+            throw MatrixSystemError.SolveError
+        }
+    }
+    
+    /// Gaussian Elimination used in `Statistics`
+    ///
+    /// Gaussian elimination, also known as row reduction, is an algorithm in linear algebra for solving a system of linear equations. It is usually understood as a sequence of operations performed on the corresponding matrix of coefficients. This method can also be used to find the rank of a matrix, to calculate the determinant of a matrix, and to calculate the inverse of an invertible square matrix. The method is named after Carl Friedrich Gauss.
+    /// - Parameter order: The degree to which we solve the system
+    internal func gaussElimination(vector: [Double]) throws -> Matrix {
+        let flatMatrix = self.grid
+        let matrix = self.array
+        let laMatrix:la_object_t =
+            la_matrix_from_double_buffer(flatMatrix,  la_count_t(matrix.count),  la_count_t(matrix[0].count),  la_count_t(matrix[0].count), la_hint_t(LA_NO_HINT), la_attribute_t(LA_DEFAULT_ATTRIBUTES))
+        let laVector = la_matrix_from_double_buffer(vector, la_count_t(vector.count), 1, 1, la_hint_t(LA_NO_HINT), la_attribute_t(LA_DEFAULT_ATTRIBUTES))
+        let vecCj = la_solve(laMatrix, laVector)
+        var result: [Double] = Array(repeating: 0.0, count: matrix.count)
+        let status = la_matrix_to_double_buffer(&result, 1, vecCj)
+
+        if status == la_status_t(LA_SUCCESS) {
+           return Matrix(result)
+        } else {
+            throw MatrixSystemError.SolveError
+        }
     }
 }
