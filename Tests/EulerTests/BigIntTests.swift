@@ -127,6 +127,7 @@ class BigIntTests: XCTestCase {
         
 //        let r = try? Statistics.polynomialRegression(points: [Point(x: 0, y: 2),Point(x: 2, y: 4),Point(x: 3, y: 5)])
         
+        try? Regression(x: Matrix(arrayLiteral: 0, 2, 3), y: Matrix(arrayLiteral: 2, 4, 5), degree: 2).betas
     }
     
     static var allTests = [
