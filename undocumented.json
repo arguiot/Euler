@@ -884,7 +884,7 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Statistics/Regression.swift",
-      "line": 11,
+      "line": 12,
       "symbol": "Statistics.linearRegression(points:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
