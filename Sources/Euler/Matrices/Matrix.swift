@@ -160,11 +160,6 @@ extension Matrix {
         }
         return m
     }
-    
-    /// Sets all values to `value`.
-    mutating func setValues(value: Double) {
-        self.grid = Array<Double>(repeating: value, count: grid.count)
-    }
 }
 
 extension Matrix {

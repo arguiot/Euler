@@ -1077,41 +1077,4 @@ extension Matrix {
             throw MatrixSystemError.SolveError
         }
     }
-    
-    /// Concatenate two Double arrays
-    private func concat(_ v1: [Double], _ v2: [Double]) -> [Double] {
-        var values = Array<Double>(repeating: 0, count: v1.count + v2.count)
-        
-        values[0..<v1.count] = ArraySlice(v1)
-        values[v1.count..<v1.count + v2.count] = ArraySlice(v2)
-        
-        return values
-    }
-    
-    /// Appends a Matrix horizontally to the current Matrix.
-    ///
-    /// - parameter m: The Matrix that should be appended.
-    /// - returns: A new Matrix based on the current Matrix and `m`.
-    func appendHorizontal(m: Matrix) -> Matrix {
-        
-        let a = self.transpose().grid
-        let b = m.transpose().grid
-        let values = concat(a, b)
-        var result = Matrix(rows: self.columns + m.columns, columns: m.rows, grid: values)
-        
-        return result.transpose()
-    }
-    
-    
-    /// Appends a Matrix vertically to the current Matrix.
-    ///
-    /// - parameter m: The Matrix that should be appended.
-    /// - returns: A new Matrix based on the current Matrix and `m`.
-    func appendVertical(m: Matrix) -> Matrix {
-        let values = concat(self.grid, m.grid)
-        
-        let result = Matrix(rows: self.columns + m.columns, columns: m.rows, grid: values)
-        
-        return result
-    }
 }

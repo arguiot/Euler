@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Accelerate
 
 public extension Statistics {
     static func linearRegression(points: [Point]) throws -> Polynomial {
@@ -65,53 +64,4 @@ public extension Statistics {
 //        let grid = eq.grid.map { BigDouble($0) }
 //        return try Polynomial(grid)
 //    }
-}
-
-class Regression {
-    let degree: Int
-    
-    private (set) var betas: [Double] = []
-    
-    
-    init(x: Matrix, y: Matrix, degree: Int) throws {
-        self.degree = degree
-        self.betas = try self.findBetas(x: x, y: y, degree: degree)
-    }
-    
-    
-    private func calculatePowersOfX(x: Matrix) -> Matrix {
-        var newX = x
-        
-        if degree > 1 {
-            for i in 2...degree {
-                let degreeOfX = Matrix(rows: x.rows, columns: 1, grid: x.grid.map({ pow($0, Double(i)) }))
-                
-                newX = newX.appendHorizontal(m: degreeOfX)
-            }
-        }
-        
-        return newX
-    }
-    
-    
-    private func findBetas(x: Matrix, y: Matrix, degree: Int) throws -> [Double] {
-        let newX = calculatePowersOfX(x: x)
-        let ones = Matrix(rows: y.rows, columns: 1, repeatedValue: 1)
-        let onedNewX = ones.appendHorizontal(m: newX)
-        
-        let a = (onedNewX.transpose() <*> onedNewX)
-        let b = (onedNewX.transpose() <*> y)
-        
-        return try a.solveEquationsSystem(vector: b.grid).grid
-    }
-    
-    
-    func predict(x: Matrix) -> Matrix {
-        let beta = Matrix(rows: betas.count, columns: 1, grid: betas)
-        let newX = calculatePowersOfX(x: x)
-        let ones = Matrix(rows: newX.rows, columns: 1, repeatedValue: 1)
-        let onedNewX = ones.appendHorizontal(m: newX)
-        
-        return onedNewX * beta
-    }
 }
