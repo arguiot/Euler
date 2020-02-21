@@ -300,6 +300,8 @@ public extension Matrix {
     }
     
     /**
+     Warning: This is not the dot product, see `<*>` for that.
+     
      Multiplies each element of the lhs matrix by each element of the rhs matrix.
      Either:
      - both matrices have the same size

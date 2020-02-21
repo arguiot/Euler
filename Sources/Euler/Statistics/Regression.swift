@@ -32,11 +32,11 @@ public extension Statistics {
 //    static func polynomialRegression(points: [Point], deg: Int = 2) throws -> Polynomial {
 //        var lhs = [BigDouble]()
 //        var rhs = [[BigDouble]]()
-//        
+//
 //        var a: BigDouble = 0
 //        var b: BigDouble = 0
 //        let len = points.count
-//        
+//
 //        let k = deg + 1
 //        for i in 0..<k {
 //            for l in 0..<len {
@@ -44,9 +44,9 @@ public extension Statistics {
 //            }
 //            lhs.append(a)
 //            a = 0
-//            
+//
 //            var c = [BigDouble]()
-//            
+//
 //            for j in 0..<k {
 //                for l in 0..<len {
 //                    b += points[l].x ** (i + j)
@@ -57,9 +57,9 @@ public extension Statistics {
 //            rhs.append(c)
 //        }
 //        rhs.append(lhs)
-//        
+//
 //        let matrix = Matrix(rhs)
-//        
+//
 //        let eq = try matrix.gaussElimination(vector: [Double(k)])
 //        let grid = eq.grid.map { BigDouble($0) }
 //        return try Polynomial(grid)

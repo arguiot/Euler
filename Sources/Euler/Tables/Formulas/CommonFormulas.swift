@@ -9,6 +9,8 @@ import Foundation
 import Accelerate
 
 public extension Tables {
+    // MARK: Common Formulas + Trigonometry
+    
     /// Absolute value of a number
     /// - Parameter number: A `BigDouble`
     func ABS(_ number: BigNumber) -> BigNumber {
@@ -593,4 +595,92 @@ public extension Tables {
         return POWER(a, b)
     }
     
+    /// The SUM function adds values.
+    /// - Parameter n: The numbers you want to sum
+    func SUM(_ n: BigDouble...) -> BigDouble {
+        return n.reduce(BigDouble.zero) { $0 + $1 }
+    }
+    
+    // MARK: TODO: SUMIF(s)
+    
+    /// The SUMPRODUCT function returns the sum of the products of corresponding ranges or arrays.
+    ///
+    /// Example: `SUMPRODUCT([1, 2, 3], [2, 3, 4]) //= 20`
+    /// - Parameter a: An array of numbers
+    func SUMPRODUCT(_ a: [BigDouble]...) throws -> BigDouble {
+        guard let f = a.first else { return .zero }
+        var vector = Matrix(rows: f.count, columns: 1, repeatedValue: 1)
+        for i in a {
+            guard i.count == f.count else { throw TablesError.Arguments }
+            let v1 = Matrix(i.map { $0.asDouble() ?? 0 }, isColumnVector: true)
+            vector = vector * v1
+        }
+        return vector.sum()
+    }
+    
+    /// Returns the sum of the squares of the arguments.
+    /// - Parameter n: The numbers you want to square and sum
+    func SUMSQ(_ n: BigDouble...) -> BigDouble {
+        return n.reduce(BigDouble.zero) { $0 + ($1 * $1) }
+    }
+    
+    /// Returns the sum of the difference of squares of corresponding values in two arrays.
+    /// - Parameters:
+    ///   - a1: List of number
+    ///   - a2: List of number
+    func SUMX2MY2(_ a1: [BigDouble], _ a2: [BigDouble]) throws -> BigDouble {
+        guard a1.count == a2.count else { throw TablesError.Arguments }
+        let s1 = a1.reduce(BigDouble.zero) { $0 + ($1 * $1) }
+        let s2 = a2.reduce(BigDouble.zero) { $0 + ($1 * $1) }
+        return s1 - s2
+    }
+    
+    /// Returns the sum of the sum of squares of corresponding values in two arrays. The sum of the sum of squares is a common term in many statistical calculations.
+    /// - Parameters:
+    ///   - a1: List of number
+    ///   - a2: List of number
+    func SUMX2PY2(_ a1: [BigDouble], _ a2: [BigDouble]) throws -> BigDouble {
+        guard a1.count == a2.count else { throw TablesError.Arguments }
+        let s1 = a1.reduce(BigDouble.zero) { $0 + ($1 * $1) }
+        let s2 = a2.reduce(BigDouble.zero) { $0 + ($1 * $1) }
+        return s1 + s2
+    }
+    
+    /// Returns the sum of squares of differences of corresponding values in two arrays.
+    /// - Parameters:
+    ///   - a1: List of number
+    ///   - a2: List of number
+    func SUMXMY2(_ a1: [BigDouble], _ a2: [BigDouble]) throws -> BigDouble {
+        guard a1.count == a2.count else { throw TablesError.Arguments }
+        var r: BigDouble = 0
+        for i in 0..<a1.count {
+            let d = a1[i] - a2[i]
+            r += d * d
+        }
+        return r
+    }
+    
+    /// Tangent of a number.
+    /// - Parameter number: Any `BigDouble` less than 2pi
+    func TAN(_ number: BigNumber) throws -> BigNumber {
+        let mod = number % (2 * BigDouble(constant: .pi))
+        guard let double = mod.asDouble() else { throw TablesError.Overflow }
+        return BigDouble(tan(double))
+    }
+    
+    /// Hyperbolic Tangent of a number.
+    /// - Parameter number: Any `BigDouble`
+    func TANH(_ number: BigNumber) throws -> BigNumber {
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
+        return BigDouble(tanh(double))
+    }
+    
+    /// Truncates a number to an integer by removing the fractional part of the number.
+    /// - Parameters:
+    ///   - number: The number you want to truncate.
+    ///   - digits: Optional. A number specifying the precision of the truncation.
+    func TRUNC(_ number: BigDouble, _ digits: Int = 0) -> BigDouble {
+        let sign = (number > 0) ? 1 : -1;
+        return BigDouble(sign) * BigDouble(floor(abs(number) * pow(10, digits))) / pow(10, digits)
+    }
 }
