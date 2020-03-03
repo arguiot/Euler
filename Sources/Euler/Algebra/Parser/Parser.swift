@@ -93,12 +93,15 @@ public class Parser {
     /// Links the nodes to create a tree
     /// - Parameter chain: The chain given by `chainMaker`
     internal func linker(chain: [Node]) throws -> ExpressionNode {
+        // Less priority means higher position in tree
         let priorities = [
             "+": 1,
             "-": 1,
             "*": 2,
             "/": 2,
             "^": 3,
+            ",": 3, // Multiple arguments
+            ":": 4, // For tables
             "=": 4
         ]
         var nodes: [Node] = [chain[0]]
@@ -204,7 +207,11 @@ public class Parser {
                 nodes.remove(at: index + 1)
                 guard let name = current?.content else { throw ParseError.FailedToParse }
                 guard let children = next?.children else { throw ParseError.FailedToParse }
-                nodes[index] = FunctionNode(name, args: children)
+                if children.first?.content == "," {
+                    nodes[index] = FunctionNode(name, args: children[0].children)
+                } else {
+                    nodes[index] = FunctionNode(name, args: children)
+                }
             }
             index += 1
         }
