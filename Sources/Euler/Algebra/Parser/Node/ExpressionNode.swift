@@ -57,8 +57,9 @@ public class ExpressionNode: NSObject, Node {
         return first.compile()
     }
     /// Converts ExpressionNode to BigNumber
-    public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
-        return self.children.first?.evaluate(params) ?? .zero
+    public func evaluate(_ params: [String: BigNumber]) throws -> BigNumber {
+        guard let child = try self.children.first?.evaluate(params) else { throw EvaluationError.missingChildren }
+        return child
     }
 }
 /// A ParenthesisNode is an ExpressionNode used to treat parenthesis

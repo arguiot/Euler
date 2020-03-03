@@ -51,9 +51,15 @@ public class FunctionNode: NSObject, Node {
     public func compile() -> Node {
         return self
     }
-    /// Converts SymbolNode to BigNumber by replacing unknown value by their parameters. If it fails, it will return 0.
-    public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
-        guard let n = params[self.content] else { return .zero }
-        return n
+    
+    /// The function that is defined by the `Node`. It will be used to evaluate the `Node`.
+    var function: (([Any]) -> BigDouble?)?
+    
+    /// Converts FunctionNode to BigNumber by exectuing the function defined in `FunctionNode.function`
+    public func evaluate(_ params: [String: BigNumber]) throws -> BigNumber {
+        let evaluated = try self.children.map { try $0.evaluate(params) }
+        guard let f = function else { return .zero }
+        guard let r = f(evaluated) else { return .zero }
+        return r
     }
 }

@@ -21,19 +21,19 @@ class NodeTests: XCTestCase {
         let c2 = ConstantNode(4)
         let op = OperatorNode("*", children: [c1, c2])
         
-        XCTAssertEqual(op.evaluate([:]), BigNumber(8))
+        XCTAssertEqual(try? op.evaluate([:]), BigNumber(8))
         
         let c3 = ConstantNode(5)
         let op2 = OperatorNode("+", children: [c3, op])
         
-        XCTAssertEqual(op2.evaluate([:]), BigNumber(13))
+        XCTAssertEqual(try? op2.evaluate([:]), BigNumber(13))
     }
     func testSymboleNode() {
         let c1 = ConstantNode(2)
         let c2 = SymbolNode("x")
         let op = OperatorNode("*", children: [c1, c2])
         
-        XCTAssertEqual(op.evaluate(["x": BigNumber(4)]), BigNumber(8))
+        XCTAssertEqual(try? op.evaluate(["x": BigNumber(4)]), BigNumber(8))
         
         let c3 = ConstantNode(5)
         let op2 = OperatorNode("+", children: [c3, op])
