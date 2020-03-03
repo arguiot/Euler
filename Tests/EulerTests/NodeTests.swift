@@ -75,7 +75,8 @@ class NodeTests: XCTestCase {
             print(error.localizedDescription)
             XCTFail()
         }
-        
+//        let e = try? Parser("=SUM(A3:A4)", type: .tables).parse()
+//        print(e?.description)
     }
     static var allTests = [
         ("Constant Node", testConstantNode),

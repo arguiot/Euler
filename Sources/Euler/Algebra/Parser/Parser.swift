@@ -33,19 +33,40 @@ fileprivate enum ParseError: Error {
 public class Parser {
     /// List of used tokens by the `Parser`
     internal var tokens: [Token]
+    
+    
+    /// Makes the difference between regular math equations and tables (excel like) formulas.
+    public enum ParseContext {
+        /// Regular math equation / expression
+        case math
+        /// Excel like formula
+        ///
+        /// example: `=SUM(A3:A5)`
+        case tables
+    }
+    internal var context: ParseContext
+    
     /// Initialize `Parser` with a mathematical expression as a String ( ASCIIMath)
     /// - Parameter str: ASCIIMath expression
-    public init(_ str: String) {
+    public init(_ str: String, type: ParseContext = .math) {
+        self.context = type
         let lexer = Lexer(input: str)
-        self.tokens = lexer.tokenize()
+        let tokenized = lexer.tokenize()
+        if type == .tables && str.first == "=" {
+            self.tokens = Array(tokenized.dropFirst())
+        } else {
+            self.tokens = tokenized
+        }
         
-        self.grouper = Grouper(tokens: tokens)
+        
+        self.grouper = Grouper(tokens: tokens, context: type)
     }
     /// Initialize `Parser` with a list of tokens given by the `Lexer`
     /// - Parameter tokens: Array of `Token` given by the `Lexer`
-    public init(tokens: [Token]) {
+    public init(tokens: [Token], type: ParseContext = .math) {
+        self.context = type
         self.tokens = tokens
-        self.grouper = Grouper(tokens: tokens)
+        self.grouper = Grouper(tokens: self.tokens, context: type)
     }
     
     /// Grouper object containing the `Token`
@@ -141,8 +162,9 @@ public class Parser {
         while index < qp.count {
             let current = qp[index]
             if current == nil {
-                let m1 = qp[index - 1]
+                guard index > 0 else { throw ParseError.FailedToParse }
                 guard index + 1 <= qp.count - 1 else { throw ParseError.FailedToParse }
+                let m1 = qp[index - 1]
                 let p1 = qp[index + 1]
                 
                 let node = try self.groups[index].toNode(lhs: m1, rhs: p1)

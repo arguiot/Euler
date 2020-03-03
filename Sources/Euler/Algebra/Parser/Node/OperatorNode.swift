@@ -96,7 +96,7 @@ public class OperatorNode: NSObject, Node {
             case "^":
                 return ConstantNode(ev1 ** ev2)
             default:
-                return ConstantNode(ev1 + ev2)
+                break
             }
         }
         return OperatorNode(self.content, children: [c1, c2])

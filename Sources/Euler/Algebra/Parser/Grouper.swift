@@ -34,20 +34,25 @@ public class Group: NSObject {
     }
     var tokens: [Token]
     var type: Type
-    init(tokens: [Token], type: Type) {
+    var context: Parser.ParseContext
+    init(tokens: [Token], type: Type, context: Parser.ParseContext) {
         self.tokens = tokens
         self.type = type
+        self.context = context
     }
     
     func compile() throws {
         if self.type == .UnParsed {
-            let ops = [
+            var ops = [
                 "+",
                 "-",
                 "*",
                 "/",
                 "^"
             ]
+            if self.context == .tables {
+                ops.append(":")
+            }
             guard tokens.count == 1 else {
                 self.type = .Parenthesis
                 return
@@ -75,7 +80,7 @@ public class Group: NSObject {
             return try self.toNumber()
         case .Parenthesis:
             // Parsing
-            let p = Parser(tokens: tokens)
+            let p = Parser(tokens: tokens, type: self.context)
             let expr = try p.parse()
             return ParenthesisNode(expr.children)
         case .UnParsed:
@@ -112,13 +117,19 @@ public class Group: NSObject {
 
 /// The `Grouper` is the class that will be in charged of converting an array of `Token` into an array of `Group` in the process of parsing a mathematical expression.
 public class Grouper {
+    /// List of tokens
     let tokens: [Token]
-    var index = 0
+    internal var index = 0
+    
+    /// Context in which the expression should be grouped
+    var context: Parser.ParseContext
     
     /// Initiatlize the `Grouper` class
     /// - Parameter tokens: the array of `Token` given by the `Lexer`
-    init(tokens: [Token]) {
+    /// - Parameter context: the context in which the expression should be grouped
+    init(tokens: [Token], context: Parser.ParseContext) {
         self.tokens = tokens
+        self.context = context
     }
     
     /// Gives current `Token`
@@ -164,21 +175,21 @@ public class Grouper {
             }
             switch token {
             case .Symbol(_):
-                let g = Group(tokens: [token], type: .Symbol)
+                let g = Group(tokens: [token], type: .Symbol, context: self.context)
                  groups.append(g)
             case .Number(_):
-                let g = Group(tokens: [token], type: .Number)
+                let g = Group(tokens: [token], type: .Number, context: self.context)
                  groups.append(g)
             case .ParensOpen:
                 nested += 1
             case .ParensClose:
                 if nested == 0 {
-                    groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis))
+                    groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis, context: self.context))
                     level += 1
                     temp.append([Token]()) // Adding empty array in case there is a list
                 }
             case .Other(_):
-                let g = Group(tokens: [token], type: .UnParsed)
+                let g = Group(tokens: [token], type: .UnParsed, context: self.context)
                 groups.append(g)
             }
         }
