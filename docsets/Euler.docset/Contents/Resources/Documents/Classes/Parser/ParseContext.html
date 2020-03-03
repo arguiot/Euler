@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TablesError Enumeration Reference</title>
+    <title>ParseContext Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/TablesError" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/ParseContext" class="dashAnchor"></a>
 
-    <a title="TablesError Enumeration Reference"></a>
+    <a title="ParseContext Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../../index.html">Euler Reference</a>
       <img class="carat" src="../../img/carat.png" />
-      TablesError Enumeration Reference
+      ParseContext Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -330,14 +330,14 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>TablesError</h1>
+            <h1>ParseContext</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TablesError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ParseContext</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Makes the difference between regular math equations and tables (excel like) formulas.</p>
 
           </div>
         </section>
@@ -349,9 +349,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler6TablesC0B5ErrorO3REFyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/REF" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC0B5ErrorO3REFyA2EmF">REF</a>
+                    <a name="/s:5Euler6ParserC12ParseContextO4mathyA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/math" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6ParserC12ParseContextO4mathyA2EmF">math</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -359,19 +359,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Regular math equation / expression</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">REF</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">math</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Parser.swift#L41">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -379,9 +379,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler6TablesC0B5ErrorO4NULLyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/NULL" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC0B5ErrorO4NULLyA2EmF">NULL</a>
+                    <a name="/s:5Euler6ParserC12ParseContextO6tablesyA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/tables" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6ParserC12ParseContextO6tablesyA2EmF">tables</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -389,139 +389,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Excel like formula</p>
+
+<p>example: <code>=SUM(A3:A5)</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">NULL</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">tables</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler6TablesC0B5ErrorO14DivisionByZeroyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/DivisionByZero" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC0B5ErrorO14DivisionByZeroyA2EmF">DivisionByZero</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">DivisionByZero</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler6TablesC0B5ErrorO8OverflowyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/Overflow" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC0B5ErrorO8OverflowyA2EmF">Overflow</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">Overflow</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler6TablesC0B5ErrorO07ParsingC0yA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/ParsingError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC0B5ErrorO07ParsingC0yA2EmF">ParsingError</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">ParsingError</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler6TablesC0B5ErrorO9ArgumentsyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/Arguments" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC0B5ErrorO9ArgumentsyA2EmF">Arguments</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">Arguments</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Parser.swift#L45">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

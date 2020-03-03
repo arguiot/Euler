@@ -9,7 +9,7 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Grouper.swift",
-      "line": 106,
+      "line": 111,
       "symbol": "Group.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
