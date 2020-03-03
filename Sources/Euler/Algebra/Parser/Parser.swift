@@ -207,11 +207,23 @@ public class Parser {
                 nodes.remove(at: index + 1)
                 guard let name = current?.content else { throw ParseError.FailedToParse }
                 guard let children = next?.children else { throw ParseError.FailedToParse }
-                if children.first?.content == "," {
-                    nodes[index] = FunctionNode(name, args: children[0].children)
-                } else {
-                    nodes[index] = FunctionNode(name, args: children)
+                
+                func flattenedArray(array: [Node]) -> [Node] {
+                    var myArray = [Node]()
+                    for element in array {
+                        if element.content == "," {
+                            let result = flattenedArray(array: element.children)
+                            for i in result {
+                                myArray.append(i)
+                            }
+                        } else {
+                            myArray.append(element)
+                        }
+                    }
+                    return myArray
                 }
+                
+                nodes[index] = FunctionNode(name, args: flattenedArray(array: children))
             }
             index += 1
         }

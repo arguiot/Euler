@@ -57,6 +57,9 @@ class NodeTests: XCTestCase {
             let expr = try Parser("x + 2 - sqrt(3 * 4)").parse()
             let tree = Tree.computeDepth(node: expr)
             print(tree)
+            
+            let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables).parse()
+            XCTAssertEqual(e.toString(), "SUM(A3 : A4, A5 : A6) - MIN(1, 2, 3, 4)")
         } catch {
             print(error.localizedDescription)
             XCTFail()
@@ -71,9 +74,6 @@ class NodeTests: XCTestCase {
             
             XCTAssertEqual(try Parser("(4*2)").parse().compile().toString(), "8")
             XCTAssertEqual(try Parser("x+x - y*y").parse().compile().toString(), "2 * x - y ^ 2")
-            
-            let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables).parse()
-            XCTAssertEqual(e.toString(), "SUM(A3 : A4, A5 : A6) - MIN(1 , 2 , 3, 4)")
         } catch {
             print(error.localizedDescription)
             XCTFail()
