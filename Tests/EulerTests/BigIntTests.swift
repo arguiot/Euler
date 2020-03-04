@@ -85,7 +85,7 @@ class BigIntTests: XCTestCase {
     func testPerformanceStringInit() {
         self.measure {
             for _ in (0...15000) {
-                let _ = BigInt(String(arc4random()))
+                let _ = BigInt(String(Int.random(in: 0...Int.max)))
             }
         }
     }
@@ -93,7 +93,7 @@ class BigIntTests: XCTestCase {
     func testPerformanceStringRadixInit() {
         self.measure {
             for _ in (0...15000) {
-                let _ = BigInt(String(arc4random()), radix: 10)
+                let _ = BigInt(String(Int.random(in: 0...Int.max)), radix: 10)
             }
         }
     }
