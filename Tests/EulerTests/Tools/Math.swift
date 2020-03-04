@@ -7,7 +7,6 @@
 
 #if os(Linux)
     import Glibc
-    import CBSD
 #endif
 
 import Foundation
