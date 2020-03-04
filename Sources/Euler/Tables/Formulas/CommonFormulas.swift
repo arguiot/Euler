@@ -601,7 +601,7 @@ public extension Tables {
     }
     
     // MARK: TODO: SUMIF(s)
-    
+    #if os(macOS)
     /// The SUMPRODUCT function returns the sum of the products of corresponding ranges or arrays.
     ///
     /// Example: `SUMPRODUCT([1, 2, 3], [2, 3, 4]) //= 20`
@@ -616,7 +616,7 @@ public extension Tables {
         }
         return vector.sum()
     }
-    
+    #endif
     /// Returns the sum of the squares of the arguments.
     /// - Parameter n: The numbers you want to square and sum
     func SUMSQ(_ n: BigDouble...) -> BigDouble {
