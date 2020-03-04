@@ -53,7 +53,7 @@ extension Matrix {
     }
     
     /** Creates a matrix from an array: [[a, b], [c, d], [e, f]]. */
-    public init(_ data: [[BigDouble]]) {
+    public init(data: [[BigDouble]]) {
         let drow = data.map { $0.map { $0.asDouble() ?? Double.nan }}
         self.init(drow)
     }
@@ -85,13 +85,13 @@ extension Matrix {
     }
     
     /// Extracts one or more columns into a new matrix.
-    public init(_ data: [[BigDouble]], range: CountableClosedRange<Int>) {
+    public init(data: [[BigDouble]], range: CountableClosedRange<Int>) {
         let drow = data.map { $0.map { $0.asDouble() ?? Double.nan }}
         self.init(drow, range: range)
     }
     
     /// Extracts one or more columns into a new matrix.
-    public init(_ data: [[BigDouble]], range: CountableRange<Int>) {
+    public init(data: [[BigDouble]], range: CountableRange<Int>) {
         let drow = data.map { $0.map { $0.asDouble() ?? Double.nan }}
         self.init(drow, range: range)
     }
