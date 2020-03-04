@@ -123,8 +123,6 @@ class BigIntTests: XCTestCase {
         // MARK: Logarithms
         XCTAssert(ln(15).nearlyEquals(2.708050201102210))
         
-        try? Tables().MDETERM(Matrix([[1.0, 2.0],[3.0, 4.0]]))
-        
 //        let r = try? Statistics.polynomialRegression(points: [Point(x: 0, y: 2),Point(x: 2, y: 4),Point(x: 3, y: 5)])
         
     }
