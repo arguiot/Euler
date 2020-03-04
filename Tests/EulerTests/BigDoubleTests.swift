@@ -42,7 +42,7 @@ class BigDoubleTests : XCTestCase {
         XCTAssertEqual(BigDouble("1.2")?.fractionDescription, "6/5")
         
         for _ in 0..<100 {
-            let rn = Double(Double(arc4random()) / Double(UINT32_MAX))
+            let rn = Double(Double(Int.random(in: 0...Int.max)) / Double(UINT32_MAX))
             XCTAssertNotNil(BigDouble(rn))
             
             let rn2 = pow(rn * 100, 2.0)
@@ -73,7 +73,7 @@ class BigDoubleTests : XCTestCase {
         XCTAssert(BigDouble(1.1) >= 1.0)
         
         for _ in 1..<100 {
-            let rn = Double(Double(arc4random()) / Double(UINT32_MAX))
+            let rn = Double(Double(Int.random(in: 0...Int.max)) / Double(UINT32_MAX))
             let rn2 = pow(rn * 100, 2.0)
             
             XCTAssert(BigDouble(rn) < BigDouble(rn2))
@@ -99,7 +99,7 @@ class BigDoubleTests : XCTestCase {
         for i in 0..<100 {
             XCTAssertEqual(pow(BigDouble(Double(i)), 0), 1.0)
             
-            let rn = Double(Double(arc4random()) / Double(UINT32_MAX))
+            let rn = Double(Double(Int.random(in: 0...Int.max)) / Double(UINT32_MAX))
             XCTAssert(pow(BigDouble(rn), 0) == 1.0)
         }
         
@@ -107,7 +107,7 @@ class BigDoubleTests : XCTestCase {
         for i in 0..<100 {
             XCTAssertEqual(pow(BigDouble(Double(i)), 1), BigDouble(Double(i)))
             
-            let rn = Double(Double(arc4random()) / Double(UINT32_MAX))
+            let rn = Double(Double(Int.random(in: 0...Int.max)) / Double(UINT32_MAX))
             XCTAssertEqual(pow(BigDouble(rn), 1), BigDouble(rn))
         }
     }
@@ -438,8 +438,8 @@ class BigDoubleTests : XCTestCase {
     func testPerformanceStringInit() {
         self.measure {
             for _ in (0...1000) {
-                let _ = BigDouble(String(arc4random()))
-                let _ = BigDouble(String(arc4random())+"."+String(arc4random()))
+                let _ = BigDouble(String(Int.random(in: 0...Int.max)))
+                let _ = BigDouble(String(Int.random(in: 0...Int.max))+"."+String(Int.random(in: 0...Int.max)))
             }
         }
     }
@@ -447,8 +447,8 @@ class BigDoubleTests : XCTestCase {
     func testPerformanceStringRadixInit() {
         self.measure {
             for _ in (0...1000) {
-                let _ = BigDouble(String(arc4random()), radix: 10)
-                let _ = BigDouble(String(arc4random())+"."+String(arc4random()), radix: 10)
+                let _ = BigDouble(String(Int.random(in: 0...Int.max)), radix: 10)
+                let _ = BigDouble(String(Int.random(in: 0...Int.max))+"."+String(Int.random(in: 0...Int.max)), radix: 10)
             }
         }
     }

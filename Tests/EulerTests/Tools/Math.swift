@@ -7,7 +7,6 @@
 
 #if os(Linux)
     import Glibc
-    import CBSD
 #endif
 
 import Foundation
@@ -187,9 +186,9 @@ public class math
     public static func random(_ range: Range<Int>) -> Int
     {
         let offset = Int(range.lowerBound)
-        let delta = UInt32(range.upperBound - range.lowerBound)
+        let delta = Int(range.upperBound - range.lowerBound)
 
-        return offset + Int(arc4random_uniform(delta))
+        return offset + Int.random(in: 0..<delta)
     }
 
     /// Returns a random integer within the specified closed range.
@@ -216,7 +215,7 @@ public class math
         let offset = range.lowerBound
         let delta = range.upperBound - range.lowerBound
 
-        return offset + ((delta * Double(arc4random())) / Double(UInt32.max))
+        return offset + ((delta * Double(Int.random(in: 0...Int.max))) / Double(UInt32.max))
     }
 
     /// Returns an array filled with n random Doubles within the specified closed range.

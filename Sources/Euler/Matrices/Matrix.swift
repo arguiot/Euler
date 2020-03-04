@@ -4,11 +4,13 @@
 //
 //  Created by Arthur Guiot on 2020-02-07.
 //
-
+#if os(macOS)
 import Foundation
 import Accelerate
 
 /// Simple Matrix type
+///
+/// ## ⚠️: Not available on Linux
 ///
 /// Matrix uses the Accelerate.framework for most of its operations, so it should be pretty fast -- but no doubt there's lots of room for improvement.
 /// Since the Accelerate framework works a lot with `Double`, I had to find a compromise between performance and compatibility with other `Euler` object, such as `BigNumber`. I made some convenience initializer, but make sure your code converts these `BigNumber` to `Double` using `BigNumber.asDouble`
@@ -228,3 +230,5 @@ extension Matrix: Sequence {
         }
     }
 }
+
+#endif
