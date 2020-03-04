@@ -294,7 +294,7 @@ public extension Tables {
         return LOG(n)
     }
     // MARK: TODO MATRICES
-    
+    #if os(macOS)
     /// Returns the matrix determinant
     /// - Parameter lhs: The `Matrix` you want to use.
     func MDETERM(_ lhs: Matrix) throws -> BigDouble {
@@ -315,7 +315,7 @@ public extension Tables {
     func MMULT(_ lhs: Matrix, _ rhs: Matrix) -> Matrix {
         return lhs * rhs
     }
-    
+    #endif
     /// MROUND returns a number rounded to the desired multiple.
     /// - Parameters:
     ///   - n: The value to round.
