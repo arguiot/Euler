@@ -85,7 +85,7 @@ class BigIntTests: XCTestCase {
     func testPerformanceStringInit() {
         self.measure {
             for _ in (0...15000) {
-                let _ = BigInt(String(arc4random()))
+                let _ = BigInt(String(Int.random(in: 0...Int.max)))
             }
         }
     }
@@ -93,7 +93,7 @@ class BigIntTests: XCTestCase {
     func testPerformanceStringRadixInit() {
         self.measure {
             for _ in (0...15000) {
-                let _ = BigInt(String(arc4random()), radix: 10)
+                let _ = BigInt(String(Int.random(in: 0...Int.max)), radix: 10)
             }
         }
     }
@@ -122,8 +122,6 @@ class BigIntTests: XCTestCase {
         XCTAssert(gamma(3 / 2).nearlyEquals(0.8862269254527576))
         // MARK: Logarithms
         XCTAssert(ln(15).nearlyEquals(2.708050201102210))
-        
-        try? Tables().MDETERM(Matrix([[1.0, 2.0],[3.0, 4.0]]))
         
 //        let r = try? Statistics.polynomialRegression(points: [Point(x: 0, y: 2),Point(x: 2, y: 4),Point(x: 3, y: 5)])
         

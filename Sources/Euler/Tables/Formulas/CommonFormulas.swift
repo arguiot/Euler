@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Accelerate
 
 public extension Tables {
     // MARK: Common Formulas + Trigonometry
@@ -295,7 +294,7 @@ public extension Tables {
         return LOG(n)
     }
     // MARK: TODO MATRICES
-    
+    #if os(macOS)
     /// Returns the matrix determinant
     /// - Parameter lhs: The `Matrix` you want to use.
     func MDETERM(_ lhs: Matrix) throws -> BigDouble {
@@ -316,7 +315,7 @@ public extension Tables {
     func MMULT(_ lhs: Matrix, _ rhs: Matrix) -> Matrix {
         return lhs * rhs
     }
-    
+    #endif
     /// MROUND returns a number rounded to the desired multiple.
     /// - Parameters:
     ///   - n: The value to round.
@@ -602,7 +601,7 @@ public extension Tables {
     }
     
     // MARK: TODO: SUMIF(s)
-    
+    #if os(macOS)
     /// The SUMPRODUCT function returns the sum of the products of corresponding ranges or arrays.
     ///
     /// Example: `SUMPRODUCT([1, 2, 3], [2, 3, 4]) //= 20`
@@ -617,7 +616,7 @@ public extension Tables {
         }
         return vector.sum()
     }
-    
+    #endif
     /// Returns the sum of the squares of the arguments.
     /// - Parameter n: The numbers you want to square and sum
     func SUMSQ(_ n: BigDouble...) -> BigDouble {
