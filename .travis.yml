@@ -1,10 +1,12 @@
 language:       ruby
 os:             osx
-osx_image:      xcode10.2
+osx_image:      xcode11.3
 install:
   # Install Jazzy and dependencies
   - gem install jazzy
 script:
+  - swift package resolve # Resolving package
+  - swift package update # Updates
   - jazzy --clean --no-objc
   - cp Euler.svg ./docs/img/logo.svg
   - cd docs && echo "euler.arguiot.com" > CNAME # Keeps the URL
