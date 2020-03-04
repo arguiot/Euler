@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Accelerate
 
 public extension Tables {
     // MARK: Common Formulas + Trigonometry

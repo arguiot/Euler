@@ -4,7 +4,7 @@
 //
 //  Created by Arthur Guiot on 2020-02-07.
 //
-
+#if os(macOS)
 import Foundation
 import Accelerate
 
@@ -1080,3 +1080,5 @@ extension Matrix {
         }
     }
 }
+
+#endif
