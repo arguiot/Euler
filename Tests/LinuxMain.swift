@@ -3,7 +3,7 @@ import XCTest
 XCTMain([
     testCase(BigIntTests.allTests),
     testCase(BigDoubleTests.allTests),
-    testCase(CryptogrpahyTests.allTests),
+    testCase(CryptographyTests.allTests),
     testCase(ExtensionsTests.allTests),
     testCase(NodeTests.allTests),
     testCase(GeneratorsTests.allTests)
