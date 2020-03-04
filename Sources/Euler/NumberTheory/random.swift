@@ -21,7 +21,7 @@ public extension BigInt {
     
     internal static func rand_uniform(_ __upper_bound: UInt32) -> UInt32 {
         #if os(Linux)
-           return random(Int(__upper_bound))
+           return UInt32(Int.random(in: 0...__upper_bound))
         #else
            return arc4random_uniform(__upper_bound)
         #endif
