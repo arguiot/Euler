@@ -22,7 +22,9 @@ let package = Package(
         .target(
             name: "Euler",
             dependencies: [
-                "SwiftPlot"
+                "SwiftPlot",
+                "AGGRenderer",
+                "SVGRenderer"
         ]),
         .testTarget(
             name: "EulerTests",
