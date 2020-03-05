@@ -36,4 +36,5 @@ public enum EvaluationError: LocalizedError {
     case parameters
     case functionError
     case missingChildren
+    case ImpossibleOperation
 }

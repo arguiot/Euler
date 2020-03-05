@@ -16,6 +16,7 @@ public enum Token {
     case ParensOpen
     case ParensClose
     case Other(String)
+    case Str(String)
 }
 
 typealias TokenGenerator = (String) -> Token?
@@ -26,6 +27,7 @@ let tokenList: [(String, TokenGenerator)] = [
     ("[0-9.]+", { (r: String) in .Number((r as NSString).floatValue) }),
     ("\\(", { _ in .ParensOpen }),
     ("\\)", { _ in .ParensClose }),
+    ("\".*\"", { (r: String) in .Str(r) })
 ]
 
 /// The `Lexer` is converting a sequence of characters (mathematical expression) into a sequence of `Token`

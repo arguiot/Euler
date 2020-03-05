@@ -31,6 +31,7 @@ public class Group: NSObject {
         case UnParsed
         case Equal
         case Parenthesis
+        case Str
     }
     var tokens: [Token]
     var type: Type
@@ -90,6 +91,8 @@ public class Group: NSObject {
             guard lhs != nil && rhs != nil else { throw GroupError.ExpectedArgumentList }
 //            return ExpressionNode(lhs!, rhs!)
             return OperatorNode("=", children: [lhs!, rhs!])
+        case .Str:
+            return try self.toString()
         }
     }
     
@@ -108,7 +111,11 @@ public class Group: NSObject {
         guard case let Token.Number(token) = tokens[0] else { throw GroupError.UnexpectedError }
         return ConstantNode(token)
     }
-    
+    func toString() throws -> StringNode {
+        guard tokens.count == 1 else { throw GroupError.UnexpectedError }
+        guard case let Token.Str(token) = tokens[0] else { throw GroupError.UnexpectedError }
+        return StringNode(token)
+    }
     override public var description : String {
         get {
             return "Euler.Group(tokens: \(self.tokens), type: \(self.type))"
@@ -191,6 +198,9 @@ public class Grouper {
                 }
             case .Other(_):
                 let g = Group(tokens: [token], type: .UnParsed, context: self.context)
+                groups.append(g)
+            case .Str(_):
+                let g = Group(tokens: [token], type: .Str, context: self.context)
                 groups.append(g)
             }
         }

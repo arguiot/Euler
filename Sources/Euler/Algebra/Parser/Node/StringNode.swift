@@ -1,13 +1,13 @@
 //
-//  SymbolNode.swift
+//  File.swift
 //  
 //
-//  Created by Arthur Guiot on 2019-12-16.
+//  Created by Arthur Guiot on 2020-03-05.
 //
 
 import Foundation
 
-public class SymbolNode: NSObject, Node {
+public class StringNode: NSObject, Node {
     /// The depth of the deepest children of the `Node` in a `Tree`
     public var maxDepth: Int?
     
@@ -16,11 +16,11 @@ public class SymbolNode: NSObject, Node {
     
     /// Gives String representation of the node
     public func toString() -> String {
-        return self.content
+        return "\"\(self.content)\""
     }
     /// Gives Tex (String) representation of the node
     public func toTex() -> String {
-        return self.content
+        return "\"\(self.content)\""
     }
     
     /// The `print()` description
@@ -31,7 +31,7 @@ public class SymbolNode: NSObject, Node {
     public var content: String
     
     /// The name of the node
-    public var type: String = "SymbolNode"
+    public var type: String = "StringNode"
     
     /// Useless here, but it's to conform to the Node protocol
     public var children = [Node]()
@@ -39,7 +39,7 @@ public class SymbolNode: NSObject, Node {
     /// Create a SymbolNode
     /// - Parameter double: Floating point number
     public init(_ variable: String) {
-        self.content = variable
+        self.content = String(variable.dropFirst().dropLast())
     }
     
     /// Compiles SymbolNode to simpler node (useless here, but required by protocol)
@@ -48,17 +48,16 @@ public class SymbolNode: NSObject, Node {
     }
     /// Converts SymboleNode to BigNumber by replacing unknown value by their parameters. If it fails, it will return 0.
     public func evaluate(_ params: [String: BigNumber]) throws -> BigNumber {
-        guard let n = params[self.content] else { throw EvaluationError.parameters }
-        return n
+        throw EvaluationError.ImpossibleOperation
     }
     
-    /// Make sure that two `SymbolNode` are equals (used in pattern matching)
+    /// Make sure that two `StringNode` are equals (used in pattern matching)
     ///
-    /// If you want to search for patterns, build a sample tree with a `SymbolNode` with `"Any"` as `content`
+    /// If you want to search for patterns, build a sample tree with a `StringNode` with `"Any"` as `content`
     /// - Parameters:
-    ///   - lhs: Any `SymbolNode`
-    ///   - rhs: Any `SymbolNode`
-    static func ==(lhs: SymbolNode, rhs: SymbolNode) -> Bool {
+    ///   - lhs: Any `StringNode`
+    ///   - rhs: Any `StringNode`
+    static func ==(lhs: StringNode, rhs: StringNode) -> Bool {
         guard lhs.content == rhs.content || lhs.content == "Any" || rhs.content == "Any" else { return false }
         guard lhs.children.count == rhs.children.count else { return false }
         for i in 0..<lhs.children.count {
