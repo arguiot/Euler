@@ -31,10 +31,14 @@ public protocol Node: NSObject {
     /// The depth of the deepest children of the `Node` in a `Tree`
     var maxDepth: Int? { get set }
 }
-
+/// A type of error thrown when evaluation fails
 public enum EvaluationError: LocalizedError {
+    /// Parameter isn't found or somehting went wrong with them
     case parameters
+    /// The function provided is missing
     case functionError
+    /// Children are missing
     case missingChildren
+    /// The operation you're trying to do is impossible
     case ImpossibleOperation
 }

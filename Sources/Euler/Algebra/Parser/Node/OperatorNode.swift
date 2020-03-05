@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// A type of `Node` for representing mathematical operations
 public class OperatorNode: NSObject, Node {
     /// The depth of the deepest children of the `Node` in a `Tree`
     public var maxDepth: Int?

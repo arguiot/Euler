@@ -16,7 +16,7 @@ import AGGRenderer
 public class Graph {
     
     /// A sub structure to the `Graph` to represent a set of point
-    struct PointSet {
+    public struct PointSet {
         /// The set of point that will be used to draw the graph
         var set: [Point]
         /// The name of the set (will be shown as a label)

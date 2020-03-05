@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// A special `Node` for string expression (works excusively in table mode)
 public class StringNode: NSObject, Node {
     /// The depth of the deepest children of the `Node` in a `Tree`
     public var maxDepth: Int?

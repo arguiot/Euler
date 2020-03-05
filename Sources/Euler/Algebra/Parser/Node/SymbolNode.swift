@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// A `Node` for mathematical symbols such as `x` or `y`
 public class SymbolNode: NSObject, Node {
     /// The depth of the deepest children of the `Node` in a `Tree`
     public var maxDepth: Int?
