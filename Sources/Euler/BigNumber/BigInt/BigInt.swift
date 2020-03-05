@@ -104,19 +104,20 @@ import Foundation
 //    ————————————————————————————————————————————————————————————————————————————————————————————
 //    ||||||||        Typealiases        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ————————————————————————————————————————————————————————————————————————————————————————————
-//    Limbs are basically single Digits in base 2^64. Each slot in an Limbs array stores one
-//    Digit of the number. The least significant digit is stored at index 0, the most significant
-//    digit is stored at the last index.
 
+///    Limbs are basically single Digits in base 2^64. Each slot in an Limbs array stores one
+///    Digit of the number. The least significant digit is stored at index 0, the most significant
+///    digit is stored at the last index.
 public typealias Limbs  = [UInt64]
+/// Single limb
 public typealias Limb   =  UInt64
 
-//    A digit is a number in base 10^18. This is the biggest possible base that
-//    fits into an unsigned 64 bit number while maintaining the propery that the square root of
-//    the base is a whole number and a power of ten . Digits are required for printing BigNumber
-//    numbers. Limbs are converted into Digits first, and then printed.
-
+///    A digit is a number in base 10^18. This is the biggest possible base that
+///    fits into an unsigned 64 bit number while maintaining the propery that the square root of
+///    the base is a whole number and a power of ten . Digits are required for printing BigNumber
+///    numbers. Limbs are converted into Digits first, and then printed.
 public typealias Digits = [UInt64]
+/// Single digit
 public typealias Digit  =  UInt64
 
 //    MARK: - Imports

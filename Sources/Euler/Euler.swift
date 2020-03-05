@@ -7,6 +7,9 @@
 //
 
 import Foundation
-
+/// Alias for `BigDouble`
 public typealias BigNumber = BigDouble
+/// Alias for `BigDouble`
 public typealias BigFloat = BigDouble
+/// Alias for `BigDouble`
+public typealias BN = BigNumber

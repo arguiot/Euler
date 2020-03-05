@@ -7,13 +7,16 @@
 
 import Foundation
 
+/// Special type of `Expression` to represent polynomials
 public class Polynomial: Expression {
-    var coefs: [BigDouble]
-    
-    convenience init(_ coefficients: BigDouble...) throws {
+    /// List of coefficients
+    public var coefs: [BigDouble]
+    /// Creates a polynomial based on the coefficiens
+    public convenience init(_ coefficients: BigDouble...) throws {
         try self.init(coefficients)
     }
-    init(_ coefficients: [BigDouble]) throws {
+    /// Creates a polynomial based on the coefficiens
+    public init(_ coefficients: [BigDouble]) throws {
         self.coefs = coefficients
         
         var expr = ""

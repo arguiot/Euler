@@ -18,13 +18,17 @@ public class Graph {
     /// A sub structure to the `Graph` to represent a set of point
     public struct PointSet {
         /// The set of point that will be used to draw the graph
-        var set: [Point]
+        public var set: [Point]
         /// The name of the set (will be shown as a label)
-        var name: String
-        
+        public var name: String
+        /// Creates a new `PointSet` object.
+        public init(points: [Point], name: String) {
+            self.set = points
+            self.name = name
+        }
         /// Render the set of points defined with a simple scatter plot
         /// - Parameter callback: A callback that will take a `ScatterPlot` and change it for customisation.
-        func render(_ callback: (ScatterPlot<Double, Double>) -> Void) -> Data {
+        public func render(_ callback: (ScatterPlot<Double, Double>) -> Void) -> Data {
             let renderer = AGGRenderer()
             var plot = ScatterPlot<Double, Double>(enableGrid: true)
             let x = set.map { $0.x.asDouble() ?? Double.infinity }

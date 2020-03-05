@@ -15,22 +15,28 @@ public class Tables {
     /// ```
     /// =SUM(A3:A5) - MIN(A3:A5)
     /// ```
-    var expression: String?
+    public var expression: String?
     
     /// Initialize a Tables object in order to execute a single expression
     /// - Parameter expr: The expression you want to execute
-    init(_ expr: String) {
+    public init(_ expr: String) {
         self.expression = expr
     }
     /// Regular init
-    init() {}
-    
+    public init() {}
+    /// A type of error made for `Tables`
     public enum TablesError: Error {
+        /// Reference error
         case REF
+        /// Result is null
         case NULL
+        /// Division by zero (may crash the program)
         case DivisionByZero
+        /// Overflow problem
         case Overflow
+        /// Parsing problem
         case ParsingError
+        /// When soemthing is wrong with the given arguments
         case Arguments
     }
 }

@@ -8,6 +8,11 @@
 import Foundation
 
 public extension Statistics {
+    
+    /// Linear regression on a set of points
+    ///
+    /// Returns an affine function going through the set of point.
+    /// - Parameter points: A set of points
     static func linearRegression(points: [Point]) throws -> Polynomial {
         let n = BigDouble(points.count)
         var sum_x: BigDouble = .zero

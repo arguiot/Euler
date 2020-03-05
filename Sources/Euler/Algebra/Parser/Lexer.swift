@@ -10,7 +10,7 @@ import Foundation
 /// Possible Tokens in a mathematical expression.
 ///
 /// > This is part of the `Lexer`
-public enum Token {
+internal enum Token {
     case Symbol(String)
     case Number(Float)
     case ParensOpen
