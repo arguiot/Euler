@@ -39,7 +39,7 @@ public class Lexer {
         self.input = input
     }
     /// Tokenize the String input
-    public func tokenize() -> [Token] {
+    internal func tokenize() -> [Token] {
         var tokens = [Token]()
         var content = input
         

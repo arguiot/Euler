@@ -63,7 +63,7 @@ public class Parser {
     }
     /// Initialize `Parser` with a list of tokens given by the `Lexer`
     /// - Parameter tokens: Array of `Token` given by the `Lexer`
-    public init(tokens: [Token], type: ParseContext = .math) {
+    internal init(tokens: [Token], type: ParseContext = .math) {
         self.context = type
         self.tokens = tokens
         self.grouper = Grouper(tokens: self.tokens, context: type)
