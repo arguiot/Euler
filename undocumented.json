@@ -71,66 +71,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 35,
-      "symbol": "EvaluationError",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 36,
-      "symbol": "EvaluationError.parameters",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 37,
-      "symbol": "EvaluationError.functionError",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 38,
-      "symbol": "EvaluationError.missingChildren",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
-      "line": 39,
-      "symbol": "EvaluationError.ImpossibleOperation",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/NullNode.swift",
       "line": 27,
       "symbol": "NullNode.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/OperatorNode.swift",
-      "line": 10,
-      "symbol": "OperatorNode",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/StringNode.swift",
-      "line": 10,
-      "symbol": "StringNode",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/SymbolNode.swift",
-      "line": 10,
-      "symbol": "SymbolNode",
-      "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
