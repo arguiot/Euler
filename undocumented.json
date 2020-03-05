@@ -9,7 +9,7 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Grouper.swift",
-      "line": 112,
+      "line": 119,
       "symbol": "Group.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -46,6 +46,13 @@
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
       "line": 18,
       "symbol": "Token.Other(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
+      "line": 19,
+      "symbol": "Token.Str(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -92,6 +99,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/Node.swift",
+      "line": 39,
+      "symbol": "EvaluationError.ImpossibleOperation",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/NullNode.swift",
       "line": 27,
       "symbol": "NullNode.description",
@@ -102,6 +116,13 @@
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/OperatorNode.swift",
       "line": 10,
       "symbol": "OperatorNode",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Node/StringNode.swift",
+      "line": 10,
+      "symbol": "StringNode",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
