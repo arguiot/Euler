@@ -1,59 +1,10 @@
 {
   "warnings": [
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Expression.swift",
-      "line": 10,
-      "symbol": "Expression",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Grouper.swift",
       "line": 119,
       "symbol": "Group.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 14,
-      "symbol": "Token.Symbol(_:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 15,
-      "symbol": "Token.Number(_:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 16,
-      "symbol": "Token.ParensOpen",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 17,
-      "symbol": "Token.ParensClose",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 18,
-      "symbol": "Token.Other(_:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Parser/Lexer.swift",
-      "line": 19,
-      "symbol": "Token.Str(_:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
@@ -75,13 +26,6 @@
       "line": 27,
       "symbol": "NullNode.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Algebra/Polynomial.swift",
-      "line": 10,
-      "symbol": "Polynomial",
-      "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
@@ -428,34 +372,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BigInt.swift",
-      "line": 111,
-      "symbol": "Limbs",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BigInt.swift",
-      "line": 112,
-      "symbol": "Limb",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BigInt.swift",
-      "line": 119,
-      "symbol": "Digits",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BigInt.swift",
-      "line": 120,
-      "symbol": "Digit",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 20,
       "symbol": "BigInt.+(_:)",
@@ -708,20 +624,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Euler.swift",
-      "line": 11,
-      "symbol": "BigNumber",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Euler.swift",
-      "line": 12,
-      "symbol": "BigFloat",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
       "line": 709,
       "symbol": "Matrix.min(row:)",
@@ -876,66 +778,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Statistics/Regression.swift",
-      "line": 11,
-      "symbol": "Statistics.linearRegression(points:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Parser/Execute.swift",
       "line": 12,
       "symbol": "Tables.execute()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
-      "line": 28,
-      "symbol": "Tables.TablesError",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
-      "line": 29,
-      "symbol": "Tables.TablesError.REF",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
-      "line": 30,
-      "symbol": "Tables.TablesError.NULL",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
-      "line": 31,
-      "symbol": "Tables.TablesError.DivisionByZero",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
-      "line": 32,
-      "symbol": "Tables.TablesError.Overflow",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
-      "line": 33,
-      "symbol": "Tables.TablesError.ParsingError",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
-      "line": 34,
-      "symbol": "Tables.TablesError.Arguments",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     }
   ],

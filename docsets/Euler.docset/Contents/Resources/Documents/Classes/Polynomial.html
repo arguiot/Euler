@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Group Class Reference</title>
+    <title>Polynomial Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/Group" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/Polynomial" class="dashAnchor"></a>
 
-    <a title="Group Class Reference"></a>
+    <a title="Polynomial Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Group Class Reference
+      Polynomial Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -347,16 +347,14 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Group</h1>
+            <h1>Polynomial</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Group</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Polynomial</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Expression.html">Expression</a></span></code></pre>
 
                 </div>
               </div>
-            <p>A <code>Group</code> is a intermediate representation object for representing a mathematical expression.
-This is the object that allows the tokens to be grouped together to convert them into nodes.
-In particular, it is in charge of recognizing parentheses and preanalysing them before passing the expression to <code><a href="../Classes/Parser.html">Parser</a></code>.</p>
+            <p>Special type of <code><a href="../Classes/Expression.html">Expression</a></code> to represent polynomials</p>
 
           </div>
         </section>
@@ -368,9 +366,9 @@ In particular, it is in charge of recognizing parentheses and preanalysing them 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@Euler@objc(cs)Group(py)description"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@Euler@objc(cs)Group(py)description">description</a>
+                    <a name="/s:5Euler10PolynomialC5coefsSayAA9BigDoubleVGvp"></a>
+                    <a name="//apple_ref/swift/Property/coefs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10PolynomialC5coefsSayAA9BigDoubleVGvp">coefs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -378,19 +376,79 @@ In particular, it is in charge of recognizing parentheses and preanalysing them 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>List of coefficients</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">coefs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Parser/Grouper.swift#L119-L123">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Polynomial.swift#L13">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10PolynomialCyAcA9BigDoubleVd_tKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10PolynomialCyAcA9BigDoubleVd_tKcfc">init(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a polynomial based on the coefficiens</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">coefficients</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="o">...</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Polynomial.swift#L15-L17">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10PolynomialCyACSayAA9BigDoubleVGKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10PolynomialCyACSayAA9BigDoubleVGKcfc">init(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a polynomial based on the coefficiens</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">coefficients</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Polynomial.swift#L19-L34">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

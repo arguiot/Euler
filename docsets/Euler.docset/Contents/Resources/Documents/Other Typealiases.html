@@ -23,7 +23,7 @@
         <a class="header-link" href="index.html">
           Euler Docs
         </a>
-         (79% documented)
+         (82% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -184,9 +184,6 @@
                 <a class="nav-group-task-link" href="Classes/Group.html">Group</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Enums/Token.html">Token</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/Node.html">Node</a>
               </li>
               <li class="nav-group-task">
@@ -243,16 +240,16 @@
             <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@Euler@objc(cs)Expression">Expression</a>
+                <a class="nav-group-task-link" href="Classes/Expression.html">Expression</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/Graph.html">Graph</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/Graph.html#/s:5Euler5GraphC8PointSetV">– PointSet</a>
+                <a class="nav-group-task-link" href="Classes/Graph/PointSet.html">– PointSet</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Other%20Classes.html#/c:@M@Euler@objc(cs)Polynomial">Polynomial</a>
+                <a class="nav-group-task-link" href="Classes/Polynomial.html">Polynomial</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/StringNode.html">StringNode</a>
@@ -325,6 +322,9 @@
             <a class="nav-group-name-link" href="Other%20Typealiases.html">Other Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Typealiases.html#/s:5Euler2BNa">BN</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Other%20Typealiases.html#/s:5Euler4Bytea">Byte</a>
               </li>
               <li class="nav-group-task">
@@ -379,7 +379,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Limbs are basically single Digits in base 2^64. Each slot in an Limbs array stores one
+Digit of the number. The least significant digit is stored at index 0, the most significant
+digit is stored at the last index.</p>
 
                       </div>
                       <div class="declaration">
@@ -391,7 +393,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L111">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -409,7 +411,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Single limb</p>
 
                       </div>
                       <div class="declaration">
@@ -421,7 +423,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L113">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -439,7 +441,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A digit is a number in base 10^18. This is the biggest possible base that
+fits into an unsigned 64 bit number while maintaining the propery that the square root of
+the base is a whole number and a power of ten . Digits are required for printing BigNumber
+numbers. Limbs are converted into Digits first, and then printed.</p>
 
                       </div>
                       <div class="declaration">
@@ -451,7 +456,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L119">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -469,7 +474,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Single digit</p>
 
                       </div>
                       <div class="declaration">
@@ -481,7 +486,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/BigNumber/BigInt/BigInt.swift#L121">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -525,6 +530,36 @@
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Cryptography/md5.swift#L">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler2BNa"></a>
+                    <a name="//apple_ref/swift/Alias/BN" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler2BNa">BN</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Alias for <code><a href="Structs/BigDouble.html">BigDouble</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">BN</span> <span class="o">=</span> <span class="kt"><a href="Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Euler.swift#L15">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
