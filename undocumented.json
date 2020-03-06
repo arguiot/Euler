@@ -783,6 +783,13 @@
       "symbol": "Tables.execute()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Parser/Execute.swift",
+      "line": 20,
+      "symbol": "Tables.linker",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
     }
   ],
   "source_directory": "/Users/travis/build/arguiot/Euler"
