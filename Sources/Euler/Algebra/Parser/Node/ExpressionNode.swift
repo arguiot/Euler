@@ -57,8 +57,8 @@ public class ExpressionNode: NSObject, Node {
         return first.compile()
     }
     /// Converts ExpressionNode to BigNumber
-    public func evaluate(_ params: [String: BigNumber]) throws -> BigNumber {
-        guard let child = try self.children.first?.evaluate(params) else { throw EvaluationError.missingChildren }
+    public func evaluate(_ params: [String : BigNumber], _ fList: [String : (([Any]) throws -> BigDouble?)]) throws -> BigNumber {
+        guard let child = try self.children.first?.evaluate(params, fList) else { throw EvaluationError.missingChildren }
         return child
     }
 }

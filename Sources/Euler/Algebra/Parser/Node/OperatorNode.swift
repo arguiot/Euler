@@ -82,8 +82,8 @@ public class OperatorNode: NSObject, Node {
         }
         
         if c1.type == "ConstantNode" && c2.type == "ConstantNode" {
-            guard let ev1 = try? c1.evaluate([:]) else { return self }
-            guard let ev2 = try? c2.evaluate([:]) else { return self }
+            guard let ev1 = try? c1.evaluate([:], [:]) else { return self }
+            guard let ev2 = try? c2.evaluate([:], [:]) else { return self }
             switch self.content {
             case "+":
                 return ConstantNode(ev1 + ev2)
@@ -102,10 +102,10 @@ public class OperatorNode: NSObject, Node {
         return OperatorNode(self.content, children: [c1, c2])
     }
     /// Converts OperatorNode to BigNumber
-    public func evaluate(_ params: [String: BigNumber]) throws -> BigNumber {
+    public func evaluate(_ params: [String : BigNumber], _ fList: [String : (([Any]) throws -> BigDouble?)]) throws -> BigNumber {
         guard self.children.count == 2 else { throw EvaluationError.missingChildren }
-        let ev1 = try self.children[0].evaluate(params)
-        let ev2 = try self.children[1].evaluate(params)
+        let ev1 = try self.children[0].evaluate(params, fList)
+        let ev2 = try self.children[1].evaluate(params, fList)
         
         switch self.content {
         case "+":

@@ -18,7 +18,7 @@ public protocol Node: NSObject {
     
     /// Evaluate the mathematical expression behind each nodes
     /// - Parameter params: The object that contains all the variable
-    func evaluate(_ params: [String: BigNumber]) throws -> BigNumber
+    func evaluate(_ params: [String: BigNumber], _ fList: [String:(([Any]) throws -> BigDouble?)]) throws -> BigNumber
     /// Compiles the Node and each of its children for easier parsing / evaluation
     func compile() -> Node
     /// Gives String representation of the node

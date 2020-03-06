@@ -31,6 +31,13 @@ fileprivate enum ParseError: Error {
 /// ```
 ///
 public class Parser {
+    internal init(tokens: [Token], context: Parser.ParseContext, grouper: Grouper, groups: [Group]?) {
+        self.tokens = tokens
+        self.context = context
+        self.grouper = grouper
+        self.groups = groups
+    }
+    
     /// List of used tokens by the `Parser`
     internal var tokens: [Token]
     

@@ -66,7 +66,7 @@ public class ConstantNode: NSObject, Node {
         return self
     }
     /// Converts ConstantNode to BigNumber
-    public func evaluate(_ params: [String: BigNumber]) -> BigNumber {
+    public func evaluate(_ params: [String : BigNumber], _ fList: [String : (([Any]) throws -> BigDouble?)]) throws -> BigNumber {
         return BigNumber(self.content) ?? .zero
     }
     
