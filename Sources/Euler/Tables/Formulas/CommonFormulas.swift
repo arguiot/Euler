@@ -250,7 +250,17 @@ public extension Tables {
         }
         return r
     }
-    
+    /// Returns the greatest common divisor of two or more integers.
+    ///
+    /// The greatest common divisor is the largest integer that divides both number1 and number2 without a remainder.
+    /// - Parameter n: Number1 and 2 are required, subsequent numbers are optional. 1 to 255 values. If any value is not an integer, it is truncated.
+    func GCD(array n: [BigInt]) throws -> BigInt {
+        guard n.count >= 2 else { throw TablesError.Arguments }
+        let r = n.reduce(n.first!) { (r, i) -> BigInt in
+            return gcd(r, i)
+        }
+        return r
+    }
     /// Rounds a number down to the nearest integer.
     /// - Parameter n: The real number you want to round down to an integer.
     func INT(_ n: BigDouble) -> BigInt {
@@ -262,6 +272,18 @@ public extension Tables {
     ///
     /// - Parameter n: Number1 and 2 are required, subsequent numbers are optional. 1 to 255 values. If any value is not an integer, it is truncated.
     func LCM(_ n: BigInt...) throws -> BigInt {
+        guard n.count >= 2 else { throw TablesError.Arguments }
+        let r = n.reduce(n.first!) { (r, i) -> BigInt in
+            return lcm(r, i)
+        }
+        return r
+    }
+    
+    /// Returns the least common multiple of integers.
+    /// The least common multiple is the smallest positive integer that is a multiple of all integer arguments number1, number2, and so on. Use LCM to add fractions with different denominators.
+    ///
+    /// - Parameter n: Number1 and 2 are required, subsequent numbers are optional. 1 to 255 values. If any value is not an integer, it is truncated.
+    func LCM(array n: [BigInt]) throws -> BigInt {
         guard n.count >= 2 else { throw TablesError.Arguments }
         let r = n.reduce(n.first!) { (r, i) -> BigInt in
             return lcm(r, i)
@@ -343,7 +365,15 @@ public extension Tables {
         let div = upperFac / fac
         return div
     }
-    
+    /// Returns the ratio of the factorial of a sum of values to the product of factorials.
+    /// - Parameter numbers: Number1 is required, subsequent numbers are optional. 1 to 255 values for which you want the multinomial.
+    func MULTINOMIAL(array numbers: [BigInt]) -> BigDouble {
+        let sum = numbers.reduce(BigInt.zero) { $0 + $1 }
+        let upperFac = BigDouble(factorial(sum))
+        let fac = BigDouble(numbers.reduce(BigInt.zero) { $0 + factorial($1) })
+        let div = upperFac / fac
+        return div
+    }
     /// Returns number rounded up to the nearest odd integer.
     /// 
     /// Regardless of the sign of number, a value is rounded up when adjusted away from zero. If number is an odd integer, no rounding occurs.
