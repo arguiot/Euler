@@ -24,7 +24,7 @@ typealias TokenGenerator = (String) -> Token?
 let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
     ("[a-zA-Z][a-zA-Z0-9]*", { .Symbol($0) }),
-    ("[0-9.]+", { (r: String) in .Number((r as NSString).floatValue) }),
+    ("-?[0-9]\\d*(\\.\\d+)?", { (r: String) in .Number((r as NSString).floatValue) }),
     ("\\(", { _ in .ParensOpen }),
     ("\\)", { _ in .ParensClose }),
     ("\".*\"", { (r: String) in .Str(r) })
@@ -36,8 +36,18 @@ public class Lexer {
     /// Initializes the `Lexer`
     /// - Parameter input: The mathematical expression you want to parse
     public init(input: String) {
-        self.input = input
+        self.input = Lexer.sanitizer(input)
     }
+    
+    internal static func sanitizer(_ input: String) -> String {
+        var i = input
+        let ms = i.matches(regex: "(?<=\\S)\\s?(?<![\\(\\+])\\s?-[0-9.]+")
+        for (lower, _) in ms {
+            i.insert("+", at: String.Index(encodedOffset: lower))
+        }
+        return i
+    }
+    
     /// Tokenize the String input
     internal func tokenize() -> [Token] {
         var tokens = [Token]()

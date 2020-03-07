@@ -14,7 +14,8 @@ internal extension String {
         if let exists = expressions[regex] {
             expression = exists
         } else {
-            expression = try! NSRegularExpression(pattern: "^\(regex)", options: [])
+            guard let e = try? NSRegularExpression(pattern: "^\(regex)", options: []) else { return nil }
+            expression = e
             expressions[regex] = expression
         }
         
@@ -23,6 +24,20 @@ internal extension String {
             return (self as NSString).substring(with: range)
         }
         return nil
+    }
+    
+    func matches(regex: String) -> [(Int, Int)] {
+        let expression: NSRegularExpression
+        if let exists = expressions[regex] {
+            expression = exists
+        } else {
+            guard let e = try? NSRegularExpression(pattern: "\(regex)", options: []) else { return [] }
+            expression = e
+            expressions[regex] = expression
+        }
+        let m = expression.matches(in: self, options: [], range: NSMakeRange(0, self.utf16.count))
+        let ranges = m.map { $0.range }
+        return ranges.map { ($0.lowerBound, $0.upperBound) }
     }
 }
 internal func multiline(x: String...) -> String {

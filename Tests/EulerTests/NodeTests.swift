@@ -41,15 +41,14 @@ class NodeTests: XCTestCase {
         XCTAssertEqual(op2.toString(), "5 + 2 * x")
     }
     func testParser() {
-        let src = "x+2 - sqrt(3*4)=2"
+        let src = "x -2 - sqrt(3*4)=2"
         let lexer = Lexer(input: src)
         let tokens = lexer.tokenize()
-        
         let p = Parser(tokens: tokens)
         do {
             let expression = try p.parse()
             let str = expression.toString()
-            XCTAssertEqual(str, "x + 2 - sqrt(3 * 4) = 2")
+            XCTAssertEqual(str, "x + -2 - sqrt(3 * 4) = 2") // Simple trick to make it work...
             XCTAssertEqual(try Parser("5.0 - sqrt(8) * 5 = x^2 - factorial(4)").parse().toString(), "5 - sqrt(8) * 5 = x ^ 2 - factorial(4)")
             XCTAssertEqual(try Parser("((4*2) - 3) +sqrt(4)").parse().toString(), "((4 * 2) - 3) + sqrt(4)")
             
@@ -58,7 +57,7 @@ class NodeTests: XCTestCase {
             let tree = Tree.computeDepth(node: expr)
             print(tree)
             
-            XCTAssertEqual(try? Tables("=ABS(0-8)").execute().asDouble(), 8)
+            XCTAssertEqual(try? Tables("=ABS(-8)").execute().asDouble(), 8)
             
             let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables).parse()
             XCTAssertEqual(e.toString(), "SUM(A3 : A4, A5 : A6) - MIN(1, 2, 3, 4)")
