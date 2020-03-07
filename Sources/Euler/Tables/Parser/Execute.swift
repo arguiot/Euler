@@ -234,12 +234,20 @@ public extension Tables {
                 let s = args[1]
                 guard let n1 = f as? BigNumber else { return nil }
                 guard let n2 = s as? BigNumber else { return nil }
-                return try self.MOD(n1, n2)
+                return self.MOD(n1, n2)
             },
             "MULTINOMIAL": { args in
                 guard let a = args as? [BigDouble] else { return nil }
                 let array = a.map { $0.rounded() }
-                return try self.MULTINOMIAL(array: array)
+                return self.MULTINOMIAL(array: array)
+            },
+            "ODD": { args in
+                guard let f = args.first else { return nil }
+                guard let n = f as? BigNumber else { return nil }
+                return BigDouble(self.ODD(n))
+            },
+            "PI": { _ in
+                return pi
             }
         ]
     }

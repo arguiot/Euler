@@ -45,6 +45,10 @@ public class Lexer {
         for (lower, _) in ms {
             i.insert("+", at: String.Index(encodedOffset: lower))
         }
+        let ps = i.matches(regex: "\\(\\)")
+        for (lower, _) in ps {
+            i.insert("0", at: String.Index(encodedOffset: lower + 1))
+        }
         return i
     }
     

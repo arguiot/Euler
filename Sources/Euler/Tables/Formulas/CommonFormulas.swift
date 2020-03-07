@@ -352,7 +352,7 @@ public extension Tables {
     /// - Parameters:
     ///   - a: The number for which you want to find the remainder.
     ///   - b: The number by which you want to divide number.
-    func MOD(_ a: BigDouble, b: BigDouble) -> BigDouble {
+    func MOD(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
         return a % b
     }
     
