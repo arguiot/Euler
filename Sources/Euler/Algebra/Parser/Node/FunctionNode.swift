@@ -53,10 +53,10 @@ public class FunctionNode: NSObject, Node {
     }
     
     /// Converts FunctionNode to BigNumber by exectuing the function defined in `FunctionNode.function`
-    public func evaluate(_ params: [String : BigNumber], _ fList: [String : (([Any]) throws -> BigDouble?)]) throws -> BigNumber {
+    public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue {
         let evaluated = try self.children.map { try $0.evaluate(params, fList) }
         guard let f = fList[self.content] else { throw EvaluationError.functionError }
-        guard let r = try f(evaluated) else { throw EvaluationError.functionError }
+        let r = try f(evaluated)
         return r
     }
 }

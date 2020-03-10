@@ -44,7 +44,7 @@ public class NullNode: NSObject, Node {
         return self
     }
     /// Converts NullNode to BigNumber
-    public func evaluate(_ params: [String : BigNumber], _ fList: [String : (([Any]) throws -> BigDouble?)]) throws -> BigNumber {
-        return .zero
+    public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue {
+        return CellValue(number: .zero)
     }
 }

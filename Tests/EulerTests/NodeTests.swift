@@ -14,26 +14,26 @@ class NodeTests: XCTestCase {
     func testConstantNode() {
         let c1 = ConstantNode(2)
         
-        XCTAssertEqual(try? c1.evaluate([:], [:]), BigNumber(2))
+        XCTAssertEqual(try? c1.evaluate([:], [:]).number, BigNumber(2))
     }
     func testOperatorNode() {
         let c1 = ConstantNode(2)
         let c2 = ConstantNode(4)
         let op = OperatorNode("*", children: [c1, c2])
         
-        XCTAssertEqual(try? op.evaluate([:], [:]), BigNumber(8))
+        XCTAssertEqual(try? op.evaluate([:], [:]).number, BigNumber(8))
         
         let c3 = ConstantNode(5)
         let op2 = OperatorNode("+", children: [c3, op])
         
-        XCTAssertEqual(try? op2.evaluate([:], [:]), BigNumber(13))
+        XCTAssertEqual(try? op2.evaluate([:], [:]).number, BigNumber(13))
     }
     func testSymboleNode() {
         let c1 = ConstantNode(2)
         let c2 = SymbolNode("x")
         let op = OperatorNode("*", children: [c1, c2])
         
-        XCTAssertEqual(try? op.evaluate(["x": BigNumber(4)], [:]), BigNumber(8))
+        XCTAssertEqual(try? op.evaluate(["x": BigNumber(4)], [:]).number, BigNumber(8))
         
         let c3 = ConstantNode(5)
         let op2 = OperatorNode("+", children: [c3, op])
@@ -57,7 +57,8 @@ class NodeTests: XCTestCase {
             let tree = Tree.computeDepth(node: expr)
             print(tree)
             
-            XCTAssertEqual(try? Tables("=ABS(-8)").execute().asDouble(), 8)
+            XCTAssertEqual(try? Tables("=ABS(-8)").execute().number, 8)
+            XCTAssertEqual(try? Tables("=GCD(8, 9, 5, 6, 12)").execute().number, 1)
             
             let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables).parse()
             XCTAssertEqual(e.toString(), "SUM(A3 : A4, A5 : A6) - MIN(1, 2, 3, 4)")

@@ -47,8 +47,8 @@ public class StringNode: NSObject, Node {
         return self
     }
     /// Converts SymboleNode to BigNumber by replacing unknown value by their parameters. If it fails, it will return 0.
-    public func evaluate(_ params: [String : BigNumber], _ fList: [String : (([Any]) throws -> BigDouble?)]) throws -> BigNumber {
-        throw EvaluationError.ImpossibleOperation
+    public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue  {
+        return CellValue(string: self.content)
     }
     
     /// Make sure that two `StringNode` are equals (used in pattern matching)

@@ -82,44 +82,48 @@ public class OperatorNode: NSObject, Node {
         }
         
         if c1.type == "ConstantNode" && c2.type == "ConstantNode" {
-            guard let ev1 = try? c1.evaluate([:], [:]) else { return self }
-            guard let ev2 = try? c2.evaluate([:], [:]) else { return self }
-            switch self.content {
-            case "+":
-                return ConstantNode(ev1 + ev2)
-            case "-":
-                return ConstantNode(ev1 - ev2)
-            case "/":
-                return ConstantNode(ev1 / ev2)
-            case "*":
-                return ConstantNode(ev1 * ev2)
-            case "^":
-                return ConstantNode(ev1 ** ev2)
-            default:
-                break
+            do {
+                guard let ev1 = try c1.evaluate([:], [:]).number else { return self }
+                guard let ev2 = try c2.evaluate([:], [:]).number else { return self }
+                switch self.content {
+                case "+":
+                    return ConstantNode(ev1 + ev2)
+                case "-":
+                    return ConstantNode(ev1 - ev2)
+                case "/":
+                    return ConstantNode(ev1 / ev2)
+                case "*":
+                    return ConstantNode(ev1 * ev2)
+                case "^":
+                    return ConstantNode(ev1 ** ev2)
+                default:
+                    break
+                }
+            } catch {
+                return self
             }
         }
         return OperatorNode(self.content, children: [c1, c2])
     }
     /// Converts OperatorNode to BigNumber
-    public func evaluate(_ params: [String : BigNumber], _ fList: [String : (([Any]) throws -> BigDouble?)]) throws -> BigNumber {
+    public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue {
         guard self.children.count == 2 else { throw EvaluationError.missingChildren }
-        let ev1 = try self.children[0].evaluate(params, fList)
-        let ev2 = try self.children[1].evaluate(params, fList)
+        guard let ev1 = try self.children[0].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
+        guard let ev2 = try self.children[1].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
         
         switch self.content {
         case "+":
-            return ev1 + ev2
+            return CellValue(number: ev1 + ev2)
         case "-":
-            return ev1 - ev2
+            return CellValue(number: ev1 - ev2)
         case "/":
-            return ev1 / ev2
+            return CellValue(number: ev1 / ev2)
         case "*":
-            return ev1 * ev2
+            return CellValue(number: ev1 * ev2)
         case "^":
-            return ev1 ** ev2
+            return CellValue(number: ev1 ** ev2)
         default:
-            return ev1 + ev2
+            return CellValue(number: ev1 + ev2)
         }
     }
 }
