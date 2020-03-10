@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Graph Class Reference</title>
+    <title>CellValue Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/Graph" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/CellValue" class="dashAnchor"></a>
 
-    <a title="Graph Class Reference"></a>
+    <a title="CellValue Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Graph Class Reference
+      CellValue Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -350,16 +350,15 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Graph</h1>
+            <h1>CellValue</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Graph</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CellValue</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CellValue</span><span class="p">:</span> <span class="kt">Hashable</span></code></pre>
 
                 </div>
               </div>
-            <p>Object that lets you plot graphs natively.</p>
-
-<p><code>Graph</code> is heavily based on SwiftPlot (cross platform).</p>
+            <p>A structure for storing and interacting with the value contained by a <code><a href="../Classes/Tables.html">Tables</a></code> cell</p>
 
           </div>
         </section>
@@ -371,9 +370,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler5GraphC8PointSetV"></a>
-                    <a name="//apple_ref/swift/Struct/PointSet" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5GraphC8PointSetV">PointSet</a>
+                    <a name="/s:5Euler9CellValueV2eeoiySbAC_ACtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler9CellValueV2eeoiySbAC_ACtFZ">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -381,20 +380,49 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A sub structure to the <code><a href="../Classes/Graph.html">Graph</a></code> to represent a set of point</p>
+                        <p>Equatable implementation</p>
 
-                        <a href="../Classes/Graph/PointSet.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">PointSet</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">CellValue</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">CellValue</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Graph.swift#L19-L43">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/CellValue.swift#L56-L61">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler9CellValueV4hash4intoys6HasherVz_tF"></a>
+                    <a name="//apple_ref/swift/Method/hash(into:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler9CellValueV4hash4intoys6HasherVz_tF">hash(into:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Hashable implementation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hash</span><span class="p">(</span><span class="n">into</span> <span class="nv">hasher</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Hasher</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/CellValue.swift#L80-L85">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
