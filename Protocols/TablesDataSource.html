@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Graph Class Reference</title>
+    <title>TablesDataSource Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/Graph" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Protocol/TablesDataSource" class="dashAnchor"></a>
 
-    <a title="Graph Class Reference"></a>
+    <a title="TablesDataSource Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Graph Class Reference
+      TablesDataSource Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -358,16 +358,14 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Graph</h1>
+            <h1>TablesDataSource</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Graph</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TablesDataSource</span></code></pre>
 
                 </div>
               </div>
-            <p>Object that lets you plot graphs natively.</p>
-
-<p><code>Graph</code> is heavily based on SwiftPlot (cross platform).</p>
+            <p>A type that helps you communicate and interact with <code><a href="../Classes/Tables.html">Tables</a></code></p>
 
           </div>
         </section>
@@ -379,9 +377,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler5GraphC8PointSetV"></a>
-                    <a name="//apple_ref/swift/Struct/PointSet" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5GraphC8PointSetV">PointSet</a>
+                    <a name="/s:5Euler16TablesDataSourceP11valueOfCell1x1yAA0G5ValueVSi_SitF"></a>
+                    <a name="//apple_ref/swift/Method/valueOfCell(x:y:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler16TablesDataSourceP11valueOfCell1x1yAA0G5ValueVSi_SitF">valueOfCell(x:y:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -389,20 +387,172 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A sub structure to the <code><a href="../Classes/Graph.html">Graph</a></code> to represent a set of point</p>
+                        <p>Get the value of a cell at a specific address</p>
 
-                        <a href="../Classes/Graph/PointSet.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">PointSet</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">valueOfCell</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/CellValue.html">CellValue</a></span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The x coordinate of the cell. For example, when the parser sees <code>B4</code>, it will call this function with <code>x = 1</code> as <code>B</code> is the second letter in the alphabet and we start from 0</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>y</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The x coordinate of the cell. For example, when the parser sees <code>B4</code>, it will call this function with <code>y = 3</code> as  we start from 0.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Graph.swift#L19-L43">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/TableDataSource.swift#L15">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler16TablesDataSourceP10updateCell7content1x1yyAA0F5ValueV_S2itF"></a>
+                    <a name="//apple_ref/swift/Method/updateCell(content:x:y:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler16TablesDataSourceP10updateCell7content1x1yyAA0F5ValueV_S2itF">updateCell(content:x:y:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the value of the cell at a specific address</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateCell</span><span class="p">(</span><span class="nv">content</span><span class="p">:</span> <span class="kt"><a href="../Structs/CellValue.html">CellValue</a></span><span class="p">,</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>content</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The content of the updated cell.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The x coordinate of the cell. For example, when we want to update <code>B4</code>, it will call this function with <code>x = 1</code> as <code>B</code> is the second letter in the alphabet and we start from 0</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>y</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The x coordinate of the cell. For example, when we want to update <code>B4</code>, it will call this function with <code>y = 3</code> as  we start from 0.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/TableDataSource.swift#L22">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler16TablesDataSourceP9interpret7commandAA9CellValueVSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/interpret(command:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler16TablesDataSourceP9interpret7commandAA9CellValueVSS_tF">interpret(command:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Interprets the given command</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">interpret</span><span class="p">(</span><span class="nv">command</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/CellValue.html">CellValue</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>command</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The command you want to execute. Example: <code>=SUM(1, 2, 3, 4)</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/TableDataSource.swift#L26">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
