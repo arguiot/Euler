@@ -9,15 +9,16 @@ import Foundation
 
 public extension Tables {
     
-    func execute() throws -> CellValue {
-        guard self.expression != nil else { throw TablesError.NULL }
-        let p = Parser(self.expression!, type: .tables) // new parser for Tables
+    /// Interprets the given command
+    /// - Parameter command: The command you want to execute. Example: `=SUM(1, 2, 3, 4)`
+    func interpret(command: String) throws -> CellValue {
+        let p = Parser(command, type: .tables) // new parser for Tables
         let expression = try p.parse() // Trying to parse the expression
         
         return try expression.evaluate([:], linker)
     }
     
-    var linker: [String:(([CellValue]) throws -> CellValue)] {
+    internal var linker: [String:(([CellValue]) throws -> CellValue)] {
         return [
             "ABS": { args in
                 guard let f = args.first else { return CellValue.nil }

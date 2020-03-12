@@ -20,8 +20,4 @@ public protocol TablesDataSource {
     ///   - x: The x coordinate of the cell. For example, when we want to update `B4`, it will call this function with `x = 1` as `B` is the second letter in the alphabet and we start from 0
     ///   - y: The x coordinate of the cell. For example, when we want to update `B4`, it will call this function with `y = 3` as  we start from 0.
     func updateCell(content: CellValue, x: Int, y: Int)
-    
-    /// Interprets the given command
-    /// - Parameter command: The command you want to execute. Example: `=SUM(1, 2, 3, 4)`
-    func interpret(command: String) -> CellValue
 }

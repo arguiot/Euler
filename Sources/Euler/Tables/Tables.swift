@@ -9,21 +9,6 @@ import Foundation
 
 /// A class for developing Excel-like software / parser.
 public class Tables {
-    /// Expression as String
-    ///
-    /// Example:
-    /// ```
-    /// =SUM(A3:A5) - MIN(A3:A5)
-    /// ```
-    public var expression: String?
-    
-    /// Initialize a Tables object in order to execute a single expression
-    /// - Parameter expr: The expression you want to execute
-    public init(_ expr: String) {
-        self.expression = expr
-    }
-    /// Regular init
-    public init() {}
     /// A type of error made for `Tables`
     public enum TablesError: Error {
         /// Reference error

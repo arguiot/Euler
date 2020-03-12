@@ -57,8 +57,8 @@ class NodeTests: XCTestCase {
             let tree = Tree.computeDepth(node: expr)
             print(tree)
             
-            XCTAssertEqual(try? Tables("=ABS(-8)").execute().number, 8)
-            XCTAssertEqual(try? Tables("=GCD(8, 9, 5, 6, 12)").execute().number, 1)
+            XCTAssertEqual(try? Tables().interpret(command: "=ABS(-8)").number, 8)
+            XCTAssertEqual(try? Tables().interpret(command: "=GCD(8, 9, 5, 6, 12)").number, 1)
             
             let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables).parse()
             XCTAssertEqual(e.toString(), "SUM(A3 : A4, A5 : A6) - MIN(1, 2, 3, 4)")
