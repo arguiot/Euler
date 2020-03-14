@@ -23,7 +23,6 @@ let package = Package(
             name: "Euler",
             dependencies: [
                 "SwiftPlot",
-                "AGGRenderer",
                 "SVGRenderer"
         ]),
         .testTarget(
