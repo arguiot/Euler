@@ -9,41 +9,41 @@ import Foundation
 /// A structure for storing and interacting with the value contained by a `Tables` cell
 public struct CellValue {
     /// The number value of the cell
-    var number: BigNumber?
+    public var number: BigNumber?
     /// The string value of the cell
-    var string: String?
+    public var string: String?
     /// The boolean value of the cell
-    var boolean: Bool?
+    public var boolean: Bool?
     /// The type of the structure
-    var type: Type
+    public var type: Type
     
-    static var `nil`: CellValue {
+    static public var `nil`: CellValue {
         var v = CellValue(boolean: false)
         v.type = .error
         return v
     }
     
     /// Initialize the structure for a number
-    init(number: BigNumber) {
+    public init(number: BigNumber) {
         self.type = .number
         self.number = number
     }
     /// Initialize the structure for an integer
-    init(int: BigInt) {
+    public init(int: BigInt) {
         self.init(number: BigDouble(int))
     }
     /// Initialize the structure for a string
-    init(string: String) {
+    public init(string: String) {
         self.type = .string
         self.string = string
     }
     /// Initialize the structure for a boolean
-    init(boolean: Bool) {
+    public init(boolean: Bool) {
         self.type = .bool
         self.boolean = boolean
     }
     /// The type of the value contained by the cell
-    enum `Type` {
+    public enum `Type` {
         case number
         case string
         case bool
