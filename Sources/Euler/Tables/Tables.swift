@@ -9,6 +9,7 @@ import Foundation
 
 /// A class for developing Excel-like software / parser.
 public class Tables {
+    public init() {}
     /// A type of error made for `Tables`
     public enum TablesError: Error {
         /// Reference error
