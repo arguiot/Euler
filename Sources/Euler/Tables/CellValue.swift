@@ -49,6 +49,19 @@ public struct CellValue {
         case bool
         case error
     }
+    /// Gives the string representation of the `CellValue`
+    public var description: String? {
+        switch self.type {
+        case .number:
+            return self.number?.description
+        case .string:
+            return self.string
+        case .bool:
+            return self.boolean?.description
+        default:
+            return nil
+        }
+    }
 }
 
 extension CellValue: Hashable {
