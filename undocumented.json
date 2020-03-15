@@ -778,6 +778,41 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/CellValue.swift",
+      "line": 20,
+      "symbol": "CellValue.nil",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/CellValue.swift",
+      "line": 47,
+      "symbol": "CellValue.Type.number",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/CellValue.swift",
+      "line": 48,
+      "symbol": "CellValue.Type.string",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/CellValue.swift",
+      "line": 49,
+      "symbol": "CellValue.Type.bool",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/CellValue.swift",
+      "line": 50,
+      "symbol": "CellValue.Type.error",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
       "line": 12,
       "symbol": "Tables.init()",
