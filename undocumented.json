@@ -776,6 +776,13 @@
       "symbol": "exp(_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/Tables.swift",
+      "line": 12,
+      "symbol": "Tables.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
     }
   ],
   "source_directory": "/Users/travis/build/arguiot/Euler"
