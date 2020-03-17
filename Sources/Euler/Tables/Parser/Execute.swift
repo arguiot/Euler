@@ -257,6 +257,11 @@ public extension Tables {
             },
             "PI": { _ in
                 return CellValue(number: pi)
+            },
+            "POWER": { args in
+                guard let a = args as? [BigDouble] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return self.POWER(a[0], a[1])
             }
         ]
     }
