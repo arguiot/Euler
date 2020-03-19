@@ -412,6 +412,14 @@ public extension Tables {
         return ns.reduce(BigDouble(1)) { $0 * $1 }
     }
     
+    /// The PRODUCT function multiplies all the numbers given as arguments and returns the product. For example, if cells A1 and A2 contain numbers, you can use the formula =PRODUCT(A1, A2) to multiply those two numbers together. You can also perform the same operation by using the multiply (*) mathematical operator; for example, =A1 * A2.
+    
+    /// The PRODUCT function is useful when you need to multiply many cells together. For example, the formula =PRODUCT(A1:A3, C1:C3) is equivalent to =A1 * A2 * A3 * C1 * C2 * C3.
+    /// - Parameter ns: The first number or range that you want to multiply. Continue by adding additional numbers or ranges that you want to multiply, up to a maximum of 255 arguments.
+    func PRODUCT(_ ns: [BigDouble]) -> BigDouble {
+        return ns.reduce(BigDouble(1)) { $0 * $1 }
+    }
+    
     /// Returns the integer portion of a division. Use this function when you want to discard the remainder of a division.
     ///
     /// > Tip: If you want to divide numeric values, you should use the "/" operator as there isn't a DIVIDE function in `Euler.Tables`. For example, to divide 5 by 2, you would type =5/2 into a cell, which returns 2.5. The QUOTIENT function for these same numbers =QUOTIENT(5,2) returns 2, since QUOTIENT doesn't return a remainder.

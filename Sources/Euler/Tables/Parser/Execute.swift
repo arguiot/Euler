@@ -259,9 +259,53 @@ public extension Tables {
                 return CellValue(number: pi)
             },
             "POWER": { args in
-                guard let a = args as? [BigDouble] else { return CellValue.nil }
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
                 guard a.count == 2 else { return CellValue.nil }
-                return self.POWER(a[0], a[1])
+                return CellValue(number: self.POWER(a[0], a[1]))
+            },
+            "PRODUCT": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                return CellValue(number: self.PRODUCT(a))
+            },
+            "QUOTIENT": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(int: self.QUOTIENT(a[0], a[1]))
+            },
+            "RADIANS": { args in
+                guard args.count == 1 else { return CellValue.nil }
+                guard let n = args[0].number else { return CellValue.nil }
+                return CellValue(number: self.RADIANS(n))
+            },
+            "RAND": { _ in
+                return CellValue(number: self.RAND())
+            },
+            "RANDBETWEEN": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.RANDBETWEEN(a[0], a[1]))
+            },
+            "ROUND": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.ROUND(a[0], digits: a[1].rounded()))
+            },
+            "ROUNDDOWN": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.ROUNDDOWN(a[0], digits: a[1].rounded()))
+            },
+            "ROUNDUP": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.ROUNDUP(a[0], digits: a[1].rounded()))
             }
         ]
     }
