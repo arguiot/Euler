@@ -306,7 +306,141 @@ public extension Tables {
                 guard let a = tmp as? [BigNumber] else { return CellValue.nil }
                 guard a.count == 2 else { return CellValue.nil }
                 return CellValue(number: self.ROUNDUP(a[0], digits: a[1].rounded()))
-            }
+            },
+            "SEC": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: try self.SEC(n))
+            },
+            "SECH": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.SECH(n))
+            },
+            "SERIESSUM": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count >= 4 else { return CellValue.nil }
+                return CellValue(number: try self.SERIESSUM(a[0], a[1], a[2], a.dropLast(3)))
+            },
+            "SIGN": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(int: self.SIGN(n))
+            },
+            "SIN": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: try self.SIN(n))
+            },
+            "SINH": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.SINH(n))
+            },
+            "SQRT": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.SQRT(n))
+            },
+            "SQRTPI": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.SQRTPI(n))
+            },
+            "ADD": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.ADD(a[0], a[1]))
+            },
+            "MINUS": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.MINUS(a[0], a[1]))
+            },
+            "DIVIDE": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: try self.DIVIDE(a[0], a[1]))
+            },
+            "MULTIPLY": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.MULTIPLY(a[0], a[1]))
+            },
+            "GTE": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(boolean: self.GTE(a[0], a[1]))
+            },
+            "LT": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(boolean: self.LT(a[0], a[1]))
+            },
+            "LTE": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(boolean: self.LTE(a[0], a[1]))
+            },
+            "EQ": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(boolean: self.EQ(a[0], a[1]))
+            },
+            "NE": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(boolean: self.NE(a[0], a[1]))
+            },
+            "POW": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: self.POW(a[0], a[1]))
+            },
+            "SUM": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                return CellValue(number: self.SUM(a))
+            },
+            "SUMPRODUCT": { args in
+                #if os(macOS)
+                return CellValue.nil // TODO: CellValue doesn't support arrays
+                #endif
+                return CellValue.nil
+            },
+            "SUMSQ": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                return CellValue(number: self.SUMSQ(a))
+            },
+            "TAN": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: try self.TAN(n))
+            },
+            "TANH": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: try self.TANH(n))
+            },
+            "TRUNC": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                guard let i = a[1].rounded().asInt() else { return CellValue.nil }
+                return CellValue(number: self.TRUNC(a[0], i))
+            },
         ]
     }
 }

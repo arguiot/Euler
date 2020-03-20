@@ -527,6 +527,25 @@ public extension Tables {
         return result
     }
     
+    /// Many functions can be approximated by a power series expansion.
+    /// Returns the sum of a power series based on the formula:
+    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)$$`
+    /// - Parameters:
+    ///   - x: The input value to the power series.
+    ///   - n: The initial power to which you want to raise x.
+    ///   - m: The step by which to increase n for each term in the series.
+    ///   - coefficients: A set of coefficients by which each successive power of x is multiplied. The number of values in coefficients determines the number of terms in the power series. For example, if there are three values in coefficients, then there will be three terms in the power series.
+    func SERIESSUM(_ x: BigDouble, _ n: BigDouble, _ m: BigDouble, _ coefficients: [BigDouble]) throws -> BigDouble {
+        guard coefficients.count >= 1 else { throw TablesError.Arguments }
+        var result = coefficients[0] * pow(x, n)
+        var i = 1
+        while i < coefficients.count {
+            result += coefficients[i] * pow(x, n + BigDouble(i) * m)
+            i += 1
+        }
+        return result
+    }
+    
     /// Determines the sign of a number. Returns 1 if the number is positive, zero (0) if the number is 0, and -1 if the number is negative.
     /// - Parameter n: Any real number.
     func SIGN(_ n: BigDouble) -> BigInt {
@@ -595,8 +614,7 @@ public extension Tables {
     /// - Parameters:
     ///   - a: Any real
     ///   - b: Any real
-    func MULTIPLY(_ a: BigDouble, _ b: BigDouble) throws -> BigDouble {
-        guard b != 0 else { throw TablesError.DivisionByZero }
+    func MULTIPLY(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
         return a * b
     }
     /// Greater than or equal (`>=`)
@@ -638,6 +656,12 @@ public extension Tables {
         return n.reduce(BigDouble.zero) { $0 + $1 }
     }
     
+    /// The SUM function adds values.
+    /// - Parameter n: The numbers you want to sum
+    func SUM(_ n: [BigDouble]) -> BigDouble {
+        return n.reduce(BigDouble.zero) { $0 + $1 }
+    }
+    
     // MARK: TODO: SUMIF(s)
     #if os(macOS)
     /// The SUMPRODUCT function returns the sum of the products of corresponding ranges or arrays.
@@ -654,6 +678,21 @@ public extension Tables {
         }
         return vector.sum()
     }
+    
+    /// The SUMPRODUCT function returns the sum of the products of corresponding ranges or arrays.
+    ///
+    /// Example: `SUMPRODUCT([1, 2, 3], [2, 3, 4]) //= 20`
+    /// - Parameter a: An array of numbers
+    func SUMPRODUCT(_ a: [[BigDouble]]) throws -> BigDouble {
+        guard let f = a.first else { return .zero }
+        var vector = Matrix(rows: f.count, columns: 1, repeatedValue: 1)
+        for i in a {
+            guard i.count == f.count else { throw TablesError.Arguments }
+            let v1 = Matrix(i.map { $0.asDouble() ?? 0 }, isColumnVector: true)
+            vector = vector * v1
+        }
+        return vector.sum()
+    }
     #endif
     /// Returns the sum of the squares of the arguments.
     /// - Parameter n: The numbers you want to square and sum
@@ -661,6 +700,11 @@ public extension Tables {
         return n.reduce(BigDouble.zero) { $0 + ($1 * $1) }
     }
     
+    /// Returns the sum of the squares of the arguments.
+    /// - Parameter n: The numbers you want to square and sum
+    func SUMSQ(_ n: [BigDouble]) -> BigDouble {
+        return n.reduce(BigDouble.zero) { $0 + ($1 * $1) }
+    }
     /// Returns the sum of the difference of squares of corresponding values in two arrays.
     /// - Parameters:
     ///   - a1: List of number
