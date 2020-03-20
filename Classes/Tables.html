@@ -3567,6 +3567,93 @@ Returns the sum of a power series based on the formula:
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A2FSayAFGtKF"></a>
+                    <a name="//apple_ref/swift/Method/SERIESSUM(_:_:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A2FSayAFGtKF">SERIESSUM(_:_:_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Many functions can be approximated by a power series expansion.
+Returns the sum of a power series based on the formula:
+<code>$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)$$</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">SERIESSUM</span><span class="p">(</span><span class="n">_</span> <span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">n</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">m</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">coefficients</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input value to the power series.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>n</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The initial power to which you want to raise x.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>m</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The step by which to increase n for each term in the series.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coefficients</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A set of coefficients by which each successive power of x is multiplied. The number of values in coefficients determines the number of terms in the power series. For example, if there are three values in coefficients, then there will be three terms in the power series.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L538-L547">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Euler6TablesC4SIGNyAA6BigIntVAA0D6DoubleVF"></a>
                     <a name="//apple_ref/swift/Method/SIGN(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Euler6TablesC4SIGNyAA6BigIntVAA0D6DoubleVF">SIGN(_:)</a>
@@ -3608,7 +3695,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L532-L540">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L551-L559">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3657,7 +3744,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L544-L548">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L563-L567">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3706,7 +3793,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L552-L554">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L571-L573">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3755,7 +3842,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L558-L560">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L577-L579">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3804,7 +3891,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L564-L566">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L583-L585">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3878,7 +3965,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L573-L575">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L592-L594">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3939,7 +4026,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L581-L583">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L600-L602">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4000,7 +4087,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L589-L592">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L608-L611">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4008,9 +4095,9 @@ Returns the sum of a power series based on the formula:
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler6TablesC8MULTIPLYyAA9BigDoubleVAF_AFtKF"></a>
+                    <a name="/s:5Euler6TablesC8MULTIPLYyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/MULTIPLY(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC8MULTIPLYyAA9BigDoubleVAF_AFtKF">MULTIPLY(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC8MULTIPLYyAA9BigDoubleVAF_AFtF">MULTIPLY(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4025,7 +4112,7 @@ Returns the sum of a power series based on the formula:
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">MULTIPLY</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">MULTIPLY</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
 
                         </div>
                       </div>
@@ -4061,7 +4148,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L598-L601">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L617-L619">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4091,7 +4178,7 @@ Returns the sum of a power series based on the formula:
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L603-L605">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L621-L623">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4121,7 +4208,7 @@ Returns the sum of a power series based on the formula:
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L607-L609">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L625-L627">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4151,7 +4238,7 @@ Returns the sum of a power series based on the formula:
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L611-L613">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L629-L631">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4181,7 +4268,7 @@ Returns the sum of a power series based on the formula:
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L615-L617">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L633-L635">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4211,7 +4298,7 @@ Returns the sum of a power series based on the formula:
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L619-L621">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L637-L639">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4278,7 +4365,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L631-L633">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L649-L651">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4327,7 +4414,56 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L637-L639">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L655-L657">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC3SUMyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/SUM(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC3SUMyAA9BigDoubleVSayAFGF">SUM(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SUM function adds values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">SUM</span><span class="p">(</span><span class="n">_</span> <span class="nv">n</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>n</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The numbers you want to sum</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L661-L663">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4391,7 +4527,58 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L647-L656">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L671-L680">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSaySayAFGGKF"></a>
+                    <a name="//apple_ref/swift/Method/SUMPRODUCT(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSaySayAFGGKF">SUMPRODUCT(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SUMPRODUCT function returns the sum of the products of corresponding ranges or arrays.</p>
+
+<p>Example: <code>SUMPRODUCT([1, 2, 3], [2, 3, 4]) //= 20</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">SUMPRODUCT</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="p">[[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">]])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>a</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of numbers</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L686-L695">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4440,7 +4627,56 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L660-L662">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L699-L701">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC5SUMSQyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/SUMSQ(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC5SUMSQyAA9BigDoubleVSayAFGF">SUMSQ(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the sum of the squares of the arguments.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">SUMSQ</span><span class="p">(</span><span class="n">_</span> <span class="nv">n</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>n</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The numbers you want to square and sum</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L705-L707">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4501,7 +4737,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L668-L673">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L712-L717">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4562,7 +4798,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L679-L684">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L723-L728">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4623,7 +4859,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L690-L698">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L734-L742">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4672,7 +4908,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L702-L706">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L746-L750">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4721,7 +4957,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L710-L713">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L754-L757">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -4782,7 +5018,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L719-L722">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/CommonFormulas.swift#L763-L766">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -5106,7 +5342,7 @@ Returns the sum of a power series based on the formula:
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-03-19)</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-03-20)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
