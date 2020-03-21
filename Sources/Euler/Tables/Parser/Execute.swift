@@ -20,6 +20,7 @@ public extension Tables {
     
     internal var linker: [String:(([CellValue]) throws -> CellValue)] {
         return [
+            // MARK: CommonFormulas
             "ABS": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
@@ -440,6 +441,22 @@ public extension Tables {
                 guard a.count == 2 else { return CellValue.nil }
                 guard let i = a[1].rounded().asInt() else { return CellValue.nil }
                 return CellValue(number: self.TRUNC(a[0], i))
+            },
+            // MARK: Logical
+            "AND": { args in
+                let tmp = args.map { $0.boolean }
+                guard let a = tmp as? [Bool] else { return CellValue.nil }
+                return CellValue(boolean: self.AND(a))
+            },
+            "OR": { args in
+                let tmp = args.map { $0.boolean }
+                guard let a = tmp as? [Bool] else { return CellValue.nil }
+                return CellValue(boolean: self.OR(a))
+            },
+            "XOR": { args in
+                let tmp = args.map { $0.boolean }
+                guard let a = tmp as? [Bool] else { return CellValue.nil }
+                return CellValue(boolean: self.XOR(a))
             },
         ]
     }
