@@ -6,7 +6,7 @@
 //
 
 import Foundation
-/// A type that helps you communicate and interact with `Tables`
+/// A protocol that helps you communicate and interact with the values in `Tables`
 public protocol TablesDataSource {
     /// Get the value of a cell at a specific address
     /// - Parameters:

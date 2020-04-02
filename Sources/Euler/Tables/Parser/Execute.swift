@@ -13,6 +13,9 @@ public extension Tables {
     /// - Parameter command: The command you want to execute. Example: `=SUM(1, 2, 3, 4)`
     func interpret(command: String) throws -> CellValue {
         let p = Parser(command, type: .tables) // new parser for Tables
+        
+        p.tablesContext = self
+        
         let expression = try p.parse() // Trying to parse the expression
         
         return try expression.evaluate([:], linker)

@@ -10,6 +10,11 @@ import Foundation
 /// A class for developing Excel-like software / parser.
 public class Tables {
     public init() {}
+    /// Tables' data source
+    public var dataSource: TablesDataSource?
+    /// Tables' delegate
+    public var delegate: TablesDelegate?
+    
     /// A type of error made for `Tables`
     public enum TablesError: Error {
         /// Reference error

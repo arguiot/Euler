@@ -24,6 +24,7 @@ fileprivate enum GroupError: Error {
 /// In particular, it is in charge of recognizing parentheses and preanalysing them before passing the expression to `Parser`.
 public class Group: NSObject {
     enum `Type` {
+        case Address
         case Symbol
         case Function
         case Operator
@@ -36,10 +37,12 @@ public class Group: NSObject {
     var tokens: [Token]
     var type: Type
     var context: Parser.ParseContext
-    init(tokens: [Token], type: Type, context: Parser.ParseContext) {
+    var tablesContext: Tables?
+    init(tokens: [Token], type: Type, context: Parser.ParseContext, tablesContext: Tables? = nil) {
         self.tokens = tokens
         self.type = type
         self.context = context
+        self.tablesContext = tablesContext
     }
     
     func compile() throws {
@@ -71,6 +74,8 @@ public class Group: NSObject {
     func toNode(lhs: Node?, rhs: Node?) throws -> Node {
         try self.compile()
         switch self.type {
+        case .Address:
+            return try self.toCellAdress()
         case .Symbol:
             return try self.toSymbol()
         case .Function:
@@ -83,6 +88,7 @@ public class Group: NSObject {
         case .Parenthesis:
             // Parsing
             let p = Parser(tokens: tokens, type: self.context)
+            p.tablesContext = tablesContext
             let expr = try p.parse()
             return ParenthesisNode(expr.children)
         case .UnParsed:
@@ -95,7 +101,12 @@ public class Group: NSObject {
             return try self.toString()
         }
     }
-    
+    func toCellAdress() throws -> CellAddressNode {
+        guard tokens.count == 1 else { throw GroupError.UnexpectedError }
+        guard case let Token.address(token) = tokens[0] else { throw GroupError.UnexpectedError }
+        guard self.tablesContext != nil else { throw GroupError.UnexpectedError }
+        return CellAddressNode(token, self.tablesContext!)
+    }
     func toSymbol() throws -> SymbolNode {
         guard tokens.count == 1 else { throw GroupError.UnexpectedError }
         guard case let Token.Symbol(token) = tokens[0] else { throw GroupError.UnexpectedError }
@@ -132,12 +143,15 @@ public class Grouper {
     /// Context in which the expression should be grouped
     var context: Parser.ParseContext
     
+    internal var tablesContext: Tables?
+    
     /// Initiatlize the `Grouper` class
     /// - Parameter tokens: the array of `Token` given by the `Lexer`
     /// - Parameter context: the context in which the expression should be grouped
-    init(tokens: [Token], context: Parser.ParseContext) {
+    init(tokens: [Token], context: Parser.ParseContext, tablesContext: Tables? = nil) {
         self.tokens = tokens
         self.context = context
+        self.tablesContext = tablesContext
     }
     
     /// Gives current `Token`
@@ -182,25 +196,28 @@ public class Grouper {
                 }
             }
             switch token {
+            case .address(_):
+                let g = Group(tokens: [token], type: .Address, context: self.context, tablesContext: tablesContext)
+                groups.append(g)
             case .Symbol(_):
-                let g = Group(tokens: [token], type: .Symbol, context: self.context)
+                let g = Group(tokens: [token], type: .Symbol, context: self.context, tablesContext: tablesContext)
                  groups.append(g)
             case .Number(_):
-                let g = Group(tokens: [token], type: .Number, context: self.context)
+                let g = Group(tokens: [token], type: .Number, context: self.context, tablesContext: tablesContext)
                  groups.append(g)
             case .ParensOpen:
                 nested += 1
             case .ParensClose:
                 if nested == 0 {
-                    groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis, context: self.context))
+                    groups.append(Group(tokens: temp[level].dropLast(), type: .Parenthesis, context: self.context, tablesContext: tablesContext))
                     level += 1
                     temp.append([Token]()) // Adding empty array in case there is a list
                 }
             case .Other(_):
-                let g = Group(tokens: [token], type: .UnParsed, context: self.context)
+                let g = Group(tokens: [token], type: .UnParsed, context: self.context, tablesContext: tablesContext)
                 groups.append(g)
             case .Str(_):
-                let g = Group(tokens: [token], type: .Str, context: self.context)
+                let g = Group(tokens: [token], type: .Str, context: self.context, tablesContext: tablesContext)
                 groups.append(g)
             }
         }

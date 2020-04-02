@@ -17,12 +17,14 @@ internal enum Token {
     case ParensClose
     case Other(String)
     case Str(String)
+    case address(String)
 }
 
 typealias TokenGenerator = (String) -> Token?
 /// Helps the `Lexer` to convert text to `Token`
 let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
+    ("\\$?[A-Z]+\\$?\\d+", { .address($0) }),
     ("[a-zA-Z][a-zA-Z0-9]*", { .Symbol($0) }),
     ("-?[0-9]\\d*(\\.\\d+)?", { (r: String) in .Number((r as NSString).floatValue) }),
     ("\\(", { _ in .ParensOpen }),

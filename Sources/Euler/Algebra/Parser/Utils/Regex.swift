@@ -9,6 +9,7 @@ import Foundation
 
 var expressions = [String: NSRegularExpression]()
 internal extension String {
+    /// Returns the matched String
     func match(regex: String) -> String? {
         let expression: NSRegularExpression
         if let exists = expressions[regex] {

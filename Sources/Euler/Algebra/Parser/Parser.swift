@@ -53,6 +53,8 @@ public class Parser {
     }
     internal var context: ParseContext
     
+    internal var tablesContext: Tables?
+    
     /// Initialize `Parser` with a mathematical expression as a String ( ASCIIMath)
     /// - Parameter str: ASCIIMath expression
     public init(_ str: String, type: ParseContext = .math) {
@@ -66,14 +68,14 @@ public class Parser {
         }
         
         
-        self.grouper = Grouper(tokens: tokens, context: type)
+        self.grouper = Grouper(tokens: tokens, context: type, tablesContext: tablesContext)
     }
     /// Initialize `Parser` with a list of tokens given by the `Lexer`
     /// - Parameter tokens: Array of `Token` given by the `Lexer`
     internal init(tokens: [Token], type: ParseContext = .math) {
         self.context = type
         self.tokens = tokens
-        self.grouper = Grouper(tokens: self.tokens, context: type)
+        self.grouper = Grouper(tokens: self.tokens, context: type, tablesContext: tablesContext)
     }
     
     /// Grouper object containing the `Token`
@@ -111,6 +113,7 @@ public class Parser {
             ":": 4, // For tables
             "=": 4
         ]
+        guard chain.count >= 1 else { throw ParseError.FailedToParse }
         var nodes: [Node] = [chain[0]]
         
         while index < chain.count - 1 { // Iterating over the array, ommiting last element
