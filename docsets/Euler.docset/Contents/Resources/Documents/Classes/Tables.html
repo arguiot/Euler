@@ -4,8 +4,10 @@
     <title>Tables Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="../css/katex.min.css" />
     <meta charset="utf-8">
     <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/katex.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
     <script src="../js/lunr.min.js" defer></script>
@@ -23,7 +25,7 @@
         <a class="header-link" href="../index.html">
           Euler Docs
         </a>
-         (82% documented)
+         (83% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -240,6 +242,9 @@
             <a class="nav-group-name-link" href="../Other%20Classes.html">Other Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CellAddressNode.html">CellAddressNode</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/Expression.html">Expression</a>
               </li>
               <li class="nav-group-task">
@@ -309,6 +314,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/TablesDataSource.html">TablesDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TablesDelegate.html">TablesDelegate</a>
               </li>
             </ul>
           </li>
@@ -410,6 +418,66 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Euler6TablesC10dataSourceAA0b4DataD0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/dataSource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC10dataSourceAA0b4DataD0_pSgvp">dataSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tables&rsquo; data source</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="kt"><a href="../Protocols/TablesDataSource.html">TablesDataSource</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L14">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC8delegateAA0B8Delegate_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC8delegateAA0B8Delegate_pSgvp">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tables&rsquo; delegate</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/TablesDelegate.html">TablesDelegate</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L16">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Euler6TablesC0B5ErrorO"></a>
                     <a name="//apple_ref/swift/Enum/TablesError" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Euler6TablesC0B5ErrorO">TablesError</a>
@@ -433,7 +501,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L14-L27">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Tables.swift#L19-L32">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -456,7 +524,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC3ABSyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/ABS(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3ABSyAA9BigDoubleVAFF">ABS(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3ABSyAA9BigDoubleVAFF">ABS(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -505,7 +573,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4ACOSyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ACOS(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4ACOSyAA9BigDoubleVAFKF">ACOS(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4ACOSyAA9BigDoubleVAFKF">ACOS(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -554,7 +622,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC5ACOSHyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ACOSH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5ACOSHyAA9BigDoubleVAFKF">ACOSH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5ACOSHyAA9BigDoubleVAFKF">ACOSH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -603,7 +671,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4ACOTyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ACOT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4ACOTyAA9BigDoubleVAFKF">ACOT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4ACOTyAA9BigDoubleVAFKF">ACOT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -652,7 +720,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC5ACOTHyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ACOTH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5ACOTHyAA9BigDoubleVAFKF">ACOTH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5ACOTHyAA9BigDoubleVAFKF">ACOTH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -714,7 +782,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4ASINyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ASIN(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4ASINyAA9BigDoubleVAFKF">ASIN(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4ASINyAA9BigDoubleVAFKF">ASIN(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -763,7 +831,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC5ASINHyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ASINH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5ASINHyAA9BigDoubleVAFKF">ASINH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5ASINHyAA9BigDoubleVAFKF">ASINH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -812,7 +880,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4ATANyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ATAN(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4ATANyAA9BigDoubleVAFKF">ATAN(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4ATANyAA9BigDoubleVAFKF">ATAN(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -861,7 +929,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC5ATAN2yAA9BigDoubleVAF_AFtKF"></a>
                     <a name="//apple_ref/swift/Method/ATAN2(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5ATAN2yAA9BigDoubleVAF_AFtKF">ATAN2(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5ATAN2yAA9BigDoubleVAF_AFtKF">ATAN2(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -922,7 +990,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC5ATANHyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/ATANH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5ATANHyAA9BigDoubleVAFKF">ATANH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5ATANHyAA9BigDoubleVAFKF">ATANH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -971,7 +1039,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4BASEySSAA6BigIntV_AFtF"></a>
                     <a name="//apple_ref/swift/Method/BASE(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4BASEySSAA6BigIntV_AFtF">BASE(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4BASEySSAA6BigIntV_AFtF">BASE(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1032,7 +1100,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC7CEILING_12significance4modeAA9BigDoubleVAH_AHSitF"></a>
                     <a name="//apple_ref/swift/Method/CEILING(_:significance:mode:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7CEILING_12significance4modeAA9BigDoubleVAH_AHSitF">CEILING(_:significance:mode:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7CEILING_12significance4modeAA9BigDoubleVAH_AHSitF">CEILING(_:<wbr>significance:<wbr>mode:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1107,7 +1175,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC6COMBIN_1kAA6BigIntVAG_AGtKF"></a>
                     <a name="//apple_ref/swift/Method/COMBIN(_:k:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC6COMBIN_1kAA6BigIntVAG_AGtKF">COMBIN(_:k:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC6COMBIN_1kAA6BigIntVAG_AGtKF">COMBIN(_:<wbr>k:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1170,7 +1238,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC7COMBINA_1kAA6BigIntVAG_AGtKF"></a>
                     <a name="//apple_ref/swift/Method/COMBINA(_:k:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7COMBINA_1kAA6BigIntVAG_AGtKF">COMBINA(_:k:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7COMBINA_1kAA6BigIntVAG_AGtKF">COMBINA(_:<wbr>k:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1233,7 +1301,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC3COSyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/COS(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3COSyAA9BigDoubleVAFKF">COS(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3COSyAA9BigDoubleVAFKF">COS(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1282,7 +1350,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4COSHyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/COSH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4COSHyAA9BigDoubleVAFKF">COSH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4COSHyAA9BigDoubleVAFKF">COSH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1331,7 +1399,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC3COTyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/COT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3COTyAA9BigDoubleVAFKF">COT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3COTyAA9BigDoubleVAFKF">COT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1380,7 +1448,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4COTHyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/COTH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4COTHyAA9BigDoubleVAFF">COTH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4COTHyAA9BigDoubleVAFF">COTH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1429,7 +1497,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC3CSCyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/CSC(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3CSCyAA9BigDoubleVAFKF">CSC(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3CSCyAA9BigDoubleVAFKF">CSC(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1478,7 +1546,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4CSCHyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/CSCH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4CSCHyAA9BigDoubleVAFF">CSCH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4CSCHyAA9BigDoubleVAFF">CSCH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1527,7 +1595,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC7DECIMALyAA9BigDoubleVSS_SitF"></a>
                     <a name="//apple_ref/swift/Method/DECIMAL(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7DECIMALyAA9BigDoubleVSS_SitF">DECIMAL(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7DECIMALyAA9BigDoubleVSS_SitF">DECIMAL(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1588,7 +1656,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC7DEGREESyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/DEGREES(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7DEGREESyAA9BigDoubleVAFF">DEGREES(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7DEGREESyAA9BigDoubleVAFF">DEGREES(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1637,7 +1705,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC4EVENyAA6BigIntVAA0D6DoubleVF"></a>
                     <a name="//apple_ref/swift/Method/EVEN(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4EVENyAA6BigIntVAA0D6DoubleVF">EVEN(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4EVENyAA6BigIntVAA0D6DoubleVF">EVEN(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1688,7 +1756,7 @@
                     <code>
                     <a name="/s:5Euler6TablesC3EXPyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/EXP(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3EXPyAA9BigDoubleVAFF">EXP(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3EXPyAA9BigDoubleVAFF">EXP(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1738,7 +1806,7 @@ The constant e equals 2.71828182845904, the base of the natural logarithm.</p>
                     <code>
                     <a name="/s:5Euler6TablesC4FACTyAA6BigIntVAFF"></a>
                     <a name="//apple_ref/swift/Method/FACT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4FACTyAA6BigIntVAFF">FACT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4FACTyAA6BigIntVAFF">FACT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1787,7 +1855,7 @@ The constant e equals 2.71828182845904, the base of the natural logarithm.</p>
                     <code>
                     <a name="/s:5Euler6TablesC10FACTDOUBLEyAA6BigIntVAFF"></a>
                     <a name="//apple_ref/swift/Method/FACTDOUBLE(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC10FACTDOUBLEyAA6BigIntVAFF">FACTDOUBLE(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC10FACTDOUBLEyAA6BigIntVAFF">FACTDOUBLE(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1836,7 +1904,7 @@ The constant e equals 2.71828182845904, the base of the natural logarithm.</p>
                     <code>
                     <a name="/s:5Euler6TablesC5FLOOR_12significance4modeAA9BigDoubleVAH_AHSitF"></a>
                     <a name="//apple_ref/swift/Method/FLOOR(_:significance:mode:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5FLOOR_12significance4modeAA9BigDoubleVAH_AHSitF">FLOOR(_:significance:mode:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5FLOOR_12significance4modeAA9BigDoubleVAH_AHSitF">FLOOR(_:<wbr>significance:<wbr>mode:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1911,7 +1979,7 @@ The constant e equals 2.71828182845904, the base of the natural logarithm.</p>
                     <code>
                     <a name="/s:5Euler6TablesC3GCDyAA6BigIntVAFd_tKF"></a>
                     <a name="//apple_ref/swift/Method/GCD(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3GCDyAA6BigIntVAFd_tKF">GCD(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3GCDyAA6BigIntVAFd_tKF">GCD(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1962,7 +2030,7 @@ The constant e equals 2.71828182845904, the base of the natural logarithm.</p>
                     <code>
                     <a name="/s:5Euler6TablesC3GCD5arrayAA6BigIntVSayAGG_tKF"></a>
                     <a name="//apple_ref/swift/Method/GCD(array:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3GCD5arrayAA6BigIntVSayAGG_tKF">GCD(array:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3GCD5arrayAA6BigIntVSayAGG_tKF">GCD(array:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2013,7 +2081,7 @@ The constant e equals 2.71828182845904, the base of the natural logarithm.</p>
                     <code>
                     <a name="/s:5Euler6TablesC3INTyAA6BigIntVAA0D6DoubleVF"></a>
                     <a name="//apple_ref/swift/Method/INT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3INTyAA6BigIntVAA0D6DoubleVF">INT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3INTyAA6BigIntVAA0D6DoubleVF">INT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2062,7 +2130,7 @@ The constant e equals 2.71828182845904, the base of the natural logarithm.</p>
                     <code>
                     <a name="/s:5Euler6TablesC3LCMyAA6BigIntVAFd_tKF"></a>
                     <a name="//apple_ref/swift/Method/LCM(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3LCMyAA6BigIntVAFd_tKF">LCM(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3LCMyAA6BigIntVAFd_tKF">LCM(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2112,7 +2180,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC3LCM5arrayAA6BigIntVSayAGG_tKF"></a>
                     <a name="//apple_ref/swift/Method/LCM(array:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3LCM5arrayAA6BigIntVSayAGG_tKF">LCM(array:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3LCM5arrayAA6BigIntVSayAGG_tKF">LCM(array:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2162,7 +2230,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC2LNyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/LN(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC2LNyAA9BigDoubleVAFF">LN(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC2LNyAA9BigDoubleVAFF">LN(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2213,7 +2281,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC3LOG_4baseAA9BigDoubleVAG_SitF"></a>
                     <a name="//apple_ref/swift/Method/LOG(_:base:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3LOG_4baseAA9BigDoubleVAG_SitF">LOG(_:base:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3LOG_4baseAA9BigDoubleVAG_SitF">LOG(_:<wbr>base:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2274,7 +2342,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC5LOG10yAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/LOG10(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5LOG10yAA9BigDoubleVAFF">LOG10(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5LOG10yAA9BigDoubleVAFF">LOG10(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2336,7 +2404,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC7MDETERMyAA9BigDoubleVAA6MatrixVKF"></a>
                     <a name="//apple_ref/swift/Method/MDETERM(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7MDETERMyAA9BigDoubleVAA6MatrixVKF">MDETERM(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7MDETERMyAA9BigDoubleVAA6MatrixVKF">MDETERM(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2385,7 +2453,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC8MINVERSEyAA6MatrixVAFF"></a>
                     <a name="//apple_ref/swift/Method/MINVERSE(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC8MINVERSEyAA6MatrixVAFF">MINVERSE(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC8MINVERSEyAA6MatrixVAFF">MINVERSE(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2434,7 +2502,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC5MMULTyAA6MatrixVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/MMULT(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5MMULTyAA6MatrixVAF_AFtF">MMULT(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5MMULTyAA6MatrixVAF_AFtF">MMULT(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2495,7 +2563,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC6MROUNDyAA9BigDoubleVAF_AFtKF"></a>
                     <a name="//apple_ref/swift/Method/MROUND(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC6MROUNDyAA9BigDoubleVAF_AFtKF">MROUND(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC6MROUNDyAA9BigDoubleVAF_AFtKF">MROUND(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2556,7 +2624,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC3MODyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/MOD(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3MODyAA9BigDoubleVAF_AFtF">MOD(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3MODyAA9BigDoubleVAF_AFtF">MOD(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2619,7 +2687,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC11MULTINOMIALyAA9BigDoubleVAA0D3IntVd_tF"></a>
                     <a name="//apple_ref/swift/Method/MULTINOMIAL(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC11MULTINOMIALyAA9BigDoubleVAA0D3IntVd_tF">MULTINOMIAL(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC11MULTINOMIALyAA9BigDoubleVAA0D3IntVd_tF">MULTINOMIAL(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2668,7 +2736,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC11MULTINOMIAL5arrayAA9BigDoubleVSayAA0E3IntVG_tF"></a>
                     <a name="//apple_ref/swift/Method/MULTINOMIAL(array:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC11MULTINOMIAL5arrayAA9BigDoubleVSayAA0E3IntVG_tF">MULTINOMIAL(array:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC11MULTINOMIAL5arrayAA9BigDoubleVSayAA0E3IntVG_tF">MULTINOMIAL(array:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2717,7 +2785,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC3ODDyAA6BigIntVAA0D6DoubleVF"></a>
                     <a name="//apple_ref/swift/Method/ODD(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3ODDyAA6BigIntVAA0D6DoubleVF">ODD(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3ODDyAA6BigIntVAA0D6DoubleVF">ODD(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2800,7 +2868,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC5POWERyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/POWER(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5POWERyAA9BigDoubleVAF_AFtF">POWER(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5POWERyAA9BigDoubleVAF_AFtF">POWER(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2867,7 +2935,7 @@ The least common multiple is the smallest positive integer that is a multiple of
                     <code>
                     <a name="/s:5Euler6TablesC7PRODUCTyAA9BigDoubleVAFd_tF"></a>
                     <a name="//apple_ref/swift/Method/PRODUCT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7PRODUCTyAA9BigDoubleVAFd_tF">PRODUCT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7PRODUCTyAA9BigDoubleVAFd_tF">PRODUCT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2917,7 +2985,7 @@ The PRODUCT function is useful when you need to multiply many cells together. Fo
                     <code>
                     <a name="/s:5Euler6TablesC7PRODUCTyAA9BigDoubleVSayAFGF"></a>
                     <a name="//apple_ref/swift/Method/PRODUCT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7PRODUCTyAA9BigDoubleVSayAFGF">PRODUCT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7PRODUCTyAA9BigDoubleVSayAFGF">PRODUCT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2967,7 +3035,7 @@ The PRODUCT function is useful when you need to multiply many cells together. Fo
                     <code>
                     <a name="/s:5Euler6TablesC8QUOTIENTyAA6BigIntVAA0D6DoubleV_AHtF"></a>
                     <a name="//apple_ref/swift/Method/QUOTIENT(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC8QUOTIENTyAA6BigIntVAA0D6DoubleV_AHtF">QUOTIENT(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC8QUOTIENTyAA6BigIntVAA0D6DoubleV_AHtF">QUOTIENT(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3032,7 +3100,7 @@ The PRODUCT function is useful when you need to multiply many cells together. Fo
                     <code>
                     <a name="/s:5Euler6TablesC7RADIANSyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/RADIANS(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7RADIANSyAA9BigDoubleVAFF">RADIANS(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7RADIANSyAA9BigDoubleVAFF">RADIANS(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3113,7 +3181,7 @@ The PRODUCT function is useful when you need to multiply many cells together. Fo
                     <code>
                     <a name="/s:5Euler6TablesC11RANDBETWEENyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/RANDBETWEEN(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC11RANDBETWEENyAA9BigDoubleVAF_AFtF">RANDBETWEEN(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC11RANDBETWEENyAA9BigDoubleVAF_AFtF">RANDBETWEEN(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3187,7 +3255,7 @@ The PRODUCT function is useful when you need to multiply many cells together. Fo
                     <code>
                     <a name="/s:5Euler6TablesC5ROUND_6digitsAA9BigDoubleVAG_AA0E3IntVtF"></a>
                     <a name="//apple_ref/swift/Method/ROUND(_:digits:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5ROUND_6digitsAA9BigDoubleVAG_AA0E3IntVtF">ROUND(_:digits:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5ROUND_6digitsAA9BigDoubleVAG_AA0E3IntVtF">ROUND(_:<wbr>digits:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3262,7 +3330,7 @@ The result of this function is 23.78.</p>
                     <code>
                     <a name="/s:5Euler6TablesC9ROUNDDOWN_6digitsAA9BigDoubleVAG_AA0E3IntVtF"></a>
                     <a name="//apple_ref/swift/Method/ROUNDDOWN(_:digits:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC9ROUNDDOWN_6digitsAA9BigDoubleVAG_AA0E3IntVtF">ROUNDDOWN(_:digits:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC9ROUNDDOWN_6digitsAA9BigDoubleVAG_AA0E3IntVtF">ROUNDDOWN(_:<wbr>digits:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3323,7 +3391,7 @@ The result of this function is 23.78.</p>
                     <code>
                     <a name="/s:5Euler6TablesC7ROUNDUP_6digitsAA9BigDoubleVAG_AA0E3IntVtF"></a>
                     <a name="//apple_ref/swift/Method/ROUNDUP(_:digits:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7ROUNDUP_6digitsAA9BigDoubleVAG_AA0E3IntVtF">ROUNDUP(_:digits:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7ROUNDUP_6digitsAA9BigDoubleVAG_AA0E3IntVtF">ROUNDUP(_:<wbr>digits:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3384,7 +3452,7 @@ The result of this function is 23.78.</p>
                     <code>
                     <a name="/s:5Euler6TablesC3SECyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/SEC(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3SECyAA9BigDoubleVAFKF">SEC(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3SECyAA9BigDoubleVAFKF">SEC(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3433,7 +3501,7 @@ The result of this function is 23.78.</p>
                     <code>
                     <a name="/s:5Euler6TablesC4SECHyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/SECH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4SECHyAA9BigDoubleVAFF">SECH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4SECHyAA9BigDoubleVAFF">SECH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3482,7 +3550,7 @@ The result of this function is 23.78.</p>
                     <code>
                     <a name="/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A3FdtKF"></a>
                     <a name="//apple_ref/swift/Method/SERIESSUM(_:_:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A3FdtKF">SERIESSUM(_:_:_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A3FdtKF">SERIESSUM(_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3492,7 +3560,7 @@ The result of this function is 23.78.</p>
                       <div class="abstract">
                         <p>Many functions can be approximated by a power series expansion.
 Returns the sum of a power series based on the formula:
-<code>$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)$$</code></p>
+<div class='math m-block'> SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+&hellip;+a_ix^(n+(i-1)m)</div></p>
 
                       </div>
                       <div class="declaration">
@@ -3569,7 +3637,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A2FSayAFGtKF"></a>
                     <a name="//apple_ref/swift/Method/SERIESSUM(_:_:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A2FSayAFGtKF">SERIESSUM(_:_:_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC9SERIESSUMyAA9BigDoubleVAF_A2FSayAFGtKF">SERIESSUM(_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3579,7 +3647,7 @@ Returns the sum of a power series based on the formula:
                       <div class="abstract">
                         <p>Many functions can be approximated by a power series expansion.
 Returns the sum of a power series based on the formula:
-<code>$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)$$</code></p>
+<div class='math m-block'> SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+&hellip;+a_ix^(n+(i-1)m)</div></p>
 
                       </div>
                       <div class="declaration">
@@ -3656,7 +3724,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC4SIGNyAA6BigIntVAA0D6DoubleVF"></a>
                     <a name="//apple_ref/swift/Method/SIGN(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4SIGNyAA6BigIntVAA0D6DoubleVF">SIGN(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4SIGNyAA6BigIntVAA0D6DoubleVF">SIGN(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3705,7 +3773,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3SINyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/SIN(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3SINyAA9BigDoubleVAFKF">SIN(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3SINyAA9BigDoubleVAFKF">SIN(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3754,7 +3822,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC4SINHyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/SINH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4SINHyAA9BigDoubleVAFF">SINH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4SINHyAA9BigDoubleVAFF">SINH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3803,7 +3871,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC4SQRTyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/SQRT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4SQRTyAA9BigDoubleVAFF">SQRT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4SQRTyAA9BigDoubleVAFF">SQRT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3852,7 +3920,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC6SQRTPIyAA9BigDoubleVAFF"></a>
                     <a name="//apple_ref/swift/Method/SQRTPI(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC6SQRTPIyAA9BigDoubleVAFF">SQRTPI(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC6SQRTPIyAA9BigDoubleVAFF">SQRTPI(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3914,7 +3982,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3ADDyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/ADD(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3ADDyAA9BigDoubleVAF_AFtF">ADD(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3ADDyAA9BigDoubleVAF_AFtF">ADD(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -3975,7 +4043,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC5MINUSyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/MINUS(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5MINUSyAA9BigDoubleVAF_AFtF">MINUS(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5MINUSyAA9BigDoubleVAF_AFtF">MINUS(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4036,7 +4104,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC6DIVIDEyAA9BigDoubleVAF_AFtKF"></a>
                     <a name="//apple_ref/swift/Method/DIVIDE(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC6DIVIDEyAA9BigDoubleVAF_AFtKF">DIVIDE(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC6DIVIDEyAA9BigDoubleVAF_AFtKF">DIVIDE(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4097,7 +4165,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC8MULTIPLYyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/MULTIPLY(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC8MULTIPLYyAA9BigDoubleVAF_AFtF">MULTIPLY(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC8MULTIPLYyAA9BigDoubleVAF_AFtF">MULTIPLY(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4158,7 +4226,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3GTEySbAA9BigDoubleV_AFtF"></a>
                     <a name="//apple_ref/swift/Method/GTE(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3GTEySbAA9BigDoubleV_AFtF">GTE(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3GTEySbAA9BigDoubleV_AFtF">GTE(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4188,7 +4256,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC2LTySbAA9BigDoubleV_AFtF"></a>
                     <a name="//apple_ref/swift/Method/LT(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC2LTySbAA9BigDoubleV_AFtF">LT(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC2LTySbAA9BigDoubleV_AFtF">LT(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4218,7 +4286,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3LTEySbAA9BigDoubleV_AFtF"></a>
                     <a name="//apple_ref/swift/Method/LTE(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3LTEySbAA9BigDoubleV_AFtF">LTE(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3LTEySbAA9BigDoubleV_AFtF">LTE(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4248,7 +4316,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC2EQySbAA9BigDoubleV_AFtF"></a>
                     <a name="//apple_ref/swift/Method/EQ(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC2EQySbAA9BigDoubleV_AFtF">EQ(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC2EQySbAA9BigDoubleV_AFtF">EQ(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4278,7 +4346,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC2NEySbAA9BigDoubleV_AFtF"></a>
                     <a name="//apple_ref/swift/Method/NE(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC2NEySbAA9BigDoubleV_AFtF">NE(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC2NEySbAA9BigDoubleV_AFtF">NE(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4308,7 +4376,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3POWyAA9BigDoubleVAF_AFtF"></a>
                     <a name="//apple_ref/swift/Method/POW(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3POWyAA9BigDoubleVAF_AFtF">POW(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3POWyAA9BigDoubleVAF_AFtF">POW(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4375,7 +4443,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3SUMyAA9BigDoubleVAFd_tF"></a>
                     <a name="//apple_ref/swift/Method/SUM(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3SUMyAA9BigDoubleVAFd_tF">SUM(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3SUMyAA9BigDoubleVAFd_tF">SUM(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4424,7 +4492,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3SUMyAA9BigDoubleVSayAFGF"></a>
                     <a name="//apple_ref/swift/Method/SUM(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3SUMyAA9BigDoubleVSayAFGF">SUM(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3SUMyAA9BigDoubleVSayAFGF">SUM(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4486,7 +4554,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSayAFGd_tKF"></a>
                     <a name="//apple_ref/swift/Method/SUMPRODUCT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSayAFGd_tKF">SUMPRODUCT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSayAFGd_tKF">SUMPRODUCT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4537,7 +4605,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSaySayAFGGKF"></a>
                     <a name="//apple_ref/swift/Method/SUMPRODUCT(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSaySayAFGGKF">SUMPRODUCT(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC10SUMPRODUCTyAA9BigDoubleVSaySayAFGGKF">SUMPRODUCT(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4588,7 +4656,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC5SUMSQyAA9BigDoubleVAFd_tF"></a>
                     <a name="//apple_ref/swift/Method/SUMSQ(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5SUMSQyAA9BigDoubleVAFd_tF">SUMSQ(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5SUMSQyAA9BigDoubleVAFd_tF">SUMSQ(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4637,7 +4705,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC5SUMSQyAA9BigDoubleVSayAFGF"></a>
                     <a name="//apple_ref/swift/Method/SUMSQ(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5SUMSQyAA9BigDoubleVSayAFGF">SUMSQ(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5SUMSQyAA9BigDoubleVSayAFGF">SUMSQ(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4686,7 +4754,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC8SUMX2MY2yAA9BigDoubleVSayAFG_AGtKF"></a>
                     <a name="//apple_ref/swift/Method/SUMX2MY2(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC8SUMX2MY2yAA9BigDoubleVSayAFG_AGtKF">SUMX2MY2(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC8SUMX2MY2yAA9BigDoubleVSayAFG_AGtKF">SUMX2MY2(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4747,7 +4815,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC8SUMX2PY2yAA9BigDoubleVSayAFG_AGtKF"></a>
                     <a name="//apple_ref/swift/Method/SUMX2PY2(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC8SUMX2PY2yAA9BigDoubleVSayAFG_AGtKF">SUMX2PY2(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC8SUMX2PY2yAA9BigDoubleVSayAFG_AGtKF">SUMX2PY2(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4808,7 +4876,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC7SUMXMY2yAA9BigDoubleVSayAFG_AGtKF"></a>
                     <a name="//apple_ref/swift/Method/SUMXMY2(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC7SUMXMY2yAA9BigDoubleVSayAFG_AGtKF">SUMXMY2(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC7SUMXMY2yAA9BigDoubleVSayAFG_AGtKF">SUMXMY2(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4869,7 +4937,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3TANyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/TAN(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3TANyAA9BigDoubleVAFKF">TAN(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3TANyAA9BigDoubleVAFKF">TAN(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4918,7 +4986,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC4TANHyAA9BigDoubleVAFKF"></a>
                     <a name="//apple_ref/swift/Method/TANH(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC4TANHyAA9BigDoubleVAFKF">TANH(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC4TANHyAA9BigDoubleVAFKF">TANH(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -4967,7 +5035,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC5TRUNCyAA9BigDoubleVAF_SitF"></a>
                     <a name="//apple_ref/swift/Method/TRUNC(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC5TRUNCyAA9BigDoubleVAF_SitF">TRUNC(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC5TRUNCyAA9BigDoubleVAF_SitF">TRUNC(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5041,7 +5109,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3ANDyS2bd_tF"></a>
                     <a name="//apple_ref/swift/Method/AND(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3ANDyS2bd_tF">AND(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3ANDyS2bd_tF">AND(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5073,7 +5141,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3ANDySbSaySbGF"></a>
                     <a name="//apple_ref/swift/Method/AND(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3ANDySbSaySbGF">AND(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3ANDySbSaySbGF">AND(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5105,7 +5173,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC6CHOOSEyxSi_xdtKlF"></a>
                     <a name="//apple_ref/swift/Method/CHOOSE(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC6CHOOSEyxSi_xdtKlF">CHOOSE(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC6CHOOSEyxSi_xdtKlF">CHOOSE(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5168,7 +5236,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC6CHOOSEyxSi_SayxGtKlF"></a>
                     <a name="//apple_ref/swift/Method/CHOOSE(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC6CHOOSEyxSi_SayxGtKlF">CHOOSE(_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC6CHOOSEyxSi_SayxGtKlF">CHOOSE(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5231,7 +5299,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC2IFyxSb_xxtlF"></a>
                     <a name="//apple_ref/swift/Method/IF(_:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC2IFyxSb_xxtlF">IF(_:_:_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC2IFyxSb_xxtlF">IF(_:<wbr>_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5304,7 +5372,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC2ORyS2bd_tF"></a>
                     <a name="//apple_ref/swift/Method/OR(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC2ORyS2bd_tF">OR(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC2ORyS2bd_tF">OR(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5336,7 +5404,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC2ORySbSaySbGF"></a>
                     <a name="//apple_ref/swift/Method/OR(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC2ORySbSaySbGF">OR(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC2ORySbSaySbGF">OR(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5368,7 +5436,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3XORyS2bd_tF"></a>
                     <a name="//apple_ref/swift/Method/XOR(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3XORyS2bd_tF">XOR(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3XORyS2bd_tF">XOR(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5417,7 +5485,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC3XORySbSaySbGF"></a>
                     <a name="//apple_ref/swift/Method/XOR(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC3XORySbSaySbGF">XOR(_:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC3XORySbSaySbGF">XOR(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5466,7 +5534,7 @@ Returns the sum of a power series based on the formula:
                     <code>
                     <a name="/s:5Euler6TablesC9interpret7commandAA9CellValueVSS_tKF"></a>
                     <a name="//apple_ref/swift/Method/interpret(command:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler6TablesC9interpret7commandAA9CellValueVSS_tKF">interpret(command:)</a>
+                    <a class="token" href="#/s:5Euler6TablesC9interpret7commandAA9CellValueVSS_tKF">interpret(command:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -5505,7 +5573,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Parser/Execute.swift#L14-L19">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Parser/Execute.swift#L14-L22">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -5518,8 +5586,8 @@ Returns the sum of a power series based on the formula:
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-03-21)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-04-02)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
