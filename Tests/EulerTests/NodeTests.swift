@@ -60,7 +60,7 @@ class NodeTests: XCTestCase {
             XCTAssertEqual(try? Tables().interpret(command: "=ABS(-8)").number, 8)
             XCTAssertEqual(try? Tables().interpret(command: "=GCD(8, 9, 5, 6, 12)").number, 1)
             
-            let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables).parse()
+            let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables, tablesContext: Tables()).parse() // Requires a Tables to interpret code
             XCTAssertEqual(e.toString(), "SUM(A3 : A4, A5 : A6) - MIN(1, 2, 3, 4)")
         } catch {
             print(error.localizedDescription)

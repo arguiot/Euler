@@ -57,7 +57,7 @@ public class Parser {
     
     /// Initialize `Parser` with a mathematical expression as a String ( ASCIIMath)
     /// - Parameter str: ASCIIMath expression
-    public init(_ str: String, type: ParseContext = .math) {
+    public init(_ str: String, type: ParseContext = .math, tablesContext: Tables? = nil) {
         self.context = type
         let lexer = Lexer(input: str)
         let tokenized = lexer.tokenize()
@@ -67,14 +67,16 @@ public class Parser {
             self.tokens = tokenized
         }
         
+        self.tablesContext = tablesContext
         
         self.grouper = Grouper(tokens: tokens, context: type, tablesContext: tablesContext)
     }
     /// Initialize `Parser` with a list of tokens given by the `Lexer`
     /// - Parameter tokens: Array of `Token` given by the `Lexer`
-    internal init(tokens: [Token], type: ParseContext = .math) {
+    internal init(tokens: [Token], type: ParseContext = .math, tablesContext: Tables? = nil) {
         self.context = type
         self.tokens = tokens
+        self.tablesContext = tablesContext
         self.grouper = Grouper(tokens: self.tokens, context: type, tablesContext: tablesContext)
     }
     
@@ -95,6 +97,8 @@ public class Parser {
         // Creates an array of Node. If it's an operator or something else, it will give a `nil`
         let chain = try chainMaker()
         let link = try linker(chain: chain)
+        
+        self.index = 0 // Resets index
         
         return link
     }

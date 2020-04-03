@@ -87,8 +87,7 @@ public class Group: NSObject {
             return try self.toNumber()
         case .Parenthesis:
             // Parsing
-            let p = Parser(tokens: tokens, type: self.context)
-            p.tablesContext = tablesContext
+            let p = Parser(tokens: tokens, type: self.context, tablesContext: tablesContext)
             let expr = try p.parse()
             return ParenthesisNode(expr.children)
         case .UnParsed:
