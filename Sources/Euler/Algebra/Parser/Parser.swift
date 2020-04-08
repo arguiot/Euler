@@ -57,6 +57,8 @@ public class Parser {
     
     /// Initialize `Parser` with a mathematical expression as a String ( ASCIIMath)
     /// - Parameter str: ASCIIMath expression
+    /// - Parameter type: The mode in which the parser should be executed. Can be 2 options: math (for standard math expression) and tables (for excel like expression)
+    /// - Parameter tablesContext: If the type is set to tables, then a Tables object is required to interact with the different cells
     public init(_ str: String, type: ParseContext = .math, tablesContext: Tables? = nil) {
         self.context = type
         let lexer = Lexer(input: str)
@@ -73,6 +75,8 @@ public class Parser {
     }
     /// Initialize `Parser` with a list of tokens given by the `Lexer`
     /// - Parameter tokens: Array of `Token` given by the `Lexer`
+    /// - Parameter type: The mode in which the parser should be executed. Can be 2 options: math (for standard math expression) and tables (for excel like expression)
+    /// - Parameter tablesContext: If the type is set to tables, then a Tables object is required to interact with the different cells
     internal init(tokens: [Token], type: ParseContext = .math, tablesContext: Tables? = nil) {
         self.context = type
         self.tokens = tokens
