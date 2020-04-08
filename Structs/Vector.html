@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TablesDataSource Protocol Reference</title>
+    <title>Vector Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <link rel="stylesheet" type="text/css" href="../css/katex.min.css" />
@@ -16,9 +16,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Protocol/TablesDataSource" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/Vector" class="dashAnchor"></a>
 
-    <a title="TablesDataSource Protocol Reference"></a>
+    <a title="Vector Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -46,7 +46,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      TablesDataSource Protocol Reference
+      Vector Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -372,14 +372,16 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>TablesDataSource</h1>
+            <h1>Vector</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TablesDataSource</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Vector</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
               </div>
-            <p>A protocol that helps you communicate and interact with the values in <code><a href="../Classes/Tables.html">Tables</a></code></p>
+            <p>Vector object</p>
+
+<p>In the Euclidean geometry, a vector is what is needed to &ldquo;carry&rdquo; the point A to the point B; it is a geometric object that has magnitude (or length) and direction. Vectors can be added to other vectors according to vector algebra. A Euclidean vector is frequently represented by a line segment with a definite direction, or graphically as an arrow, connecting an initial point A with a terminal point B, and denoted by <span class='math m-inline'>\overrightarrow{AB}</span>.</p>
 
           </div>
         </section>
@@ -391,9 +393,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler16TablesDataSourceP11valueOfCell1x1yAA0G5ValueVSi_SitF"></a>
-                    <a name="//apple_ref/swift/Method/valueOfCell(x:y:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler16TablesDataSourceP11valueOfCell1x1yAA0G5ValueVSi_SitF">valueOfCell(x:<wbr>y:<wbr>)</a>
+                    <a name="/s:5Euler6VectorV6matrixAA6MatrixVvp"></a>
+                    <a name="//apple_ref/swift/Property/matrix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6VectorV6matrixAA6MatrixVvp">matrix</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -401,50 +403,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Get the value of a cell at a specific address</p>
+                        <p>Converts a Vector into a Matrix</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">valueOfCell</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/CellValue.html">CellValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">matrix</span><span class="p">:</span> <span class="kt"><a href="../Structs/Matrix.html">Matrix</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>x</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The x coordinate of the cell. For example, when the parser sees <code>B4</code>, it will call this function with <code>x = 1</code> as <code>B</code> is the second letter in the alphabet and we start from 0</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>y</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The x coordinate of the cell. For example, when the parser sees <code>B4</code>, it will call this function with <code>y = 3</code> as  we start from 0.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/TablesDataSource.swift#L15">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Vector.swift#L45-L47">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -452,9 +423,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler16TablesDataSourceP10updateCell7content1x1yyAA0F5ValueV_S2itF"></a>
-                    <a name="//apple_ref/swift/Method/updateCell(content:x:y:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler16TablesDataSourceP10updateCell7content1x1yyAA0F5ValueV_S2itF">updateCell(content:<wbr>x:<wbr>y:<wbr>)</a>
+                    <a name="/s:5Euler6VectorV1poiyA2C_ACtFZ"></a>
+                    <a name="//apple_ref/swift/Method/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6VectorV1poiyA2C_ACtFZ">+(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -462,62 +433,79 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Updates the value of the cell at a specific address</p>
+                        <p>Sum of two vectors</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateCell</span><span class="p">(</span><span class="nv">content</span><span class="p">:</span> <span class="kt"><a href="../Structs/CellValue.html">CellValue</a></span><span class="p">,</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">+</span> <span class="p">(</span><span class="nv">rhs</span><span class="p">:</span> <span class="kt">Vector</span><span class="p">,</span> <span class="nv">lhs</span><span class="p">:</span> <span class="kt">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>content</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The content of the updated cell.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>x</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The x coordinate of the cell. For example, when we want to update <code>B4</code>, it will call this function with <code>x = 1</code> as <code>B</code> is the second letter in the alphabet and we start from 0</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>y</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The x coordinate of the cell. For example, when we want to update <code>B4</code>, it will call this function with <code>y = 3</code> as  we start from 0.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Vector.swift#L49-L52">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6VectorV1moiyAA9BigDoubleVAC_ACtFZ"></a>
+                    <a name="//apple_ref/swift/Method/*(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6VectorV1moiyAA9BigDoubleVAC_ACtFZ">*(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dot product of two vectors</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">*</span> <span class="p">(</span><span class="nv">rhs</span><span class="p">:</span> <span class="kt">Vector</span><span class="p">,</span> <span class="nv">lhs</span><span class="p">:</span> <span class="kt">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/TablesDataSource.swift#L22">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Vector.swift#L54-L58">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6VectorV2eeoiySbAC_ACtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6VectorV2eeoiySbAC_ACtFZ">==(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Equality between vectors</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">rhs</span><span class="p">:</span> <span class="kt">Vector</span><span class="p">,</span> <span class="nv">lhs</span><span class="p">:</span> <span class="kt">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Vector.swift#L60-L62">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
