@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Collatz Structure Reference</title>
+    <title>Point Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <link rel="stylesheet" type="text/css" href="../css/katex.min.css" />
@@ -16,9 +16,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/Collatz" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/Point" class="dashAnchor"></a>
 
-    <a title="Collatz Structure Reference"></a>
+    <a title="Point Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -46,7 +46,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Euler Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Collatz Structure Reference
+      Point Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -372,18 +372,16 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Collatz</h1>
+            <h1>Point</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Collatz</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Point</span></code></pre>
 
                 </div>
               </div>
-            <p>An Iterator for the Collatz conjecture</p>
+            <p>Fondamental element in Euclidean geometry</p>
 
-<p>The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined as follows: start with any positive integer n. Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.</p>
-
-<p>After it reaches 1, the iterator will return <code>nil</code></p>
+<p>Points, considered within the framework of Euclidean geometry, are one of the most fundamental objects. Euclid originally defined the point as &ldquo;that which has no part&rdquo;. In two-dimensional Euclidean space, a point is represented by an ordered pair (x, y) of numbers, where the first number conventionally represents the horizontal and is often denoted by x, and the second number conventionally represents the vertical and is often denoted by y. This idea is easily generalized to three-dimensional Euclidean space, where a point is represented by an ordered triplet (x, y, z) with the additional third number representing depth and often denoted by z. Further generalizations are represented by an ordered tuplet of n terms, (a1, a2, … , an) where n is the dimension of the space in which the point is located.</p>
 
           </div>
         </section>
@@ -395,9 +393,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler7CollatzVyAcA6BigIntVcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler7CollatzVyAcA6BigIntVcfc">init(_:<wbr>)</a>
+                    <a name="/s:5Euler5PointV1xAA9BigDoubleVvp"></a>
+                    <a name="//apple_ref/swift/Property/x" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5PointV1xAA9BigDoubleVvp">x</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -405,14 +403,104 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initialize the collatz sequence</p>
+                        <p>X-coordinate of the point</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">n</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigInt.html">BigInt</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Point.swift#L16">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler5PointV1yAA9BigDoubleVvp"></a>
+                    <a name="//apple_ref/swift/Property/y" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5PointV1yAA9BigDoubleVvp">y</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Y-coordinate of the point</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">y</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Point.swift#L18">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler5PointV4dimsSayAA9BigDoubleVGvp"></a>
+                    <a name="//apple_ref/swift/Property/dims" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5PointV4dimsSayAA9BigDoubleVGvp">dims</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>X, Y and higher dimensions</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">dims</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Point.swift#L20">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler5PointV1x1yAcA9BigDoubleV_AGtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(x:y:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5PointV1x1yAcA9BigDoubleV_AGtcfc">init(x:<wbr>y:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Simple 2D Point</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -423,12 +511,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>n</em>
+                                <em>x</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Any <code><a href="../Structs/BigInt.html">BigInt</a></code></p>
+                                  <p>X coordinate</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>y</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Y coordinate</p>
                                 </div>
                               </td>
                             </tr>
@@ -436,7 +536,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Collatz.swift#L23-L25">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Point.swift#L26-L30">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -444,9 +544,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler7CollatzV4nextAA6BigIntVSgyF"></a>
-                    <a name="//apple_ref/swift/Method/next()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler7CollatzV4nextAA6BigIntVSgyF">next()</a>
+                    <a name="/s:5Euler5PointV1xAcA9BigDoubleV_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(x:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5PointV1xAcA9BigDoubleV_tcfc">init(x:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -454,19 +554,38 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Next value</p>
+                        <p>Simple 1D Point</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">next</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigInt.html">BigInt</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>X coordinate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Collatz.swift#L28-L36">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Point.swift#L34-L38">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -474,9 +593,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler7CollatzV12makeIteratorACyF"></a>
-                    <a name="//apple_ref/swift/Method/makeIterator()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler7CollatzV12makeIteratorACyF">makeIterator()</a>
+                    <a name="/s:5Euler5PointV18multipleDimensionsACSayAA9BigDoubleVG_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(multipleDimensions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5PointV18multipleDimensionsACSayAA9BigDoubleVG_tcfc">init(multipleDimensions:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -484,19 +603,38 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Makes Collatz conforming to the <code>Sequence</code> protocol</p>
+                        <p>Point in more than 2 dimensions</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeIterator</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Collatz</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">multipleDimensions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>multipleDimensions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An containing the coordinates: <code>[x, y, z, ...]</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Collatz.swift#L39-L41">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Point.swift#L42-L46">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
