@@ -21,6 +21,10 @@ public extension Tables {
         return try expression.evaluate([:], linker)
     }
     
+    internal static var functions: [String:(([CellValue]) throws -> CellValue)] {
+        return Tables().linker
+    }
+    
     internal var linker: [String:(([CellValue]) throws -> CellValue)] {
         return [
             // MARK: CommonFormulas

@@ -11,7 +11,7 @@ import Foundation
 ///
 /// Points, considered within the framework of Euclidean geometry, are one of the most fundamental objects. Euclid originally defined the point as "that which has no part". In two-dimensional Euclidean space, a point is represented by an ordered pair (x, y) of numbers, where the first number conventionally represents the horizontal and is often denoted by x, and the second number conventionally represents the vertical and is often denoted by y. This idea is easily generalized to three-dimensional Euclidean space, where a point is represented by an ordered triplet (x, y, z) with the additional third number representing depth and often denoted by z. Further generalizations are represented by an ordered tuplet of n terms, (a1, a2, … , an) where n is the dimension of the space in which the point is located.
 ///
-public struct Point {
+public struct Point: Equatable {
     /// X-coordinate of the point
     public var x: BigDouble
     /// Y-coordinate of the point
@@ -43,5 +43,10 @@ public struct Point {
         self.x = multipleDimensions.first ?? 0
         self.y = multipleDimensions.count > 1 ? multipleDimensions[1] : 0
         self.dims = multipleDimensions
+    }
+    
+    /// Equality between points
+    static public func ==(rhs: Point, lhs: Point) -> Bool {
+        return rhs.dims == lhs.dims
     }
 }
