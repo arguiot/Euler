@@ -71,6 +71,20 @@ public class Polynomial: Expression {
     var highestDegree: Int {
         self.size - 1
     }
+    
+    /// Get the degree of the highest term with a non-zero coefficient.
+    /// If all coefficients are zero (polynomial is empty) - then `nil` is returned.
+    var trueHighestDegree: Int? {
+        var i = 0;
+        for coef in self.coefs {
+            if coef != 0 {
+                return power(at: i)
+            }
+            i += 1
+        }
+        return nil
+    }
+    
     /// Returns the total number of terms in the polynomial (including the constant and zero-coefficient terms)
     var size: Int {
         self.coefs.count
@@ -164,6 +178,42 @@ public class Polynomial: Expression {
             result.append(val)
         }
         
+        return try! Polynomial(result)
+    }
+    /// Returns the Cauchy Polynomial from this polynomial
+    public var cauchyPoly: Polynomial {
+        var first_idx = 0
+        var last_idx = self.size - 1
+        var size = self.size
+        var result = [BigDouble]()
+
+        var do_normalize = false
+        var norm_const = 0
+        
+        for i in 0..<size {
+            if i == first_idx {
+                var val = self.coefs[i]
+                if val != 1 {
+                    do_normalize = true
+                    norm_const = val
+                }
+                result.append(1)
+            } else if i == last_idx {
+                var val = self.coefs[i]
+                if do_normalize {
+                    val /= norm_const
+                }
+                val = -abs(val)
+                result.append(val)
+            } else {
+                var val = self.coefs[i]
+                if do_normalize {
+                    val /= norm_const
+                }
+                val = abs(val)
+                result.append(val)
+            }
+        }
         return try! Polynomial(result)
     }
 }
