@@ -125,6 +125,21 @@ public class Polynomial: Expression {
         }
         return new
     }
+    /// Substract polynomials to each other non-destructively.
+    /// - Parameters:
+    ///   - lhs: Left hand side
+    ///   - rhs: Right hand side
+    public static func -(lhs: Polynomial, rhs: Polynomial) -> Polynomial {
+        let neg_poly = rhs.negated
+        return lhs + neg_poly
+    }
+    /// Negates this polynomial.
+    ///
+    /// Does so non-destructively
+    public var negated: Polynomial {
+        let coefs = self.coefs.map { $0 * BigDouble(-1) }
+        return try! Polynomial(coefs)
+    }
     
     /// Translate the index value to an x-power value
     /// (i.e. the value of term degree at given position)
@@ -182,17 +197,17 @@ public class Polynomial: Expression {
     }
     /// Returns the Cauchy Polynomial from this polynomial
     public var cauchyPoly: Polynomial {
-        var first_idx = 0
-        var last_idx = self.size - 1
-        var size = self.size
+        let first_idx = 0
+        let last_idx = self.size - 1
+        let size = self.size
         var result = [BigDouble]()
 
         var do_normalize = false
-        var norm_const = 0
+        var norm_const = BigDouble.zero
         
         for i in 0..<size {
             if i == first_idx {
-                var val = self.coefs[i]
+                let val = self.coefs[i]
                 if val != 1 {
                     do_normalize = true
                     norm_const = val
@@ -201,19 +216,84 @@ public class Polynomial: Expression {
             } else if i == last_idx {
                 var val = self.coefs[i]
                 if do_normalize {
-                    val /= norm_const
+                    val = val / norm_const
                 }
                 val = -abs(val)
                 result.append(val)
             } else {
                 var val = self.coefs[i]
                 if do_normalize {
-                    val /= norm_const
+                    val = val / norm_const
                 }
                 val = abs(val)
                 result.append(val)
             }
         }
         return try! Polynomial(result)
+    }
+    
+    /// Divides this polynomial by given linear (1 degree) polynomial (Non destructive)
+    /// - Parameters:
+    ///   - x_coefs: coefficient of the (x-)term
+    ///   - x_const: constant term
+    public func linearDivision(x_coef: BigDouble, x_const: BigDouble) -> Polynomial {
+        var remainder = try! Polynomial(self.coefs) // Copy polynomial
+        
+        let num_iterations = remainder.highestDegree
+        var dividend_idx = 0
+        var curr_deg = remainder.highestDegree
+        var result = [BigDouble]()
+        
+        for _ in 0..<num_iterations {
+            let quotient_coef = remainder.coefs[dividend_idx] / x_coef
+            result.append(quotient_coef)
+            
+            let term = Term(deg: curr_deg - 1, coef:  quotient_coef)
+            let poly_term = term.multiplyLinearPoly(x_coef, x_const)
+            
+            remainder = remainder - poly_term
+            
+            // zero out the highest term just in case we still have residuals
+            remainder.setCoef(at: curr_deg, value: 0)
+            
+            dividend_idx += 1
+            curr_deg -= 1
+        }
+        
+        return try! Polynomial(result)
+    }
+    
+    internal func setCoef(at pow: Int, value: BigDouble) {
+        let max_pow = self.highestDegree
+        guard pow <= max_pow && pow > 0 else { fatalError("Index out Range") }
+        let last_idx = self.size - 1
+        let pos = last_idx - pow
+        self.coefs[pos] = value
+    }
+}
+
+/// Creates a new term
+internal struct Term {
+    /// degree of the term
+    var deg: Int = 0
+    /// coefficient of the term
+    var coef: BigDouble = .zero
+    
+    /// Multiplies this term with the provided linear (1-degree) polynomial
+    /// - Parameters:
+    ///   - x_coef: coefficient of the x^1 term
+    ///   - x_const: coefficient of the x^0 term
+    func multiplyLinearPoly(_ x_coef: BigDouble, _ x_const: BigDouble) -> Polynomial {
+        let new_poly_deg = self.deg + 1
+        let array = Array<BigDouble>(repeating: .zero, count: new_poly_deg)
+        let poly = try! Polynomial(array)
+        
+        let highest_term_coef = x_coef * self.coef
+        let second_highest_term_coef = x_const * self.coef
+        
+        poly.setCoef(at: new_poly_deg, value: highest_term_coef)
+        poly.setCoef(at: new_poly_deg - 1, value: second_highest_term_coef)
+        
+        return poly
     }
 }
