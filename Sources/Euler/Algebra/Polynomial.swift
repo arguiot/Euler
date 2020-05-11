@@ -270,6 +270,26 @@ public class Polynomial: Expression {
         let pos = last_idx - pow
         self.coefs[pos] = value
     }
+    
+    /// Multiplies through this polynomial by the given constant
+    /// - Parameters:
+    ///   - lhs: Left hand side
+    ///   - rhs: Right hand side
+    public static func *(lhs: Polynomial, rhs: BigDouble) -> Polynomial {
+        let coefs = self.coefs.map { $0 * rhs }
+        return try! Polynomial(coefs)
+    }
+    
+    /// Find root of given polynomial by apply newton iteration
+    /// - Parameter err: it is the maximum error permitted in answer
+    func solveNewton(err: BigDouble = 10e-4) -> BigDouble {
+        let x = BigDouble(Double.random(in: 0...1))
+        let diff_poly = self.derivative
+        while abs(self.evaluate(at: x)) > abs(err) {
+            x = x - self.evaluate(at: x) / diff_poly.evaluate(at: x)
+        }
+        return x
+    }
 }
 
 /// Creates a new term
