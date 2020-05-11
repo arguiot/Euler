@@ -15,8 +15,12 @@ class AlgebraTests: XCTestCase {
         let p1 = try! Polynomial(1, 2, 3)
         let p2 = try! Polynomial(2, 4)
         
-        let supposed = try! Polynomial(1, 4, 7)
+        var supposed = try! Polynomial(1, 4, 7)
         XCTAssert(p1 + p2 == supposed)
+        
+        // Derivative
+        supposed = try! Polynomial(2, 2)
+        XCTAssert(p1.derivative == supposed)
     }
     
     static var allTests = [

@@ -111,4 +111,41 @@ public class Polynomial: Expression {
         }
         return new
     }
+    
+    /// Translate the index value to an x-power value
+    /// (i.e. the value of term degree at given position)
+    /// i - the index (0-based)
+    /// - Parameter index: Index
+    internal func power(at index: Int) -> Int {
+        let max_index = size - 1
+        guard index >= 0 && index <= max_index else { fatalError("Index out of range") }
+        let max_degree = highestDegree
+        return max_degree - index
+        
+    }
+    
+    ///  Returns the coefficeint of the given x-power
+    /// - Parameter power: The exponent
+    internal func powerCoef(at power: Int) -> BigDouble {
+        let max_pow = self.highestDegree
+        guard power <= max_pow && power >= 0 else { fatalError("Index out of range") }
+        let last_idx = self.size - 1
+        let pos = last_idx - power
+        return self.coefs[pos]
+    }
+    
+    /// Computes the derivative of this polynomial
+    public var derivative: Polynomial {
+        var result = [BigDouble]()
+        let size = self.size
+        
+        for i in 0..<size - 1 { // skip constant
+            let curr_deg = self.power(at: i)
+            let curr_coef = powerCoef(at: curr_deg)
+            let new_coef = BigDouble(curr_deg) * curr_coef
+            result.append(new_coef)
+        }
+        
+        return try! Polynomial(result)
+    }
 }
