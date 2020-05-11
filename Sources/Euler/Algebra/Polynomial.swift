@@ -31,11 +31,11 @@ public class Polynomial: Expression {
             self.node = ExpressionNode(comp)
         }
     }
-    /// Creates a polynomial based on the coefficiens
+    /// Creates a polynomial based on the coefficients
     public convenience init(_ coefficients: BigDouble...) throws {
         try self.init(coefficients)
     }
-    /// Creates a polynomial based on the coefficiens
+    /// Creates a polynomial based on the coefficients
     public init(_ coefficients: [BigDouble]) throws {
         self.coefs = coefficients
         
@@ -144,6 +144,24 @@ public class Polynomial: Expression {
             let curr_coef = powerCoef(at: curr_deg)
             let new_coef = BigDouble(curr_deg) * curr_coef
             result.append(new_coef)
+        }
+        
+        return try! Polynomial(result)
+    }
+    /// Divides the polynomial by the leading coefficient so that we would have a monic polynomial
+    public var normalized: Polynomial {
+        var result = [BigDouble]()
+        var norm_const: BigDouble?
+        // Usually the first highest coefficient is good enough. But sometimes that
+        // is zero. So we look through all coefficietns to find the first viable one.
+        for coef in self.coefs where coef != 0 {
+            norm_const = coef
+            break
+        }
+        guard let norm = norm_const else { return self }
+        for coef in self.coefs {
+            let val = coef / norm
+            result.append(val)
         }
         
         return try! Polynomial(result)
