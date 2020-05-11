@@ -60,11 +60,29 @@ public struct Vector: Equatable {
     
     /// Sum of two vectors
     static public func +(rhs: Vector, lhs: Vector) -> Vector {
+        var rhs = rhs
+        var lhs = lhs
+        if rhs.dims.count > lhs.dims.count {
+            let diff = rhs.dims.count - lhs.dims.count
+            lhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        } else if lhs.dims.count > rhs.dims.count {
+            let diff = lhs.dims.count - rhs.dims.count
+            rhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        }
         let dims = zip(rhs.dims, lhs.dims).map { $0 + $1 }
         return Vector(multipleDimensions: dims)
     }
     /// Dot product of two vectors
     static public func *(rhs: Vector, lhs: Vector) -> BigDouble {
+        var rhs = rhs
+        var lhs = lhs
+        if rhs.dims.count > lhs.dims.count {
+            let diff = rhs.dims.count - lhs.dims.count
+            lhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        } else if lhs.dims.count > rhs.dims.count {
+            let diff = lhs.dims.count - rhs.dims.count
+            rhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        }
         let mul = zip(rhs.dims, lhs.dims).map { $0 * $1 }
         let sum = mul.reduce(0, +)
         return sum
