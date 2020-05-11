@@ -48,10 +48,12 @@ public struct Vector: Equatable {
         self.dims = multipleDimensions
         self.origin = origin ?? Point(multipleDimensions: Array<BigDouble>(repeating: .zero, count: multipleDimensions.count))
     }
+    #if !os(Linux)
     /// Converts a Vector into a Matrix
     public var matrix: Matrix {
         return Matrix(self.dims.map { $0.asDouble() ?? Double.infinity }, isColumnVector: true)
     }
+    #endif
     /// Origin point translated by the vector
     public var translated: Point {
         let dims = zip(origin.dims, self.dims).map { $0 + $1 }
