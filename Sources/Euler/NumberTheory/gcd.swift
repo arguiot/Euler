@@ -85,3 +85,27 @@ internal func lcmPositive(_ a: Limbs, _ b: Limbs) -> Limbs {
 public func lcm(_ a:BigInt, _ b:BigInt) -> BigInt {
     return BigInt(limbs: lcmPositive(a.limbs, b.limbs))
 }
+
+/// Returns the [multiplicative inverse of this integer in modulo `modulus` arithmetic][inverse],
+/// or `nil` if there is no such number.
+///
+/// [inverse]: https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Modular_integers
+///
+/// - Returns: If `gcd(self, modulus) == 1`, the value returned is an integer `a < modulus` such that `(a * self) % modulus == 1`. If `self` and `modulus` aren't coprime, the return value is `nil`.
+/// - Requires: modulus > 1
+/// - Complexity: O(count^3)
+public func inverse(_ base: BigInt, _ modulus: BigInt) -> BigInt? {
+    precondition(modulus > 1)
+    var t1 = BigInt(0)
+    var t2 = BigInt(1)
+    var r1 = modulus
+    var r2 = base
+    while !r2.isZero() {
+        let quotient = r1 / r2
+        (t1, t2) = (t2, t1 - quotient * t2)
+        (r1, r2) = (r2, r1 - quotient * r2)
+    }
+    if r1 > 1 { return nil }
+    if t1.sign == true { return modulus - t1 }
+    return t1
+}

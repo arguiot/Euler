@@ -18,6 +18,20 @@ import Foundation
 public func mod_exp(_ b: BigInt, _ p: BigInt, _ m: BigInt) -> BigInt {
     precondition(m != 0, "modulus needs to be non-zero")
     precondition(p >= 0, "exponent needs to be non-negative")
+//    var b = b
+//    var e = p
+//    var result = BigInt(1)
+//    if 1 & e != 0 {
+//        result = b
+//    }
+//    while e != 0 {
+//        e >>= 1
+//        b = (b * b) % m
+//        if e & 1 != 0 {
+//            result = (result * b) % m
+//        }
+//    }
+//    return result
     var base = b % m
     var exponent = p
     var result = BigInt(1)

@@ -21,7 +21,7 @@ public extension BigInt {
     
     /// Check if the BigInt is a prime.
     ///
-    /// > Uses the multiple of 6 method (which is fairly quick and 100% safe)
+    /// > Uses the multiple of 6 method (which is fairly quick and 100% safe) for relatively small integers. For bigger ones, we switch to Miller-Rabin algorithm with 30 precision.
     var isPrime: Bool {
         let n = abs(self)
         guard n.asInt() == nil else {
@@ -85,12 +85,12 @@ public extension BigInt {
      - Parameter k: a parameter that determines the accuracy of the test
      - Returns: composite if `self` is composite, otherwise probably prime
     */
-    func millerRabin(accuracy k: BigInt = 30) -> Bool {
+    func millerRabin(accuracy k: Int = 30) -> Bool {
         let n = abs(self)
         guard n > 3 else { return true }
 
         // return false for all even numbers bigger than 2
-        if n % 2 == 0 {
+        if n.isEven() {
             return false
         }
         
