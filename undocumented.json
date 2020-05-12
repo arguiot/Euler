@@ -610,6 +610,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Cryptography/RSA.swift",
+      "line": 14,
+      "symbol": "RSA.init(pub:pri:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Cryptography/RSA.swift",
+      "line": 32,
+      "symbol": "RSA.Key",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Cryptography/md5.swift",
       "line": 11,
       "symbol": "Byte",
