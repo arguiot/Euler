@@ -454,6 +454,81 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10ExpressionC5solve3for2in4withAA9BigDoubleVSS_AI_AItAItKF"></a>
+                    <a name="//apple_ref/swift/Method/solve(for:in:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10ExpressionC5solve3for2in4withAA9BigDoubleVSS_AI_AItAItKF">solve(for:<wbr>in:<wbr>with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Solve equation using Brent&rsquo;s method</p>
+
+<p>In numerical analysis, Brent&rsquo;s method is a root-finding algorithm combining the bisection method, the secant method and inverse quadratic interpolation. It has the reliability of bisection but it can be as quick as some of the less-reliable methods. The algorithm tries to use the potentially fast-converging secant method or inverse quadratic interpolation if possible, but it falls back to the more robust bisection method if necessary.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">solve</span><span class="p">(</span><span class="k">for</span> <span class="nv">variable</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="k">in</span> <span class="nv">interval</span><span class="p">:</span> <span class="p">(</span><span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">,</span> <span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">),</span> <span class="n">with</span> <span class="nv">precision</span><span class="p">:</span> <span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>variable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>For which variable we&rsquo;re solving the equation. Example: <code>&quot;x&quot;</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>In which interval the solution is predicted to be. Example: <code>(-1, 1)</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>precision</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>At which precision you want the solution. Example: <code>10e-4</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Expression.swift#L35-L120">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
