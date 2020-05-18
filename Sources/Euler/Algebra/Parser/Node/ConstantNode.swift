@@ -43,7 +43,12 @@ public class ConstantNode: NSObject, Node {
     /// Create a ConstantNode
     /// - Parameter bn: BigNumber/BigDouble
     public init(_ bn: BigNumber) {
-        self.content = bn.description
+        let desc = bn.description
+        if desc.contains("/") {
+            self.content = bn.decimalDescription
+        } else {
+            self.content = desc
+        }
     }
     /// Create a ConstantNode
     /// - Parameter int: Integer
@@ -53,12 +58,24 @@ public class ConstantNode: NSObject, Node {
     /// Create a ConstantNode
     /// - Parameter float: Floating point number
     public init(_ float: Float) {
-        self.content = BigFloat(Double(float)).decimalDescription
+        let bn = BigFloat(Double(float))
+        let desc = bn.description
+        if desc.contains("/") {
+            self.content = bn.decimalDescription
+        } else {
+            self.content = desc
+        }
     }
     /// Create a ConstantNode
     /// - Parameter double: Floating point number
     public init(_ double: Double) {
-        self.content = BigDouble(double).decimalDescription
+        let bn = BigDouble(double)
+        let desc = bn.description
+        if desc.contains("/") {
+            self.content = bn.decimalDescription
+        } else {
+            self.content = desc
+        }
     }
     
     /// Compiles ConstantNode to simpler node (useless here, but required by protocol)
