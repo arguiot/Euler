@@ -19,7 +19,14 @@ public class Expression: NSObject {
         
         self.node = ExpressionNode(comp)
     }
-    
+    /// Creates an `Expression` from `$\LaTeX$`
+    public init(latex: String) throws {
+        let p = Parser(latex: latex)
+        let expression = try p.parse()
+        let comp = expression.compile()
+        
+        self.node = ExpressionNode(comp)
+    }
     fileprivate enum SolveError: Error {
         case moreThan2SubExpressions
         case evalError
