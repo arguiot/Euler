@@ -53,12 +53,12 @@ public class ConstantNode: NSObject, Node {
     /// Create a ConstantNode
     /// - Parameter float: Floating point number
     public init(_ float: Float) {
-        self.content = BigFloat(Double(float)).description
+        self.content = BigFloat(Double(float)).decimalDescription
     }
     /// Create a ConstantNode
     /// - Parameter double: Floating point number
     public init(_ double: Double) {
-        self.content = BigDouble(double).description
+        self.content = BigDouble(double).decimalDescription
     }
     
     /// Compiles ConstantNode to simpler node (useless here, but required by protocol)
