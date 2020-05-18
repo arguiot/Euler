@@ -225,6 +225,10 @@ public struct BigDouble:
     }
     
     public init(_ d: Double, withPrecision eps: Double = 1.0E-15) {
+        if d.isNaN {
+            self.init(0)
+            return
+        }
         var x = d
         var a = floor(x)
         var (h1, k1, h, k) = (1.0, 0.0, a, 1.0)

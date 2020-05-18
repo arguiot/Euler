@@ -71,5 +71,9 @@ public func gamma(_ float: BigNumber) -> BigNumber {
 /// Let's say you have six bells, each with a different tone, and you want to find the number of unique sequences in which each bell can be rung once. In this example, you are calculating the factorial of six. In general, use a factorial to count the number of ways in which a group of distinct items can be arranged (also called permutations). To calculate the factorial of a number, use this function.
 /// - Parameter number: The nonnegative number for which you want the factorial. If number is not an integer, it is truncated.
 public func factorial(_ number: BigInt) -> BigInt {
-    return gamma(BigNumber(number + 1)).rounded()
+    let r = gamma(BigNumber(number + 1)).rounded()
+    if r == 0 && number.isPositive() {
+        return (1 ... number).map { BigInt($0) }.reduce(BigInt(1), *)
+    }
+    return r
 }

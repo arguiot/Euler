@@ -21,6 +21,10 @@ public extension Tables {
         return try expression.evaluate([:], linker)
     }
     
+    internal static var functions: [String:(([CellValue]) throws -> CellValue)] {
+        return Tables().linker
+    }
+    
     internal var linker: [String:(([CellValue]) throws -> CellValue)] {
         return [
             // MARK: CommonFormulas
@@ -420,8 +424,9 @@ public extension Tables {
             "SUMPRODUCT": { args in
                 #if os(macOS)
                 return CellValue.nil // TODO: CellValue doesn't support arrays
-                #endif
+                #else
                 return CellValue.nil
+                #endif
             },
             "SUMSQ": { args in
                 let tmp = args.map { $0.number }

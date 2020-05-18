@@ -48,10 +48,12 @@ public struct Vector: Equatable {
         self.dims = multipleDimensions
         self.origin = origin ?? Point(multipleDimensions: Array<BigDouble>(repeating: .zero, count: multipleDimensions.count))
     }
+    #if !os(Linux)
     /// Converts a Vector into a Matrix
     public var matrix: Matrix {
         return Matrix(self.dims.map { $0.asDouble() ?? Double.infinity }, isColumnVector: true)
     }
+    #endif
     /// Origin point translated by the vector
     public var translated: Point {
         let dims = zip(origin.dims, self.dims).map { $0 + $1 }
@@ -60,11 +62,29 @@ public struct Vector: Equatable {
     
     /// Sum of two vectors
     static public func +(rhs: Vector, lhs: Vector) -> Vector {
+        var rhs = rhs
+        var lhs = lhs
+        if rhs.dims.count > lhs.dims.count {
+            let diff = rhs.dims.count - lhs.dims.count
+            lhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        } else if lhs.dims.count > rhs.dims.count {
+            let diff = lhs.dims.count - rhs.dims.count
+            rhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        }
         let dims = zip(rhs.dims, lhs.dims).map { $0 + $1 }
         return Vector(multipleDimensions: dims)
     }
     /// Dot product of two vectors
     static public func *(rhs: Vector, lhs: Vector) -> BigDouble {
+        var rhs = rhs
+        var lhs = lhs
+        if rhs.dims.count > lhs.dims.count {
+            let diff = rhs.dims.count - lhs.dims.count
+            lhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        } else if lhs.dims.count > rhs.dims.count {
+            let diff = lhs.dims.count - rhs.dims.count
+            rhs.dims.append(contentsOf: Array<BigDouble>(repeating: 0, count: diff))
+        }
         let mul = zip(rhs.dims, lhs.dims).map { $0 * $1 }
         let sum = mul.reduce(0, +)
         return sum

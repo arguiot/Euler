@@ -4,7 +4,7 @@
 //
 //  Created by Arthur Guiot on 2020-02-07.
 //
-#if os(macOS)
+#if !os(Linux)
 import Foundation
 import Accelerate
 
