@@ -40,6 +40,19 @@ internal extension String {
         let ranges = m.map { $0.range }
         return ranges.map { ($0.lowerBound, $0.upperBound) }
     }
+    
+    func replace(regex: String, with: String) -> String {
+        let expression: NSRegularExpression
+        if let exists = expressions[regex] {
+            expression = exists
+        } else {
+            guard let e = try? NSRegularExpression(pattern: "\(regex)", options: [.useUnixLineSeparators, .caseInsensitive]) else { return self }
+            expression = e
+            expressions[regex] = expression
+        }
+        let out = expression.stringByReplacingMatches(in: self, options: [], range: NSMakeRange(0, self.utf16.count), withTemplate: with)
+        return out
+    }
 }
 internal func multiline(x: String...) -> String {
     return x.joined(separator: "\n")
