@@ -22,9 +22,9 @@ public extension Parser {
     
     private static func quickReplace(latex: String) -> String {
         var out = latex
-        out = out.replace(regex: "\\div", with: "/") // Division
-        out = out.replace(regex: "\\cdot", with: "*") // Multiplication
-        out = out.replace(regex: "\\times", with: "/") // Same
+        out = out.replacingOccurrences(of: "\\div", with: "/") // Division
+        out = out.replacingOccurrences(of: "\\cdot", with: "*") // Multiplication
+        out = out.replacingOccurrences(of: "\\times", with: "*") // Same
         // Functions
         out = out.replace(regex: "\\|.*\\|", with: "ABS($1)")
         out = out.replacingOccurrences(of: "\\", with: "")

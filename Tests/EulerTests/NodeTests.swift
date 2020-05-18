@@ -63,8 +63,10 @@ class NodeTests: XCTestCase {
             let e = try Parser("=SUM(A3:A4, A5:A6)-MIN(1, 2, 3, 4)", type: .tables, tablesContext: Tables()).parse() // Requires a Tables to interpret code
             XCTAssertEqual(e.toString(), "SUM(A3 : A4, A5 : A6) - MIN(1, 2, 3, 4)")
             
-            let l = try Parser(latex: "\\frac{4-\\sqrt{4^2-9}}{8} * \\frac{\\frac{\\frac{1}{2}}{3}}{4}").parse()
+            var l = try Parser(latex: "\\frac{4-\\sqrt{4^2-9}}{8} * \\frac{\\frac{\\frac{1}{2}}{3}}{4}").parse()
             XCTAssertEqual(try? l.evaluate([:], Tables().linker).number?.nearlyEquals(0.007053378588205258), true)
+            l = try Parser(latex: "2-\\frac{9}{3}\\cdot\\sqrt{812}-9.0").parse()
+            XCTAssertEqual(try? l.evaluate([:], Tables().linker).number?.nearlyEquals(-92.48684), true)
         } catch {
             print(error.localizedDescription)
             XCTFail()

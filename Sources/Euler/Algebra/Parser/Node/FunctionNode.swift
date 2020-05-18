@@ -47,8 +47,9 @@ public class FunctionNode: NSObject, Node {
         self.children = args
     }
     
-    /// Compiles SymbolNode to simpler node (useless here, but required by protocol)
+    /// Compiles FunctionNode to simpler node (useless here, but required by protocol)
     public func compile() -> Node {
+        self.children = self.children.map { $0.compile() }
         return self
     }
     

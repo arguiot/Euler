@@ -83,8 +83,8 @@ public class OperatorNode: NSObject, Node {
         
         if c1.type == "ConstantNode" && c2.type == "ConstantNode" {
             do {
-                guard let ev1 = try c1.evaluate([:], [:]).number else { return self }
-                guard let ev2 = try c2.evaluate([:], [:]).number else { return self }
+                guard let ev1 = try c1.evaluate([:], Tables.functions).number else { return self }
+                guard let ev2 = try c2.evaluate([:], Tables.functions).number else { return self }
                 switch self.content {
                 case "+":
                     return ConstantNode(ev1 + ev2)
