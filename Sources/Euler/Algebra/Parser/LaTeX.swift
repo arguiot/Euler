@@ -38,7 +38,9 @@ public extension Parser {
     
     private static func fractions(latex: String) -> String {
         var out = latex
-        while out.contains("\\frac") {
+        var old = ""
+        while out.contains("\\frac") && old != out { // So we don't have an infinite loop...
+            old = out
             out = out.replace(regex: "\\\\frac\\s*\\{((?!\\\\frac\\{).*?)\\}\\{((?!\\\\frac\\{).*?)\\}", with: "($1) / ($2)")
         }
         return out
