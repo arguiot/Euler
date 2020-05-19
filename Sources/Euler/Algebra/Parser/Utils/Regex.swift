@@ -27,6 +27,24 @@ internal extension String {
         return nil
     }
     
+    /// Returns the range of the matched String
+    func matchRange(regex: String) -> (Int, Int)? {
+        let expression: NSRegularExpression
+        if let exists = expressions[regex] {
+            expression = exists
+        } else {
+            guard let e = try? NSRegularExpression(pattern: "^\(regex)", options: []) else { return nil }
+            expression = e
+            expressions[regex] = expression
+        }
+        
+        let range = expression.rangeOfFirstMatch(in: self, options: [], range: NSMakeRange(0, self.utf16.count))
+        if range.location != NSNotFound {
+            return (range.lowerBound, range.upperBound)
+        }
+        return nil
+    }
+    
     func matches(regex: String) -> [(Int, Int)] {
         let expression: NSRegularExpression
         if let exists = expressions[regex] {
@@ -56,4 +74,13 @@ internal extension String {
 }
 internal func multiline(x: String...) -> String {
     return x.joined(separator: "\n")
+}
+
+extension StringProtocol {
+    subscript(_ offset: Int)                     -> Element     { self[index(startIndex, offsetBy: offset)] }
+    subscript(_ range: Range<Int>)               -> SubSequence { prefix(range.lowerBound+range.count).suffix(range.count) }
+    subscript(_ range: ClosedRange<Int>)         -> SubSequence { prefix(range.lowerBound+range.count).suffix(range.count) }
+    subscript(_ range: PartialRangeThrough<Int>) -> SubSequence { prefix(range.upperBound.advanced(by: 1)) }
+    subscript(_ range: PartialRangeUpTo<Int>)    -> SubSequence { prefix(range.upperBound) }
+    subscript(_ range: PartialRangeFrom<Int>)    -> SubSequence { suffix(Swift.max(0, count-range.lowerBound)) }
 }
