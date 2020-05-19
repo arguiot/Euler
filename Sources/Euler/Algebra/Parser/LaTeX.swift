@@ -27,12 +27,12 @@ public extension Parser {
         out = out.replacingOccurrences(of: "\\times", with: "*") // Same
         // Functions
         out = out.replace(regex: "\\|.*\\|", with: "ABS($1)")
-        out = out.replacingOccurrences(of: "\\", with: "")
         out = out.replacingOccurrences(of: "\\left", with: "")
         out = out.replacingOccurrences(of: "\\right", with: "")
         out = out.replacingOccurrences(of: "{", with: "(")
         out = out.replacingOccurrences(of: "}", with: ")")
         out = out.replacingOccurrences(of: "ar", with: "a")
+        out = out.replacingOccurrences(of: "\\", with: "")
         return out
     }
     
