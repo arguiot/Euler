@@ -485,6 +485,9 @@ public struct BigDouble:
      * - warning: This may take a while. This is only precise up until precision. When comparing results after this function ` use` nearlyEqual`
      */
     public func nthroot(_ root: Int) -> BigDouble {
+        if let d = self.asDouble() {
+            return BigDouble(pow(d, 1 / Double(root)))
+        }
         return self ** BigDouble(BigInt(1), over: BigInt(root))
     }
     
@@ -494,6 +497,9 @@ public struct BigDouble:
      * - warning: This may take a while. This is only precise up until precision. When comparing results after this function ` use` nearlyEqual`
      */
     public func squareRoot() -> BigDouble {
+        if let d = self.asDouble() {
+            return BigDouble(sqrt(d))
+        }
         return self ** BigDouble(BigInt(1), over: BigInt(2))
     }
     
