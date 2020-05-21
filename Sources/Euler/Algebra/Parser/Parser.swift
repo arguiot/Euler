@@ -175,7 +175,7 @@ public class Parser {
         let qp = try detectFunctions(parsed: quick)
         
         if qp.count == 1 {
-            guard !qp.contains(nil) else { throw ParseError.FailedToParse }
+            guard !qp.contains(where: {$0 == nil}) else { throw ParseError.FailedToParse }
             return qp.map{ $0! }
         }
         
