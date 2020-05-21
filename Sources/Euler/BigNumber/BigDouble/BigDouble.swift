@@ -500,7 +500,34 @@ public struct BigDouble:
         if let d = self.asDouble() {
             return BigDouble(sqrt(d))
         }
-        return self ** BigDouble(BigInt(1), over: BigInt(2))
+        
+        if self.isNegative() {
+            fatalError("[BigDouble] SQRT: number is negative")
+        }
+        
+        // Newton's method Square Root
+        let int = self.rounded()
+        var i = int / 2
+        var a = BigDouble.zero
+//        let n = 20
+        
+        var old_i = i + 1
+        
+        var passed = false
+        while passed == false && !(a*a).nearlyEquals(self, epsilon: pow(10, Double(-self._precision))) {
+            if old_i == i { // Means that we reached a point were we have to compute digits
+                if passed == false {
+                    a = BigDouble(i)
+                    passed = true
+                }
+                a = (a + self / a) / 2
+            } else {
+                old_i = i
+                i = (i + int / i) / 2
+            }
+        }
+        return a
+//        return self ** BigDouble(BigInt(1), over: BigInt(2))
     }
     
     /// Returns BigNumber's value as an integer. Conversion only works when self has only one limb

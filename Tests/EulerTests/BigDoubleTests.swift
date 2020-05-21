@@ -110,6 +110,8 @@ class BigDoubleTests : XCTestCase {
             let rn = Double(Double(Int.random(in: 0...Int.max)) / Double(UINT32_MAX))
             XCTAssertEqual(pow(BigDouble(rn), 1), BigDouble(rn))
         }
+        
+        XCTAssertEqual(BigDouble(123456789123456789).squareRoot(), 351364183.0401283)
     }
     
     func testDecimalExpansionWithoutRounding() {
