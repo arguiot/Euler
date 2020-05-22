@@ -484,11 +484,30 @@ public struct BigDouble:
      *
      * - warning: This may take a while. This is only precise up until precision. When comparing results after this function ` use` nearlyEqual`
      */
-    public func nthroot(_ root: Int) -> BigDouble {
+    public func nthroot(_ root: Int) -> BigDouble? {
         if let d = self.asDouble() {
             return BigDouble(pow(d, 1 / Double(root)))
         }
-        return self ** BigDouble(BigInt(1), over: BigInt(root))
+        var d = BN.zero
+        var res = BN(1)
+        let epsilon = 2.220446049250313e-16 // Good precision
+        
+        guard !self.isZero() else {
+            return 0
+        }
+        
+        guard root >= 1 else {
+            return nil
+        }
+        
+        while d >= epsilon * 10 || d <= -epsilon * 10 {
+            d = (self / res ** (root - 1) - res) / BN(root)
+            res += d
+        }
+        
+        return res
+        
+//        return self ** BigDouble(BigInt(1), over: BigInt(root))
     }
     
     /**
@@ -496,13 +515,13 @@ public struct BigDouble:
      *
      * - warning: This may take a while. This is only precise up until precision. When comparing results after this function ` use` nearlyEqual`
      */
-    public func squareRoot() -> BigDouble {
+    public func squareRoot() -> BigDouble? {
         if let d = self.asDouble() {
             return BigDouble(sqrt(d))
         }
         
         if self.isNegative() {
-            fatalError("[BigDouble] SQRT: number is negative")
+            return nil
         }
         
         // Newton's method Square Root

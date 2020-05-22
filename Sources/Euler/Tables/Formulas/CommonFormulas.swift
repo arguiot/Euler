@@ -574,14 +574,16 @@ public extension Tables {
     
     /// Returns a positive square root.
     /// - Parameter n: The number for which you want the square root.
-    func SQRT(_ n: BigDouble) -> BigDouble {
-        return abs(n).squareRoot()
+    func SQRT(_ n: BigDouble) throws -> BigDouble {
+        guard let sqrt = abs(n).squareRoot() else { throw TablesError.NULL }
+        return sqrt
     }
     
     /// Returns the square root of (number * pi).
     /// - Parameter n: The number by which pi is multiplied.
-    func SQRTPI(_ n: BigDouble) -> BigDouble {
-        return abs(n * pi).squareRoot()
+    func SQRTPI(_ n: BigDouble) throws -> BigDouble {
+        guard let sqrt = abs(n * pi).squareRoot() else { throw TablesError.NULL }
+        return sqrt
     }
     // MARK: Todo: SUBTOTAL
     

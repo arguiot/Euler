@@ -349,12 +349,14 @@ public extension Tables {
             "SQRT": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(number: self.SQRT(n))
+                guard let sqrt = try? self.SQRT(n) else { return CellValue.nil }
+                return CellValue(number: sqrt)
             },
             "SQRTPI": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(number: self.SQRTPI(n))
+                guard let sqrt = try? self.SQRTPI(n) else { return CellValue.nil }
+                return CellValue(number: sqrt)
             },
             "ADD": { args in
                 let tmp = args.map { $0.number }

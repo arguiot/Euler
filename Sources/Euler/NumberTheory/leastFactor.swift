@@ -18,7 +18,7 @@ public func leastFactor(_ number: BigInt) -> BigInt {
     if (n % 2 == 0) { out = out != nil ? out : 2 }
     if (n % 3 == 0) { out = out != nil ? out : 3 }
     if (n % 5 == 0) { out = out != nil ? out : 5 }
-    let m = BigDouble(n).nthroot(2)
+    guard let m = BigDouble(n).squareRoot() else { return out ?? .zero }
     
     var i = BigInt(7)
     while BigDouble(i) <= m {

@@ -94,7 +94,7 @@ class BigDoubleTests : XCTestCase {
         
         XCTAssertTrue(BigDouble.nearlyEqual(BigDouble("-27")!**BigDouble("1", over: "3")!, BigDouble("-3")!))
         
-        XCTAssertTrue(BigDouble.nearlyEqual(BigDouble("4")!.nthroot(2), BigDouble(2.0)))
+        XCTAssertTrue(BigDouble.nearlyEqual(BigDouble("4")!.nthroot(2)!, BigDouble(2.0)))
         // Test that a number to the zero power is 1
         for i in 0..<100 {
             XCTAssertEqual(pow(BigDouble(Double(i)), 0), 1.0)
@@ -111,7 +111,7 @@ class BigDoubleTests : XCTestCase {
             XCTAssertEqual(pow(BigDouble(rn), 1), BigDouble(rn))
         }
         
-        XCTAssertEqual(BigDouble(123456789123456789).squareRoot(), 351364183.0401283)
+        XCTAssert(BigDouble(123456789123456789).squareRoot()?.nearlyEquals(351364183.0401283))
     }
     
     func testDecimalExpansionWithoutRounding() {

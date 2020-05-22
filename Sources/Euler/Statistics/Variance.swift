@@ -17,7 +17,7 @@ public extension Statistics {
         let diffSqaured = self.list.map { ($0 - mean) ** 2 }
         let summed = sum(diffSqaured)
         let N = self.list.count
-        return (summed / (N - 1)).squareRoot()
+        return (summed / (N - 1)).squareRoot() ?? .zero
     }
     
     /// Returns the variance of the list

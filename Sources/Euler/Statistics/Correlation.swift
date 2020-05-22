@@ -9,10 +9,13 @@ import Foundation
 
 fileprivate enum CorrelationError: LocalizedError {
     case ArrayLengthIssue
+    case SQRTProblem
     public var errorDescription: String? {
         switch self {
         case .ArrayLengthIssue:
             return "Correlation error, arrays are not the same size"
+        case .SQRTProblem:
+            return "Couldn't find the SQRT. This should actually never happen, so if you ever see this message, something terrible happened..."
         }
     }
 }
@@ -34,7 +37,7 @@ public extension Statistics {
             down1 += pow(self.list[i] - average1, 2)
             down2 += pow(list[i] - average2, 2)
         }
-        let result = up / (down1 * down2).squareRoot()
-        return result
+        guard let down = (down1 * down2).squareRoot() else { throw CorrelationError.SQRTProblem }
+        return up / down
     }
 }
