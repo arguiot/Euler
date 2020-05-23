@@ -225,13 +225,21 @@ extension BigDouble {
     //
     //
     //
-    
-    public static func /(lhs: BigDouble, rhs: BigDouble) -> BigDouble
-    {
+    /// Quick division (using defined precision by default for better performances)
+    public static func /(lhs: BigDouble, rhs: BigDouble) -> BigDouble {
+        let double_precision = BN.precision * 10 // While we limit the precision, we need something fine...
+        
+        var denominator = lhs.denominator.multiplyingBy(rhs.numerator)
+        var numerator = lhs.numerator.multiplyingBy(rhs.denominator)
+        let precision = (BigInt(10) ** double_precision).limbs
+        if !denominator.lessThan(precision) {
+            denominator = denominator.dividing(precision)
+            numerator = numerator.dividing(precision)
+        }
         var res =  BigDouble(
             sign:            lhs.sign != rhs.sign,
-            numerator:        lhs.numerator.multiplyingBy(rhs.denominator),
-            denominator:    lhs.denominator.multiplyingBy(rhs.numerator)
+            numerator:        numerator,
+            denominator:    denominator
         )
         
         if res.isZero() { res.sign = false }

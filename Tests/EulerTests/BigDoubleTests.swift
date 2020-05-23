@@ -111,7 +111,7 @@ class BigDoubleTests : XCTestCase {
             XCTAssertEqual(pow(BigDouble(rn), 1), BigDouble(rn))
         }
         
-        XCTAssert(BigDouble(123456789123456789).squareRoot()?.nearlyEquals(351364183.0401283))
+        XCTAssert((BigDouble(123456789123456789).squareRoot()?.nearlyEquals(351364183.0401283))!)
     }
     
     func testDecimalExpansionWithoutRounding() {
