@@ -227,7 +227,7 @@ extension BigDouble {
     //
     /// Quick division (using defined precision by default for better performances)
     public static func /(lhs: BigDouble, rhs: BigDouble) -> BigDouble {
-        let double_precision = BN.precision + 10 // While we limit the precision, we need something fine...
+        let double_precision = BN.precision + 5 // While we limit the precision, we keep 5 additional digits for ok-ish precision
         
         var denominator = lhs.denominator.multiplyingBy(rhs.numerator)
         var numerator = lhs.numerator.multiplyingBy(rhs.denominator)
