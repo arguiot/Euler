@@ -41,19 +41,19 @@ class NodeTests: XCTestCase {
         XCTAssertEqual(op2.toString(), "5 + 2 * x")
     }
     func testParser() {
-        let src = "x -2 - sqrt(3*4)=2"
+        let src = "3(4*5-sqrt(4)) = 3"
         let lexer = Lexer(input: src)
         let tokens = lexer.tokenize()
         let p = Parser(tokens: tokens)
         do {
             let expression = try p.parse()
             let str = expression.toString()
-            XCTAssertEqual(str, "x + -2 - sqrt(3 * 4) = 2") // Simple trick to make it work...
+            XCTAssertEqual(str, "3 * (4 * 5 - sqrt(4)) = 3") // Simple trick to make it work...
             XCTAssertEqual(try Parser("5.0 - sqrt(8) * 5 = x^2 - factorial(4)").parse().toString(), "5 - sqrt(8) * 5 = x ^ 2 - factorial(4)")
             XCTAssertEqual(try Parser("((4*2) - 3) +sqrt(4)").parse().toString(), "((4 * 2) - 3) + sqrt(4)")
             
             
-            let expr = try Parser("x + 2 - sqrt(3 * 4)").parse()
+            let expr = try Parser("(3/2)x + 2 - sqrt(3 * 4)").parse()
             let tree = Tree.computeDepth(node: expr)
             print(tree)
             
@@ -65,8 +65,8 @@ class NodeTests: XCTestCase {
             
             var l = try Parser(latex: "\\frac{4-\\sqrt{4^2-9}}{8} * \\frac{\\frac{\\frac{1}{2}}{3}}{4}").parse()
             XCTAssertEqual(try? l.evaluate([:], Tables().linker).number?.nearlyEquals(0.007053378588205258), true)
-            l = try Parser(latex: "2-\\frac{9}{3}\\cdot\\sqrt{812}-9.0").parse()
-            XCTAssertEqual(try? l.evaluate([:], Tables().linker).number?.nearlyEquals(-92.48684), true)
+            l = try Parser(latex: "2-\\frac{9}{3}3\\cdot\\sqrt{812}-9.0").parse()
+            XCTAssertEqual(try? l.evaluate([:], Tables().linker).number?.nearlyEquals(-263.4605), true)
         } catch {
             print(error.localizedDescription)
             XCTFail()
