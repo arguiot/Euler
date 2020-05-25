@@ -51,6 +51,15 @@ public class OperatorNode: NSObject, Node {
     /// The left and right hand sides of the operator
     public var children = [Node]()
     
+    internal func replaceDeepestRight(_ node: Node) {
+        guard children.count == 2 else { return }
+        if children[1] is OperatorNode {
+            (children[1] as! OperatorNode).replaceDeepestRight(node)
+        } else {
+            children[1] = node
+        }
+    }
+    
     /// Creates an OperatorNode
     /// - Parameters:
     ///   - op: The symbol of the operator, ex: +, -, /, ...

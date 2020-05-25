@@ -606,8 +606,7 @@ internal extension Array where Element == Limb {
             
             remainder.setBit(at: 0, to: self.getBit(at: i))
             
-            if !remainder.lessThan(divisor)
-            {
+            if !remainder.lessThan(divisor) {
                 remainder.difference(divisor)
                 quotient.setBit(at: i, to: true)
             }

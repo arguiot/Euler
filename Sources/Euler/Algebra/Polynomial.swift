@@ -290,6 +290,69 @@ public class Polynomial: Expression {
         }
         return x
     }
+    
+    /// Finds all roots of the polynomial
+    var roots: [BigDouble] {
+        switch self.highestDegree {
+        case 0:
+//            fatalError("Doesn't make sense to find the root of this Polynomial")
+            return []
+        case 1:
+            let a = coefs[0]
+            let b = coefs[1]
+            return [(-b) / a]
+        case 2:
+            let a = coefs[0]
+            let b = coefs[1]
+            let c = coefs[2]
+            
+            let delta = b * b - 4 * a * c
+            guard delta >= 0 else { return [] }
+            if delta == 0 {
+                return [(-b) / (2*a)]
+            }
+            guard let sqrt = delta.squareRoot() else { return [(-b) / (2*a)] }
+            let x1 = (-b + sqrt) / (2 * a)
+            let x2 = (-b - sqrt) / (2 * a)
+            return [x1, x2]
+        default:
+            let studied_poly = self
+            let derivative = studied_poly.derivative
+            
+            let maxs = derivative.roots
+            if maxs.isEmpty {
+                return []
+            }
+            var intervals = [(BN, BN)]()
+            for i in 0..<maxs.count {
+                var lower = BN.zero
+                if i == 0 {
+                    if maxs.count == 1 {
+                        lower = maxs[i] - BN(100) // 100 should be more than enough for a lot of polynomials
+                    } else {
+                        lower = maxs[i] - (maxs[i + 1] - maxs[i]) * 2 // Doubling spacing between 2 roots
+                    }
+                } else {
+                    lower = maxs[i - 1]
+                }
+                let upper = maxs[i]
+                
+                let interval = (lower, upper)
+                intervals.append(interval)
+            }
+            let (_, max) = intervals.last!
+            intervals.append((max, max + BN(100)))
+            
+            var zeros = [BN]()
+            for i in intervals {
+                if let root = try? studied_poly.solve(for: "x", in: i, with: 10e-4) {
+                    zeros.append(root)
+                }
+            }
+            
+            return Array(Set(zeros)) // removing duplicates
+        }
+    }
 }
 
 /// Creates a new term

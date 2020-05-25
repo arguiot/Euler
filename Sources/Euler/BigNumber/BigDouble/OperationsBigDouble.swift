@@ -185,11 +185,11 @@ extension BigDouble {
         
         // something over 1
         if BigInt(limbs: exponent.denominator) == 1 {
-            return base**BigInt(sign: exponent.sign, limbs: exponent.numerator)
+            return (base**BigInt(sign: exponent.sign, limbs: exponent.numerator)).simplified
         }
         
         if BigInt(limbs: exponent.numerator) != 1 {
-            return (base ** BigInt(sign: exponent.sign, limbs: exponent.numerator)) ** BigDouble(sign: false, numerator: BigDouble(1).numerator, denominator: exponent.denominator)
+            return (base ** BigInt(sign: exponent.sign, limbs: exponent.numerator)) ** BigDouble(sign: false, numerator: BigDouble(1).numerator, denominator: exponent.denominator).simplified
         }
         
         // we have 1/something
@@ -213,7 +213,7 @@ extension BigDouble {
             count = count + 1
         }
         
-        return ans
+        return ans.simplified
     }
     
     //
@@ -227,24 +227,36 @@ extension BigDouble {
     //
     /// Quick division (using defined precision by default for better performances)
     public static func /(lhs: BigDouble, rhs: BigDouble) -> BigDouble {
-        let double_precision = BN.precision * 10 // While we limit the precision, we need something fine...
         
-        var denominator = lhs.denominator.multiplyingBy(rhs.numerator)
-        var numerator = lhs.numerator.multiplyingBy(rhs.denominator)
-        let precision = (BigInt(10) ** double_precision).limbs
-        if !denominator.lessThan(precision) {
-            denominator = denominator.dividing(precision)
-            numerator = numerator.dividing(precision)
-        }
+        let denominator = lhs.denominator.multiplyingBy(rhs.numerator)
+        let numerator = lhs.numerator.multiplyingBy(rhs.denominator)
+        
         var res =  BigDouble(
             sign:            lhs.sign != rhs.sign,
             numerator:        numerator,
             denominator:    denominator
-        )
+        ).simplified
         
         if res.isZero() { res.sign = false }
         return res
+    
     }
+    
+    
+    internal var simplified: BigDouble {
+        var b = self
+        let digit_precision = BN.precision + 5 // While we limit the precision, we need something fine...
+        if digit_precision > 18 {
+            return self // Unlimited precision
+        }
+        let precision = UInt64(pow(10, Double(digit_precision)))
+        while b.denominator.count > 1 || b.denominator[0] > precision {
+            b.denominator = b.denominator.dividing([10])
+            b.numerator = b.numerator.dividing([10])
+        }
+        return b
+    }
+    
     public static func /(lhs: BigDouble, rhs: Double) -> BigDouble { return lhs / BigDouble(rhs) }
     public static func /(lhs: BigDouble, rhs: BigInt) -> BigDouble { return lhs / BigDouble(rhs) }
     public static func /(lhs: Double, rhs: BigDouble) -> BigDouble { return BigDouble(lhs) / rhs }

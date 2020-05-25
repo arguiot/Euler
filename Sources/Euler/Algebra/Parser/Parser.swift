@@ -134,20 +134,10 @@ public class Parser {
                 guard let p2 = priorities[next.content] else { throw ParseError.UnexpectedOperator }
                 
                 if p1 < p2 { // So we'll chose next over current
-                    let choosedSign = current.content
-                    let lhs = current.children[0]
-                    let mhs = current.children[1]
-                    let rhs = next.children[1]
-                    
-//                    guard mhs == next.children[0] else {
-//                        throw ParseError.FailedToParse
-//                    }
-                    
-                    let op1 = OperatorNode(next.content, children: [mhs, rhs])
-                    let op2 = OperatorNode(choosedSign, children: [lhs, op1])
+                    (current as! OperatorNode).replaceDeepestRight(next)
                     
                     nodes.remove(at: 0) // Empty array
-                    nodes.append(op2)
+                    nodes.append(current)
                 } else {
                     let choosedSign = next.content
                     let lhs = current.children[0]

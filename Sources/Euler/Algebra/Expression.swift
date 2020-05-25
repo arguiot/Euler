@@ -56,7 +56,7 @@ public class Expression: NSObject {
         }
         
         func f(_ x: BigNumber) throws -> BigNumber {
-            let value = try single.evaluate([variable : x], Tables.functions).number
+            let value = try single.evaluate([variable : x]).number
             
             guard let y = value else { throw SolveError.evalError }
             return y
