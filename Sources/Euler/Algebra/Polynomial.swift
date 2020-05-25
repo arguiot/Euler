@@ -303,7 +303,7 @@ public class Polynomial: Expression {
     /// Not always inclusive. Sometimes, for the same polynomials, results are different as it relies on guesses.
     /// > Note to dev team: performance is not ideal and could be improved by relying on native numbers when possible.
     ///
-    var roots: [BigDouble] {
+    public var roots: [BigDouble] {
         switch self.highestDegree {
         case 0:
 //            fatalError("Doesn't make sense to find the root of this Polynomial")
