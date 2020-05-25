@@ -58,13 +58,20 @@ public class Polynomial: Expression {
     /// Let `f` be a polynomial function. Evaluate returns the number given by `f(x)`
     /// - Parameter x: The input value for the polynomial function
     public func evaluate(at x: BigNumber) -> BigNumber {
-        var result: BigNumber = 0
+        var result: Double = 0
         var curr_pow = self.highestDegree
-        for c in self.coefs {
-            result += c * pow(x, curr_pow)
+        let d_array = self.coefs.map { $0.asDouble() }
+        guard let coefs = d_array as? [Double] else {
+            return try! self.node.evaluate(["x": x]).number!
+        }
+        guard let X = x.asDouble() else {
+            return try! self.node.evaluate(["x": x]).number!
+        }
+        for c in coefs {
+            result += c * pow(X, Double(curr_pow))
             curr_pow -= 1
         }
-        return result
+        return BigDouble(result)
     }
     
     /// Returns the value of the degree of the term with the highest power in the polynomial
@@ -291,7 +298,11 @@ public class Polynomial: Expression {
         return x
     }
     
-    /// Finds all roots of the polynomial
+    /// Finds roots of the polynomial
+    ///
+    /// Not always inclusive. Sometimes, for the same polynomials, results are different as it relies on guesses.
+    /// > Note to dev team: performance is not ideal and could be improved by relying on native numbers when possible.
+    ///
     var roots: [BigDouble] {
         switch self.highestDegree {
         case 0:
@@ -312,9 +323,9 @@ public class Polynomial: Expression {
                 return [(-b) / (2*a)]
             }
             guard let sqrt = delta.squareRoot() else { return [(-b) / (2*a)] }
-            let x1 = (-b + sqrt) / (2 * a)
-            let x2 = (-b - sqrt) / (2 * a)
-            return [x1, x2]
+            let x1 = (-b - sqrt) / (2 * a)
+            let x2 = (-b + sqrt) / (2 * a)
+            return [x1, x2].sorted()
         default:
             let studied_poly = self
             let derivative = studied_poly.derivative
@@ -346,11 +357,11 @@ public class Polynomial: Expression {
             var zeros = [BN]()
             for i in intervals {
                 if let root = try? studied_poly.solve(for: "x", in: i, with: 10e-4) {
-                    zeros.append(root)
+                    zeros.append(root.simplified)
                 }
             }
             
-            return Array(Set(zeros)) // removing duplicates
+            return Array(Set(zeros)).sorted() // removing duplicates
         }
     }
 }

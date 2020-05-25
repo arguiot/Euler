@@ -117,8 +117,11 @@ public class OperatorNode: NSObject, Node {
     /// Converts OperatorNode to BigNumber
     public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue {
         guard self.children.count == 2 else { throw EvaluationError.missingChildren }
-        guard let ev1 = try self.children[0].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
-        guard let ev2 = try self.children[1].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
+        guard var ev1 = try self.children[0].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
+        guard var ev2 = try self.children[1].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
+        
+        ev1 = ev1.simplified
+        ev2 = ev2.simplified
         
         switch self.content {
         case "+":

@@ -56,6 +56,9 @@ public class Expression: NSObject {
         }
         
         func f(_ x: BigNumber) throws -> BigNumber {
+            if let s = self as? Polynomial {
+                return s.evaluate(at: x)
+            }
             let value = try single.evaluate([variable : x]).number
             
             guard let y = value else { throw SolveError.evalError }
@@ -67,7 +70,9 @@ public class Expression: NSObject {
         var fa = try f(a)
         var fb = try f(b)
         
-        guard fa * fb < BigDouble.zero else { throw SolveError.noSolutions }
+        guard fa * fb < BigDouble.zero else {
+            throw SolveError.noSolutions
+        }
         if abs(fa) < abs(fb) {
             (a, b) = (b, a) // Switch values
         }
