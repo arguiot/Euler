@@ -97,7 +97,8 @@ public class Parser {
     /// let expression = try p.parse()
     /// ```
     public func parse() throws -> ExpressionNode {
-        self.groups = try grouper.group()
+        let groups = try grouper.group()
+        self.groups = self.cleaning(groups)
         // Creates an array of Node. If it's an operator or something else, it will give a `nil`
         let chain = try chainMaker()
         let link = try linker(chain: chain)
@@ -133,20 +134,10 @@ public class Parser {
                 guard let p2 = priorities[next.content] else { throw ParseError.UnexpectedOperator }
                 
                 if p1 < p2 { // So we'll chose next over current
-                    let choosedSign = current.content
-                    let lhs = current.children[0]
-                    let mhs = current.children[1]
-                    let rhs = next.children[1]
-                    
-//                    guard mhs == next.children[0] else {
-//                        throw ParseError.FailedToParse
-//                    }
-                    
-                    let op1 = OperatorNode(next.content, children: [mhs, rhs])
-                    let op2 = OperatorNode(choosedSign, children: [lhs, op1])
+                    (current as! OperatorNode).replaceDeepestRight(next)
                     
                     nodes.remove(at: 0) // Empty array
-                    nodes.append(op2)
+                    nodes.append(current)
                 } else {
                     let choosedSign = next.content
                     let lhs = current.children[0]
@@ -207,6 +198,27 @@ public class Parser {
     /// - Parameter gs: Array of `Group` given by the `Grouper`
     private func quickParsing(_ gs: [Group]) -> [Node?] {
         return gs.map { try? $0.toNode(lhs: nil, rhs: nil) }
+    }
+    
+    private func cleaning(_ gs: [Group]) -> [Group] {
+        var out = [Group]()
+        for i in 0..<gs.count {
+            let c = gs[i]
+            out.append(c) // Adding last element to out
+            
+            if i == gs.count - 1 {
+                return out
+            }
+            let n = gs[i + 1]
+            let bad_types: [Group.GType] = [.Address, .Equal, .Operator, .Str, .UnParsed]
+            if !bad_types.contains(c.type) && !bad_types.contains(n.type) {
+                if !(c.type == .Symbol && n.type == .Parenthesis) {
+                    out.append(Group(tokens: [.Other("*")], type: .Operator, context: self.context))
+                }
+                
+            }
+        }
+        return gs // Will actually never happen... just a compiler thing
     }
     
     /// Detects functions and returning an array of Optional Node to work on.

@@ -51,6 +51,15 @@ public class OperatorNode: NSObject, Node {
     /// The left and right hand sides of the operator
     public var children = [Node]()
     
+    internal func replaceDeepestRight(_ node: Node) {
+        guard children.count == 2 else { return }
+        if children[1] is OperatorNode {
+            (children[1] as! OperatorNode).replaceDeepestRight(node)
+        } else {
+            children[1] = node
+        }
+    }
+    
     /// Creates an OperatorNode
     /// - Parameters:
     ///   - op: The symbol of the operator, ex: +, -, /, ...
@@ -108,8 +117,11 @@ public class OperatorNode: NSObject, Node {
     /// Converts OperatorNode to BigNumber
     public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue {
         guard self.children.count == 2 else { throw EvaluationError.missingChildren }
-        guard let ev1 = try self.children[0].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
-        guard let ev2 = try self.children[1].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
+        guard var ev1 = try self.children[0].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
+        guard var ev2 = try self.children[1].evaluate(params, fList).number else { throw EvaluationError.missingChildren }
+        
+        ev1 = ev1.simplified
+        ev2 = ev2.simplified
         
         switch self.content {
         case "+":
@@ -121,6 +133,9 @@ public class OperatorNode: NSObject, Node {
         case "*":
             return CellValue(number: ev1 * ev2)
         case "^":
+            if let e1 = ev1.asDouble(), let e2 = ev2.asDouble() {
+                return CellValue(number: BN(pow(e1, e2)))
+            }
             return CellValue(number: ev1 ** ev2)
         default:
             return CellValue(number: ev1 + ev2)

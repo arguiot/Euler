@@ -23,7 +23,7 @@ fileprivate enum GroupError: Error {
 /// This is the object that allows the tokens to be grouped together to convert them into nodes.
 /// In particular, it is in charge of recognizing parentheses and preanalysing them before passing the expression to `Parser`.
 public class Group: NSObject {
-    enum `Type` {
+    enum GType {
         case Address
         case Symbol
         case Function
@@ -35,10 +35,10 @@ public class Group: NSObject {
         case Str
     }
     var tokens: [Token]
-    var type: Type
+    var type: GType
     var context: Parser.ParseContext
     var tablesContext: Tables?
-    init(tokens: [Token], type: Type, context: Parser.ParseContext, tablesContext: Tables? = nil) {
+    init(tokens: [Token], type: GType, context: Parser.ParseContext, tablesContext: Tables? = nil) {
         self.tokens = tokens
         self.type = type
         self.context = context

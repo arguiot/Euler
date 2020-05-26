@@ -78,7 +78,7 @@ public extension Parser {
             let group2 = out[g2start..<g2end]
             
             
-            let content = "(\(group1)) / (\(group2))"
+            let content = "((\(group1)) / (\(group2)))"
             
             let lower = out.index(out.startIndex, offsetBy: start)
             let upper = out.index(out.startIndex, offsetBy: index)

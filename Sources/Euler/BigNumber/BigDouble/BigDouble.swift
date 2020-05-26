@@ -551,12 +551,15 @@ public struct BigDouble:
     
     /// Returns BigNumber's value as an integer. Conversion only works when self has only one limb
     /// that's within the range of the type "Int".
-    public func asDouble(precision: BigInt = 10) -> Double? {
-        let powed = self * 10 ** precision
+    public func asDouble(precision: Int = 10) -> Double? {
+        if let n = BigInt(limbs: self.numerator).asInt(), let d = BigInt(limbs: self.denominator).asInt() {
+            let sign: Double = self.sign == true ? -1 : 1
+            return sign * (Double(n) / Double(d))
+        }
+        let powed = self * pow(10, Double(precision))
         let rounded = powed.rounded()
         guard let integer = rounded.asInt() else { return nil }
-        guard let pre = precision.asInt() else { return nil }
-        let double = Double(integer) / pow(10, Double(pre))
+        let double = Double(integer) / pow(10, Double(precision))
         return double
     }
 }
