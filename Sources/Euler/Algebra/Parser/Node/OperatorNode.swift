@@ -133,6 +133,9 @@ public class OperatorNode: NSObject, Node {
         case "*":
             return CellValue(number: ev1 * ev2)
         case "^":
+            if let e1 = ev1.asDouble(), let e2 = ev2.asDouble() {
+                return CellValue(number: BN(pow(e1, e2)))
+            }
             return CellValue(number: ev1 ** ev2)
         default:
             return CellValue(number: ev1 + ev2)
