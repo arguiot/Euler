@@ -114,6 +114,13 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 20,
+      "symbol": "BigDouble.+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
       "line": 35,
       "symbol": "BigDouble.+(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
@@ -142,8 +149,29 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 40,
+      "symbol": "BigDouble.+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
       "line": 45,
       "symbol": "BigDouble.+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 69,
+      "symbol": "BigDouble.-(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 86,
+      "symbol": "BigDouble.-(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -170,8 +198,22 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 93,
+      "symbol": "BigDouble.-=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
       "line": 98,
       "symbol": "BigDouble.-=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 110,
+      "symbol": "BigDouble.*(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -200,6 +242,13 @@
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
       "line": 124,
       "symbol": "BigDouble.*(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 126,
+      "symbol": "BigDouble.*=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -242,6 +291,13 @@
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
       "line": 268,
       "symbol": "BigDouble./(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/OperationsBigDouble.swift",
+      "line": 310,
+      "symbol": "BigDouble.==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -365,9 +421,86 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 21,
+      "symbol": "BigInt.<<(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 30,
+      "symbol": "BigInt.<<=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 34,
+      "symbol": "BigInt.>>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 39,
+      "symbol": "BigInt.>>=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 88,
+      "symbol": "BigInt.|(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 102,
+      "symbol": "BigInt.|=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 119,
+      "symbol": "BigInt.^(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 131,
+      "symbol": "BigInt.^=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/BinaryBigInt.swift",
+      "line": 146,
+      "symbol": "BigInt.~(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 20,
       "symbol": "BigInt.+(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 25,
+      "symbol": "BigInt.+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 40,
+      "symbol": "BigInt.+(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -401,6 +534,20 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 68,
+      "symbol": "BigInt.-(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 85,
+      "symbol": "BigInt.-(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 89,
       "symbol": "BigInt.-(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
@@ -410,6 +557,13 @@
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 90,
       "symbol": "BigInt.-(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 93,
+      "symbol": "BigInt.-=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -429,6 +583,13 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 108,
+      "symbol": "BigInt.*(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 113,
       "symbol": "BigInt.*(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
@@ -438,6 +599,13 @@
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 114,
       "symbol": "BigInt.*(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 117,
+      "symbol": "BigInt.*=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -464,6 +632,13 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 152,
+      "symbol": "BigInt./(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 159,
       "symbol": "BigInt./(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
@@ -478,8 +653,22 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 162,
+      "symbol": "BigInt./=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 163,
       "symbol": "BigInt./=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 174,
+      "symbol": "BigInt.%(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -499,8 +688,22 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 184,
+      "symbol": "BigInt.%=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 185,
       "symbol": "BigInt.%=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 198,
+      "symbol": "BigInt.==(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
@@ -541,6 +744,13 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 223,
+      "symbol": "BigInt.<(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 230,
       "symbol": "BigInt.<(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
@@ -562,6 +772,13 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 247,
+      "symbol": "BigInt.>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 248,
       "symbol": "BigInt.>(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
@@ -576,6 +793,13 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 252,
+      "symbol": "BigInt.<=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 253,
       "symbol": "BigInt.<=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
@@ -585,6 +809,13 @@
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
       "line": 254,
       "symbol": "BigInt.<=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigInt/OperationsBigInt.swift",
+      "line": 257,
+      "symbol": "BigInt.>=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
