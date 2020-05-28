@@ -91,7 +91,7 @@ public extension Matrix {
                     results.grid.withUnsafeMutableBufferPointer{ dst in
                         for c in 0..<lhs.columns {
                             var v = rhs[c]
-                            vDSP_vsaddD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                            vDSP_vsaddD(src.baseAddress! + c, vDSP_Stride(lhs.columns), &v, dst.baseAddress! + c, vDSP_Stride(lhs.columns), vDSP_Length(lhs.rows))
                         }
                     }
                 }
@@ -192,7 +192,7 @@ public extension Matrix {
                     results.grid.withUnsafeMutableBufferPointer{ dst in
                         for c in 0..<lhs.columns {
                             var v = -rhs[c]
-                            vDSP_vsaddD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                            vDSP_vsaddD(src.baseAddress! + c, vDSP_Stride(lhs.columns), &v, dst.baseAddress! + c, vDSP_Stride(lhs.columns), vDSP_Length(lhs.rows))
                         }
                     }
                 }
@@ -326,7 +326,7 @@ public extension Matrix {
                     results.grid.withUnsafeMutableBufferPointer{ dst in
                         for c in 0..<lhs.columns {
                             var v = rhs[c]
-                            vDSP_vsmulD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                            vDSP_vsmulD(src.baseAddress! + c, vDSP_Stride(lhs.columns), &v, dst.baseAddress! + c, vDSP_Stride(lhs.columns), vDSP_Length(lhs.rows))
                         }
                     }
                 }
@@ -426,7 +426,7 @@ public extension Matrix {
                     results.grid.withUnsafeMutableBufferPointer{ dst in
                         for c in 0..<lhs.columns {
                             var v = rhs[c]
-                            vDSP_vsdivD(src.baseAddress! + c, lhs.columns, &v, dst.baseAddress! + c, lhs.columns, vDSP_Length(lhs.rows))
+                            vDSP_vsdivD(src.baseAddress! + c, vDSP_Stride(lhs.columns), &v, dst.baseAddress! + c, vDSP_Stride(lhs.columns), vDSP_Length(lhs.rows))
                         }
                     }
                 }
@@ -663,7 +663,7 @@ extension Matrix {
         grid.withUnsafeBufferPointer { src in
             result.grid.withUnsafeMutableBufferPointer { dst in
                 for c in 0..<columns {
-                    vDSP_sveD(src.baseAddress! + c, columns, dst.baseAddress! + c, vDSP_Length(rows))
+                    vDSP_sveD(src.baseAddress! + c, vDSP_Stride(columns), dst.baseAddress! + c, vDSP_Length(rows))
                 }
             }
         }
@@ -780,7 +780,7 @@ extension Matrix {
         var result = 0.0
         var index: vDSP_Length = 0
         grid.withUnsafeBufferPointer { ptr in
-            vDSP_minviD(ptr.baseAddress! + c, columns, &result, &index, vDSP_Length(rows))
+            vDSP_minviD(ptr.baseAddress! + c, vDSP_Stride(columns), &result, &index, vDSP_Length(rows))
         }
         return (result, Int(index) / columns)
     }
@@ -801,7 +801,7 @@ extension Matrix {
         var result = 0.0
         var index: vDSP_Length = 0
         grid.withUnsafeBufferPointer { ptr in
-            vDSP_maxviD(ptr.baseAddress! + c, columns, &result, &index, vDSP_Length(rows))
+            vDSP_maxviD(ptr.baseAddress! + c, vDSP_Stride(columns), &result, &index, vDSP_Length(rows))
         }
         return (result, Int(index) / columns)
     }
@@ -877,7 +877,7 @@ extension Matrix {
                 var srcPtr = srcBuf.baseAddress! + range.lowerBound
                 var dstPtr = dstBuf.baseAddress! + range.lowerBound
                 for _ in range {
-                    vDSP_meanvD(srcPtr, columns, dstPtr, vDSP_Length(rows))
+                    vDSP_meanvD(srcPtr, vDSP_Stride(columns), dstPtr, vDSP_Length(rows))
                     srcPtr += 1
                     dstPtr += 1
                 }
@@ -935,9 +935,9 @@ extension Matrix {
                     
                     for c in range {
                         var v = -mu[c]
-                        vDSP_vsaddD(ptr1, columns, &v, ptr2, columns, vDSP_Length(rows))
-                        vDSP_vsqD(ptr2, columns, ptr2, columns, vDSP_Length(rows))
-                        vDSP_sveD(ptr2, columns, ptr3, vDSP_Length(rows))
+                        vDSP_vsaddD(ptr1, vDSP_Stride(columns), &v, ptr2, vDSP_Stride(columns), vDSP_Length(rows))
+                        vDSP_vsqD(ptr2, vDSP_Stride(columns), ptr2, vDSP_Stride(columns), vDSP_Length(rows))
+                        vDSP_sveD(ptr2, vDSP_Stride(columns), ptr3, vDSP_Length(rows))
                         
                         ptr1 += 1
                         ptr2 += 1

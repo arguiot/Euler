@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.1"
   s.summary      = ""
   s.description  = <<-DESC
-    Your description here.
+    The open source computational framework for the Swift language (early stage)
   DESC
   s.homepage     = "https://github.com/arguiot/Euler"
   s.license      = { :type => "MIT", :file => "LICENSE" }
