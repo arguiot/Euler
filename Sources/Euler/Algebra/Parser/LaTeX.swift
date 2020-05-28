@@ -26,6 +26,7 @@ public extension Parser {
         out = out.replacingOccurrences(of: "\\cdot", with: "*") // Multiplication
         out = out.replacingOccurrences(of: "\\times", with: "*") // Same
         // Functions
+        out = out.replacingOccurrences(of: "\\pi", with: "pi()")
         out = out.replace(regex: "\\|.*\\|", with: "ABS($1)")
         out = out.replacingOccurrences(of: "\\left", with: "")
         out = out.replacingOccurrences(of: "\\right", with: "")

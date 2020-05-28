@@ -450,6 +450,7 @@ public extension Tables {
     ///   - b: The largest integer RANDBETWEEN will return.
     func RANDBETWEEN(_ a: BigDouble, _ b: BigDouble) -> BigDouble {
         guard let c = a.asDouble(), let d = b.asDouble() else { return RAND() * (b - a) + a }
+        guard c < d else { return RAND() * (b - a) + a }
         return BigDouble(Double.random(in: c..<d))
     }
     // MARK: Todo Roman
