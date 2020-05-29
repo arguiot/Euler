@@ -1,9 +1,13 @@
 language:       ruby
 os:             osx
-osx_image:      xcode11.3
+osx_image:      xcode11.5
+env:
+  global:
+    - FRAMEWORK_NAME=Euler
 install:
   # Install Jazzy and dependencies
   - gem install jazzy
+  - brew install carthage
 script:
   - swift package resolve # Resolving package
   - swift package update # Updates
@@ -11,14 +15,24 @@ script:
   - cp Euler.svg ./docs/img/logo.svg
   - cd docs && echo "euler.arguiot.com" > CNAME # Keeps the URL
 #  - xcodebuild -project SearchKit-Swift.xcodeproj -scheme SearchKit-Swift test
+  - swift test --parallel
+before_deploy:
+  - carthage build --no-skip-current
+  - carthage archive $FRAMEWORK_NAME
 deploy:
-  provider:     pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
-  keep-history: true
-  local-dir:    docs
-  on:
-    branch:     master
+  - provider:     pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+    keep-history: true
+    local-dir:    docs
+    on:
+      branch:     master
+  - provider: releases
+    api_key: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+    file: $FRAMEWORK_NAME.framework.zip
+    skip_cleanup: true
+    on:
+      tags: true
 notifications:
   email:
     on_success: never # default: change
