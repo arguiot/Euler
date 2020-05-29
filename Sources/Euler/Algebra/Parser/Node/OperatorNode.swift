@@ -100,6 +100,9 @@ public class OperatorNode: NSObject, Node {
                 case "-":
                     return ConstantNode(ev1 - ev2)
                 case "/":
+                    guard ev2 != .zero else {
+                        return self
+                    }
                     return ConstantNode(ev1 / ev2)
                 case "*":
                     return ConstantNode(ev1 * ev2)
@@ -129,6 +132,9 @@ public class OperatorNode: NSObject, Node {
         case "-":
             return CellValue(number: ev1 - ev2)
         case "/":
+            guard ev2 != .zero else {
+                throw EvaluationError.ImpossibleOperation
+            }
             return CellValue(number: ev1 / ev2)
         case "*":
             return CellValue(number: ev1 * ev2)

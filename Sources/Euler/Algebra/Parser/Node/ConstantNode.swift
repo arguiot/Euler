@@ -34,15 +34,29 @@ public class ConstantNode: NSObject, Node {
         return c
     }
     
+    /// Content of the node
+    ///
+    /// String representation of the number. This is the principal conten of the node, but for even better precision, computation rely on `number`
+    ///
     public var content: String
     
+    /// Type of the node
     public var type: String = "ConstantNode"
     
+    /// Children of the node
     public var children = [Node]()
+    
+    /// Number represented by the node.
+    ///
+    /// Optional because it may fail
+    ///
+    public var number: BigDouble?
     
     /// Create a ConstantNode
     /// - Parameter bn: BigNumber/BigDouble
     public init(_ bn: BigNumber) {
+        self.number = bn
+        
         let desc = bn.description
         if desc.contains("/") {
             self.content = bn.decimalDescription
@@ -54,33 +68,26 @@ public class ConstantNode: NSObject, Node {
     /// - Parameter str: String
     public init(_ str: String) {
         self.content = str
+        
+        self.number = BigDouble(str)
     }
     /// Create a ConstantNode
     /// - Parameter int: Integer
     public init(_ int: Int) {
-        self.content = BigInt(int).description
+        self.number = BigNumber(int)
+        self.content = String(int)
     }
     /// Create a ConstantNode
     /// - Parameter float: Floating point number
     public init(_ float: Float) {
-        let bn = BigFloat(Double(float))
-        let desc = bn.description
-        if desc.contains("/") {
-            self.content = bn.decimalDescription
-        } else {
-            self.content = desc
-        }
+        self.content = String(float)
+        self.number = BigDouble(Double(float))
     }
     /// Create a ConstantNode
     /// - Parameter double: Floating point number
     public init(_ double: Double) {
-        let bn = BigDouble(double)
-        let desc = bn.description
-        if desc.contains("/") {
-            self.content = bn.decimalDescription
-        } else {
-            self.content = desc
-        }
+        self.content = String(double)
+        self.number = BigDouble(Double(double))
     }
     
     /// Compiles ConstantNode to simpler node (useless here, but required by protocol)
@@ -89,7 +96,7 @@ public class ConstantNode: NSObject, Node {
     }
     /// Converts ConstantNode to BigNumber
     public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue {
-        guard let n = BigNumber(self.content) else { throw EvaluationError.ImpossibleOperation }
+        guard let n = self.number else { throw EvaluationError.ImpossibleOperation }
         return CellValue(number: n)
     }
     
