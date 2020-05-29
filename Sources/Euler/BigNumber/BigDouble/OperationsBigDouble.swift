@@ -179,8 +179,14 @@ extension BigDouble {
     /**
      * - reference: http://rosettacode.org/wiki/Nth_root
      */
-    public static func **(_ base: BigDouble, _ exponent: BigDouble) -> BigDouble
-    {
+    public static func **(_ base: BigDouble, _ exponent: BigDouble) -> BigDouble {
+        double: if let b = base.asDouble(), let e = exponent.asDouble() {
+            guard b.isFinite && e.isFinite else { break double }
+            let p = pow(b, e)
+            guard p.isFinite else { break double }
+            return BigDouble(p)
+        }
+        
         var count = base.precision
         
         // something over 1
