@@ -296,9 +296,6 @@ public extension Tables {
     /// LN is the inverse of the EXP function.
     /// - Parameter n: The positive real number for which you want the natural logarithm.
     func LN(_ n: BigDouble) -> BigDouble {
-        if let a = n.asDouble() {
-            return BigDouble(log(a))
-        }
         return ln(n)
     }
     

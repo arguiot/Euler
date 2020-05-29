@@ -13,27 +13,20 @@ import Foundation
 /// - Parameters:
 ///   - n: The positive real number for which you want the natural logarithm.
 ///   - precision: The precision you want to use (number of cycles). Higher precision means better result, but slower compute time
-public func ln(_ n: BigDouble, precision: BigInt = 15) -> BigDouble {
-    var buffer: BigNumber = 0
-    var i: BigInt = 0
-    while i < ceil(precision + (3 / 2 * n)) {
-        let c = i * 2 + 1
-        let a: BigDouble = 1 / c
-        let b = (n - 1) / (n + 1)
-        var powed: BigDouble
-        if let bi = b.asDouble(), let ci = c.asInt() {
-            let p = pow(bi, Double(ci))
-            if p == Double.infinity {
-                powed = pow(b, c)
-            } else {
-                powed = BigDouble(p)
-            }
-        } else {
-            powed = pow(b, c)
-        }
-        let t = a * powed
-        buffer += t
-        i += 1
+public func ln(_ n: BigDouble, precision: Int = 15) -> BigDouble {
+    if let a = n.asDouble() {
+        return BigDouble(log(a))
     }
-    return buffer * 2
+    let numerator = BigInt(limbs: n.numerator)
+    let denominator = BigInt(limbs: n.denominator)
+    
+    return ln(numerator) - ln(denominator)
+}
+
+public func ln(_ n: BigInt) -> BigDouble {
+    let s = n.asString(radix: 10)
+    let p = s.count
+    guard let d = Double("0.\(s)") else { return 0 }
+    let lg = Double(p) * log(Double(10)) + log(d)
+    return BigDouble(lg)
 }

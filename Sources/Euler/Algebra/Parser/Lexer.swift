@@ -12,7 +12,7 @@ import Foundation
 /// > This is part of the `Lexer`
 internal enum Token {
     case Symbol(String)
-    case Number(Float)
+    case Number(String)
     case ParensOpen
     case ParensClose
     case Other(String)
@@ -26,7 +26,7 @@ let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
     ("\\$?[A-Z]+\\$?\\d+", { .address($0) }),
     ("[a-zA-Z][a-zA-Z0-9]*", { .Symbol($0) }),
-    ("-?[0-9]\\d*(\\.\\d+)?", { (r: String) in .Number((r as NSString).floatValue) }),
+    ("-?[0-9]\\d*(\\.\\d+)?", { (r: String) in .Number(r) }),
     ("\\(", { _ in .ParensOpen }),
     ("\\)", { _ in .ParensClose }),
     ("\".*\"", { (r: String) in .Str(r) })

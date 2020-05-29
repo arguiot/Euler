@@ -51,6 +51,11 @@ public class ConstantNode: NSObject, Node {
         }
     }
     /// Create a ConstantNode
+    /// - Parameter str: String
+    public init(_ str: String) {
+        self.content = str
+    }
+    /// Create a ConstantNode
     /// - Parameter int: Integer
     public init(_ int: Int) {
         self.content = BigInt(int).description

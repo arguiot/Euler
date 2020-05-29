@@ -225,7 +225,7 @@ public struct BigDouble:
     }
     
     public init(_ d: Double, withPrecision eps: Double = 1.0E-15) {
-        if d.isNaN {
+        if d.isNaN || d.isInfinite {
             self.init(0)
             return
         }
