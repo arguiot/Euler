@@ -4,7 +4,7 @@
 //
 //  Created by Arthur Guiot on 2020-03-04.
 //
-
+#if canImport(SwiftPlot)
 import Foundation
 import SwiftPlot
 import SVGRenderer
@@ -41,3 +41,4 @@ public class Graph {
         }
     }
 }
+#endif

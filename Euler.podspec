@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "Euler"
   s.version      = "0.1"
-  s.summary      = ""
+  s.summary      = "The open source computational framework for the Swift language (early stage)"
   s.description  = <<-DESC
     The open source computational framework for the Swift language (early stage)
   DESC
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.9"
   s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target = "9.0"
-  s.source       = { :git => "https://github.com/arguiot/Euler.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/arguiot/Euler.git", :branch => "master" }
   s.source_files  = "Sources/**/*"
   s.frameworks  = "Foundation"
 end
