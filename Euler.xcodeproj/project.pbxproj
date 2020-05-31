@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		68C12AD12483284800BB4B3A /* Engineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD02483284800BB4B3A /* Engineering.swift */; };
+		68C12AD32483392C00BB4B3A /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD22483392C00BB4B3A /* Substring.swift */; };
 		OBJ_176 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Expression.swift */; };
 		OBJ_177 /* Grouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Grouper.swift */; };
 		OBJ_178 /* LaTeX.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* LaTeX.swift */; };
@@ -196,6 +198,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68C12AD02483284800BB4B3A /* Engineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engineering.swift; sourceTree = "<group>"; };
+		68C12AD22483392C00BB4B3A /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
 		"Euler::Euler::Product" /* Euler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Euler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Euler::EulerTests::Product" /* EulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = EulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
@@ -638,7 +642,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -654,7 +658,6 @@
 				OBJ_169 /* README.md */,
 				OBJ_170 /* Euler.podspec */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_51 /* Generators */ = {
@@ -764,6 +767,7 @@
 			children = (
 				OBJ_85 /* CommonFormulas.swift */,
 				OBJ_86 /* Logical.swift */,
+				68C12AD02483284800BB4B3A /* Engineering.swift */,
 			);
 			path = Formulas;
 			sourceTree = "<group>";
@@ -794,6 +798,7 @@
 				OBJ_93 /* Pointers.swift */,
 				OBJ_94 /* UnsafeMemory.swift */,
 				OBJ_95 /* UnsafeMutableMemory.swift */,
+				68C12AD22483392C00BB4B3A /* Substring.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -942,7 +947,7 @@
 				en,
 				Base,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_159 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -990,7 +995,9 @@
 				OBJ_200 /* OperationsBigInt.swift in Sources */,
 				OBJ_201 /* Limbs.swift in Sources */,
 				OBJ_202 /* RSA.swift in Sources */,
+				68C12AD12483284800BB4B3A /* Engineering.swift in Sources */,
 				OBJ_203 /* md5.swift in Sources */,
+				68C12AD32483392C00BB4B3A /* Substring.swift in Sources */,
 				OBJ_204 /* sha256.swift in Sources */,
 				OBJ_205 /* Euler.swift in Sources */,
 				OBJ_206 /* Array.swift in Sources */,

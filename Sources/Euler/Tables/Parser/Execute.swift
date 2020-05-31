@@ -24,7 +24,7 @@ public extension Tables {
     internal static var functions: [String:(([CellValue]) throws -> CellValue)] {
         return Tables().linker
     }
-    
+    /// Links internal functions to parser by exposing them
     internal var linker: [String:(([CellValue]) throws -> CellValue)] {
         return [
             // MARK: CommonFormulas
@@ -467,6 +467,59 @@ public extension Tables {
                 let tmp = args.map { $0.boolean }
                 guard let a = tmp as? [Bool] else { return CellValue.nil }
                 return CellValue(boolean: self.XOR(a))
+            },
+            // MARK: Engineering
+            "BIN2DEC": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: try self.BIN2DEC(n))
+            },
+            "BIN2HEX": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(string: try self.BIN2HEX(n))
+            },
+            "BIN2OCT": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: try self.BIN2OCT(n))
+            },
+            "BITAND": { args in
+                let tmp = args.map { $0.number?.rounded() }
+                guard let a = tmp as? [BigInt] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: BigNumber(self.BITAND(a[0], a[1])))
+            },
+            "BITOR": { args in
+                let tmp = args.map { $0.number?.rounded() }
+                guard let a = tmp as? [BigInt] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: BigNumber(self.BITOR(a[0], a[1])))
+            },
+            "BITXOR": { args in
+                let tmp = args.map { $0.number?.rounded() }
+                guard let a = tmp as? [BigInt] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: BigNumber(self.BITXOR(a[0], a[1])))
+            },
+            "BITLSHIFT": { args in
+                let tmp = args.map { $0.number?.rounded() }
+                guard let a = tmp as? [BigInt] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: BigNumber(self.BITLSHIFT(a[0], a[1])))
+            },
+            "BITRSHIFT": { args in
+                let tmp = args.map { $0.number?.rounded() }
+                guard let a = tmp as? [BigInt] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: BigNumber(self.BITRSHIFT(a[0], a[1])))
+            },
+            "CONVERT": { args in
+                guard args.count == 3 else { return CellValue.nil }
+                guard let n = args[0].number else { return CellValue.nil }
+                guard let from = args[1].string else { return CellValue.nil }
+                guard let to = args[1].string else { return CellValue.nil }
+                return CellValue(number: try self.CONVERT(n, from_unit: from, to_unit: to))
             },
         ]
     }
