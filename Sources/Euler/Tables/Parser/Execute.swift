@@ -542,6 +542,43 @@ public extension Tables {
                 guard a.count == 2 else { return CellValue.nil }
                 return CellValue(number: BigNumber(self.DELTA(a[0], a[1])))
             },
+            "HEX2BIN": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.string else { return CellValue.nil }
+                return CellValue(number: BigNumber(try self.HEX2BIN(n)))
+            },
+            "HEX2DEC": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.string else { return CellValue.nil }
+                return CellValue(number: BigNumber(try self.HEX2DEC(n)))
+            },
+            "HEX2OCT": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.string else { return CellValue.nil }
+                return CellValue(number: BigNumber(try self.HEX2OCT(n)))
+            },
+            // MARK: DateTime
+            "DATE": { args in
+                let tmp = args.map { $0.number?.rounded().asInt() }
+                guard let a = tmp as? [Int] else { return CellValue.nil }
+                guard a.count == 3 else { return CellValue.nil }
+                return CellValue(number: try self.DATE(a[0], a[1], a[2]))
+            },
+            "DATEVALUE": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let str = f.string else { return CellValue.nil }
+                return CellValue(number: try self.DATEVALUE(str))
+            },
+            "YEARFRAC": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                guard a.count >= 2 else { return CellValue.nil }
+                if a.count == 2 {
+                    return CellValue(number: try self.YEARFRAC(start: a[0], end: a[1]))
+                } else {
+                    return CellValue(number: try self.YEARFRAC(start: a[0], end: a[1], basis: a[2].rounded().asInt()!))
+                }
+            },
         ]
     }
 }

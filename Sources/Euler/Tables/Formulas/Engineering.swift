@@ -311,6 +311,8 @@ public extension Tables {
         
         var from: Unit? = nil
         var to: Unit? = nil
+        var from_unit = from_unit.replacingOccurrences(of: " ", with: "")
+        var to_unit = to_unit.replacingOccurrences(of: " ", with: "")
         var base_from_unit = from_unit
         var base_to_unit = to_unit
         var from_multiplier: BN = 1
@@ -355,8 +357,8 @@ public extension Tables {
         }
         
         if to == nil {
-            let to_binary_prefix = binary_prefixes[to_unit.substring(with: 0..<2)];
-            var to_unit_prefix = unit_prefixes[to_unit.substring(with: 0..<1)];
+            let to_binary_prefix = binary_prefixes[String(to_unit.prefix(2))];
+            var to_unit_prefix = unit_prefixes[String(to_unit.prefix(1))];
 
             // Handle dekao unit prefix (only unit prefix with two characters)
             if (to_unit.prefix(2) == "da") {
@@ -420,5 +422,32 @@ public extension Tables {
         }
         return 0
     }
+    // MARK: Todo: Error functions
     
+    /// Converts an hexadecimal number to binary
+    /// - Parameter number: Input number to be converted
+    /// - Returns: The converted number
+    func HEX2BIN(_ str: String) throws -> BigInt {
+        guard let n = BigInt(str, radix: 16)?.asString(radix: 2) else { throw TablesError.Arguments }
+        guard let out = BigInt(n) else { throw TablesError.NULL }
+        return out
+    }
+    
+    /// Converts an hexadecimal number to decimal
+    /// - Parameter number: Input number to be converted
+    /// - Returns: The converted number
+    func HEX2DEC(_ str: String) throws -> BigInt {
+        guard let out = BigInt(str, radix: 16) else { throw TablesError.NULL }
+        return out
+    }
+    
+    
+    /// Converts an hexadecimal number to octal
+    /// - Parameter number: Input number to be converted
+    /// - Returns: The converted number
+    func HEX2OCT(_ str: String) throws -> BigInt {
+        guard let n = BigInt(str, radix: 16)?.asString(radix: 8) else { throw TablesError.Arguments }
+        guard let out = BigInt(n) else { throw TablesError.NULL }
+        return out
+    }
 }

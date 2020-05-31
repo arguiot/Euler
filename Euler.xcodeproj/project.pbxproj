@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		68ADEAD32484341D006C65CD /* Financial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADEAD22484341D006C65CD /* Financial.swift */; };
+		68ADEAD524843775006C65CD /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADEAD424843775006C65CD /* DateTime.swift */; };
 		68C12AD12483284800BB4B3A /* Engineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD02483284800BB4B3A /* Engineering.swift */; };
 		68C12AD32483392C00BB4B3A /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD22483392C00BB4B3A /* Substring.swift */; };
 		68C12AD524833E6500BB4B3A /* TablesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD424833E6500BB4B3A /* TablesTest.swift */; };
@@ -199,6 +201,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68ADEAD22484341D006C65CD /* Financial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Financial.swift; sourceTree = "<group>"; };
+		68ADEAD424843775006C65CD /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		68C12AD02483284800BB4B3A /* Engineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engineering.swift; sourceTree = "<group>"; };
 		68C12AD22483392C00BB4B3A /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
 		68C12AD424833E6500BB4B3A /* TablesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTest.swift; sourceTree = "<group>"; };
@@ -770,6 +774,8 @@
 				OBJ_85 /* CommonFormulas.swift */,
 				OBJ_86 /* Logical.swift */,
 				68C12AD02483284800BB4B3A /* Engineering.swift */,
+				68ADEAD22484341D006C65CD /* Financial.swift */,
+				68ADEAD424843775006C65CD /* DateTime.swift */,
 			);
 			path = Formulas;
 			sourceTree = "<group>";
@@ -1008,6 +1014,7 @@
 				OBJ_208 /* Fibonacci.swift in Sources */,
 				OBJ_209 /* Sieve.swift in Sources */,
 				OBJ_210 /* Graph.swift in Sources */,
+				68ADEAD32484341D006C65CD /* Financial.swift in Sources */,
 				OBJ_211 /* Point.swift in Sources */,
 				OBJ_212 /* Vector.swift in Sources */,
 				OBJ_213 /* MOperations.swift in Sources */,
@@ -1024,6 +1031,7 @@
 				OBJ_224 /* modulo.swift in Sources */,
 				OBJ_225 /* random.swift in Sources */,
 				OBJ_226 /* sum.swift in Sources */,
+				68ADEAD524843775006C65CD /* DateTime.swift in Sources */,
 				OBJ_227 /* Average.swift in Sources */,
 				OBJ_228 /* Correlation.swift in Sources */,
 				OBJ_229 /* Quantile.swift in Sources */,
