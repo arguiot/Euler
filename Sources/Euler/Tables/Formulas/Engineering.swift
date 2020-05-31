@@ -397,10 +397,10 @@ public extension Tables {
         struct BinaryPrefix {
             var name: String
             var power: Int
-            var value: BigInt
+            var value: BN
             var abbreviation: String
             var derived: String
-            init(_ name: String, _ power: Int, _ value: BigInt, _ abbreviation: String, _ derived: String) {
+            init(_ name: String, _ power: Int, _ value: BN, _ abbreviation: String, _ derived: String) {
                 self.name = name
                 self.power = power
                 self.value = value
@@ -410,8 +410,8 @@ public extension Tables {
         }
         
         let binary_prefixes: [String: BinaryPrefix] = [
-            "Yi": BinaryPrefix("yobi", 80, BigInt("1208925819614629174706176")!, "Yi", "yotta"),
-            "Zi": BinaryPrefix("zebi", 70, BigInt("1180591620717411303424")!, "Zi", "zetta"),
+            "Yi": BinaryPrefix("yobi", 80, BN("1208925819614629174706176")!, "Yi", "yotta"),
+            "Zi": BinaryPrefix("zebi", 70, BN("1180591620717411303424")!, "Zi", "zetta"),
             "Ei": BinaryPrefix("exbi", 60, 1152921504606846976, "Ei", "exa"),
             "Pi": BinaryPrefix("pebi", 50, 1125899906842624, "Pi", "peta"),
             "Ti": BinaryPrefix("tebi", 40, 1099511627776, "Ti", "tera"),
@@ -422,11 +422,11 @@ public extension Tables {
         
         struct UnitPrefix {
             var name: String
-            var multiplier: BigInt
+            var multiplier: BigDouble
             var abbreviation: String
             init(_ name: String, _ multiplier: Double,_ abbreviation: String) {
                 self.name = name
-                self.multiplier = BigNumber(multiplier).rounded()
+                self.multiplier = BigNumber(multiplier)
                 self.abbreviation = abbreviation
             }
         }
@@ -458,8 +458,8 @@ public extension Tables {
         var to: Unit? = nil
         var base_from_unit = from_unit
         var base_to_unit = to_unit
-        var from_multiplier: BigInt = 1
-        var to_multiplier: BigInt = 1
+        var from_multiplier: BN = 1
+        var to_multiplier: BN = 1
         var alt: [String]
         
         for unit in units {

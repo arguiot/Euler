@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		68C12AD12483284800BB4B3A /* Engineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD02483284800BB4B3A /* Engineering.swift */; };
 		68C12AD32483392C00BB4B3A /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD22483392C00BB4B3A /* Substring.swift */; };
+		68C12AD524833E6500BB4B3A /* TablesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD424833E6500BB4B3A /* TablesTest.swift */; };
 		OBJ_176 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Expression.swift */; };
 		OBJ_177 /* Grouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Grouper.swift */; };
 		OBJ_178 /* LaTeX.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* LaTeX.swift */; };
@@ -200,6 +201,7 @@
 /* Begin PBXFileReference section */
 		68C12AD02483284800BB4B3A /* Engineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engineering.swift; sourceTree = "<group>"; };
 		68C12AD22483392C00BB4B3A /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
+		68C12AD424833E6500BB4B3A /* TablesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTest.swift; sourceTree = "<group>"; };
 		"Euler::Euler::Product" /* Euler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Euler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Euler::EulerTests::Product" /* EulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = EulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 				OBJ_105 /* MatrixTest.swift */,
 				OBJ_106 /* NodeTests.swift */,
 				OBJ_107 /* Tools */,
+				68C12AD424833E6500BB4B3A /* TablesTest.swift */,
 			);
 			name = EulerTests;
 			path = Tests/EulerTests;
@@ -1062,6 +1065,7 @@
 				OBJ_273 /* MatrixTest.swift in Sources */,
 				OBJ_274 /* NodeTests.swift in Sources */,
 				OBJ_275 /* Convenience.swift in Sources */,
+				68C12AD524833E6500BB4B3A /* TablesTest.swift in Sources */,
 				OBJ_276 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
