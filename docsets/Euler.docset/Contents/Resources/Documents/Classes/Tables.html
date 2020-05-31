@@ -25,7 +25,7 @@
         <a class="header-link" href="../index.html">
           Euler 0.1 Docs
         </a>
-         (79% documented)
+         (80% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -5107,6 +5107,231 @@ Returns the sum of a power series based on the formula:
             </div>
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/Date%20%26%20Time"></a>
+                <a name="//apple_ref/swift/Section/Date &amp; Time" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Date%20%26%20Time"></a>
+                  <h3 class="section-name"><p>Date &amp; Time</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC4DATEyAA9BigDoubleVSi_S2itKF"></a>
+                    <a name="//apple_ref/swift/Method/DATE(_:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC4DATEyAA9BigDoubleVSi_S2itKF">DATE(_:<wbr>_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The DATE function returns the sequential serial number that represents a particular date.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">DATE</span><span class="p">(</span><span class="n">_</span> <span class="nv">year</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">month</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">day</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>year</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The year of your date</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>month</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The month of your date</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>day</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The day of your date</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Serial Date</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/DateTime.swift#L212-L221">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC9DATEVALUEyAA9BigDoubleVSSKF"></a>
+                    <a name="//apple_ref/swift/Method/DATEVALUE(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC9DATEVALUEyAA9BigDoubleVSSKF">DATEVALUE(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The DATEVALUE function converts a date that is stored as text to a serial number.</p>
+
+<p>For example, the formula =DATEVALUE(&ldquo;1/1/2008&rdquo;) returns 39448, the serial number of the date 1/1/2008. Remember, though, that your computer&rsquo;s system date setting may cause the results of a DATEVALUE function to vary from this example
+The DATEVALUE function is helpful in cases where a worksheet contains dates in a text format that you want to filter, sort, or format as dates, or use in date calculations.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">DATEVALUE</span><span class="p">(</span><span class="n">_</span> <span class="nv">str</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>str</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Text that represents a date in an Euler date format, or a reference to a cell that contains text that represents a date in an Euler date format. For example, &ldquo;1/30/2008&rdquo; is a text string within quotation marks that represent a date.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Serial Date</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/DateTime.swift#L229-L232">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC8YEARFRAC5start3end5basisAA9BigDoubleVAI_AISitKF"></a>
+                    <a name="//apple_ref/swift/Method/YEARFRAC(start:end:basis:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC8YEARFRAC5start3end5basisAA9BigDoubleVAI_AISitKF">YEARFRAC(start:<wbr>end:<wbr>basis:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>YEARFRAC calculates the fraction of the year represented by the number of whole days between two dates (the start and the end).</p>
+
+<p>For instance, you can use YEARFRAC to identify the proportion of a whole year&rsquo;s benefits, or obligations to assign to a specific term.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">YEARFRAC</span><span class="p">(</span><span class="nv">start</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="nv">end</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="nv">basis</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>start</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A date that represents the start date.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>end</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A date that represents the end date.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>basis</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of day count basis to use.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The proportion of the year</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/DateTime.swift#L258-L309">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/Add%20Bessel%20functions"></a>
                 <a name="//apple_ref/swift/Section/Add Bessel functions" class="dashAnchor"></a>
                 <div class="section-name-container">
@@ -5578,7 +5803,7 @@ Returns the sum of a power series based on the formula:
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L81-L388">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L81-L390">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -5631,7 +5856,7 @@ Returns the sum of a power series based on the formula:
                         <p>The converted number</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L393-L396">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L395-L398">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -5684,7 +5909,7 @@ Returns the sum of a power series based on the formula:
                         <p>The converted number</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L400-L402">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L402-L404">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -5737,7 +5962,7 @@ Returns the sum of a power series based on the formula:
                         <p>The converted number</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L407-L410">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L409-L412">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -5802,7 +6027,179 @@ Returns the sum of a power series based on the formula:
                         <p>Returns 1 if number1 = number2; returns 0 otherwise</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L417-L422">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L419-L424">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Todo%3A%20Error%20functions"></a>
+                <a name="//apple_ref/swift/Section/Todo: Error functions" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Todo%3A%20Error%20functions"></a>
+                  <h3 class="section-name"><p>Todo: Error functions</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC7HEX2BINyAA6BigIntVSSKF"></a>
+                    <a name="//apple_ref/swift/Method/HEX2BIN(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC7HEX2BINyAA6BigIntVSSKF">HEX2BIN(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Converts an hexadecimal number to binary</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">HEX2BIN</span><span class="p">(</span><span class="n">_</span> <span class="nv">str</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigInt.html">BigInt</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>number</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Input number to be converted</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The converted number</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L430-L434">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC7HEX2DECyAA6BigIntVSSKF"></a>
+                    <a name="//apple_ref/swift/Method/HEX2DEC(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC7HEX2DECyAA6BigIntVSSKF">HEX2DEC(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Converts an hexadecimal number to decimal</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">HEX2DEC</span><span class="p">(</span><span class="n">_</span> <span class="nv">str</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigInt.html">BigInt</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>number</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Input number to be converted</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The converted number</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L439-L442">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC7HEX2OCTyAA6BigIntVSSKF"></a>
+                    <a name="//apple_ref/swift/Method/HEX2OCT(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC7HEX2OCTyAA6BigIntVSSKF">HEX2OCT(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Converts an hexadecimal number to octal</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">HEX2OCT</span><span class="p">(</span><span class="n">_</span> <span class="nv">str</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigInt.html">BigInt</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>number</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Input number to be converted</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The converted number</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Engineering.swift#L448-L452">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
