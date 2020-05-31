@@ -16,9 +16,9 @@ script:
   - cd docs && echo "euler.arguiot.com" > CNAME # Keeps the URL
 #  - xcodebuild -project SearchKit-Swift.xcodeproj -scheme SearchKit-Swift test
   - swift test --parallel
-before_deploy:
-  - carthage build --no-skip-current
-  - carthage archive $FRAMEWORK_NAME
+# before_deploy:
+#   - carthage build --no-skip-current
+#   - carthage archive $FRAMEWORK_NAME
 deploy:
   - provider:     pages
     skip-cleanup: true
@@ -27,12 +27,12 @@ deploy:
     local-dir:    docs
     on:
       branch:     master
-  - provider: releases
-    api_key: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
-    file: $FRAMEWORK_NAME.framework.zip
-    skip_cleanup: true
-    on:
-      tags: true
+#   - provider: releases
+#     api_key: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+#     file: $FRAMEWORK_NAME.framework.zip
+#     skip_cleanup: true
+#     on:
+#       tags: true
 notifications:
   email:
     on_success: never # default: change
