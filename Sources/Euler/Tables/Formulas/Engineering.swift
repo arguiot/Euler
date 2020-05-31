@@ -101,295 +101,150 @@ public extension Tables {
         
         let units: [Unit] = [
             Unit("a.u. of action", "?", nil, "action", false, false, 1.05457168181818e-34),
-
             Unit("a.u. of charge", "e", nil, "electric_charge", false, false, 1.60217653141414e-19),
-
             Unit("a.u. of energy", "Eh", nil, "energy", false, false, 4.35974417757576e-18),
-
             Unit("a.u. of length", "a?", nil, "length", false, false, 5.29177210818182e-11),
-
             Unit("a.u. of mass", "m?", nil, "mass", false, false, 9.10938261616162e-31),
-
             Unit("a.u. of time", "?/Eh", nil, "time", false, false, 2.41888432650516e-17),
-
             Unit("admiralty knot", "admkn", nil, "speed", false, true, 0.514773333),
-
             Unit("ampere", "A", nil, "electric_current", true, false, 1),
-
             Unit("ampere per meter", "A/m", nil, "magnetic_field_intensity", true, false, 1),
-
             Unit("ångström", "Å", ["ang"], "length", false, true, 1e-10),
-
             Unit("are", "ar", nil, "area", false, true, 100),
-
             Unit("astronomical unit", "ua", nil, "length", false, false, 1.49597870691667e-11),
-
             Unit("bar", "bar", nil, "pressure", false, false, 100000),
-
             Unit("barn", "b", nil, "area", false, false, 1e-28),
-
             Unit("becquerel", "Bq", nil, "radioactivity", true, false, 1),
-
             Unit("bit", "bit", ["b"], "information", false, true, 1),
-
             Unit("btu", "BTU", ["btu"], "energy", false, true, 1055.05585262),
-
             Unit("byte", "byte", nil, "information", false, true, 8),
-
             Unit("candela", "cd", nil, "luminous_intensity", true, false, 1),
-
             Unit("candela per square metre", "cd/m?", nil, "luminance", true, false, 1),
-
             Unit("coulomb", "C", nil, "electric_charge", true, false, 1),
-
             Unit("cubic ångström", "ang3", ["ang^3"], "volume", false, true, 1e-30),
-
             Unit("cubic foot", "ft3", ["ft^3"], "volume", false, true, 0.028316846592),
-
             Unit("cubic inch", "in3", ["in^3"], "volume", false, true, 0.000016387064),
-
             Unit("cubic light-year", "ly3", ["ly^3"], "volume", false, true, 8.46786664623715e-47),
-
             Unit("cubic metre", "m?", nil, "volume", true, true, 1),
-
             Unit("cubic mile", "mi3", ["mi^3"], "volume", false, true, 4168181825.44058),
-
             Unit("cubic nautical mile", "Nmi3", ["Nmi^3"], "volume", false, true, 6352182208),
-
             Unit("cubic Pica", "Pica3", ["Picapt3", "Pica^3", "Picapt^3"], "volume", false, true, 7.58660370370369e-8),
-
             Unit("cubic yard", "yd3", ["yd^3"], "volume", false, true, 0.764554857984),
-
             Unit("cup", "cup", nil, "volume", false, true, 0.0002365882365),
-
             Unit("dalton", "Da", ["u"], "mass", false, false, 1.66053886282828e-27),
-
             Unit("day", "d", ["day"], "time", false, true, 86400),
-
             Unit("degree", "°", nil, "angle", false, false, 0.0174532925199433),
-
             Unit("degrees Rankine", "Rank", nil, "temperature", false, true, 0.555555555555556),
-
             Unit("dyne", "dyn", ["dy"], "force", false, true, 0.00001),
-
             Unit("electronvolt", "eV", ["ev"], "energy", false, true, 1.60217656514141),
-
             Unit("ell", "ell", nil, "length", false, true, 1.143),
-
             Unit("erg", "erg", ["e"], "energy", false, true, 1e-7),
-
             Unit("farad", "F", nil, "electric_capacitance", true, false, 1),
-
             Unit("fluid ounce", "oz", nil, "volume", false, true, 0.0000295735295625),
-
             Unit("foot", "ft", nil, "length", false, true, 0.3048),
-
             Unit("foot-pound", "flb", nil, "energy", false, true, 1.3558179483314),
-
             Unit("gal", "Gal", nil, "acceleration", false, false, 0.01),
-
             Unit("gallon", "gal", nil, "volume", false, true, 0.003785411784),
-
             Unit("gauss", "G", ["ga"], "magnetic_flux_density", false, true, 1),
-
             Unit("grain", "grain", nil, "mass", false, true, 0.0000647989),
-
             Unit("gram", "g", nil, "mass", false, true, 0.001),
-
             Unit("gray", "Gy", nil, "absorbed_dose", true, false, 1),
-
             Unit("gross registered ton", "GRT", ["regton"], "volume", false, true, 2.8316846592),
-
             Unit("hectare", "ha", nil, "area", false, true, 10000),
-
             Unit("henry", "H", nil, "inductance", true, false, 1),
-
             Unit("hertz", "Hz", nil, "frequency", true, false, 1),
-
             Unit("horsepower", "HP", ["h"], "power", false, true, 745.69987158227),
-
             Unit("horsepower-hour", "HPh", ["hh", "hph"], "energy", false, true, 2684519.538),
-
             Unit("hour", "h", ["hr"], "time", false, true, 3600),
-
             Unit("imperial gallon (U.K.)", "uk_gal", nil, "volume", false, true, 0.00454609),
-
             Unit("imperial hundredweight", "lcwt", ["uk_cwt", "hweight"], "mass", false, true, 50.802345),
-
             Unit("imperial quart (U.K)", "uk_qt", nil, "volume", false, true, 0.0011365225),
-
             Unit("imperial ton", "brton", ["uk_ton", "LTON"], "mass", false, true, 1016.046909),
-
             Unit("inch", "in", nil, "length", false, true, 0.0254),
-
             Unit("international acre", "uk_acre", nil, "area", false, true, 4046.8564224),
-
             Unit("IT calorie", "cal", nil, "energy", false, true, 4.1868),
-
             Unit("joule", "J", nil, "energy", true, true, 1),
-
             Unit("katal", "kat", nil, "catalytic_activity", true, false, 1),
-
             Unit("kelvin", "K", ["kel"], "temperature", true, true, 1),
-
             Unit("kilogram", "kg", nil, "mass", true, true, 1),
-
             Unit("knot", "kn", nil, "speed", false, true, 0.514444444444444),
-
             Unit("light-year", "ly", nil, "length", false, true, 9460730472580800),
-
             Unit("litre", "L", ["l", "lt"], "volume", false, true, 0.001),
-
             Unit("lumen", "lm", nil, "luminous_flux", true, false, 1),
-
             Unit("lux", "lx", nil, "illuminance", true, false, 1),
-
             Unit("maxwell", "Mx", nil, "magnetic_flux", false, false, 1e-18),
-
             Unit("measurement ton", "MTON", nil, "volume", false, true, 1.13267386368),
-
             Unit("meter per hour", "m/h", ["m/hr"], "speed", false, true, 0.00027777777777778),
-
             Unit("meter per second", "m/s", ["m/sec"], "speed", true, true, 1),
-
             Unit("meter per second squared", "m?s??", nil, "acceleration", true, false, 1),
-
             Unit("parsec", "pc", ["parsec"], "length", false, true, 30856775814671900),
-
             Unit("meter squared per second", "m?/s", nil, "kinematic_viscosity", true, false, 1),
-
             Unit("metre", "m", nil, "length", true, true, 1),
-
             Unit("miles per hour", "mph", nil, "speed", false, true, 0.44704),
-
             Unit("millimetre of mercury", "mmHg", nil, "pressure", false, false, 133.322),
-
             Unit("minute", "?", nil, "angle", false, false, 0.000290888208665722),
-
             Unit("minute", "min", ["mn"], "time", false, true, 60),
-
             Unit("modern teaspoon", "tspm", nil, "volume", false, true, 0.000005),
-
             Unit("mole", "mol", nil, "amount_of_substance", true, false, 1),
-
             Unit("morgen", "Morgen", nil, "area", false, true, 2500),
-
             Unit("n.u. of action", "?", nil, "action", false, false, 1.05457168181818e-34),
-
             Unit("n.u. of mass", "m?", nil, "mass", false, false, 9.10938261616162e-31),
-
             Unit("n.u. of speed", "c?", nil, "speed", false, false, 299792458),
-
             Unit("n.u. of time", "?/(me?c??)", nil, "time", false, false, 1.28808866778687e-21),
-
             Unit("nautical mile", "M", ["Nmi"], "length", false, true, 1852),
-
             Unit("newton", "N", nil, "force", true, true, 1),
-
             Unit("œrsted", "Oe ", nil, "magnetic_field_intensity", false, false, 79.5774715459477),
-
             Unit("ohm", "Ω", nil, "electric_resistance", true, false, 1),
-
             Unit("ounce mass", "ozm", nil, "mass", false, true, 0.028349523125),
-
             Unit("pascal", "Pa", nil, "pressure", true, false, 1),
-
             Unit("pascal second", "Pa?s", nil, "dynamic_viscosity", true, false, 1),
-
             Unit("pferdestärke", "PS", nil, "power", false, true, 735.49875),
-
             Unit("phot", "ph", nil, "illuminance", false, false, 0.0001),
-
             Unit("pica (1/6 inch)", "pica", nil, "length", false, true, 0.00035277777777778),
-
             Unit("pica (1/72 inch)", "Pica", ["Picapt"], "length", false, true, 0.00423333333333333),
-
             Unit("poise", "P", nil, "dynamic_viscosity", false, false, 0.1),
-
             Unit("pond", "pond", nil, "force", false, true, 0.00980665),
-
             Unit("pound force", "lbf", nil, "force", false, true, 4.4482216152605),
-
             Unit("pound mass", "lbm", nil, "mass", false, true, 0.45359237),
-
             Unit("quart", "qt", nil, "volume", false, true, 0.000946352946),
-
             Unit("radian", "rad", nil, "angle", true, false, 1),
-
             Unit("second", "?", nil, "angle", false, false, 0.00000484813681109536),
-
             Unit("second", "s", ["sec"], "time", true, true, 1),
-
             Unit("short hundredweight", "cwt", ["shweight"], "mass", false, true, 45.359237),
-
             Unit("siemens", "S", nil, "electrical_conductance", true, false, 1),
-
             Unit("sievert", "Sv", nil, "equivalent_dose", true, false, 1),
-
             Unit("slug", "sg", nil, "mass", false, true, 14.59390294),
-
             Unit("square ångström", "ang2", ["ang^2"], "area", false, true, 1e-20),
-
             Unit("square foot", "ft2", ["ft^2"], "area", false, true, 0.09290304),
-
             Unit("square inch", "in2", ["in^2"], "area", false, true, 0.00064516),
-
             Unit("square light-year", "ly2", ["ly^2"], "area", false, true, 8.95054210748189e+31),
-
             Unit("square meter", "m?", nil, "area", true, true, 1),
-
             Unit("square mile", "mi2", ["mi^2"], "area", false, true, 2589988.110336),
-
             Unit("square nautical mile", "Nmi2", ["Nmi^2"], "area", false, true, 3429904),
-
             Unit("square Pica", "Pica2", ["Picapt2", "Pica^2", "Picapt^2"], "area", false, true, 0.00001792111111111),
-
             Unit("square yard", "yd2", ["yd^2"], "area", false, true, 0.83612736),
-
             Unit("statute mile", "mi", nil, "length", false, true, 1609.344),
-
             Unit("steradian", "sr", nil, "solid_angle", true, false, 1),
-
             Unit("stilb", "sb", nil, "luminance", false, false, 0.0001),
-
             Unit("stokes", "St", nil, "kinematic_viscosity", false, false, 0.0001),
-
             Unit("stone", "stone", nil, "mass", false, true, 6.35029318),
-
             Unit("tablespoon", "tbs", nil, "volume", false, true, 0.0000147868),
-
             Unit("teaspoon", "tsp", nil, "volume", false, true, 0.00000492892),
-
             Unit("tesla", "T", nil, "magnetic_flux_density", true, true, 1),
-
             Unit("thermodynamic calorie", "c", nil, "energy", false, true, 4.184),
-
             Unit("ton", "ton", nil, "mass", false, true, 907.18474),
-
             Unit("tonne", "t", nil, "mass", false, false, 1000),
-
             Unit("U.K. pint", "uk_pt", nil, "volume", false, true, 0.00056826125),
-
             Unit("U.S. bushel", "bushel", nil, "volume", false, true, 0.03523907),
-
             Unit("U.S. oil barrel", "barrel", nil, "volume", false, true, 0.158987295),
-
             Unit("U.S. pint", "pt", ["us_pt"], "volume", false, true, 0.000473176473),
-
             Unit("U.S. survey mile", "survey_mi", nil, "length", false, true, 1609.347219),
-
             Unit("U.S. survey/statute acre", "us_acre", nil, "area", false, true, 4046.87261),
-
             Unit("volt", "V", nil, "voltage", true, false, 1),
-
             Unit("watt", "W", nil, "power", true, true, 1),
-
             Unit("watt-hour", "Wh", ["wh"], "energy", false, true, 3600),
-
             Unit("weber", "Wb", nil, "magnetic_flux", true, false, 1),
-
             Unit("yard", "yd", nil, "length", false, true, 0.9144),
-
             Unit("year", "yr", nil, "time", false, true, 31557600)
 
         ]
@@ -482,11 +337,11 @@ public extension Tables {
             }
 
             // Handle binary prefixes first (so that 'Yi' is processed before 'Y')
-            if ((from_binary_prefix) != nil) {
-                from_multiplier = from_binary_prefix?.value ?? 1;
+            if (from_binary_prefix != nil) {
+                from_multiplier = from_binary_prefix!.value
                 base_from_unit = from_unit.substring(from: 2);
             } else if ((from_unit_prefix) != nil) {
-                from_multiplier = from_unit_prefix?.multiplier ?? 1;
+                from_multiplier = from_unit_prefix!.multiplier
                 base_from_unit = from_unit.substring(from: from_unit_prefix?.abbreviation.count ?? 0);
             }
 
@@ -509,11 +364,11 @@ public extension Tables {
             }
 
             // Handle binary prefixes first (so that 'Yi' is processed before 'Y')
-            if ((to_binary_prefix) != nil) {
-                to_multiplier = to_binary_prefix?.value ?? 1;
+            if (to_binary_prefix != nil) {
+                to_multiplier = to_binary_prefix!.value;
                 base_to_unit = to_unit.substring(from: 2);
-            } else if ((to_unit_prefix) != nil) {
-                to_multiplier = to_unit_prefix?.multiplier ?? 1;
+            } else if (to_unit_prefix != nil) {
+                to_multiplier = to_unit_prefix!.multiplier
                 base_to_unit = to_unit.substring(from: to_unit_prefix?.abbreviation.count ?? 0);
             }
 
@@ -521,7 +376,7 @@ public extension Tables {
             for unit in units {
                 alt = unit.alternate ?? [String]()
                 if unit.symbol == base_to_unit || alt.contains(base_to_unit) {
-                    from = unit
+                    to = unit
                 }
             }
         }
@@ -531,4 +386,39 @@ public extension Tables {
         
         return n * from!.ratio * from_multiplier / (to!.ratio * to_multiplier)
     }
+    
+    /// Converts a decimal number to binary.
+    /// - Parameter number: Input number to be converted
+    /// - Returns: The converted number
+    func DEC2BIN(_ number: BigDouble) -> BigDouble {
+        let n = number.rounded().asString(radix: 2)
+        return BigDouble(n)! // We can force unwrap because it will always succeed
+    }
+    /// Converts a decimal number to hexadecimal.
+    /// - Parameter number: Input number to be converted
+    /// - Returns: The converted number
+    func DEC2HEX(_ number: BigDouble) -> String {
+        return number.rounded().asString(radix: 16)
+    }
+    
+    /// Converts a decimal number to octal.
+    /// - Parameter number: Input number to be converted
+    /// - Returns: The converted number
+    func DEC2OCT(_ number: BigDouble) -> BigDouble {
+        let n = number.rounded().asString(radix: 8)
+        return BigDouble(n)! // We can force unwrap because it will always succeed
+    }
+    
+    /// Tests whether two values are equal. Returns 1 if number1 = number2; returns 0 otherwise. Use this function to filter a set of values. For example, by summing several DELTA functions you calculate the count of equal pairs. This function is also known as the Kronecker Delta function.
+    /// - Parameters:
+    ///   - number1: Any number
+    ///   - number2: Any number
+    /// - Returns: Returns 1 if number1 = number2; returns 0 otherwise
+    func DELTA( _ number1: BigDouble, _ number2: BigDouble) -> Int {
+        if number1 == number2 {
+            return 1
+        }
+        return 0
+    }
+    
 }

@@ -7,16 +7,19 @@
 
 import XCTest
 import Euler
-class TablesTest: XCTestCase {
+class TablesTests: XCTestCase {
 
     func testEngineering() {
         let t = Tables()
         do {
-            XCTAssertEqual(try t.CONVERT(28, from_unit: "sec", to_unit: "h"), 7/900)
+            XCTAssertEqual(try t.CONVERT(28, from_unit: "km/h", to_unit: "m/s"), 70/9)
         } catch {
             print(error.localizedDescription)
             XCTFail()
         }
     }
 
+    static var allTests = [
+        ("Engineering", testEngineering)
+    ]
 }

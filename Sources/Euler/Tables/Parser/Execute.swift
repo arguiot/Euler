@@ -518,8 +518,29 @@ public extension Tables {
                 guard args.count == 3 else { return CellValue.nil }
                 guard let n = args[0].number else { return CellValue.nil }
                 guard let from = args[1].string else { return CellValue.nil }
-                guard let to = args[1].string else { return CellValue.nil }
+                guard let to = args[2].string else { return CellValue.nil }
                 return CellValue(number: try self.CONVERT(n, from_unit: from, to_unit: to))
+            },
+            "DEC2BIN": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.DEC2BIN(n))
+            },
+            "DEC2HEX": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(string: self.DEC2HEX(n))
+            },
+            "DEC2OCT": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.DEC2OCT(n))
+            },
+            "DELTA": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                return CellValue(number: BigNumber(self.DELTA(a[0], a[1])))
             },
         ]
     }

@@ -29,7 +29,7 @@ let tokenList: [(String, TokenGenerator)] = [
     ("-?[0-9]\\d*(\\.\\d+)?", { (r: String) in .Number(r) }),
     ("\\(", { _ in .ParensOpen }),
     ("\\)", { _ in .ParensClose }),
-    ("\".*\"", { (r: String) in .Str(r) })
+    ("(['\"])(?:(?!(?:\\\\|\\1)).|\\\\.)*\\1", { (r: String) in .Str(r) })
 ]
 
 /// The `Lexer` is converting a sequence of characters (mathematical expression) into a sequence of `Token`

@@ -7,5 +7,6 @@ XCTMain([
     testCase(ExtensionsTests.allTests),
     testCase(NodeTests.allTests),
     testCase(GeneratorsTests.allTests),
-    testCase(AlgebraTests.allTests)
+    testCase(AlgebraTests.allTests),
+    testCase(TablesTests.allTests)
 ])
