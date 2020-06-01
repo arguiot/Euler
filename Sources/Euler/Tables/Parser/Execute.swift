@@ -21,7 +21,11 @@ public extension Tables {
         return try expression.evaluate([:], linker)
     }
     
-    internal static var functions: [String:(([CellValue]) throws -> CellValue)] {
+    /// Huge list of all Tables functions.
+    ///
+    /// While this is public, it's not intended for use.
+    ///
+    static var functions: [String:(([CellValue]) throws -> CellValue)] {
         return Tables().linker
     }
     /// Links internal functions to parser by exposing them

@@ -311,8 +311,8 @@ public extension Tables {
         
         var from: Unit? = nil
         var to: Unit? = nil
-        var from_unit = from_unit.replacingOccurrences(of: " ", with: "")
-        var to_unit = to_unit.replacingOccurrences(of: " ", with: "")
+        let from_unit = from_unit.replacingOccurrences(of: " ", with: "")
+        let to_unit = to_unit.replacingOccurrences(of: " ", with: "")
         var base_from_unit = from_unit
         var base_to_unit = to_unit
         var from_multiplier: BN = 1
