@@ -17,10 +17,10 @@ public class ConstantNode: NSObject, Node {
     
     /// Gives String representation of the node
     public func toString() -> String {
-//        guard let number = self.number else { return self.content }
-//        if BN(number.rounded()) == number {
-//            return number.rounded().asString(radix: 10)
-//        }
+        guard let number = self.number else { return self.content }
+        if BN(number.rounded()) == number {
+            return number.rounded().asString(radix: 10)
+        }
         return self.content
     }
     /// Gives Tex (String) representation of the node
