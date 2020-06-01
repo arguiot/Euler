@@ -451,6 +451,9 @@ public struct BigDouble:
         if self.isZero() {
             return BigInt(0)
         }
+        if numerator.lessThan(denominator) {
+            return numerator.multiplyingBy([2]).lessThan(denominator) ? BigInt(0) : BigInt(1)
+        }
         let digits = 3
         let multiplier = [10].exponentiating(digits)
         
