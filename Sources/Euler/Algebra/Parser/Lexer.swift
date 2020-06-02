@@ -10,7 +10,7 @@ import Foundation
 /// Possible Tokens in a mathematical expression.
 ///
 /// > This is part of the `Lexer`
-internal enum Token {
+internal enum Token: Equatable {
     case Symbol(String)
     case Number(String)
     case ParensOpen
@@ -18,6 +18,27 @@ internal enum Token {
     case Other(String)
     case Str(String)
     case address(String)
+    
+    static func ==(lhs: Token, rhs: Token) -> Bool {
+        switch (lhs, rhs) {
+        case (.address(let a), .address(let b)):
+            return a == b
+        case (.Symbol(let a), .Symbol(let b)):
+            return a == b
+        case (.Number(let a), .Number(let b)):
+            return a == b
+        case (.ParensOpen, .ParensOpen):
+            return true
+        case (.ParensClose, .ParensClose):
+            return true
+        case (.Other(let a), .Other(let b)):
+            return a == b
+        case (.Str(let a), .Str(let b)):
+            return a == b
+        default:
+            return false
+        }
+    }
 }
 
 typealias TokenGenerator = (String) -> Token?
@@ -26,7 +47,7 @@ let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
     ("\\$?[A-Z]+\\$?\\d+", { .address($0) }),
     ("[a-zA-Z][a-zA-Z0-9]*", { .Symbol($0) }),
-    ("-?[0-9]\\d*(\\.\\d+)?", { (r: String) in .Number(r) }),
+    ("[0-9]\\d*(\\.\\d+)?", { (r: String) in .Number(r) }),
     ("\\(", { _ in .ParensOpen }),
     ("\\)", { _ in .ParensClose }),
     ("(['\"])(?:(?!(?:\\\\|\\1)).|\\\\.)*\\1", { (r: String) in .Str(r) })
@@ -43,10 +64,6 @@ public class Lexer {
     
     internal static func sanitizer(_ input: String) -> String {
         var i = input
-        let ms = i.matches(regex: "(?<=\\S)\\s?(?<![\\(\\+])\\s?-[0-9.]+")
-        for (lower, _) in ms {
-            i.insert("+", at: String.Index(encodedOffset: lower))
-        }
         let ps = i.matches(regex: "\\(\\)")
         for (lower, _) in ps {
             i.insert("0", at: String.Index(encodedOffset: lower + 1))
@@ -82,6 +99,18 @@ public class Lexer {
                 content = String(content[index...])
             }
         }
+        
+        if tokens.count > 0 {
+            if case let Token.Other(first) = tokens[0] {
+                if first == "-" {
+                    var tks = [Token.Number("0")]
+                    tks.append(contentsOf: tokens)
+                    
+                    tokens = tks
+                }
+            }
+        }
+        
         return tokens
     }
 }

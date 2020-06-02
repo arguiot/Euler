@@ -48,8 +48,16 @@ public class SymbolNode: NSObject, Node {
     }
     /// Converts SymboleNode to BigNumber by replacing unknown value by their parameters. If it fails, it will return 0.
     public func evaluate(_ params: [String: BigNumber], _ fList: [String:(([CellValue]) throws -> CellValue)]) throws -> CellValue {
-        guard let n = params[self.content] else { throw EvaluationError.parameters }
-        return CellValue(number: n)
+        if let n = params[self.content] {
+            return CellValue(number: n)
+        }
+        if self.content == "pi" {
+            return CellValue(number: pi)
+        }
+        if self.content == "e" {
+            return CellValue(number: e)
+        }
+        throw EvaluationError.parameters
     }
     
     /// Make sure that two `SymbolNode` are equals (used in pattern matching)
