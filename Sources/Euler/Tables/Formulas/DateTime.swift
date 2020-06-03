@@ -194,7 +194,7 @@ public extension Tables {
     internal func serial(date time: Date) -> BigDouble {
         let getTime = time.timeIntervalSince1970 * 1000
         let returnDateTime: BigDouble = 25569.0 + (getTime / (1000 * 60 * 60 * 24))
-        return BigDouble(returnDateTime.rounded()) ?? returnDateTime
+        return BigDouble(returnDateTime.rounded())
     }
     
     internal func date(serial: BigDouble) -> Date {

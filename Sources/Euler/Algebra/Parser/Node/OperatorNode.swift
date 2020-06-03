@@ -144,7 +144,7 @@ public class OperatorNode: NSObject, Node {
             }
             return CellValue(number: ev1 ** ev2)
         default:
-            return CellValue(number: ev1 + ev2)
+            throw EvaluationError.ImpossibleOperation
         }
     }
 }
