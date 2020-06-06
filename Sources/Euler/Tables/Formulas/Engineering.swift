@@ -330,8 +330,8 @@ public extension Tables {
         }
         
         if from == nil {
-            let from_binary_prefix = binary_prefixes[from_unit.substring(with: 0..<2)];
-            var from_unit_prefix = unit_prefixes[from_unit.substring(with: 0..<1)];
+            let from_binary_prefix = binary_prefixes[String(from_unit.prefix(2))];
+            var from_unit_prefix = unit_prefixes[String(from_unit.prefix(1))];
 
             // Handle dekao unit prefix (only unit prefix with two characters)
             if (from_unit.prefix(2) == "da") {
