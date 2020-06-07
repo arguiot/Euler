@@ -353,8 +353,15 @@ public extension Tables {
             "SQRT": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                guard let sqrt = try? self.SQRT(n) else { return CellValue.nil }
+                let sqrt = try self.SQRT(n)
                 return CellValue(number: sqrt)
+            },
+            "ROOT": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigNumber] else { return CellValue.nil }
+                guard a.count == 2 else { return CellValue.nil }
+                guard let i = a[1].rounded().asInt() else { return CellValue(number: self.POW(a[0], 1 / a[1])) }
+                return CellValue(number: try self.ROOT(a[0], i))
             },
             "SQRTPI": { args in
                 guard let f = args.first else { return CellValue.nil }

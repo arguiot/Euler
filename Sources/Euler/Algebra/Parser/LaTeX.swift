@@ -15,7 +15,8 @@ public extension Parser {
     }
     
     private static func LaTeX2Math(latex: String) -> String {
-        var out = fractions(latex: latex)
+        let sqrt = nthroot(latex: latex) // removes nth-root
+        var out = fractions(latex: sqrt)
         out = quickReplace(latex: out)
         return out
     }
@@ -81,6 +82,58 @@ public extension Parser {
             
             
             let content = "((\(group1)) / (\(group2)))"
+            
+            let lower = out.index(out.startIndex, offsetBy: start)
+            let upper = out.index(out.startIndex, offsetBy: index)
+            out.replaceSubrange(lower..<upper, with: content)
+        }
+        
+        return out
+    }
+    
+    private static func nthroot(latex: String) -> String {
+        var out = latex
+        var old = ""
+        while out.contains("\\sqrt[") && old != out { // So we don't have an infinite loop...
+            old = out
+            
+            guard let range = out.range(of: "\\sqrt[") else { return latex }
+            let start = range.lowerBound.encodedOffset
+            let end = range.upperBound.encodedOffset
+            
+            // Finding Group1
+            var open = 1
+            var index = end // Already skipping `[`
+            
+            while open > 0 {
+                if out[index] == "[" {
+                    open += 1
+                } else if out[index] == "]" {
+                    open -= 1
+                }
+                index += 1
+            }
+            let g1start = out.index(out.startIndex, offsetBy: end)
+            let g1end = out.index(out.startIndex, offsetBy: index - 1)
+            let group1 = out[g1start..<g1end]
+            // Finding Group2
+            open = 1
+            index += 1 // skipping `{`
+            let endg1 = index
+            while open > 0 {
+                if out[index] == "{" {
+                    open += 1
+                } else if out[index] == "}" {
+                    open -= 1
+                }
+                index += 1
+            }
+            let g2start = out.index(out.startIndex, offsetBy: endg1)
+            let g2end = out.index(out.startIndex, offsetBy: index - 1)
+            let group2 = out[g2start..<g2end]
+            
+            
+            let content = "root(\(group2), \(group1))"
             
             let lower = out.index(out.startIndex, offsetBy: start)
             let upper = out.index(out.startIndex, offsetBy: index)

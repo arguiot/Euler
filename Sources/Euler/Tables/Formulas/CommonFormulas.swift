@@ -573,8 +573,16 @@ public extension Tables {
     /// Returns a positive square root.
     /// - Parameter n: The number for which you want the square root.
     func SQRT(_ n: BigDouble) throws -> BigDouble {
-        guard let sqrt = abs(n).squareRoot() else { throw TablesError.NULL }
+        guard let sqrt = n.squareRoot() else { throw TablesError.NULL }
         return sqrt
+    }
+    
+    /// Returns a positive nth root.
+    /// - Parameter n: The number for which you want the square root.
+    /// - Parameter base: The nth root (ex: 2, 3,...).
+    func ROOT(_ n: BigDouble, _ base: Int) throws -> BigDouble {
+        guard let rt = n.nthroot(base) else { throw TablesError.NULL }
+        return rt
     }
     
     /// Returns the square root of (number * pi).

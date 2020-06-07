@@ -131,9 +131,9 @@ public class Parser {
             "*": 2,
             "/": 2,
             "^": 3,
-            ",": 3, // Multiple arguments
+            ",": 0, // Multiple arguments
             ":": 4, // For tables
-            "=": 4
+            "=": 0
         ]
         guard chain.count >= 1 else { throw ParseError.FailedToParse }
         var nodes: [Node] = [chain[0]]
