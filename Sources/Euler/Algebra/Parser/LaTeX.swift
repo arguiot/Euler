@@ -17,7 +17,8 @@ public extension Parser {
     private static func LaTeX2Math(latex: String) -> String {
         let sqrt = nthroot(latex: latex) // removes nth-root
         let lg = log(latex: sqrt)
-        var out = fractions(latex: lg)
+        let absolute = abs(latex: lg)
+        var out = fractions(latex: absolute)
         out = quickReplace(latex: out)
         return out
     }
@@ -30,7 +31,7 @@ public extension Parser {
         out = out.replace(regex: "\\\\operatorname\\{(\\w+)\\}", with: "$1")
         // Functions
         out = out.replacingOccurrences(of: "\\pi", with: "pi()")
-        out = out.replace(regex: "\\|.*\\|", with: "ABS($1)")
+//        out = out.replace(regex: "\\|(.+)\\|", with: "ABS($1)")
         out = out.replacingOccurrences(of: "\\left", with: "")
         out = out.replacingOccurrences(of: "\\right", with: "")
         out = out.replacingOccurrences(of: "{", with: "(")
@@ -47,8 +48,8 @@ public extension Parser {
             old = out
             
             guard let range = out.range(of: "\\frac") else { return latex }
-            let start = range.lowerBound.encodedOffset
-            let end = range.upperBound.encodedOffset
+            let start = range.lowerBound.utf16Offset(in: out)
+            let end = range.upperBound.utf16Offset(in: out)
             
             // Finding Group1
             var open = 1
@@ -101,8 +102,8 @@ public extension Parser {
             old = out
             
             guard let range = out.range(of: "\\sqrt[") else { return latex }
-            let start = range.lowerBound.encodedOffset
-            let end = range.upperBound.encodedOffset
+            let start = range.lowerBound.utf16Offset(in: out)
+            let end = range.upperBound.utf16Offset(in: out)
             
             // Finding Group1
             var open = 1
@@ -155,8 +156,8 @@ public extension Parser {
             old = out
             
             guard let range = out.range(of: "\\log_") else { return latex }
-            let start = range.lowerBound.encodedOffset
-            let end = range.upperBound.encodedOffset
+            let start = range.lowerBound.utf16Offset(in: out)
+            let end = range.upperBound.utf16Offset(in: out)
             
             // Finding Group1
             var open = 1
@@ -193,6 +194,44 @@ public extension Parser {
             
             
             let content = "log(\(group2), \(group1))"
+            
+            let lower = out.index(out.startIndex, offsetBy: start)
+            let upper = out.index(out.startIndex, offsetBy: index)
+            out.replaceSubrange(lower..<upper, with: content)
+        }
+        
+        return out
+    }
+    
+    private static func abs(latex: String) -> String {
+        var out = latex
+        var old = ""
+        while out.contains("|") && old != out { // So we don't have an infinite loop...
+            old = out
+            
+            guard let range = out.range(of: "|") else { return latex }
+            let start = range.lowerBound.utf16Offset(in: out)
+            let end = range.upperBound.utf16Offset(in: out)
+            
+            // Finding Group
+            var open = 1
+            var index = end
+            
+            while open > 0 {
+                guard index < out.count else { return latex }
+                if out[index] == "|" && out.substring(with: index - 5..<index) == "\\left" {
+                    open += 1
+                } else if out[index] == "|" && out.substring(with: index - 6..<index) == "\\right" {
+                    open -= 1
+                }
+                index += 1
+            }
+            let gstart = out.index(out.startIndex, offsetBy: end)
+            let gend = out.index(out.startIndex, offsetBy: index - 1)
+            let group = out[gstart..<gend]
+            
+            
+            let content = "abs(\(group))"
             
             let lower = out.index(out.startIndex, offsetBy: start)
             let upper = out.index(out.startIndex, offsetBy: index)
