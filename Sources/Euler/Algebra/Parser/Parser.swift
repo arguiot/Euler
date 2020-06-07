@@ -61,7 +61,7 @@ public class Parser {
     /// - Parameter tablesContext: If the type is set to tables, then a Tables object is required to interact with the different cells
     public init(_ str: String, type: ParseContext = .math, tablesContext: Tables? = nil) {
         self.context = type
-        var str = str
+        var str = str.replacingOccurrences(of: "!", with: "!0") // Faking factorial for simpler parsing
         if type == .tables && str.first == "=" {
             str = String(str.dropFirst())
         }
@@ -131,6 +131,7 @@ public class Parser {
             "*": 2,
             "/": 2,
             "^": 3,
+            "!": 3,
             ",": 0, // Multiple arguments
             ":": 4, // For tables
             "=": 0

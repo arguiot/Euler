@@ -53,6 +53,7 @@ public class Group: NSObject {
                 "*",
                 "/",
                 "^",
+                "!",
                 ","
             ]
             if self.context == .tables {

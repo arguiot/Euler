@@ -85,6 +85,8 @@ public class OperatorNode: NSObject, Node {
                 return ConstantNode(1)
             case "*":
                 return OperatorNode("^", children: [c1, ConstantNode(2)])
+            case "!":
+                return ConstantNode(1) // 0! = 1
             default:
                 break
             }
@@ -108,6 +110,14 @@ public class OperatorNode: NSObject, Node {
                     return ConstantNode(ev1 * ev2)
                 case "^":
                     return ConstantNode(ev1 ** ev2)
+                case "!":
+                    guard ev1 >= .zero else { throw EvaluationError.ImpossibleOperation }
+                    let i = ev1.rounded()
+                    if BN(i) == ev1 {
+                        return ConstantNode(factorial(i))
+                    }
+                
+                    return ConstantNode(gamma(ev1 + 1))
                 default:
                     break
                 }
@@ -139,10 +149,14 @@ public class OperatorNode: NSObject, Node {
         case "*":
             return CellValue(number: ev1 * ev2)
         case "^":
-            if let e1 = ev1.asDouble(), let e2 = ev2.asDouble() {
-                return CellValue(number: BN(pow(e1, e2)))
-            }
             return CellValue(number: ev1 ** ev2)
+        case "!":
+            guard ev1 >= .zero else { throw EvaluationError.ImpossibleOperation }
+            let i = ev1.rounded()
+            if BN(i) == ev1 {
+                return CellValue(number: BigNumber(factorial(i)))
+            }
+            return CellValue(number: gamma(ev1 + 1))
         default:
             throw EvaluationError.ImpossibleOperation
         }

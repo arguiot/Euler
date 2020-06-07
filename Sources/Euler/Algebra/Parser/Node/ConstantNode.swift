@@ -68,6 +68,12 @@ public class ConstantNode: NSObject, Node {
             self.content = desc
         }
     }
+    
+    /// Create a ConstantNode
+    /// - Parameter bi: Any BigInt
+    public convenience init(_ bi: BigInt) {
+        self.init(BN(bi))
+    }
     /// Create a ConstantNode
     /// - Parameter str: String
     public init(_ str: String) {

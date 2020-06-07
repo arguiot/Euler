@@ -29,7 +29,7 @@ fileprivate let coefficients: [Double] = [
     1.5056327351493116e-7
 ]
 
-/// the gamma function (represented by Γ, the capital letter gamma from the Greek alphabet) is one commonly used extension of the factorial function to complex numbers. The gamma function is defined for all complex numbers except the non-positive integers. For any positive integer n: $ \Gamma (n)=(n-1)! $
+/// The gamma function (represented by Γ, the capital letter gamma from the Greek alphabet) is one commonly used extension of the factorial function to complex numbers. The gamma function is defined for all complex numbers except the non-positive integers. For any positive integer n: $ \Gamma (n)=(n-1)! $
 /// - Parameter float: A BigNumber
 public func gamma(_ float: BigNumber) -> BigNumber {
     if float < 0.5 {
