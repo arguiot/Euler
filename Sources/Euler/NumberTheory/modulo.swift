@@ -77,7 +77,7 @@ extension BigDouble {
     ///   - lhs: The left hand side
     static func %(lhs: BigDouble, rhs: BigDouble) -> BigDouble {
         if let lhs = lhs.asDouble(), let rhs = rhs.asDouble() {
-            return BigDouble(lhs.truncatingRemainder(dividingBy: rhs))(1)
+            return BigDouble(lhs.truncatingRemainder(dividingBy: rhs))
         }
         let div = lhs / rhs
         let int = floor(div)
