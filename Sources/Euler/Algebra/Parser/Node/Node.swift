@@ -41,4 +41,21 @@ public enum EvaluationError: LocalizedError {
     case missingChildren
     /// The operation you're trying to do is impossible
     case ImpossibleOperation
+    
+    /// The error description
+    ///
+    /// Required to conform to `LocalizedError`
+    ///
+    public var errorDescription: String? {
+        switch self {
+        case .parameters:
+            return "Couldn't find parameters"
+        case .functionError:
+            return "The function returned an error"
+        case .missingChildren:
+            return "Couldn't find the children (inside the expression tree)"
+        case .ImpossibleOperation:
+            return "Impossible Operation"
+        }
+    }
 }
