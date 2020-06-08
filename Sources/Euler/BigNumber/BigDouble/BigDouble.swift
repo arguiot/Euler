@@ -326,6 +326,22 @@ public struct BigDouble:
         }
     }
     
+    /// Determines wether to use radians or degrees when using trigonometric functions
+    ///
+    /// This method acts as a proxy for the global `radians` setting
+    ///
+    public var radians: Bool {
+        get {
+            return BN.radians
+        }
+        set {
+            BN.radians = newValue
+        }
+    }
+    
+    /// The global setting for wether to use radians or degrees when using trigonometric functions
+    static public var radians: Bool = true
+    
     /**
      * returns the current value in decimal format with the current precision
      */

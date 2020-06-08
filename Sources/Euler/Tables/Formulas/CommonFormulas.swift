@@ -20,7 +20,10 @@ public extension Tables {
     /// - Parameter number: Any `BigDouble` less than 2pi
     func ACOS(_ number: BigNumber) throws -> BigNumber {
         guard let double = number.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(acos(double))
+        if BN.radians == true {
+            return BigDouble(acos(double))
+        }
+        return acos(double) * 180 / pi
     }
     /// Hyperbolic Arc-Cosinus of a number.
     /// - Parameter number: Any `BigDouble`
@@ -34,7 +37,10 @@ public extension Tables {
     func ACOT(_ number: BigNumber) throws -> BigNumber {
         let mod = number % (2 * BigDouble(constant: .pi))
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(atan(1 / double))
+        if BN.radians == true {
+            return BigDouble(atan(1 / double))
+        }
+        return atan(1 / double) * 180 / pi
     }
     
     /// Hyperbolic Arc-Cotangent of a number.
@@ -51,7 +57,10 @@ public extension Tables {
     func ASIN(_ number: BigNumber) throws -> BigNumber {
         let mod = number % (2 * BigDouble(constant: .pi))
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(asin(double))
+        if BN.radians == true {
+            return BigDouble(asin(double))
+        }
+        return asin(double) * 180 / pi
     }
     
     /// Hyperbolic Arc-Sinus of a number.
@@ -64,7 +73,10 @@ public extension Tables {
     /// - Parameter number: Any `BigDouble`
     func ATAN(_ number: BigNumber) throws -> BigNumber {
         guard let double = number.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(atan(double))
+        if BN.radians == true {
+            return BigDouble(atan(double))
+        }
+        return atan(double) * 180 / pi
     }
     
     /// ATAN2(Y,X) returns the four-quadrant inverse tangent (tan-1) of Y and X, which must be real. The atan2 function follows the convention that atan2(x,x) returns 0 when x is mathematically zero (either 0 or -0).
@@ -81,7 +93,7 @@ public extension Tables {
     /// - Parameter number: Any `BigDouble`
     func ATANH(_ number: BigNumber) throws -> BigNumber {
         guard let double = number.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(asinh(double))
+        return BigDouble(atanh(double))
     }
     
     /// Convert number to any base
@@ -136,6 +148,10 @@ public extension Tables {
     /// Cosinus of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
     func COS(_ number: BigNumber) throws -> BigNumber {
+        var number = number
+        if BN.radians == false {
+            number = number * pi / BN(180)
+        }
         let mod = number % (2 * BigDouble(constant: .pi))
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(cos(double))
@@ -559,9 +575,13 @@ public extension Tables {
     /// Sinus function
     /// - Parameter n: Any real less than 2pi
     func SIN(_ n: BigDouble) throws -> BigDouble {
+        var n = n
+        if BN.radians == false {
+            n = n * pi / BN(180)
+        }
         let mod = n % (2 * BigDouble(constant: .pi))
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(cos(double))
+        return BigDouble(sin(double))
     }
     
     /// Hyperbolic sinus function
@@ -752,6 +772,10 @@ public extension Tables {
     /// Tangent of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
     func TAN(_ number: BigNumber) throws -> BigNumber {
+        var number = number
+        if BN.radians == false {
+            number = number * pi / BN(180)
+        }
         let mod = number % (2 * BigDouble(constant: .pi))
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(tan(double))

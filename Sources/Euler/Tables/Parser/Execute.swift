@@ -60,7 +60,7 @@ public extension Tables {
             "ASIN": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return try CellValue(number: self.ASINH(n))
+                return try CellValue(number: self.ASIN(n))
             },
             "ATAN": { args in
                 guard let f = args.first else { return CellValue.nil }

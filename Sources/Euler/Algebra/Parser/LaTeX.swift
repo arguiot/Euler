@@ -36,7 +36,7 @@ public extension Parser {
         out = out.replacingOccurrences(of: "\\right", with: "")
         out = out.replacingOccurrences(of: "{", with: "(")
         out = out.replacingOccurrences(of: "}", with: ")")
-        out = out.replacingOccurrences(of: "ar", with: "a")
+//        out = out.replacingOccurrences(of: "ar", with: "a")
         out = out.replacingOccurrences(of: "\\", with: "")
         return out
     }

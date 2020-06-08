@@ -38,26 +38,16 @@ public func floor(_ base: BigDouble) -> BigInt {
         return BigInt(0)
     }
     
-    let digits = 3
-    let multiplier = [10].exponentiating(digits)
+    var div = BigInt(limbs: base.numerator.dividing(base.denominator))
+    div.sign = base.sign
     
-    let rawRes = abs(base).numerator.multiplyingBy(multiplier).divMod(base.denominator).quotient
+    var diff = base - div
+    diff.sign = false
     
-    let res = BigInt(limbs: rawRes).description
-    
-    let offset = res.count - digits
-    let lhs = res.prefix(offset).description
-    let rhs = Double("0." + res.suffix(res.count - offset))!
-    
-    var ans = BigInt(String(lhs))!
-    if base.isNegative() {
-        ans = -ans
-        if rhs > 0.0 {
-            ans = ans - BigInt(1)
-        }
+    if diff > 0 && base.sign == true {
+        return div - 1
     }
-    
-    return ans
+    return div
 }
 
 /**
@@ -67,28 +57,14 @@ public func ceil(_ base: BigDouble) -> BigInt {
     if base.isZero() {
         return BigInt(0)
     }
-    let digits = 3
-    let multiplier = [10].exponentiating(digits)
+    var div = BigInt(limbs: base.numerator.dividing(base.denominator))
+    let diff = base - div
     
-    let rawRes = abs(base).numerator.multiplyingBy(multiplier).divMod(base.denominator).quotient
-    
-    let res = BigInt(limbs: rawRes).description
-    
-    let offset = res.count - digits
-    let rhs = Double("0." + res.suffix(res.count - offset))!
-    let lhs = res.prefix(offset)
-    
-    var retVal = BigInt(String(lhs))!
-    
-    if base.isNegative() {
-        retVal = -retVal
-    } else {
-        if rhs > 0.0 {
-            retVal += 1
-        }
+    div.sign = base.sign
+    if diff > 0 {
+        return div + 1
     }
-    
-    return retVal
+    return div
 }
 
 /**

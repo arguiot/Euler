@@ -75,11 +75,14 @@ extension BigDouble {
     /// - Parameters:
     ///   - rhs: The right hand side
     ///   - lhs: The left hand side
-    static func %(rhs: BigDouble, lhs: BigDouble) -> BigDouble {
-        let div = rhs / lhs
-        let int = ceil(div)
-        let floatRest = div - int
-        let rest = lhs * floatRest
+    static func %(lhs: BigDouble, rhs: BigDouble) -> BigDouble {
+        if let lhs = lhs.asDouble(), let rhs = rhs.asDouble() {
+            return BigDouble(lhs.truncatingRemainder(dividingBy: rhs))(1)
+        }
+        let div = lhs / rhs
+        let int = floor(div)
+        let floatRest = rhs * int
+        let rest = lhs - floatRest
         return rest
     }
 }
