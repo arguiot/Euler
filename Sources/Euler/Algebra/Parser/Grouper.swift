@@ -52,6 +52,7 @@ public class Group: NSObject {
                 "-",
                 "*",
                 "/",
+                "%",
                 "^",
                 "!",
                 ","

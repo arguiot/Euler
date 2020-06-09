@@ -87,6 +87,8 @@ public class OperatorNode: NSObject, Node {
                 return OperatorNode("^", children: [c1, ConstantNode(2)])
             case "!":
                 return ConstantNode(1) // 0! = 1
+            case "%":
+                return ConstantNode(0) // x mod x = 0
             default:
                 break
             }
@@ -118,6 +120,8 @@ public class OperatorNode: NSObject, Node {
                     }
                 
                     return ConstantNode(gamma(ev1 + 1))
+                case "%":
+                    return ConstantNode(ev1 % ev2)
                 default:
                     break
                 }
@@ -157,6 +161,8 @@ public class OperatorNode: NSObject, Node {
                 return CellValue(number: BigNumber(factorial(i)))
             }
             return CellValue(number: gamma(ev1 + 1))
+        case "%":
+            return CellValue(number: ev1 % ev2)
         default:
             throw EvaluationError.ImpossibleOperation
         }
