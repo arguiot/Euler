@@ -33,6 +33,23 @@ public extension Statistics {
         return average
     }
     
+    /// Returns the average of the absolute deviations of data points from their mean. It is a measure of the variability in a data set.
+    var MAD: BigDouble {
+        let average = self.average
+        let sum = list.reduce(.zero) { (prev, next) in
+            return prev + abs(next - average)
+        }
+        return sum / BN(list.count)
+    }
+    
+    /// Returns the sum of squares of deviations of data points from their sample mean.
+    var devSquared: BigDouble {
+        let average = self.average
+        let sum = list.reduce(.zero) { (prev, next) in
+            return prev + (next - average) ** 2
+        }
+        return sum
+    }
     /// Return the weighted arithmetic mean (average) of the list with the given coefficients
     ///
     /// The weighted arithmetic mean is similar to an ordinary arithmetic mean (the most common type of average), except that instead of each of the data points contributing equally to the final average, some data points contribute more than others. The notion of weighted mean plays a role in descriptive statistics and also occurs in a more general form in several other areas of mathematics.

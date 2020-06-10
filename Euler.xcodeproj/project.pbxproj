@@ -21,6 +21,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		689F568324912A89003097E2 /* CommonLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568224912A89003097E2 /* CommonLinker.swift */; };
+		689F568524912B0F003097E2 /* LogicalLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568424912B0F003097E2 /* LogicalLinker.swift */; };
+		689F568724912B92003097E2 /* EngineeringLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568624912B92003097E2 /* EngineeringLinker.swift */; };
+		689F568924912BE1003097E2 /* DateLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568824912BE1003097E2 /* DateLinker.swift */; };
+		689F568B24912C2F003097E2 /* FinancialLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568A24912C2F003097E2 /* FinancialLinker.swift */; };
+		689F568D24912E94003097E2 /* Statistical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568C24912E94003097E2 /* Statistical.swift */; };
+		689F568F249135EA003097E2 /* Fisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568E249135EA003097E2 /* Fisher.swift */; };
+		689F56912491379D003097E2 /* StatsLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F56902491379D003097E2 /* StatsLinker.swift */; };
 		68ADEAD32484341D006C65CD /* Financial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADEAD22484341D006C65CD /* Financial.swift */; };
 		68ADEAD524843775006C65CD /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADEAD424843775006C65CD /* DateTime.swift */; };
 		68C12AD12483284800BB4B3A /* Engineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD02483284800BB4B3A /* Engineering.swift */; };
@@ -201,6 +209,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		689F568224912A89003097E2 /* CommonLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLinker.swift; sourceTree = "<group>"; };
+		689F568424912B0F003097E2 /* LogicalLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalLinker.swift; sourceTree = "<group>"; };
+		689F568624912B92003097E2 /* EngineeringLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineeringLinker.swift; sourceTree = "<group>"; };
+		689F568824912BE1003097E2 /* DateLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLinker.swift; sourceTree = "<group>"; };
+		689F568A24912C2F003097E2 /* FinancialLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialLinker.swift; sourceTree = "<group>"; };
+		689F568C24912E94003097E2 /* Statistical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistical.swift; sourceTree = "<group>"; };
+		689F568E249135EA003097E2 /* Fisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fisher.swift; sourceTree = "<group>"; };
+		689F56902491379D003097E2 /* StatsLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsLinker.swift; sourceTree = "<group>"; };
 		68ADEAD22484341D006C65CD /* Financial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Financial.swift; sourceTree = "<group>"; };
 		68ADEAD424843775006C65CD /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		68C12AD02483284800BB4B3A /* Engineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engineering.swift; sourceTree = "<group>"; };
@@ -371,6 +387,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		689F568124912A72003097E2 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				689F568224912A89003097E2 /* CommonLinker.swift */,
+				689F568424912B0F003097E2 /* LogicalLinker.swift */,
+				689F568624912B92003097E2 /* EngineeringLinker.swift */,
+				689F568824912BE1003097E2 /* DateLinker.swift */,
+				689F568A24912C2F003097E2 /* FinancialLinker.swift */,
+				689F56902491379D003097E2 /* StatsLinker.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		OBJ_107 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -731,6 +760,7 @@
 				OBJ_79 /* Regression.swift */,
 				OBJ_80 /* Statistics.swift */,
 				OBJ_81 /* Variance.swift */,
+				689F568E249135EA003097E2 /* Fisher.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -776,6 +806,7 @@
 				68C12AD02483284800BB4B3A /* Engineering.swift */,
 				68ADEAD22484341D006C65CD /* Financial.swift */,
 				68ADEAD424843775006C65CD /* DateTime.swift */,
+				689F568C24912E94003097E2 /* Statistical.swift */,
 			);
 			path = Formulas;
 			sourceTree = "<group>";
@@ -783,6 +814,7 @@
 		OBJ_87 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				689F568124912A72003097E2 /* Functions */,
 				OBJ_88 /* Execute.swift */,
 			);
 			path = Parser;
@@ -997,10 +1029,12 @@
 				OBJ_193 /* Tree.swift in Sources */,
 				OBJ_194 /* BNativeExtensions.swift in Sources */,
 				OBJ_195 /* BasicOperators.swift in Sources */,
+				689F568724912B92003097E2 /* EngineeringLinker.swift in Sources */,
 				OBJ_196 /* BigDouble.swift in Sources */,
 				OBJ_197 /* OperationsBigDouble.swift in Sources */,
 				OBJ_198 /* BigInt.swift in Sources */,
 				OBJ_199 /* BinaryBigInt.swift in Sources */,
+				689F568924912BE1003097E2 /* DateLinker.swift in Sources */,
 				OBJ_200 /* OperationsBigInt.swift in Sources */,
 				OBJ_201 /* Limbs.swift in Sources */,
 				OBJ_202 /* RSA.swift in Sources */,
@@ -1009,6 +1043,7 @@
 				68C12AD32483392C00BB4B3A /* Substring.swift in Sources */,
 				OBJ_204 /* sha256.swift in Sources */,
 				OBJ_205 /* Euler.swift in Sources */,
+				689F568524912B0F003097E2 /* LogicalLinker.swift in Sources */,
 				OBJ_206 /* Array.swift in Sources */,
 				OBJ_207 /* Collatz.swift in Sources */,
 				OBJ_208 /* Fibonacci.swift in Sources */,
@@ -1017,6 +1052,7 @@
 				68ADEAD32484341D006C65CD /* Financial.swift in Sources */,
 				OBJ_211 /* Point.swift in Sources */,
 				OBJ_212 /* Vector.swift in Sources */,
+				689F568324912A89003097E2 /* CommonLinker.swift in Sources */,
 				OBJ_213 /* MOperations.swift in Sources */,
 				OBJ_214 /* MProperties.swift in Sources */,
 				OBJ_215 /* Matrix.swift in Sources */,
@@ -1027,6 +1063,7 @@
 				OBJ_220 /* gamma.swift in Sources */,
 				OBJ_221 /* gcd.swift in Sources */,
 				OBJ_222 /* isPrime.swift in Sources */,
+				689F568D24912E94003097E2 /* Statistical.swift in Sources */,
 				OBJ_223 /* leastFactor.swift in Sources */,
 				OBJ_224 /* modulo.swift in Sources */,
 				OBJ_225 /* random.swift in Sources */,
@@ -1034,10 +1071,13 @@
 				68ADEAD524843775006C65CD /* DateTime.swift in Sources */,
 				OBJ_227 /* Average.swift in Sources */,
 				OBJ_228 /* Correlation.swift in Sources */,
+				689F568F249135EA003097E2 /* Fisher.swift in Sources */,
 				OBJ_229 /* Quantile.swift in Sources */,
+				689F568B24912C2F003097E2 /* FinancialLinker.swift in Sources */,
 				OBJ_230 /* Regression.swift in Sources */,
 				OBJ_231 /* Statistics.swift in Sources */,
 				OBJ_232 /* Variance.swift in Sources */,
+				689F56912491379D003097E2 /* StatsLinker.swift in Sources */,
 				OBJ_233 /* CellValue.swift in Sources */,
 				OBJ_234 /* CommonFormulas.swift in Sources */,
 				OBJ_235 /* Logical.swift in Sources */,

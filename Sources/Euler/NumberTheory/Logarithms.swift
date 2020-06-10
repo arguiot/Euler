@@ -23,6 +23,9 @@ public func ln(_ n: BigDouble, precision: Int = 15) -> BigDouble {
     return ln(numerator) - ln(denominator)
 }
 
+/// Very fast natural logarigthm for very large numbers
+/// - Parameter n: Any `BigInt`
+/// - Returns: `$\ln(n)$`
 public func ln(_ n: BigInt) -> BigDouble {
     let s = n.asString(radix: 10)
     let p = s.count
