@@ -6269,6 +6269,149 @@ The DATEVALUE function is helpful in cases where a worksheet contains dates in a
             </div>
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/Financial%20functions"></a>
+                <a name="//apple_ref/swift/Section/Financial functions" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Financial%20functions"></a>
+                  <h3 class="section-name"><p>Financial functions</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC7ACCRINTyAA9BigDoubleVSi_S2iA2FS2itKF"></a>
+                    <a name="//apple_ref/swift/Method/ACCRINT(_:_:_:_:_:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC7ACCRINTyAA9BigDoubleVSi_S2iA2FS2itKF">ACCRINT(_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the accrued interest for a security that pays periodic interest.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <code><a href="../Classes/Tables/TablesError.html">TablesError</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">ACCRINT</span><span class="p">(</span><span class="n">_</span> <span class="nv">issue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">first</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">settlement</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">rate</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">par</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">_</span> <span class="nv">frequency</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">_</span> <span class="nv">basis</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>issue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security&rsquo;s issue date.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>first</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security&rsquo;s first interest date.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>settlement</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security&rsquo;s settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security&rsquo;s annual coupon rate.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>par</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The security&rsquo;s par value. If you omit par, ACCRINT uses $1,000.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>frequency</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of coupon payments per year. For annual payments, frequency = 1; for semiannual, frequency = 2; for quarterly, frequency = 4.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>basis</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of day count basis to use.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Accrued interest for a security that pays periodic interest</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Financial.swift#L24-L32">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/Logical%20operators"></a>
                 <a name="//apple_ref/swift/Section/Logical operators" class="dashAnchor"></a>
                 <div class="section-name-container">
@@ -6703,6 +6846,257 @@ The DATEVALUE function is helpful in cases where a worksheet contains dates in a
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Statistical%20functions"></a>
+                <a name="//apple_ref/swift/Section/Statistical functions" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Statistical%20functions"></a>
+                  <h3 class="section-name"><p>Statistical functions</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC6AVEDEVyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/AVEDEV(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC6AVEDEVyAA9BigDoubleVSayAFGF">AVEDEV(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the average of the absolute deviations of data points from their mean. AVEDEV is a measure of the variability in a data set.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">AVEDEV</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L14-L17">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC7AVERAGEyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/AVERAGE(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC7AVERAGEyAA9BigDoubleVSayAFGF">AVERAGE(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the average (arithmetic mean) of the arguments. For example, if the range A1:A20 contains numbers, the formula <code>=AVERAGE(A1:A20)</code> returns the average of those numbers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">AVERAGE</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L21-L24">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC6CORRELyAA9BigDoubleVSayAFG_AGtKF"></a>
+                    <a name="//apple_ref/swift/Method/CORREL(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC6CORRELyAA9BigDoubleVSayAFG_AGtKF">CORREL(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The CORREL function returns the correlation coefficient of two arrays. Use the correlation coefficient to determine the relationship between two properties. For example, you can examine the relationship between a location&rsquo;s average temperature and the use of air conditioners.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">CORREL</span><span class="p">(</span><span class="n">_</span> <span class="nv">array1</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">],</span> <span class="n">_</span> <span class="nv">array2</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>array1</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A an array of values</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>array2</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A an array of values</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Correlation coefficient of two arrays</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L31-L34">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC5COUNTySiSayypGF"></a>
+                    <a name="//apple_ref/swift/Method/COUNT(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC5COUNTySiSayypGF">COUNT(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Counts the element of the given array</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">COUNT</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>array</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Any array composed of random elements</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Counted value</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L39-L41">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC5DEVSQyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/DEVSQ(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC5DEVSQyAA9BigDoubleVSayAFGF">DEVSQ(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the sum of squares of deviations of data points from their sample mean.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">DEVSQ</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L44-L47">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC6FISHERyAA9BigDoubleVAFF"></a>
+                    <a name="//apple_ref/swift/Method/FISHER(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC6FISHERyAA9BigDoubleVAFF">FISHER(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the Fisher transformation at x. This transformation produces a function that is normally distributed rather than skewed. Use this function to perform hypothesis testing on the correlation coefficient.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">FISHER</span><span class="p">(</span><span class="n">_</span> <span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L49-L51">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -6747,7 +7141,7 @@ The DATEVALUE function is helpful in cases where a worksheet contains dates in a
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Parser/Execute.swift#L14-L22">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Parser/Execute.swift#L22-L30">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -6779,7 +7173,7 @@ The DATEVALUE function is helpful in cases where a worksheet contains dates in a
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Parser/Execute.swift#L28-L30">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Parser/Execute.swift#L36-L38">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -6792,7 +7186,7 @@ The DATEVALUE function is helpful in cases where a worksheet contains dates in a
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-06-09)</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-06-10)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

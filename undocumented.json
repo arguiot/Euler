@@ -1016,13 +1016,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/NumberTheory/Logarithms.swift",
-      "line": 26,
-      "symbol": "ln(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/CellValue.swift",
       "line": 20,
       "symbol": "CellValue.nil",

@@ -596,6 +596,66 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Euler10StatisticsC3MADAA9BigDoubleVvp"></a>
+                    <a name="//apple_ref/swift/Property/MAD" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC3MADAA9BigDoubleVvp">MAD</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the average of the absolute deviations of data points from their mean. It is a measure of the variability in a data set.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">MAD</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Average.swift#L37-L43">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC10devSquaredAA9BigDoubleVvp"></a>
+                    <a name="//apple_ref/swift/Property/devSquared" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC10devSquaredAA9BigDoubleVvp">devSquared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the sum of squares of deviations of data points from their sample mean.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">devSquared</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Average.swift#L46-L52">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Euler10StatisticsC7average12coefficientsAA9BigDoubleVSayAGG_tKF"></a>
                     <a name="//apple_ref/swift/Method/average(coefficients:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Euler10StatisticsC7average12coefficientsAA9BigDoubleVSayAGG_tKF">average(coefficients:<wbr>)</a>
@@ -641,7 +701,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Average.swift#L42-L56">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Average.swift#L59-L73">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -693,6 +753,59 @@
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Correlation.swift#L28-L42">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC6fisher2atAA9BigDoubleVAG_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/fisher(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC6fisher2atAA9BigDoubleVAG_tFZ">fisher(at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the Fisher transformation at x. This transformation produces a function that is normally distributed rather than skewed. Use this function to perform hypothesis testing on the correlation coefficient.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">fisher</span><span class="p">(</span><span class="n">at</span> <span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A numeric value for which you want the transformation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Fisher transformation at x.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Fisher.swift#L14-L16">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -903,7 +1016,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-06-09)</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-06-10)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
