@@ -29,6 +29,7 @@
 		689F568D24912E94003097E2 /* Statistical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568C24912E94003097E2 /* Statistical.swift */; };
 		689F568F249135EA003097E2 /* Fisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568E249135EA003097E2 /* Fisher.swift */; };
 		689F56912491379D003097E2 /* StatsLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F56902491379D003097E2 /* StatsLinker.swift */; };
+		689F569324915185003097E2 /* Gauss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F569224915184003097E2 /* Gauss.swift */; };
 		68ADEAD32484341D006C65CD /* Financial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADEAD22484341D006C65CD /* Financial.swift */; };
 		68ADEAD524843775006C65CD /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADEAD424843775006C65CD /* DateTime.swift */; };
 		68C12AD12483284800BB4B3A /* Engineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C12AD02483284800BB4B3A /* Engineering.swift */; };
@@ -217,6 +218,7 @@
 		689F568C24912E94003097E2 /* Statistical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistical.swift; sourceTree = "<group>"; };
 		689F568E249135EA003097E2 /* Fisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fisher.swift; sourceTree = "<group>"; };
 		689F56902491379D003097E2 /* StatsLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsLinker.swift; sourceTree = "<group>"; };
+		689F569224915184003097E2 /* Gauss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gauss.swift; sourceTree = "<group>"; };
 		68ADEAD22484341D006C65CD /* Financial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Financial.swift; sourceTree = "<group>"; };
 		68ADEAD424843775006C65CD /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		68C12AD02483284800BB4B3A /* Engineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engineering.swift; sourceTree = "<group>"; };
@@ -761,6 +763,7 @@
 				OBJ_80 /* Statistics.swift */,
 				OBJ_81 /* Variance.swift */,
 				689F568E249135EA003097E2 /* Fisher.swift */,
+				689F569224915184003097E2 /* Gauss.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 				OBJ_182 /* ExpressionNode.swift in Sources */,
 				OBJ_183 /* FunctionNode.swift in Sources */,
 				OBJ_184 /* Node.swift in Sources */,
+				689F569324915185003097E2 /* Gauss.swift in Sources */,
 				OBJ_185 /* NullNode.swift in Sources */,
 				OBJ_186 /* OperatorNode.swift in Sources */,
 				OBJ_187 /* StringNode.swift in Sources */,

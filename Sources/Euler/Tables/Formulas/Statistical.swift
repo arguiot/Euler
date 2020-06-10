@@ -49,6 +49,29 @@ public extension Tables {
     func FISHER(_ x: BigDouble) -> BigDouble {
         return Statistics.fisher(at: x)
     }
+    /// Returns the inverse of the Fisher transformation. Use this transformation when analyzing correlations between ranges or arrays of data. If y = FISHER(x), then FISHERINV(y) = x.
+    func FISHERINV(_ y: BigDouble) -> BigDouble {
+        return Statistics.inverseFisher(at: y)
+    }
     
+    /// The gamma function (represented by `$\Gamma$`, the capital letter gamma from the Greek alphabet) is one commonly used extension of the factorial function to complex numbers. The gamma function is defined for all complex numbers except the non-positive integers. For any positive integer n: `$\Gamma (n)=(n-1)!$`
+    /// - Parameter x: Any number
+    /// - Returns: The gamma function value.
+    func GAMMA(_ x: BigDouble) -> BigDouble {
+        return gamma(x)
+    }
     
+    /// Returns the natural logarithm of the gamma function, `$\Gamma (x)$`.
+    /// - Parameter x: Any number
+    func GAMMALN(_ x: BigDouble) -> BigDouble {
+        return ln(gamma(x))
+    }
+    
+    /// Integral of the Gauss function
+    ///
+    /// Computed using: `$$ \int_{0}^{x}\frac{1}{\sqrt{2\pi}}*e^{-\frac{x^{2}}{2}}dx = \frac{1}{2}\cdot \operatorname{erf}\left( \frac{x}{\sqrt{2}} \right) $$`
+    /// - Parameter x: Any number
+    func GAUSS(_ x: BigDouble) -> BigDouble {
+        return Statistics.gauss(at: x)
+    }
 }

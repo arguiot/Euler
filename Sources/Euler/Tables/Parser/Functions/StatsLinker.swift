@@ -33,6 +33,26 @@ internal extension Tables {
                 guard let n = f.number else { return CellValue.nil }
                 return CellValue(number: self.FISHER(n))
             },
+            "FISHERINV": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.FISHERINV(n))
+            },
+            "GAMMA": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.GAMMA(n))
+            },
+            "GAMMALN": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.GAMMALN(n))
+            },
+            "GAUSS": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return CellValue(number: self.GAUSS(n))
+            },
         ]
     }
 }

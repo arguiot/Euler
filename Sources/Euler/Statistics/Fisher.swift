@@ -14,4 +14,12 @@ public extension Statistics {
     static func fisher(at x: BigDouble) -> BigDouble {
         return ln((1 + x) / (1 - x)) / 2
     }
+    
+    /// Returns the inverse of the Fisher transformation. Use this transformation when analyzing correlations between ranges or arrays of data. If y = fisher(x), then inverseFisher(y) = x.
+    /// - Parameter y: The image of x using the fisher transformation
+    /// - Returns: The inverse of the Fisher transformation.
+    static func inverseFisher(at y: BigDouble) -> BigDouble {
+        let e2y = exp(2 * y)
+        return (e2y - 1) / (e2y + 1)
+    }
 }
