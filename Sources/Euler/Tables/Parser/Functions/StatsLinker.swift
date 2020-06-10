@@ -53,6 +53,21 @@ internal extension Tables {
                 guard let n = f.number else { return CellValue.nil }
                 return CellValue(number: self.GAUSS(n))
             },
+            "GEOMEAN": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                return CellValue(number: self.GEOMEAN(a))
+            },
+            "HARMEAN": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                return CellValue(number: self.HARMEAN(a))
+            },
+            "KURT": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                return CellValue(number: self.KURT(a))
+            },
         ]
     }
 }

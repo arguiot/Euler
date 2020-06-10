@@ -74,4 +74,45 @@ public extension Tables {
     func GAUSS(_ x: BigDouble) -> BigDouble {
         return Statistics.gauss(at: x)
     }
+    /// Returns the geometric mean.
+    ///
+    /// In mathematics, the geometric mean is a mean or average, which indicates the central tendency or typical value of a set of numbers by using the product of their values (as opposed to the arithmetic mean which uses their sum). The geometric mean is defined as the nth root of the product of `$n$` numbers, i.e., for a set of numbers `$x_1, x_2, ..., x_n,$` the geometric mean is defined as `$$ \left(\prod_{i=1}^n x_i\right)^\frac{1}{n} = \sqrt[n]{x_1 x_2 \cdots x_n} $$`
+    ///
+    func GEOMEAN(_ array: [BigDouble]) -> BigDouble {
+        let stats = Statistics(list: array)
+        return stats.geometricMean
+    }
+    /// Returns the harmonic mean
+    ///
+    /// In mathematics, the harmonic mean (sometimes called the subcontrary mean) is one of several kinds of average, and in particular, one of the Pythagorean means. Typically, it is appropriate for situations when the average of rates is desired.
+    ///
+    /// The harmonic mean can be expressed as the reciprocal of the arithmetic mean of the reciprocals of the given set of observations. As a simple example, the harmonic mean of 1, 4, and 4 is
+    /// `$$ \left(\frac{1^{-1} + 4^{-1} + 4^{-1}}{3}\right)^{-1} = \frac{3}{\frac{1}{1} + \frac{1}{4} + \frac{1}{4}} = \frac{3}{1.5} = 2 $$`
+    ///
+    func HARMEAN(_ array: [BigDouble]) -> BigDouble {
+        let stats = Statistics(list: array)
+        return stats.harmonicMean
+    }
+    
+    /// Returns the kurtosis of a data set. Kurtosis characterizes the relative peakedness or flatness of a distribution compared with the normal distribution. Positive kurtosis indicates a relatively peaked distribution. Negative kurtosis indicates a relatively flat distribution.
+    func KURT(_ array: [BigDouble]) -> BigDouble {
+        let stats = Statistics(list: array)
+        let mean = stats.mean
+        let n = BN(array.count)
+        var sigma: BN = .zero
+        for i in 0..<array.count {
+            sigma += (array[i] - mean) ** 4
+        }
+        let powed = pow(stats.standardDeviation, 4)
+        guard powed != 0 else { return 0 }
+        sigma = sigma / powed
+        let div1 = ((n - 1) * (n - 2) * (n - 3))
+        guard div1 != 0 else { return .zero }
+        let p1 = (n * (n + 1)) / div1
+        let div2 = ((n - 2) * (n - 3))
+        guard div2 != 0 else { return .zero }
+        let p2 = (n - 1) / div2
+        
+        return p1 * sigma - 3 * (n - 1) * p2
+    }
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 public extension Statistics {
+    // MARK: Regression
     
     /// Linear regression on a set of points
     ///

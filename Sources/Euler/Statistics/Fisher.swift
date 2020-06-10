@@ -8,6 +8,7 @@
 import Foundation
 
 public extension Statistics {
+    // MARK: Fisher
     /// Returns the Fisher transformation at x. This transformation produces a function that is normally distributed rather than skewed. Use this function to perform hypothesis testing on the correlation coefficient.
     /// - Parameter x: A numeric value for which you want the transformation.
     /// - Returns: The Fisher transformation at x.

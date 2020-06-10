@@ -8,6 +8,8 @@
 import Foundation
 
 public extension Statistics {
+    // MARK: Gauss
+    
     /// In mathematics, the error function (also called the Gauss error function), often denoted by erf, is a complex function of a complex variable defined as: `$$\operatorname{erf} z = \frac{2}{\sqrt\pi}\int_0^z e^{-t^2}\,dt$$`
     /// - Parameter x: Any number
     /// - Returns: `$\operatorname{erf}(x)$`

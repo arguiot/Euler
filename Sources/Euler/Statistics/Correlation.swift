@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate enum CorrelationError: LocalizedError {
+public enum CorrelationError: LocalizedError {
     case ArrayLengthIssue
     case SQRTProblem
     public var errorDescription: String? {
@@ -21,6 +21,8 @@ fileprivate enum CorrelationError: LocalizedError {
 }
 
 public extension Statistics {
+    // MARK: Correlation
+    
     /// This function returns the correlation coefficient of two cell ranges.
     ///
     /// Use the correlation coefficient to determine the relationship between two properties. For example, you can examine the relationship between a location's average temperature and the use of air conditioners.
