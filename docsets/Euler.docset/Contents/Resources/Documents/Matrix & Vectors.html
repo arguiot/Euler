@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Generators  Reference</title>
+    <title>Matrix &amp; Vectors  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <link rel="stylesheet" type="text/css" href="css/katex.min.css" />
@@ -16,9 +16,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Section/Generators" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Section/Matrix &amp; Vectors" class="dashAnchor"></a>
 
-    <a title="Generators  Reference"></a>
+    <a title="Matrix &amp; Vectors  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -46,7 +46,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">Euler Reference</a>
       <img class="carat" src="img/carat.png" />
-      Generators  Reference
+      Matrix &amp; Vectors  Reference
     </p>
 
     <div class="content-wrapper">
@@ -376,7 +376,7 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Generators</h1>
+            <h1>Matrix &amp; Vectors</h1>
             
           </div>
         </section>
@@ -388,9 +388,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler7CollatzV"></a>
-                    <a name="//apple_ref/swift/Struct/Collatz" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler7CollatzV">Collatz</a>
+                    <a name="/s:5Euler6MatrixV"></a>
+                    <a name="//apple_ref/swift/Struct/Matrix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6MatrixV">Matrix</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -398,24 +398,44 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An Iterator for the Collatz conjecture</p>
+                        <p>Simple Matrix type</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Not available on Linux
 
-<p>The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined as follows: start with any positive integer n. Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.</p>
+</div>
 
-<p>After it reaches 1, the iterator will return <code>nil</code></p>
+<p>Matrix uses the Accelerate.framework for most of its operations, so it should be pretty fast &ndash; but no doubt there&rsquo;s lots of room for improvement.
+Since the Accelerate framework works a lot with <code>Double</code>, I had to find a compromise between performance and compatibility with other <code>Euler</code> object, such as <code><a href="Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></code>. I made some convenience initializer, but make sure your code converts these <code><a href="Numbers.html#/s:5Euler9BigNumbera">BigNumber</a></code> to <code>Double</code> using <code>BigNumber.asDouble</code></p>
 
-                        <a href="Structs/Collatz.html" class="slightly-smaller">See more</a>
+<p>For example, here&rsquo;s how you can use Matrix as part of the k-nearest neighbors algorithm:</p>
+<pre class="highlight swift"><code><span class="c1">// load your data set into matrix X, where each row represents one training</span>
+<span class="c1">// example, and each column a feature</span>
+<span class="k">let</span> <span class="nv">X</span> <span class="o">=</span> <span class="kt">Matrix</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="c1">// load your test example into the row vector x</span>
+<span class="k">let</span> <span class="nv">x</span> <span class="o">=</span> <span class="kt">Matrix</span><span class="p">(</span><span class="nv">rows</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">columns</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="c1">// Calculate the distance between the test example and every training example</span>
+<span class="c1">// and store this in a new column vector</span>
+<span class="k">let</span> <span class="nv">distances</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="nf">tile</span><span class="p">(</span><span class="kt">X</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span> <span class="o">-</span> <span class="kt">X</span><span class="p">)</span><span class="o">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="nf">sumRows</span><span class="p">()</span><span class="o">.</span><span class="nf">sqrt</span><span class="p">()</span>
+</code></pre>
+
+                        <a href="Structs/Matrix.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Collatz</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Matrix</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Matrix</span><span class="p">:</span> <span class="kt">ExpressibleByArrayLiteral</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Matrix</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Matrix</span><span class="p">:</span> <span class="kt">Sequence</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Collatz.swift#L17-L42">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L32-L36">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -423,9 +443,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler9FibonacciV"></a>
-                    <a name="//apple_ref/swift/Struct/Fibonacci" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler9FibonacciV">Fibonacci</a>
+                    <a name="/s:5Euler6VectorV"></a>
+                    <a name="//apple_ref/swift/Struct/Vector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6VectorV">Vector</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -433,57 +453,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An Iterator for the Fibonacci sequence</p>
+                        <p>Vector object</p>
 
-<p>In mathematics, the Fibonacci numbers, commonly denoted Fn form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1.</p>
+<p>In the Euclidean geometry, a vector is what is needed to &ldquo;carry&rdquo; the point A to the point B; it is a geometric object that has magnitude (or length) and direction. Vectors can be added to other vectors according to vector algebra. A Euclidean vector is frequently represented by a line segment with a definite direction, or graphically as an arrow, connecting an initial point A with a terminal point B, and denoted by <span class='math m-inline'>\overrightarrow{AB}</span>.</p>
 
-<p>Since the sequence is infinite, the iterator will always return a <code><a href="Structs/BigInt.html">BigInt</a></code>.</p>
-
-                        <a href="Structs/Fibonacci.html" class="slightly-smaller">See more</a>
+                        <a href="Structs/Vector.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Fibonacci</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Vector</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Fibonacci.swift#L16-L43">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler5SieveV"></a>
-                    <a name="//apple_ref/swift/Struct/Sieve" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5SieveV">Sieve</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A generator for finding prime numbers</p>
-
-<p>A prime sieve or prime number sieve is a fast type of algorithm for finding primes. It does so by iterating over the natural integers, and returning every number that is indeed prime.</p>
-
-                        <a href="Structs/Sieve.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Sieve</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Sieve.swift#L14-L47">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Vector.swift#L14-L96">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

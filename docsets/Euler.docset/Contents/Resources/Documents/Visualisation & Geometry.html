@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Generators  Reference</title>
+    <title>Visualisation &amp; Geometry  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <link rel="stylesheet" type="text/css" href="css/katex.min.css" />
@@ -16,9 +16,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Section/Generators" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Section/Visualisation &amp; Geometry" class="dashAnchor"></a>
 
-    <a title="Generators  Reference"></a>
+    <a title="Visualisation &amp; Geometry  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -46,7 +46,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">Euler Reference</a>
       <img class="carat" src="img/carat.png" />
-      Generators  Reference
+      Visualisation &amp; Geometry  Reference
     </p>
 
     <div class="content-wrapper">
@@ -376,7 +376,7 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Generators</h1>
+            <h1>Visualisation &amp; Geometry</h1>
             
           </div>
         </section>
@@ -388,9 +388,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler7CollatzV"></a>
-                    <a name="//apple_ref/swift/Struct/Collatz" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler7CollatzV">Collatz</a>
+                    <a name="/s:5Euler5GraphC"></a>
+                    <a name="//apple_ref/swift/Class/Graph" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5GraphC">Graph</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -398,24 +398,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An Iterator for the Collatz conjecture</p>
+                        <p>Object that lets you plot graphs natively.</p>
 
-<p>The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined as follows: start with any positive integer n. Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.</p>
+<p><code>Graph</code> is heavily based on SwiftPlot (cross platform).</p>
 
-<p>After it reaches 1, the iterator will return <code>nil</code></p>
-
-                        <a href="Structs/Collatz.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/Graph.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Collatz</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Graph</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Collatz.swift#L17-L42">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Graph.swift#L16-L43">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -423,9 +421,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler9FibonacciV"></a>
-                    <a name="//apple_ref/swift/Struct/Fibonacci" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler9FibonacciV">Fibonacci</a>
+                    <a name="/s:5Euler5PointV"></a>
+                    <a name="//apple_ref/swift/Struct/Point" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler5PointV">Point</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -433,57 +431,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An Iterator for the Fibonacci sequence</p>
+                        <p>Fondamental element in Euclidean geometry</p>
 
-<p>In mathematics, the Fibonacci numbers, commonly denoted Fn form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1.</p>
+<p>Points, considered within the framework of Euclidean geometry, are one of the most fundamental objects. Euclid originally defined the point as &ldquo;that which has no part&rdquo;. In two-dimensional Euclidean space, a point is represented by an ordered pair (x, y) of numbers, where the first number conventionally represents the horizontal and is often denoted by x, and the second number conventionally represents the vertical and is often denoted by y. This idea is easily generalized to three-dimensional Euclidean space, where a point is represented by an ordered triplet (x, y, z) with the additional third number representing depth and often denoted by z. Further generalizations are represented by an ordered tuplet of n terms, (a1, a2, … , an) where n is the dimension of the space in which the point is located.</p>
 
-<p>Since the sequence is infinite, the iterator will always return a <code><a href="Structs/BigInt.html">BigInt</a></code>.</p>
-
-                        <a href="Structs/Fibonacci.html" class="slightly-smaller">See more</a>
+                        <a href="Structs/Point.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Fibonacci</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Point</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Fibonacci.swift#L16-L43">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler5SieveV"></a>
-                    <a name="//apple_ref/swift/Struct/Sieve" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5SieveV">Sieve</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A generator for finding prime numbers</p>
-
-<p>A prime sieve or prime number sieve is a fast type of algorithm for finding primes. It does so by iterating over the natural integers, and returning every number that is indeed prime.</p>
-
-                        <a href="Structs/Sieve.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Sieve</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Sieve.swift#L14-L47">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Geometry/Point.swift#L14-L52">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

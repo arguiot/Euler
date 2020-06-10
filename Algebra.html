@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Generators  Reference</title>
+    <title>Algebra  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <link rel="stylesheet" type="text/css" href="css/katex.min.css" />
@@ -16,9 +16,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Section/Generators" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Section/Algebra" class="dashAnchor"></a>
 
-    <a title="Generators  Reference"></a>
+    <a title="Algebra  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -46,7 +46,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">Euler Reference</a>
       <img class="carat" src="img/carat.png" />
-      Generators  Reference
+      Algebra  Reference
     </p>
 
     <div class="content-wrapper">
@@ -376,7 +376,7 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Generators</h1>
+            <h1>Algebra</h1>
             
           </div>
         </section>
@@ -388,9 +388,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler7CollatzV"></a>
-                    <a name="//apple_ref/swift/Struct/Collatz" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler7CollatzV">Collatz</a>
+                    <a name="/c:@M@Euler@objc(cs)Expression"></a>
+                    <a name="//apple_ref/swift/Class/Expression" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)Expression">Expression</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -398,24 +398,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An Iterator for the Collatz conjecture</p>
+                        <p>A helper class to parse and manipulate math expressions</p>
 
-<p>The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined as follows: start with any positive integer n. Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.</p>
-
-<p>After it reaches 1, the iterator will return <code>nil</code></p>
-
-                        <a href="Structs/Collatz.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/Expression.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Collatz</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Expression</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Collatz.swift#L17-L42">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Expression.swift#L10-L133">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -423,9 +419,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Euler9FibonacciV"></a>
-                    <a name="//apple_ref/swift/Struct/Fibonacci" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler9FibonacciV">Fibonacci</a>
+                    <a name="/c:@M@Euler@objc(cs)Polynomial"></a>
+                    <a name="//apple_ref/swift/Class/Polynomial" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Euler@objc(cs)Polynomial">Polynomial</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -433,57 +429,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An Iterator for the Fibonacci sequence</p>
+                        <p>Special type of <code><a href="Classes/Expression.html">Expression</a></code> to represent polynomials</p>
 
-<p>In mathematics, the Fibonacci numbers, commonly denoted Fn form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1.</p>
-
-<p>Since the sequence is infinite, the iterator will always return a <code><a href="Structs/BigInt.html">BigInt</a></code>.</p>
-
-                        <a href="Structs/Fibonacci.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/Polynomial.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Fibonacci</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span><span class="p">,</span> <span class="kt">Sequence</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Polynomial</span> <span class="p">:</span> <span class="kt"><a href="Classes/Expression.html">Expression</a></span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Fibonacci.swift#L16-L43">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Euler5SieveV"></a>
-                    <a name="//apple_ref/swift/Struct/Sieve" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Euler5SieveV">Sieve</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A generator for finding prime numbers</p>
-
-<p>A prime sieve or prime number sieve is a fast type of algorithm for finding primes. It does so by iterating over the natural integers, and returning every number that is indeed prime.</p>
-
-                        <a href="Structs/Sieve.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Sieve</span> <span class="p">:</span> <span class="kt">IteratorProtocol</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Generators/Sieve.swift#L14-L47">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Algebra/Polynomial.swift#L11-L367">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
