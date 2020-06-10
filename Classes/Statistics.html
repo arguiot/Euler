@@ -813,6 +813,163 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Euler10StatisticsC13inverseFisher2atAA9BigDoubleVAG_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/inverseFisher(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC13inverseFisher2atAA9BigDoubleVAG_tFZ">inverseFisher(at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the inverse of the Fisher transformation. Use this transformation when analyzing correlations between ranges or arrays of data. If y = fisher(x), then inverseFisher(y) = x.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">inverseFisher</span><span class="p">(</span><span class="n">at</span> <span class="nv">y</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>y</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image of x using the fisher transformation</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The inverse of the Fisher transformation.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Fisher.swift#L21-L24">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC3ERF2atAA9BigDoubleVAG_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/ERF(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC3ERF2atAA9BigDoubleVAG_tFZ">ERF(at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>In mathematics, the error function (also called the Gauss error function), often denoted by erf, is a complex function of a complex variable defined as: <div class='math m-block'>\operatorname{erf} z = \frac{2}{\sqrt\pi}\int_0^z e^{-t^2}\,dt</div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="kt">ERF</span><span class="p">(</span><span class="n">at</span> <span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Any number</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><span class='math m-inline'>\operatorname{erf}(x)</span></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Gauss.swift#L14-L23">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler10StatisticsC5gauss2atAA9BigDoubleVAG_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/gauss(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler10StatisticsC5gauss2atAA9BigDoubleVAG_tFZ">gauss(at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Integral of the Gauss function</p>
+
+<p>Computed using: <div class='math m-block'> \int_{0}^{x}\frac{1}{\sqrt{2\pi}}*e^{-\frac{x^{2}}{2}}dx = \frac{1}{2}\cdot \operatorname{erf}\left( \frac{x}{\sqrt{2}} \right) </div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">gauss</span><span class="p">(</span><span class="n">at</span> <span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Any number</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Statistics/Gauss.swift#L29-L33">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Euler10StatisticsC6medianAA9BigDoubleVvp"></a>
                     <a name="//apple_ref/swift/Property/median" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Euler10StatisticsC6medianAA9BigDoubleVvp">median</a>
