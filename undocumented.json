@@ -1016,6 +1016,27 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Statistics/Correlation.swift",
+      "line": 10,
+      "symbol": "CorrelationError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Statistics/Correlation.swift",
+      "line": 11,
+      "symbol": "CorrelationError.ArrayLengthIssue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Statistics/Correlation.swift",
+      "line": 12,
+      "symbol": "CorrelationError.SQRTProblem",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Tables/CellValue.swift",
       "line": 20,
       "symbol": "CellValue.nil",
