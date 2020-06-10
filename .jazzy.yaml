@@ -19,12 +19,43 @@ custom_categories:
   - pi
   - e
   - Constant
+- name: Algebra
+  children:
+  - Expression
+  - Polynomial
+- name: Tables
+  children:
+  - Tables
+  - TablesDataSource
+  - TablesDelegate
+  - CellValue
+- name: Statistics
+  children:
+  - Statistics
+- name: Generators
+  children:
+  - Collatz
+  - Fibonacci
+  - Sieve
+- name: Visualisation & Geometry
+  children:
+  - Graph
+  - Point
+- name: Matrix & Vectors
+  children:
+  - Matrix
+  - Vector
+- name: Cryptography
+  children:
+  - RSA
+  - String
+  - Data
 - name: Operations / Functions
   children:
   - abs(_:)
   - ceil(_:)
   - combinations(_:_:)
-  - combinationsWithRepititions(_:_:)
+  - combinationsWithRepetitions(_:_:)
   - encodeMD5(digest:)
   - floor(_:)
   - gcd(_:_:)
@@ -42,15 +73,23 @@ custom_categories:
   - pow(_:_:)
   - pow(_:_:)
   - steinGcd(_:_:)
-- name: Statistics
+  - exp(_:)
+  - factorial(_:)
+  - gamma(_:)
+  - inverse(_:_:)
+  - leastFactor(_:)
+  - leastFactor(_:)
+  - ln(_:)
+  - ln(_:precision:)
+  - sum(_:)
+  - sum(_:)
+- name: Array manipulation
   children:
-  - Statistics
-- name: Generators
+  - Array
+- name: Errors
   children:
-  - Collatz
-  - Fibonacci
-  - Sieve
-- name: Algebra Parser
+  - EvaluationError
+- name: Algebra - Advanced
   children:
   - Parser
   - Lexer
@@ -58,19 +97,13 @@ custom_categories:
   - Group
   - Token
   - Node
+  - CellAddressNode
   - ExpressionNode
   - ParenthesisNode
   - ConstantNode
   - SymbolNode
+  - StringNode
   - OperatorNode
   - FunctionNode
   - NullNode
-- name: Cryptography
-  children:
-  - String
-- name: Tables
-  children:
-  - Tables
-- name: Array manipulation
-  children:
-  - Array
+
