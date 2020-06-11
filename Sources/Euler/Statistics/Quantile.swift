@@ -24,7 +24,7 @@ public extension Statistics {
     // MARK: Median & Quantile
     /// Returns the median of the given numbers. The median is the number in the middle of a set of numbers.
     ///
-    /// If there is an even number of numbers in the set, then MEDIAN calculates the average of the two numbers in the middle. See the second formula in the example.
+    /// If there is an even number of numbers in the set, then MEDIAN calculates the average of the two numbers in the middle.
     ///
     var median: BigNumber {
         guard self.list.count >= 1 else { return 0 }

@@ -39,7 +39,13 @@ public extension Tables {
     func COUNT(_ array: [Any]) -> Int {
         return array.count
     }
-    
+    /// Counts the unique element of the given array
+    /// - Parameter array: Any array composed of random `Hashable` elements
+    /// - Returns: Counted value
+    func COUNTUNIQUE(_ array: [AnyHashable]) -> Int {
+        let set = Set(array)
+        return set.count
+    }
     /// Returns the sum of squares of deviations of data points from their sample mean.
     func DEVSQ(_ array: [BigDouble]) -> BigDouble {
         let stats = Statistics(list: array)
@@ -114,5 +120,50 @@ public extension Tables {
         let p2 = (n - 1) / div2
         
         return p1 * sigma - 3 * (n - 1) * p2
+    }
+    
+    /// Returns the maximum element in the sequence.
+    /// - Parameter array: Any `BigDouble` array
+    /// - Returns: The sequence’s maximum element. If the sequence has no elements, returns nil.
+    func MAX(_ array: [BigDouble]) -> BigDouble? {
+        return array.max()
+    }
+    
+    /// The median is the number in the middle of a set of numbers.
+    ///
+    /// If there is an even number of numbers in the set, then MEDIAN calculates the average of the two numbers in the middle.
+    /// - Parameter array: Any `BigDouble` array
+    /// - Returns: The median of the given numbers.
+    func MEDIAN(_ array: [BigDouble]) -> BigDouble {
+        let stats = Statistics(list: array)
+        return stats.median
+    }
+    
+    /// Returns the minimum element in the sequence.
+    /// - Parameter array: Any `BigDouble` array
+    /// - Returns: The sequence’s minimum element. If the sequence has no elements, returns nil.
+    func MIN(_ array: [BigDouble]) -> BigDouble? {
+        return array.min()
+    }
+    
+    /// Returns the number of permutations for a given number of objects that can be selected from number objects.
+    ///
+    /// A permutation is any set or subset of objects or events where internal order is significant. Permutations are different from combinations, for which the internal order is not significant. Use this function for lottery-style probability calculations.
+    /// - Parameters:
+    ///   - number: An integer that describes the number of objects.
+    ///   - numberChosen: An integer that describes the number of objects in each permutation.
+    func PERMUT(_ number: Int, _ numberChosen: Int) -> BigInt {
+        let perms = permutations(number, numberChosen)
+        return perms
+    }
+    
+    /// Phi function
+    /// - Parameter x: the number for which you want the density of the standard normal distribution.
+    /// - Returns: the value of the density function for a standard normal distribution.
+    func PHI(_ x: BigDouble) -> BigDouble {
+        let sqrt2pi = 2.5066282746310002 // sqrt(2*pi) already computed
+        let input = -0.5 * x * x
+        let ex = exp(input)
+        return ex / sqrt2pi
     }
 }
