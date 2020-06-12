@@ -27,7 +27,7 @@ public extension Statistics {
     /// If there is an even number of numbers in the set, then MEDIAN calculates the average of the two numbers in the middle.
     ///
     var median: BigNumber {
-        guard self.list.count >= 1 else { return 0 }
+        guard self.list.count > 1 else { return 0 }
         let sorted = self.list.sorted()
         
         let half = Int(floor(Double(sorted.count) / 2.0))
