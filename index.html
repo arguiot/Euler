@@ -389,6 +389,23 @@ A computanional framework written in Swift
 </div>
 
 <p>Euler is a mathematical framework that is packed up with tons of useful mathematical functions. It is composed of functions in most mathematical fields such as algebra, number theory, statistics, etc&hellip; It was designed to help you turn your computer into a mathematical guru.</p>
+<h1 id='links' class='heading'>Links</h1>
+
+<ul>
+<li><strong>Documentation:</strong> <a href="https://euler.arguiot.com">https://euler.arguiot.com</a></li>
+</ul>
+<h1 id='showcase' class='heading'>Showcase</h1>
+
+<p>Here is a list of apps using Euler to work (not exhaustive)</p>
+
+<p><img src="./Euclid.png" alt="Euclid" height="200"></p>
+
+<blockquote>
+<p><strong>Euclid Calculator</strong></p>
+
+<p>Euclid is a modern and fully featured calculator for macOS that aims to replace the default calculation app. Euclid uses Euler to parse and evaluate every calculations. It relies heavily on the Algebra and Tables modules.</p>
+</blockquote>
+<h1 id='project' class='heading'>Project</h1>
 <h3 id='inspiration' class='heading'>Inspiration</h3>
 
 <p>The project was largely inspired by:</p>
@@ -403,7 +420,42 @@ A computanional framework written in Swift
 
 <p>In retrospect, it isn’t a surprise that Swift is a good fit for the needs of this project. Swift was designed and built by a close-knit team. That team previously built a highly modular and composable compiler infrastructure (LLVM), a compiler and runtime for a highly dynamic Smalltalk-derived language (Objective-C), the compiler for a highly static language with a capable generics system (C++), and a path-sensitive static analysis engine (the Clang static analyzer). Furthermore, the goals for Swift’s design was to build something that was as easy to learn and use as a scripting language, but which had enough power to be used as a system’s programming language.</p>
 
-<p>Swift was the perfect language, because of its performance, modularity, easy to read syntax and concurrrecy APIs. Swift aims to maximize clarity of code, and thus it fights to reduce boilerplate. The top-end goal of Swift is to optimize the time it takes to write and maintain the project, which includes debugging time and other things that go beyond just pounding out the code.</p>
+<p>Swift was the perfect language, because of its performance, modularity, easy to read syntax and concurrency APIs. Swift aims to maximize clarity of code, and thus it fights to reduce boilerplate. The top-end goal of Swift is to optimize the time it takes to write and maintain the project, which includes debugging time and other things that go beyond just pounding out the code.</p>
+<h3 id='goal' class='heading'>Goal</h3>
+
+<p>Euler aims to provide provide the building blocks of numerical computing in Swift, as a set of fine-grained modules bundled together into a single Swift package. Euler is intended to be used to experiment with Swift and with its math capabilities. It also aims to serve as an algorithm database that could be ported to other languages.</p>
+<h3 id='organization' class='heading'>Organization</h3>
+
+<p>Euler is built around two main objects: <code><a href="Structs/BigDouble.html">BigDouble</a></code> and <code><a href="Structs/BigInt.html">BigInt</a></code>. They are both used to represent big numbers with precision. You can see Euler as a set of modules:</p>
+
+<ul>
+<li>Numerics: <code><a href="Structs/BigDouble.html">BigDouble</a></code> / <code><a href="Structs/BigInt.html">BigInt</a></code> &amp; more
+&gt; Helps to work with numbers</li>
+<li>Algebra: <code><a href="Classes/Expression.html">Expression</a></code>
+&gt; Helps parsing and working with mathematical expressions</li>
+<li>Tables
+&gt; <code><a href="Classes/Tables.html">Tables</a></code> was made for developing Excel-like software / parser.</li>
+<li><p>Statistics</p>
+
+<blockquote>
+<p><code><a href="Classes/Statistics.html">Statistics</a></code> was designed to help with the mathematics of the collection, organization, and interpretation of numerical data, especially the analysis of population characteristics by inference from sampling.</p>
+</blockquote></li>
+<li><p>Visualisation &amp; Geometry (<code><a href="Classes/Graph.html">Graph</a></code>)</p>
+
+<blockquote>
+<p>Utility for visualizing any set of <code><a href="Structs/Point.html">Point</a></code> using SwiftPlot.</p>
+</blockquote></li>
+<li><p>Matrix &amp; Vectors</p>
+
+<blockquote>
+<p>Simple Matrix/Vector type. :warning: It only works on Apple devices, where    <code>Accelerate</code> is supported.</p>
+</blockquote></li>
+<li><p>Cryptography</p>
+
+<blockquote>
+<p>Basic crypto algorithm implemented. We don’t recommend using this in production as this is more for experimental purpose.</p>
+</blockquote></li>
+</ul>
 
           </div>
         </section>
