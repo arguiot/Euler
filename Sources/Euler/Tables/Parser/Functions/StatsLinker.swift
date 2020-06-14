@@ -101,6 +101,32 @@ internal extension Tables {
                 guard let n = f.number else { return CellValue.nil }
                 return CellValue(number: self.PHI(n))
             },
+            "PERCENTILE": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                guard a.count >= 2 else { return CellValue.nil }
+                guard let d = a.last?.asDouble() else { return CellValue.nil }
+                let array = Array(a.dropLast())
+                return CellValue(number: try self.PERCENTILE(array, percent: d))
+            },
+            "SKEW": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                guard a.count >= 2 else { return CellValue.nil }
+                return CellValue(number: self.SKEW(a))
+            },
+            "STDEV": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                guard a.count >= 1 else { return CellValue.nil }
+                return CellValue(number: self.STDEV(a))
+            },
+            "VAR": { args in
+                let tmp = args.map { $0.number }
+                guard let a = tmp as? [BigDouble] else { return CellValue.nil }
+                guard a.count >= 1 else { return CellValue.nil }
+                return CellValue(number: self.VAR(a))
+            }
         ]
     }
 }

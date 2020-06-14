@@ -166,4 +166,56 @@ public extension Tables {
         let ex = exp(input)
         return ex / sqrt2pi
     }
+    
+    /// Returns the k-th percentile of values in a range. You can use this function to establish a threshold of acceptance. For example, you can decide to examine candidates who score above the 90th percentile.
+    /// - Parameters:
+    ///   - array: The array or range of data that defines relative standing.
+    ///   - percent: The percentile value in the range 0..1, exclusive.
+    func PERCENTILE(_ array: [BigDouble], percent: Double) throws -> BigDouble {
+        let stats = Statistics(list: array)
+        return try stats.quantile(percentage: percent)
+    }
+    /// Returns the skewness of a distribution. Skewness characterizes the degree of asymmetry of a distribution around its mean. Positive skewness indicates a distribution with an asymmetric tail extending toward more positive values. Negative skewness indicates a distribution with an asymmetric tail extending toward more negative values.
+    func SKEW(_ array: [BigDouble]) -> BigDouble {
+        let stats = Statistics(list: array)
+        let mean = stats.mean
+        let n = BN(array.count)
+        var sigma: BN = .zero
+        for i in 0..<array.count {
+            sigma += pow(array[i] - mean, 3)
+        }
+        let p = pow(stats.standardDeviation, 3)
+        return n * sigma / ((n - 1) * (n - 2) * p)
+    }
+    
+    /// Returns a normalized value from a distribution characterized by mean and standard deviation.
+    /// - Parameters:
+    ///   - x: The value you want to normalize
+    ///   - mean: The arithmetic mean of the distribution
+    ///   - sd: The standard deviation of the distribution
+    func STANDARDIZE(_ x: BigDouble, _ mean: BigDouble, _ sd: BigDouble) -> BigDouble {
+        return (x - mean) / sd
+    }
+    
+    /// Returns the standard deviation of the list
+    ///
+    /// The standard deviation (SD, also represented by the lower case Greek letter sigma σ for the population standard deviation or the Latin letter s for the sample standard deviation) is a measure of the amount of variation or dispersion of a set of values. A low standard deviation indicates that the values tend to be close to the mean (also called the expected value) of the set, while a high standard deviation indicates that the values are spread out over a wider range.
+    ///
+    /// Computed using: `$$ \sigma = \sqrt{\frac{\sum_{}^{}(x-\bar{x})^2}{n-1}} $$`
+    ///
+    func STDEV(_ array: [BigDouble]) -> BigDouble {
+        let stats = Statistics(list: array)
+        return stats.standardDeviation
+    }
+    
+    /// Returns the variance of the list
+    ///
+    /// In probability theory and statistics, variance is the expectation of the squared deviation of a random variable from its mean. Informally, it measures how far a set of (random) numbers are spread out from their average value.
+    ///
+    /// Computed using: `$$ V = \sigma^2 = \frac{\sum_{}^{}(x-\bar{x})^2}{n-1} $$`
+    ///
+    func VAR(_ array: [BigDouble]) -> BigDouble {
+        let stats = Statistics(list: array)
+        return stats.variance
+    }
 }

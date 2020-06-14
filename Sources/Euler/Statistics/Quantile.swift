@@ -45,7 +45,7 @@ public extension Statistics {
     /// - Parameter percentage: The percentage of distribution (ex:  0.25 is the first quartile)
     func quantile(percentage: Double) throws -> BigNumber {
         guard percentage > 0.0 && percentage < 1.0 else { throw QuantileError.PercentageIssue }
-        guard self.list.count >= 1 else { throw QuantileError.ArrayLength }
+        guard self.list.count > 1 else { throw QuantileError.ArrayLength }
         var array = self.list
         let n = array.removeFirst()
         let sorted = array.sorted()
