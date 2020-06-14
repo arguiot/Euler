@@ -25,7 +25,7 @@
         <a class="header-link" href="../index.html">
           Euler 0.1 Docs
         </a>
-         (80% documented)
+         (81% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -7706,6 +7706,238 @@ The DATEVALUE function is helpful in cases where a worksheet contains dates in a
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L163-L168">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC10PERCENTILE_7percentAA9BigDoubleVSayAGG_SdtKF"></a>
+                    <a name="//apple_ref/swift/Method/PERCENTILE(_:percent:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC10PERCENTILE_7percentAA9BigDoubleVSayAGG_SdtKF">PERCENTILE(_:<wbr>percent:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the k-th percentile of values in a range. You can use this function to establish a threshold of acceptance. For example, you can decide to examine candidates who score above the 90th percentile.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">PERCENTILE</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">],</span> <span class="nv">percent</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>array</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The array or range of data that defines relative standing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>percent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The percentile value in the range 0..1, exclusive.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L174-L177">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC4SKEWyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/SKEW(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC4SKEWyAA9BigDoubleVSayAFGF">SKEW(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the skewness of a distribution. Skewness characterizes the degree of asymmetry of a distribution around its mean. Positive skewness indicates a distribution with an asymmetric tail extending toward more positive values. Negative skewness indicates a distribution with an asymmetric tail extending toward more negative values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">SKEW</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L179-L189">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC11STANDARDIZEyAA9BigDoubleVAF_A2FtF"></a>
+                    <a name="//apple_ref/swift/Method/STANDARDIZE(_:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC11STANDARDIZEyAA9BigDoubleVAF_A2FtF">STANDARDIZE(_:<wbr>_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a normalized value from a distribution characterized by mean and standard deviation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">STANDARDIZE</span><span class="p">(</span><span class="n">_</span> <span class="nv">x</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">mean</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">sd</span><span class="p">:</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>x</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value you want to normalize</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mean</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The arithmetic mean of the distribution</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sd</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The standard deviation of the distribution</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L196-L198">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC5STDEVyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/STDEV(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC5STDEVyAA9BigDoubleVSayAFGF">STDEV(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the standard deviation of the list</p>
+
+<p>The standard deviation (SD, also represented by the lower case Greek letter sigma σ for the population standard deviation or the Latin letter s for the sample standard deviation) is a measure of the amount of variation or dispersion of a set of values. A low standard deviation indicates that the values tend to be close to the mean (also called the expected value) of the set, while a high standard deviation indicates that the values are spread out over a wider range.</p>
+
+<p>Computed using: <div class='math m-block'> \sigma = \sqrt{\frac{\sum_{}^{}(x-\bar{x})^2}{n-1}} </div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">STDEV</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L206-L209">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Euler6TablesC3VARyAA9BigDoubleVSayAFGF"></a>
+                    <a name="//apple_ref/swift/Method/VAR(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Euler6TablesC3VARyAA9BigDoubleVSayAFGF">VAR(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the variance of the list</p>
+
+<p>In probability theory and statistics, variance is the expectation of the squared deviation of a random variable from its mean. Informally, it measures how far a set of (random) numbers are spread out from their average value.</p>
+
+<p>Computed using: <div class='math m-block'> V = \sigma^2 = \frac{\sum_{}^{}(x-\bar{x})^2}{n-1} </div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="kt">VAR</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/BigDouble.html">BigDouble</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Tables/Formulas/Statistical.swift#L217-L220">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
