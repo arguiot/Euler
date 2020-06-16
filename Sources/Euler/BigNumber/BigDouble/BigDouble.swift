@@ -206,6 +206,7 @@ public struct BigDouble:
         var exp = BigDouble(1)
         
         for c in useString.reversed() {
+            guard 2...36 ~= radix else { return nil}
             let int = Int(String(c), radix: radix)
             if int != nil {
                 let value =  BigDouble(int!)

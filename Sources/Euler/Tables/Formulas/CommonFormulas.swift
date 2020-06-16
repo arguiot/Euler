@@ -35,8 +35,7 @@ public extension Tables {
     /// Arc-Cotangent of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
     func ACOT(_ number: BigNumber) throws -> BigNumber {
-        let mod = number % (2 * BigDouble(constant: .pi))
-        guard let double = mod.asDouble() else { throw TablesError.Overflow }
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         if BN.radians == true {
             return BigDouble(atan(1 / double))
         }
@@ -47,7 +46,8 @@ public extension Tables {
     /// - Parameter number: Any `BigDouble`
     func ACOTH(_ number: BigNumber) throws -> BigNumber {
         guard let double = number.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(0.5 * log(double + 1) / (double - 1))
+        guard double != 1 else { throw TablesError.DivisionByZero }
+        return BigDouble(0.5 * log((double + 1) / (double - 1)))
     }
     
     // MARK: TODO: AGGREGATE + ARABIC
@@ -55,8 +55,7 @@ public extension Tables {
     /// Arc-Sinus of a number.
     /// - Parameter number: Any `BigDouble` less than 2pi
     func ASIN(_ number: BigNumber) throws -> BigNumber {
-        let mod = number % (2 * BigDouble(constant: .pi))
-        guard let double = mod.asDouble() else { throw TablesError.Overflow }
+        guard let double = number.asDouble() else { throw TablesError.Overflow }
         if BN.radians == true {
             return BigDouble(asin(double))
         }
@@ -111,7 +110,8 @@ public extension Tables {
     ///     - number: The number you want to use
     ///     - significance: The multiple to which you want to round.
     ///     - mode: Either 0 or 1 (0 by default, flooring). It will choose between flooring or ceiling the number if it's negative.
-    func CEILING(_ number: BigDouble, significance: BigDouble = 1, mode: Int = 0) -> BigDouble {
+    func CEILING(_ number: BigDouble, significance: BigDouble = 1, mode: Int = 0) throws -> BigDouble {
+        guard significance != 0 else { throw TablesError.DivisionByZero }
         if number.isPositive() {
             return ceil(number / significance) * significance
         }
@@ -130,7 +130,7 @@ public extension Tables {
     func COMBIN(_ n: BigInt, k: BigInt) throws -> BigInt {
         guard let ni = n.asInt() else { throw TablesError.Overflow }
         guard let ki = k.asInt() else { throw TablesError.Overflow }
-        return combinations(ni, ki)
+        return try combinations(ni, ki)
     }
     
     /// Returns the number of combinations (with repetitions) for a given number of items.
@@ -142,7 +142,7 @@ public extension Tables {
     func COMBINA(_ n: BigInt, k: BigInt) throws -> BigInt {
         guard let ni = n.asInt() else { throw TablesError.Overflow }
         guard let ki = k.asInt() else { throw TablesError.Overflow }
-        return combinationsWithRepetitions(ni, ki)
+        return try combinationsWithRepetitions(ni, ki)
     }
     
     /// Cosinus of a number.
@@ -213,8 +213,8 @@ public extension Tables {
     ///
     /// You can use this function for processing items that come in twos. For example, a packing crate accepts rows of one or two items. The crate is full when the number of items, rounded up to the nearest two, matches the crate's capacity.
     /// - Parameter number: The value to round.
-    func EVEN(_ number: BigDouble) -> BigInt {
-        return CEILING(number, significance: -2, mode: 1).rounded()
+    func EVEN(_ number: BigDouble) throws -> BigInt {
+        return try CEILING(number, significance: -2, mode: 1).rounded()
     }
     
     /// Returns e raised to the power of number.
@@ -228,15 +228,15 @@ public extension Tables {
     ///
     ///
     /// - Parameter int: The nonnegative number for which you want the factorial. If number is not an integer, it is truncated.
-    func FACT(_ int: BigInt) -> BigInt {
-        return factorial(int)
+    func FACT(_ int: BigInt) throws -> BigInt {
+        return try factorial(int)
     }
     /// Returns the double factorial of a number. The factorial of a number is equal to `1*2*3*...*` number.
     ///
     ///
     /// - Parameter int: The value for which to return the double factorial. If number is not an integer, it is truncated.
-    func FACTDOUBLE(_ int: BigInt) -> BigInt {
-        return factorial(factorial(int))
+    func FACTDOUBLE(_ int: BigInt) throws -> BigInt {
+        return try factorial(factorial(int))
     }
     /// Rounds number down, toward zero, to the nearest multiple of significance.
     ///
@@ -245,7 +245,8 @@ public extension Tables {
     ///     - number: The numeric value you want to round.
     ///     - significance: The multiple to which you want to round.
     ///     - mode: Either 0 or 1 (0 by default, ceiling). It will choose between flooring or ceiling the number if it's negative.
-    func FLOOR(_ number: BigDouble, significance: BigDouble = 1, mode: Int = 0) -> BigDouble {
+    func FLOOR(_ number: BigDouble, significance: BigDouble = 1, mode: Int = 0) throws -> BigDouble {
+        guard significance != .zero else { throw TablesError.DivisionByZero }
         if number.isPositive() {
             return floor(number / significance) * significance
         }
@@ -279,8 +280,8 @@ public extension Tables {
     }
     /// Rounds a number down to the nearest integer.
     /// - Parameter n: The real number you want to round down to an integer.
-    func INT(_ n: BigDouble) -> BigInt {
-        return FLOOR(n).rounded()
+    func INT(_ n: BigDouble) throws -> BigInt {
+        return try FLOOR(n).rounded()
     }
     
     /// Returns the least common multiple of integers.
@@ -373,19 +374,19 @@ public extension Tables {
     
     /// Returns the ratio of the factorial of a sum of values to the product of factorials.
     /// - Parameter numbers: Number1 is required, subsequent numbers are optional. 1 to 255 values for which you want the multinomial.
-    func MULTINOMIAL(_ numbers: BigInt...) -> BigDouble {
+    func MULTINOMIAL(_ numbers: BigInt...) throws -> BigDouble {
         let sum = numbers.reduce(BigInt.zero) { $0 + $1 }
-        let upperFac = BigDouble(factorial(sum))
-        let fac = BigDouble(numbers.reduce(BigInt.zero) { $0 + factorial($1) })
+        let upperFac = try BigDouble(factorial(sum))
+        let fac = try BigDouble(numbers.reduce(BigInt.zero) { try $0 + factorial($1) })
         let div = upperFac / fac
         return div
     }
     /// Returns the ratio of the factorial of a sum of values to the product of factorials.
     /// - Parameter numbers: Number1 is required, subsequent numbers are optional. 1 to 255 values for which you want the multinomial.
-    func MULTINOMIAL(array numbers: [BigInt]) -> BigDouble {
+    func MULTINOMIAL(array numbers: [BigInt]) throws -> BigDouble {
         let sum = numbers.reduce(BigInt.zero) { $0 + $1 }
-        let upperFac = BigDouble(factorial(sum))
-        let fac = BigDouble(numbers.reduce(BigInt.zero) { $0 + factorial($1) })
+        let upperFac = try BigDouble(factorial(sum))
+        let fac = try BigDouble(numbers.reduce(BigInt.zero) { try $0 + factorial($1) })
         let div = upperFac / fac
         return div
     }
@@ -441,7 +442,8 @@ public extension Tables {
     /// - Parameters:
     ///   - numerator: The dividend.
     ///   - denominator: The divisor.
-    func QUOTIENT(_ numerator: BigDouble, _ denominator: BigDouble) -> BigInt {
+    func QUOTIENT(_ numerator: BigDouble, _ denominator: BigDouble) throws -> BigInt {
+        guard denominator != 0 else { throw TablesError.DivisionByZero }
         let div = numerator / denominator
         return ceil(div)
     }
@@ -526,7 +528,7 @@ public extension Tables {
     
     /// Many functions can be approximated by a power series expansion.
     /// Returns the sum of a power series based on the formula:
-    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)$$`
+    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^{n+m}+...+a_ix^{n+(i-1)m}$$`
     /// - Parameters:
     ///   - x: The input value to the power series.
     ///   - n: The initial power to which you want to raise x.
@@ -545,7 +547,7 @@ public extension Tables {
     
     /// Many functions can be approximated by a power series expansion.
     /// Returns the sum of a power series based on the formula:
-    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^(n+m)+...+a_ix^(n+(i-1)m)$$`
+    /// `$$ SERIES(x, n, m, a)=a_1x^n+a_2x^{n+m}+...+a_ix^{n+(i-1)m}$$`
     /// - Parameters:
     ///   - x: The input value to the power series.
     ///   - n: The initial power to which you want to raise x.

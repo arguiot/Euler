@@ -44,12 +44,12 @@ internal extension Tables {
             "GAMMA": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(number: self.GAMMA(n))
+                return CellValue(number: try self.GAMMA(n))
             },
             "GAMMALN": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(number: self.GAMMALN(n))
+                return CellValue(number: try self.GAMMALN(n))
             },
             "GAUSS": { args in
                 guard let f = args.first else { return CellValue.nil }
@@ -94,7 +94,7 @@ internal extension Tables {
                 guard a.count == 2 else { return CellValue.nil }
                 let ints = a.map { $0.rounded().asInt() }
                 guard let integers = ints as? [Int] else { return CellValue.nil }
-                return CellValue(int: self.PERMUT(integers[0], integers[1]))
+                return CellValue(int: try self.PERMUT(integers[0], integers[1]))
             },
             "PHI": { args in
                 guard let f = args.first else { return CellValue.nil }

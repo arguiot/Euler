@@ -63,14 +63,14 @@ public extension Tables {
     /// The gamma function (represented by `$\Gamma$`, the capital letter gamma from the Greek alphabet) is one commonly used extension of the factorial function to complex numbers. The gamma function is defined for all complex numbers except the non-positive integers. For any positive integer n: `$\Gamma (n)=(n-1)!$`
     /// - Parameter x: Any number
     /// - Returns: The gamma function value.
-    func GAMMA(_ x: BigDouble) -> BigDouble {
-        return gamma(x)
+    func GAMMA(_ x: BigDouble) throws -> BigDouble {
+        return try gamma(x)
     }
     
     /// Returns the natural logarithm of the gamma function, `$\Gamma (x)$`.
     /// - Parameter x: Any number
-    func GAMMALN(_ x: BigDouble) -> BigDouble {
-        return ln(gamma(x))
+    func GAMMALN(_ x: BigDouble) throws -> BigDouble {
+        return try ln(gamma(x))
     }
     
     /// Integral of the Gauss function
@@ -152,8 +152,8 @@ public extension Tables {
     /// - Parameters:
     ///   - number: An integer that describes the number of objects.
     ///   - numberChosen: An integer that describes the number of objects in each permutation.
-    func PERMUT(_ number: Int, _ numberChosen: Int) -> BigInt {
-        let perms = permutations(number, numberChosen)
+    func PERMUT(_ number: Int, _ numberChosen: Int) throws -> BigInt {
+        let perms = try permutations(number, numberChosen)
         return perms
     }
     

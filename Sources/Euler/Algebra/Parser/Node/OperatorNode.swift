@@ -116,10 +116,10 @@ public class OperatorNode: NSObject, Node {
                     guard ev1 >= .zero else { throw EvaluationError.ImpossibleOperation }
                     let i = ev1.rounded()
                     if BN(i) == ev1 {
-                        return ConstantNode(factorial(i))
+                        return ConstantNode(try factorial(i))
                     }
                 
-                    return ConstantNode(gamma(ev1 + 1))
+                    return ConstantNode(try gamma(ev1 + 1))
                 case "%":
                     return ConstantNode(ev1 % ev2)
                 default:
@@ -158,9 +158,9 @@ public class OperatorNode: NSObject, Node {
             guard ev1 >= .zero else { throw EvaluationError.ImpossibleOperation }
             let i = ev1.rounded()
             if BN(i) == ev1 {
-                return CellValue(number: BigNumber(factorial(i)))
+                return CellValue(number: BigNumber(try factorial(i)))
             }
-            return CellValue(number: gamma(ev1 + 1))
+            return CellValue(number: try gamma(ev1 + 1))
         case "%":
             return CellValue(number: ev1 % ev2)
         default:

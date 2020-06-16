@@ -13,3 +13,9 @@ public typealias BigNumber = BigDouble
 public typealias BigFloat = BigDouble
 /// Alias for `BigDouble`
 public typealias BN = BigNumber
+
+
+/// A general Error object
+public enum EulerError: LocalizedError {
+    case DivisionByZero
+}

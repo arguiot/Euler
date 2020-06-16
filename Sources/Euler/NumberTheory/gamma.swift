@@ -31,14 +31,16 @@ fileprivate let coefficients: [Double] = [
 
 /// The gamma function (represented by `$\Gamma$`, the capital letter gamma from the Greek alphabet) is one commonly used extension of the factorial function to complex numbers. The gamma function is defined for all complex numbers except the non-positive integers. For any positive integer n: `$\Gamma (n)=(n-1)!$`
 /// - Parameter float: A BigNumber
-public func gamma(_ float: BigNumber) -> BigNumber {
+public func gamma(_ float: BigNumber) throws -> BigNumber {
     if float < 0.5 {
         let piT = pi * float
         let precision15 = piT * (10 ** 15)
         let rounded = precision15.rounded()
         let double = Double(rounded.asInt() ?? 0)
         let si = sin(double)
-        let y = pi / (si * gamma(1 - float))
+        let den = try si * gamma(1 - float)
+        guard den != 0 else { throw EulerError.DivisionByZero }
+        let y = pi / den
         return y
     }
     guard let floated = (float - 1).asDouble() else {
@@ -46,11 +48,13 @@ public func gamma(_ float: BigNumber) -> BigNumber {
             guard let i = float.rounded().asInt() else { return .zero }
             return BigDouble(BigInt(limbs: Limbs.recursiveMul(0, Limb(i))))
         }
-        return .zero
+        throw EulerError.DivisionByZero
     }
     var x: Double = 0.99999999999980993
     for (i, pval) in coefficients.enumerated() {
-        x += pval / (floated + Double(i) + 1)
+        let den = floated + Double(i) + 1
+        guard den != 0 else { throw EulerError.DivisionByZero }
+        x += pval / den
     }
     let t = floated + Double(coefficients.count) - 0.5
     let squareroot = sqrt(2 * .pi)
@@ -70,8 +74,8 @@ public func gamma(_ float: BigNumber) -> BigNumber {
 ///
 /// Let's say you have six bells, each with a different tone, and you want to find the number of unique sequences in which each bell can be rung once. In this example, you are calculating the factorial of six. In general, use a factorial to count the number of ways in which a group of distinct items can be arranged (also called permutations). To calculate the factorial of a number, use this function.
 /// - Parameter number: The nonnegative number for which you want the factorial. If number is not an integer, it is truncated.
-public func factorial(_ number: BigInt) -> BigInt {
-    let r = gamma(BigNumber(number + 1)).rounded()
+public func factorial(_ number: BigInt) throws -> BigInt {
+    let r = try gamma(BigNumber(number + 1)).rounded()
     if r == 0 && number.isPositive() {
         return (1 ... number).map { BigInt($0) }.reduce(BigInt(1), *)
     }

@@ -40,6 +40,11 @@ internal extension Tables {
                 guard let n = f.number else { return CellValue.nil }
                 return try CellValue(number: self.ASIN(n))
             },
+            "ASINH": { args in
+                guard let f = args.first else { return CellValue.nil }
+                guard let n = f.number else { return CellValue.nil }
+                return try CellValue(number: self.ASINH(n))
+            },
             "ATAN": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
@@ -70,16 +75,16 @@ internal extension Tables {
                 guard let arguments = tmp as? [BigNumber] else { return CellValue.nil }
                 let n = arguments[0]
                 guard args.count >= 2 else {
-                    return CellValue(number: self.CEILING(n))
+                    return CellValue(number: try self.CEILING(n))
                 }
                 let s = arguments[1]
                 guard args.count >= 3 else {
-                    return CellValue(number: self.CEILING(n, significance: s))
+                    return CellValue(number: try self.CEILING(n, significance: s))
                 }
                 guard let m = arguments[2].rounded().asInt() else {
-                    return CellValue(number: self.CEILING(n, significance: s))
+                    return CellValue(number: try self.CEILING(n, significance: s))
                 }
-                return CellValue(number: self.CEILING(n, significance: s, mode: m))
+                return CellValue(number: try self.CEILING(n, significance: s, mode: m))
             },
             "COMBIN": { args in
                 guard args.count == 2 else { return CellValue.nil }
@@ -144,7 +149,7 @@ internal extension Tables {
             "EVEN": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(int: self.EVEN(n))
+                return CellValue(int: try self.EVEN(n))
             },
             "EXP": { args in
                 guard let f = args.first else { return CellValue.nil }
@@ -154,12 +159,12 @@ internal extension Tables {
             "FACT": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(int: self.FACT(n.rounded()))
+                return CellValue(int: try self.FACT(n.rounded()))
             },
             "FACTDOUBLE": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(int: self.FACTDOUBLE(n.rounded()))
+                return CellValue(int: try self.FACTDOUBLE(n.rounded()))
             },
             "FLOOR": { args in
                 guard args.count >= 1 else { return CellValue.nil }
@@ -167,16 +172,16 @@ internal extension Tables {
                 guard let arguments = tmp as? [BigNumber] else { return CellValue.nil }
                 let n = arguments[0]
                 guard args.count >= 2 else {
-                    return CellValue(number: self.FLOOR(n))
+                    return CellValue(number: try self.FLOOR(n))
                 }
                 let s = arguments[1]
                 guard args.count >= 3 else {
-                    return CellValue(number: self.FLOOR(n, significance: s))
+                    return CellValue(number: try self.FLOOR(n, significance: s))
                 }
                 guard let m = arguments[2].rounded().asInt() else {
-                    return CellValue(number: self.FLOOR(n, significance: s))
+                    return CellValue(number: try self.FLOOR(n, significance: s))
                 }
-                return CellValue(number: self.FLOOR(n, significance: s, mode: m))
+                return CellValue(number: try self.FLOOR(n, significance: s, mode: m))
             },
             "GCD": { args in
                 let tmp = args.map { $0.number }
@@ -187,7 +192,7 @@ internal extension Tables {
             "INT": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(int: self.INT(n))
+                return CellValue(int: try self.INT(n))
             },
             "LCM": { args in
                 let tmp = args.map { $0.number }
@@ -236,7 +241,7 @@ internal extension Tables {
                 let tmp = args.map { $0.number }
                 guard let a = tmp as? [BigNumber] else { return CellValue.nil }
                 let array = a.map { $0.rounded() }
-                return CellValue(number: self.MULTINOMIAL(array: array))
+                return CellValue(number: try self.MULTINOMIAL(array: array))
             },
             "ODD": { args in
                 guard let f = args.first else { return CellValue.nil }
@@ -261,7 +266,7 @@ internal extension Tables {
                 let tmp = args.map { $0.number }
                 guard let a = tmp as? [BigNumber] else { return CellValue.nil }
                 guard a.count == 2 else { return CellValue.nil }
-                return CellValue(int: self.QUOTIENT(a[0], a[1]))
+                return CellValue(int: try self.QUOTIENT(a[0], a[1]))
             },
             "RADIANS": { args in
                 guard args.count == 1 else { return CellValue.nil }
