@@ -159,22 +159,28 @@ public extension Parser {
             let start = range.lowerBound.utf16Offset(in: out)
             let end = range.upperBound.utf16Offset(in: out)
             
-            // Finding Group1
+            var group1: String
             var open = 1
             var index = end + 1 // skipping `{`
-            
-            while open > 0 {
-                guard index < out.count else { return latex }
-                if out[index] == "{" {
-                    open += 1
-                } else if out[index] == "}" {
-                    open -= 1
+            if out.contains("\\log_{") {
+                // Finding Group1
+                while open > 0 {
+                    guard index < out.count else { return latex }
+                    if out[index] == "{" {
+                        open += 1
+                    } else if out[index] == "}" {
+                        open -= 1
+                    }
+                    index += 1
                 }
-                index += 1
+                let g1start = out.index(out.startIndex, offsetBy: end + 1)
+                let g1end = out.index(out.startIndex, offsetBy: index - 1)
+                group1 = String(out[g1start..<g1end])
+            } else {
+                let g1start = out.index(out.startIndex, offsetBy: end)
+                let g1end = out.index(out.startIndex, offsetBy: end + 1)
+                group1 = String(out[g1start..<g1end])
             }
-            let g1start = out.index(out.startIndex, offsetBy: end + 1)
-            let g1end = out.index(out.startIndex, offsetBy: index - 1)
-            let group1 = out[g1start..<g1end]
             // Finding Group2
             open = 1
             index += 1 // skipping `(`

@@ -205,17 +205,15 @@ internal extension Tables {
                 guard let a = tmp as? [BigNumber] else { return CellValue.nil }
                 guard a.count >= 1 else { return CellValue.nil }
                 guard a.count > 1 else {
-                    return CellValue(number: self.LOG(a[0]))
+                    return CellValue(number: try self.LOG(a[0]))
                 }
-                guard let base = a[1].rounded().asInt() else {
-                    return CellValue(number: self.LOG(a[0]))
-                }
-                return CellValue(number: self.LOG(a[0], base: base))
+                let base = a[1]
+                return CellValue(number: try self.LOG(a[0], base: base))
             },
             "LOG10": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(number: self.LOG10(n))
+                return CellValue(number: try self.LOG10(n))
             },
             // MARK: TODO: Matrix
             "MROUND": { args in

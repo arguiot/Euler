@@ -319,14 +319,16 @@ public extension Tables {
     /// - Parameters:
     ///   - n: The positive real number for which you want the logarithm.
     ///   - base: The base of the logarithm. If base is omitted, it is assumed to be 10.
-    func LOG(_ n: BigDouble, base: Int = 10) -> BigDouble {
-        return LN(n) / LN(BigDouble(base))
+    func LOG(_ n: BigDouble, base: BigDouble = 10) throws -> BigDouble {
+        let den = LN(base)
+        guard den != 0 else { throw TablesError.DivisionByZero }
+        return LN(n) / den
     }
     /// Returns the logarithm base 10
     /// - Parameters:
     ///   - n: The positive real number for which you want the logarithm.
-    func LOG10(_ n: BigDouble) -> BigDouble {
-        return LOG(n)
+    func LOG10(_ n: BigDouble) throws -> BigDouble {
+        return try LOG(n)
     }
     // MARK: TODO MATRICES
     #if os(macOS)
