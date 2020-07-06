@@ -107,7 +107,9 @@ extension Matrix {
              */
             
             v.grid.withUnsafeBufferPointer { src in
-                cblas_dcopy(Int32(columns), src.baseAddress, 1, &grid + r*columns, 1)
+                grid.withUnsafeMutableBufferPointer { grid in
+                    cblas_dcopy(Int32(columns), src.baseAddress, 1, grid.baseAddress! + r*columns, 1)
+                }
             }
         }
     }
@@ -195,7 +197,9 @@ extension Matrix {
              */
             
             v.grid.withUnsafeBufferPointer { src in
-                cblas_dcopy(Int32(rows), src.baseAddress, 1, &grid + c, Int32(columns))
+                grid.withUnsafeMutableBufferPointer { grid in
+                    cblas_dcopy(Int32(rows), src.baseAddress, 1, grid.baseAddress! + c, Int32(columns))
+                }
             }
         }
     }

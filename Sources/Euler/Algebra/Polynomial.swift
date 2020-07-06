@@ -190,7 +190,7 @@ public class Polynomial: Expression {
         var norm_const: BigDouble?
         // Usually the first highest coefficient is good enough. But sometimes that
         // is zero. So we look through all coefficietns to find the first viable one.
-        for coef in self.coefs where coef != 0 {
+        for coef in self.coefs where coef != BN.zero {
             norm_const = coef
             break
         }

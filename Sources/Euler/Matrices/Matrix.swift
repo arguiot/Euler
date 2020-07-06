@@ -74,7 +74,9 @@ extension Matrix {
         
         for (i, row) in data.enumerated() {
             row.withUnsafeBufferPointer { src in
-                cblas_dcopy(Int32(n), src.baseAddress! + range.lowerBound, 1, &grid + i*columns, 1)
+                grid.withUnsafeMutableBufferPointer { grid in
+                    cblas_dcopy(Int32(n), src.baseAddress! + range.lowerBound, 1, grid.baseAddress! + i*columns, 1)
+                }
             }
         }
     }
