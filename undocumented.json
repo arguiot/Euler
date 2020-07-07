@@ -79,35 +79,35 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 223,
+      "line": 224,
       "symbol": "BigDouble.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 227,
+      "line": 228,
       "symbol": "BigDouble.init(_:withPrecision:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 261,
+      "line": 262,
       "symbol": "BigDouble.init(constant:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 429,
+      "line": 430,
       "symbol": "BigDouble.rawData()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 446,
+      "line": 447,
       "symbol": "BigDouble.minimize()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -862,6 +862,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Euler.swift",
+      "line": 20,
+      "symbol": "EulerError.DivisionByZero",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MOperations.swift",
       "line": 709,
       "symbol": "Matrix.min(row:)",
@@ -961,14 +968,14 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MProperties.swift",
-      "line": 139,
+      "line": 141,
       "symbol": "Matrix.subscript(rows:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/MProperties.swift",
-      "line": 227,
+      "line": 231,
       "symbol": "Matrix.subscript(columns:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
@@ -1003,7 +1010,7 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/Matrices/Matrix.swift",
-      "line": 126,
+      "line": 128,
       "symbol": "Matrix.init(_:isColumnVector:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

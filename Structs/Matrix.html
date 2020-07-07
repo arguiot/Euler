@@ -23,9 +23,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          Euler 0.1 Docs
+          Euler 0.2.2 Docs
         </a>
-         (81% documented)
+         (80% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -188,10 +188,10 @@
                 <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler4ceilyAA6BigIntVAA0C6DoubleVF">ceil(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler12combinationsyAA6BigIntVSi_SitF">combinations(_:_:)</a>
+                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler12combinationsyAA6BigIntVSi_SitKF">combinations(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler27combinationsWithRepetitionsyAA6BigIntVSi_SitF">combinationsWithRepetitions(_:_:)</a>
+                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler27combinationsWithRepetitionsyAA6BigIntVSi_SitKF">combinationsWithRepetitions(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler9encodeMD56digestSSSays5UInt8VG_tF">encodeMD5(digest:)</a>
@@ -224,7 +224,7 @@
                 <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler5nnmodyAA6BigIntVAD_ADtF">nnmod(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler12permutationsyAA6BigIntVSi_SitF">permutations(_:_:)</a>
+                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler12permutationsyAA6BigIntVSi_SitKF">permutations(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler26permutationsWithRepititionyAA6BigIntVSi_SitF">permutationsWithRepitition(_:_:)</a>
@@ -245,10 +245,10 @@
                 <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler3expyAA9BigDoubleVADF">exp(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler9factorialyAA6BigIntVADF">factorial(_:)</a>
+                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler9factorialyAA6BigIntVADKF">factorial(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler5gammayAA9BigDoubleVADF">gamma(_:)</a>
+                <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler5gammayAA9BigDoubleVADKF">gamma(_:)</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Operations%20%2F%20Functions.html#/s:5Euler7inverseyAA6BigIntVSgAD_ADtF">inverse(_:_:)</a>
@@ -345,6 +345,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/CorrelationError.html">CorrelationError</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/EulerError.html">EulerError</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -387,6 +390,7 @@
             <h1>Matrix</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Matrix</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Matrix</span><span class="p">:</span> <span class="kt">ExpressibleByArrayLiteral</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Matrix</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
@@ -417,6 +421,9 @@ Since the Accelerate framework works a lot with <code>Double</code>, I had to fi
 <span class="k">let</span> <span class="nv">distances</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="nf">tile</span><span class="p">(</span><span class="kt">X</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span> <span class="o">-</span> <span class="kt">X</span><span class="p">)</span><span class="o">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="nf">sumRows</span><span class="p">()</span><span class="o">.</span><span class="nf">sqrt</span><span class="p">()</span>
 </code></pre>
 
+              <div class="slightly-smaller">
+                <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L32-L36">Show on GitHub</a>
+              </div>
           </div>
         </section>
 
@@ -2465,7 +2472,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L83-L113">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L83-L115">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2495,7 +2502,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L116-L137">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L118-L139">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2525,7 +2532,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L139-L146">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L141-L148">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2555,7 +2562,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L149-L168">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L151-L170">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2585,7 +2592,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L171-L201">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L173-L205">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2615,7 +2622,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L204-L225">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L208-L229">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2645,7 +2652,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L227-L234">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L231-L238">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2675,7 +2682,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L237-L239">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L241-L243">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2705,7 +2712,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L242-L250">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/MProperties.swift#L246-L254">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2868,7 +2875,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L62-L80">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L62-L82">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2898,7 +2905,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L83-L85">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L85-L87">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2928,7 +2935,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L88-L91">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L90-L93">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2958,7 +2965,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L94-L97">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L96-L99">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2988,7 +2995,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L100-L109">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L102-L111">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3018,7 +3025,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L112-L124">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L114-L126">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3048,7 +3055,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L126-L128">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L128-L130">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3078,7 +3085,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L133-L137">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L135-L139">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3108,7 +3115,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L142-L164">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L144-L166">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3138,7 +3145,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L169-L177">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L171-L179">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3168,7 +3175,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L180-L190">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L182-L192">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3210,7 +3217,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L195-L213">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L197-L215">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3252,7 +3259,7 @@ The Gaussian-elimination consists of performing elementary row operations on the
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L219-L231">Show on GitHub</a>
+                        <a href="https://github.com/arguiot/Euler/blob/master//Sources/Euler/Matrices/Matrix.swift#L221-L233">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3265,8 +3272,8 @@ The Gaussian-elimination consists of performing elementary row operations on the
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-06-16)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-07-07)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

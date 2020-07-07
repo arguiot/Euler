@@ -22,9 +22,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          Euler 0.1 Docs
+          Euler 0.2.2 Docs
         </a>
-         (81% documented)
+         (80% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -187,10 +187,10 @@
                 <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler4ceilyAA6BigIntVAA0C6DoubleVF">ceil(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler12combinationsyAA6BigIntVSi_SitF">combinations(_:_:)</a>
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler12combinationsyAA6BigIntVSi_SitKF">combinations(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler27combinationsWithRepetitionsyAA6BigIntVSi_SitF">combinationsWithRepetitions(_:_:)</a>
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler27combinationsWithRepetitionsyAA6BigIntVSi_SitKF">combinationsWithRepetitions(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler9encodeMD56digestSSSays5UInt8VG_tF">encodeMD5(digest:)</a>
@@ -223,7 +223,7 @@
                 <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler5nnmodyAA6BigIntVAD_ADtF">nnmod(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler12permutationsyAA6BigIntVSi_SitF">permutations(_:_:)</a>
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler12permutationsyAA6BigIntVSi_SitKF">permutations(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler26permutationsWithRepititionyAA6BigIntVSi_SitF">permutationsWithRepitition(_:_:)</a>
@@ -244,10 +244,10 @@
                 <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler3expyAA9BigDoubleVADF">exp(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler9factorialyAA6BigIntVADF">factorial(_:)</a>
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler9factorialyAA6BigIntVADKF">factorial(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler5gammayAA9BigDoubleVADF">gamma(_:)</a>
+                <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler5gammayAA9BigDoubleVADKF">gamma(_:)</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Operations%20%2F%20Functions.html#/s:5Euler7inverseyAA6BigIntVSgAD_ADtF">inverse(_:_:)</a>
@@ -344,6 +344,9 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/CorrelationError.html">CorrelationError</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/EulerError.html">EulerError</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -394,6 +397,73 @@ A computanional framework written in Swift
 <ul>
 <li><strong>Documentation:</strong> <a href="https://euler.arguiot.com">https://euler.arguiot.com</a></li>
 </ul>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>:warning: There is a known issue that causes the build to fail when using Xcode 11.4 or superior. When you want to use Euler on the latest Xcode versions, consider using Cocoapods. </p>
+
+<p>I’m already working with Apple to fix this, but if you have the solution, please open a pull request.</p>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p><a href="https://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate Euler into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Euler'</span><span class="p">,</span> <span class="s1">'~&gt; 0.2.2'</span>
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate Euler into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "arguiot/Euler" ~&gt; 0.2.2
+</code></pre>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the <code>swift</code> compiler. It is in early development, but Euler does support its use on supported platforms.</p>
+
+<p>Once you have your Swift package set up, adding Euler as a dependency is as easy as adding it to the <code>dependencies</code> value of your <code>Package.swift</code>.</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/arguiot/Euler.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"0.2.2"</span><span class="p">))</span>
+<span class="p">]</span>
+</code></pre>
+<h3 id='manually' class='heading'>Manually</h3>
+
+<p>If you prefer not to use any of the aforementioned dependency managers, you can integrate Euler into your project manually.</p>
+<h4 id='embedded-framework' class='heading'>Embedded Framework</h4>
+
+<ul>
+<li>Open up Terminal, <code>cd</code> into your top-level project directory, and run the following command &ldquo;if&rdquo; your project is not initialized as a git repository:</li>
+</ul>
+<pre class="highlight shell"><code>  <span class="nv">$ </span>git init
+</code></pre>
+
+<ul>
+<li>Add Euler as a git <a href="https://git-scm.com/docs/git-submodule">submodule</a> by running the following command:</li>
+</ul>
+<pre class="highlight shell"><code>  <span class="nv">$ </span>git submodule add https://github.com/arguiot/Euler.git
+</code></pre>
+
+<ul>
+<li><p>Open the new <code>Euler</code> folder, and drag the <code>Euler.xcodeproj</code> into the Project Navigator of your application&rsquo;s Xcode project.</p>
+
+<blockquote>
+<p>It should appear nested underneath your application&rsquo;s blue project icon. Whether it is above or below all the other Xcode groups does not matter.</p>
+</blockquote></li>
+<li><p>Select the <code>Euler.xcodeproj</code> in the Project Navigator and verify the deployment target matches that of your application target.</p></li>
+<li><p>Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the &ldquo;Targets&rdquo; heading in the sidebar.</p></li>
+<li><p>In the tab bar at the top of that window, open the &ldquo;General&rdquo; panel.</p></li>
+<li><p>Click on the <code>+</code> button under the &ldquo;Embedded Binaries&rdquo; section.</p></li>
+<li><p>You will see two different <code>Euler.xcodeproj</code> folders each with two different versions of the <code>Euler.framework</code> nested inside a <code>Products</code> folder.</p>
+
+<blockquote>
+<p>It does not matter which <code>Products</code> folder you choose from, but it does matter whether you choose the top or bottom <code>Euler.framework</code>.</p>
+</blockquote></li>
+<li><p>Select the top <code>Euler.framework</code> for iOS and the bottom one for macOS.</p>
+
+<blockquote>
+<p>You can verify which one you selected by inspecting the build log for your project. The build target for <code>Euler</code> will be listed as either <code>Euler iOS</code>, <code>Euler macOS</code>, <code>Euler tvOS</code> or <code>Euler watchOS</code>.</p>
+</blockquote></li>
+<li><p>And that&rsquo;s it!</p></li>
+</ul>
+
+<blockquote>
+<p>The <code>Euler.framework</code> is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.</p>
+</blockquote>
 <h1 id='showcase' class='heading'>Showcase</h1>
 
 <p>Here is a list of apps using Euler to work (not exhaustive)</p>
@@ -464,8 +534,8 @@ A computanional framework written in Swift
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-06-16)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://arguiot.com" target="_blank" rel="external">Arthur Guiot</a>. All rights reserved. (Last updated: 2020-07-07)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
