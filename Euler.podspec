@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/arguiot/Euler.git", :tag => "v#{s.version}" }
   s.source_files  = "Sources/**/*"
   s.frameworks  = "Foundation"
+  s.swift_version = "4.0"
 end
