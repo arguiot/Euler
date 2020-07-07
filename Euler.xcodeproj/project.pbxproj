@@ -224,7 +224,7 @@
 		68C12AD02483284800BB4B3A /* Engineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engineering.swift; sourceTree = "<group>"; };
 		68C12AD22483392C00BB4B3A /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
 		68C12AD424833E6500BB4B3A /* TablesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTest.swift; sourceTree = "<group>"; };
-		"Euler::Euler::Product" /* Euler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Euler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Euler::Euler::Product" /* Euler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Euler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Euler::EulerTests::Product" /* EulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = EulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		OBJ_100 /* BigIntTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigIntTests.swift; sourceTree = "<group>"; };
@@ -1230,6 +1230,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Euler.xcodeproj/Euler_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MARKETING_VERSION = 0.2.2;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -1254,6 +1255,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Euler.xcodeproj/Euler_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MARKETING_VERSION = 0.2.2;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
