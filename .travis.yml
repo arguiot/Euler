@@ -32,7 +32,7 @@ jobs:
     - stage: Deploy
       name: "CocoaPods"
       script: pod trunk push Euler.podspec --allow-warnings
-      if: tag IS present
+      # if: tag IS present
 notifications:
   email:
     on_success: never # default: change
