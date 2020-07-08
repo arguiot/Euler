@@ -120,7 +120,7 @@ internal extension Tables {
             "COTH": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(number: self.COTH(n))
+                return CellValue(number: try self.COTH(n))
             },
             "CSC": { args in
                 guard let f = args.first else { return CellValue.nil }
@@ -130,7 +130,7 @@ internal extension Tables {
             "CSCH": { args in
                 guard let f = args.first else { return CellValue.nil }
                 guard let n = f.number else { return CellValue.nil }
-                return CellValue(number: self.CSCH(n))
+                return CellValue(number: try self.CSCH(n))
             },
             "DECIMAL": { args in
                 guard args.count == 2 else { return CellValue.nil }

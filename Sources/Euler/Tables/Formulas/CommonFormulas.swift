@@ -168,28 +168,31 @@ public extension Tables {
     /// - Parameter number: Any `BigDouble`
     func COT(_ number: BigNumber) throws -> BigNumber {
         guard let double = number.asDouble() else { throw TablesError.Overflow }
+        guard double != 0 else { throw TablesError.DivisionByZero }
         return BigDouble(1) / BigDouble(tan(double))
     }
     
     /// Hyperbolic Cotangent of a number.
     /// - Parameter number: Any `BigDouble`
-    func COTH(_ number: BigNumber) -> BigNumber {
+    func COTH(_ number: BigNumber) throws -> BigNumber {
         let e2 = exp(2 * number)
-        
+        guard e2 != 1 else { throw TablesError.DivisionByZero }
         return (e2 + 1) / (e2 - 1)
     }
     /// Cosecant of a number.
     /// - Parameter number: Any `BigDouble`
     func CSC(_ number: BigNumber) throws -> BigNumber {
         guard let double = number.asDouble() else { throw TablesError.Overflow }
+        guard sin(double) != 0 else { throw TablesError.DivisionByZero }
         return BigDouble(1) / BigDouble(sin(double))
     }
     
     /// Hyperbolic Cosecant of a number.
     /// - Parameter number: Any `BigDouble`
-    func CSCH(_ number: BigNumber) -> BigNumber {
+    func CSCH(_ number: BigNumber) throws -> BigNumber {
         let e1 = exp(number)
         let e2 = exp(-number)
+        guard e1 != e2 else { throw TablesError.DivisionByZero }
         return BigDouble(2) / (e1 - e2)
     }
     
