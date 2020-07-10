@@ -379,7 +379,7 @@ public struct BigDouble:
         if(rounded && precision > 0) {
             
             let lastDigit = Int(retVal.suffix(1))! // this should always be a number
-            let secondDigit = retVal.suffix(2).prefix(1) // this could be a decimal
+            let secondDigit = String(retVal.suffix(2).prefix(1)) // this could be a decimal
             
             retVal = String(retVal.prefix(retVal.count-2))
             if (secondDigit != ".") {
