@@ -7,7 +7,8 @@
 
 import Foundation
 
-internal extension Tables {
+public extension Tables {
+    /// Financial Formulas Functions (for parser)
     var financialFormulas: [String:(([CellValue]) throws -> CellValue)] {
         return [
             "ACCRINT": { args in

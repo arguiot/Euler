@@ -7,7 +7,8 @@
 
 import Foundation
 
-internal extension Tables {
+public extension Tables {
+    /// Statistical Formulas Functions (for parser)
     var statsFormulas: [String:(([CellValue]) throws -> CellValue)] {
         return [
             "AVEDEV": { args in

@@ -7,7 +7,8 @@
 
 import Foundation
 
-internal extension Tables {
+public extension Tables {
+    /// Engineering Formulas Functions (for parser)
     var engineeringFormulas: [String:(([CellValue]) throws -> CellValue)] {
         return [
             "BIN2DEC": { args in

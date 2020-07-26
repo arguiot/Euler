@@ -7,7 +7,8 @@
 
 import Foundation
 
-internal extension Tables {
+public extension Tables {
+    /// Logical Formulas Functions (for parser)
     var logicalFormulas: [String:(([CellValue]) throws -> CellValue)] {
         return [
             "AND": { args in

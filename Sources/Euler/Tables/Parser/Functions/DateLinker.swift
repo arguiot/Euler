@@ -7,7 +7,8 @@
 
 import Foundation
 
-internal extension Tables {
+public extension Tables {
+    /// Date/Time related Formulas Functions (for parser)
     var dateFormulas: [String:(([CellValue]) throws -> CellValue)] {
         return [
             "DATE": { args in

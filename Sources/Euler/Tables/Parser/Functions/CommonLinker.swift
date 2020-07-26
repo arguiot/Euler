@@ -7,7 +7,8 @@
 
 import Foundation
 
-internal extension Tables {
+public extension Tables {
+    /// Common Formulas Functions (for parser)
     var commonFormulas: [String:(([CellValue]) throws -> CellValue)] {
         return [
             "ABS": { args in
