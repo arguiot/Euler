@@ -100,14 +100,21 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 430,
+      "line": 296,
+      "symbol": "BigDouble.locale",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
+      "line": 485,
       "symbol": "BigDouble.rawData()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 447,
+      "line": 502,
       "symbol": "BigDouble.minimize()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
