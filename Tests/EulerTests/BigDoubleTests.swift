@@ -257,39 +257,55 @@ class BigDoubleTests : XCTestCase {
     
     func testPrecision() {
         var bigD = BigDouble("123456789.123456789")
+        bigD?.locale = Locale(identifier: "fr_FR")
         bigD?.precision = 2
-        XCTAssertEqual(bigD?.decimalDescription, "123456789.12")
+        XCTAssertEqual(bigD?.decimalDescription, "123456789,12")
+        XCTAssertEqual(bigD?.scientificDescription, "1,23×10⁸")
         bigD?.precision = 4
+        bigD?.locale = Locale(identifier: "en_US")
         XCTAssertEqual(bigD?.decimalDescription, "123456789.1235")
+        XCTAssertEqual(bigD?.scientificDescription, "1.2346×10⁸")
         bigD?.precision = 10
         XCTAssertEqual(bigD?.decimalDescription, "123456789.1234567890")
+        XCTAssertEqual(bigD?.scientificDescription, "1.2345678912×10⁸")
         bigD?.precision = 20
         XCTAssertEqual(bigD?.decimalDescription, "123456789.12345678900000000000")
+        XCTAssertEqual(bigD?.scientificDescription, "1.2345678912345679×10⁸")
         bigD?.precision = 0
         XCTAssertEqual(bigD?.decimalDescription, "123456789.0")
+        XCTAssertEqual(bigD?.scientificDescription, "1×10⁸")
         
         
         bigD = BigDouble("-123456789.123456789")
         bigD?.precision = 2
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.12")
+        XCTAssertEqual(bigD?.scientificDescription, "-1.23×10⁸")
         bigD?.precision = 4
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.1235")
+        XCTAssertEqual(bigD?.scientificDescription, "-1.2346×10⁸")
         bigD?.precision = 10
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.1234567890")
+        XCTAssertEqual(bigD?.scientificDescription, "-1.2345678912×10⁸")
         bigD?.precision = 20
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.12345678900000000000")
+        XCTAssertEqual(bigD?.scientificDescription, "-1.2345678912345679×10⁸")
         bigD?.precision = 0
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.0")
+        XCTAssertEqual(bigD?.scientificDescription, "-1×10⁸")
         
         bigD = BigDouble("0.0000000003") // nine zeroes
         bigD?.precision = 0
         XCTAssertEqual(bigD?.decimalDescription, "0.0")
+        XCTAssertEqual(bigD?.scientificDescription, "3×10⁻¹⁰")
         bigD?.precision = 10
         XCTAssertEqual(bigD?.decimalDescription, "0.0000000003")
+        XCTAssertEqual(bigD?.scientificDescription, "3×10⁻¹⁰")
         bigD?.precision = 15
         XCTAssertEqual(bigD?.decimalDescription, "0.000000000300000")
+        XCTAssertEqual(bigD?.scientificDescription, "3×10⁻¹⁰")
         bigD?.precision = 5
         XCTAssertEqual(bigD?.decimalDescription, "0.00000")
+        XCTAssertEqual(bigD?.scientificDescription, "3×10⁻¹⁰")
     }
     
     func testNearlyEqual() {

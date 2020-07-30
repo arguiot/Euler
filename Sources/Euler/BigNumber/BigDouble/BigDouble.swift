@@ -233,7 +233,7 @@ public struct BigDouble:
         var x = d
         var a = floor(x)
         var (h1, k1, h, k) = (1.0, 0.0, a, 1.0)
-
+        
         while x - a > eps * Double(k) * Double(k) {
             x = 1.0/(x - a)
             a = floor(x)
@@ -292,6 +292,59 @@ public struct BigDouble:
         }
         
         return res
+    }
+    public var locale = Locale(identifier: "en_US")
+    /**
+     * returns the current value in scientific notation
+     */
+    public var scientificDescription: String {
+        if let n = self.asDouble() {
+            let formatter = NumberFormatter()
+            formatter.locale = self.locale
+            formatter.numberStyle = .scientific
+            formatter.exponentSymbol = "×10^"
+            formatter.usesSignificantDigits = true
+            formatter.maximumSignificantDigits = self.precision + 1
+            guard let formated = formatter.string(from: NSNumber(value: n)) else { return self.decimalDescription }
+            return exponentize(str: formated)
+        }
+        return self.decimalDescription
+    }
+    
+    private func exponentize(str: String) -> String {
+        let supers = [
+            "0": "\u{2070}",
+            "1": "\u{00B9}",
+            "2": "\u{00B2}",
+            "3": "\u{00B3}",
+            "4": "\u{2074}",
+            "5": "\u{2075}",
+            "6": "\u{2076}",
+            "7": "\u{2077}",
+            "8": "\u{2078}",
+            "9": "\u{2079}",
+            "-": "\u{207B}"]
+        
+        var newStr = ""
+        var isExp = false
+        for (_, char) in str.enumerated() {
+            if char == "^" {
+                isExp = true
+            } else {
+                if isExp {
+                    let key = String(char)
+                    if supers.keys.contains(key) {
+                        newStr.append(Character(supers[key]!))
+                    } else {
+                        isExp = false
+                        newStr.append(char)
+                    }
+                } else {
+                    newStr.append(char)
+                }
+            }
+        }
+        return newStr
     }
     
     static private var _precision = 4
@@ -358,6 +411,8 @@ public struct BigDouble:
     public func decimalExpansion(precisionAfterDecimalPoint precision: Int, rounded : Bool = true) -> String {
         var currentPrecision = precision
         
+        let separator = self.locale.decimalSeparator ?? "."
+        
         if(rounded && precision > 0) {
             currentPrecision = currentPrecision + 1
         }
@@ -367,11 +422,11 @@ public struct BigDouble:
         var res = BigInt(limbs: limbs).description
         
         if currentPrecision <= res.count {
-            res.insert(".", at: res.index(res.startIndex, offsetBy: res.count - currentPrecision))
-            if res.hasPrefix(".") { res = "0" + res }
-            else if res.hasSuffix(".") { res += "0" }
+            res.insert(contentsOf: separator, at: res.index(res.startIndex, offsetBy: res.count - currentPrecision))
+            if res.hasPrefix(separator) { res = "0" + res }
+            else if res.hasSuffix(separator) { res += "0" }
         } else {
-            res = "0." + String(repeating: "0", count: currentPrecision - res.count) + res
+            res = "0\(separator)" + String(repeating: "0", count: currentPrecision - res.count) + res
         }
         
         var retVal = self.isNegative() && !limbs.equalTo(0) ? "-" + res : res
@@ -382,14 +437,14 @@ public struct BigDouble:
             let secondDigit = String(retVal.suffix(2).prefix(1)) // this could be a decimal
             
             retVal = String(retVal.prefix(retVal.count-2))
-            if (secondDigit != ".") {
+            if (secondDigit != separator) {
                 if lastDigit >= 5 {
                     retVal = retVal + String(Int(secondDigit)! + 1)
                 } else {
                     retVal = retVal + String(Int(secondDigit)!)
                 }
             } else {
-                retVal = retVal + "." + String(lastDigit)
+                retVal = retVal + separator + String(lastDigit)
             }
         }
         
@@ -527,7 +582,7 @@ public struct BigDouble:
         
         return res
         
-//        return self ** BigDouble(BigInt(1), over: BigInt(root))
+        //        return self ** BigDouble(BigInt(1), over: BigInt(root))
     }
     
     /**
@@ -548,7 +603,7 @@ public struct BigDouble:
         let int = self.rounded()
         var i = int / 2
         var a = BigDouble.zero
-//        let n = 20
+        //        let n = 20
         
         var old_i = i + 1
         
@@ -566,7 +621,7 @@ public struct BigDouble:
             }
         }
         return a
-//        return self ** BigDouble(BigInt(1), over: BigInt(2))
+        //        return self ** BigDouble(BigInt(1), over: BigInt(2))
     }
     
     /// Returns BigNumber's value as an integer. Conversion only works when self has only one limb
