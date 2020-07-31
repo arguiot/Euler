@@ -270,7 +270,7 @@ class BigDoubleTests : XCTestCase {
         XCTAssertEqual(bigD?.scientificDescription, "1.2345678912×10⁸")
         bigD?.precision = 20
         XCTAssertEqual(bigD?.decimalDescription, "123456789.12345678900000000000")
-        XCTAssertEqual(bigD?.scientificDescription, "1.2345678912345679×10⁸")
+        XCTAssertEqual(bigD?.scientificDescription, "1.23456789123500000000×10⁸")
         bigD?.precision = 0
         XCTAssertEqual(bigD?.decimalDescription, "123456789.0")
         XCTAssertEqual(bigD?.scientificDescription, "1×10⁸")
@@ -288,7 +288,7 @@ class BigDoubleTests : XCTestCase {
         XCTAssertEqual(bigD?.scientificDescription, "-1.2345678912×10⁸")
         bigD?.precision = 20
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.12345678900000000000")
-        XCTAssertEqual(bigD?.scientificDescription, "-1.2345678912345679×10⁸")
+        XCTAssertEqual(bigD?.scientificDescription, "-1.23456789123500000000×10⁸")
         bigD?.precision = 0
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.0")
         XCTAssertEqual(bigD?.scientificDescription, "-1×10⁸")

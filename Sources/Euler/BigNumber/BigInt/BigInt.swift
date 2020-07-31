@@ -443,9 +443,67 @@ public struct BigInt:
     //
     
     // Required by protocol CustomStringConvertible.
-    public var description: String
-    {
+    public var description: String {
         return (self.sign ? "-" : "").appending(self.limbs.decimalRepresentation)
+    }
+    // Locale used to format numbers
+    public var locale = Locale(identifier: "en_US")
+    
+    /**
+     * returns the current value in scientific notation
+     */
+    public var scientificDescription: String {
+        var d = self.limbs.decimalRepresentation
+        let power = d.count - 1
+        let precision = BN.precision
+        if precision + 2 > d.count {
+            d.append(String(repeating: "0", count: precision + 3 - d.count))
+        }
+        var significant = d.prefix(precision)
+        let lasts = d.substring(with: Range(precision...precision + 2))
+        let rounded = Int(round(Double(lasts)! / 100))
+        significant.append(contentsOf: String(rounded))
+        if significant.count > 1 {
+            significant.insert(contentsOf: locale.decimalSeparator ?? ".", at: significant.index(after: significant.startIndex))
+        }
+        let str = exponentize(str: "\(significant)×10^\(power)")
+        return (self.sign ? "-" : "").appending(str)
+    }
+    
+    private func exponentize(str: String) -> String {
+        let supers = [
+            "0": "\u{2070}",
+            "1": "\u{00B9}",
+            "2": "\u{00B2}",
+            "3": "\u{00B3}",
+            "4": "\u{2074}",
+            "5": "\u{2075}",
+            "6": "\u{2076}",
+            "7": "\u{2077}",
+            "8": "\u{2078}",
+            "9": "\u{2079}",
+            "-": "\u{207B}"]
+        
+        var newStr = ""
+        var isExp = false
+        for (_, char) in str.enumerated() {
+            if char == "^" {
+                isExp = true
+            } else {
+                if isExp {
+                    let key = String(char)
+                    if supers.keys.contains(key) {
+                        newStr.append(Character(supers[key]!))
+                    } else {
+                        isExp = false
+                        newStr.append(char)
+                    }
+                } else {
+                    newStr.append(char)
+                }
+            }
+        }
+        return newStr
     }
     
     /// Returns the BigNumber's value in the given base (radix) as a string.

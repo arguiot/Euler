@@ -293,23 +293,51 @@ public struct BigDouble:
         
         return res
     }
+    // Locale used to format numbers
     public var locale = Locale(identifier: "en_US")
     /**
      * returns the current value in scientific notation
      */
     public var scientificDescription: String {
-        if let n = self.asDouble() {
-            let formatter = NumberFormatter()
-            formatter.locale = self.locale
-            formatter.numberStyle = .scientific
-            formatter.exponentSymbol = "×10^"
-            formatter.usesSignificantDigits = true
-            formatter.maximumSignificantDigits = self.precision + 1
-            guard let formated = formatter.string(from: NSNumber(value: n)) else { return self.decimalDescription }
-            return exponentize(str: formated)
+        if self == .zero {
+            return "0×10^⁰"
         }
-        return self.decimalDescription
+        var d = BN(sign: false, numerator: self.numerator, denominator: self.denominator).decimalDescription // Make sure that "." is the separator and that number is positive
+        var power: Int
+        if d.prefix(2) == "0." {
+            if let n = self.asDouble() {
+                let formatter = NumberFormatter()
+                formatter.locale = self.locale
+                formatter.numberStyle = .scientific
+                formatter.exponentSymbol = "×10^"
+                formatter.usesSignificantDigits = true
+                formatter.maximumSignificantDigits = self.precision + 1
+                guard let formated = formatter.string(from: NSNumber(value: n)) else { return self.decimalDescription }
+                return exponentize(str: formated)
+            }
+            return self.decimalDescription
+        } else {
+            guard let index = d.index(of: ".") else {
+                let rounded = self.rounded()
+                return rounded.scientificDescription
+            }
+            power = index.encodedOffset - 1
+        }
+        d = d.replacingOccurrences(of: ".", with: "")
+        if precision + 2 > d.count {
+            d.append(String(repeating: "0", count: precision + 3 - d.count))
+        }
+        var significant = d.prefix(precision)
+        let lasts = d.substring(with: Range(precision...precision + 2))
+        let rounded = Int(round(Double(lasts)! / 100))
+        significant.append(contentsOf: String(rounded))
+        if significant.count > 1 {
+            significant.insert(contentsOf: locale.decimalSeparator ?? ".", at: significant.index(after: significant.startIndex))
+        }
+        let str = exponentize(str: "\(significant)×10^\(power)")
+        return (self.sign ? "-" : "").appending(str)
     }
+    
     
     private func exponentize(str: String) -> String {
         let supers = [
