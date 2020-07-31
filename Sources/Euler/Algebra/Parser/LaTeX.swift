@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Parser {
-    /// Initialize Parser with `$\LaTeX$
+    /// Initialize Parser with `$\LaTeX$`
     convenience init(latex: String) {
         let math = Parser.LaTeX2Math(latex: latex)
         self.init("=\(math)", type: .tables, tablesContext: Tables())
