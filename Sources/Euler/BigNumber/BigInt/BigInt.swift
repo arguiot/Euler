@@ -457,7 +457,7 @@ public struct BigInt:
         let power = d.count - 1
         let precision = BN.precision
         if precision + 2 > d.count {
-            d.append(String(repeating: "0", count: precision + 3 - d.count))
+            d.append(String(repeating: "0", count: precision + 4 - d.count))
         }
         var significant = d.prefix(precision)
         let lasts = d.substring(with: Range(precision...precision + 2))
