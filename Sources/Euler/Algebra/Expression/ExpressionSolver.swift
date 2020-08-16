@@ -1,45 +1,29 @@
 //
-//  File.swift
-//  
+//  ExpressionSolver.swift
+//  Euler
 //
-//  Created by Arthur Guiot on 2020-02-07.
+//  Created by Arthur Guiot on 2020-08-16.
 //
 
 import Foundation
-/// A helper class to parse and manipulate math expressions
-public class Expression: NSObject {
-    /// The expression node that contains the expression
-    public var node: ExpressionNode
-    
-    /// Creates an `Expression` with the string representation of an expression
-    public init(_ str: String) throws {
-        let p = Parser(str)
-        let expression = try p.parse()
-        let comp = expression.compile()
-        
-        self.node = ExpressionNode(comp)
-    }
-    /// Creates an `Expression` from `$\LaTeX$`
-    public init(latex: String) throws {
-        let p = Parser(latex: latex)
-        let expression = try p.parse()
-        let comp = expression.compile()
-        
-        self.node = ExpressionNode(comp)
-    }
+
+public extension Expression {
     fileprivate enum SolveError: Error {
         case moreThan2SubExpressions
         case evalError
         case noSolutions
     }
+    
     /// Solve equation using Brent's method
     ///
     /// In numerical analysis, Brent's method is a root-finding algorithm combining the bisection method, the secant method and inverse quadratic interpolation. It has the reliability of bisection but it can be as quick as some of the less-reliable methods. The algorithm tries to use the potentially fast-converging secant method or inverse quadratic interpolation if possible, but it falls back to the more robust bisection method if necessary.
     /// - Parameters:
     ///   - variable: For which variable we're solving the equation. Example: `"x"`
     ///   - interval: In which interval the solution is predicted to be. Example: `(-1, 1)`
-    ///   - precision: At which precision you want the solution. Example: `10e-4`
-    public func solve(for variable: String, in interval: (BigNumber, BigNumber), with precision: BigNumber) throws -> BigNumber {
+    ///   - precision: At which precision you want the solution. Example: `10e-3`
+    func singleSolve(for variable: String, in interval: (BigNumber, BigNumber), with precision: BigNumber = 10e-3) throws -> BigNumber {
+        let precision = precision / 10 // To ensure decimal precision
+        
         var simplify = Simplify(self.node)
         let simplified = simplify.simple()
         guard simplified.children.count <= 2 else { throw SolveError.moreThan2SubExpressions }
@@ -129,5 +113,60 @@ public class Expression: NSObject {
         }
         
         return b
+    }
+    /// Solve equation using Brent's method
+    ///
+    /// It will go through the interval using `precision` and will estimate possible zeros location. Then will use Brent's algorithm to find thoses solutions.
+    ///
+    /// In numerical analysis, Brent's method is a root-finding algorithm combining the bisection method, the secant method and inverse quadratic interpolation. It has the reliability of bisection but it can be as quick as some of the less-reliable methods. The algorithm tries to use the potentially fast-converging secant method or inverse quadratic interpolation if possible, but it falls back to the more robust bisection method if necessary.
+    /// - Parameters:
+    ///   - variable: For which variable we're solving the equation. Example: `"x"`
+    ///   - interval: In which interval the solution is predicted to be. Example: `(-1, 1)`
+    ///   - precision: At which precision you want the solution. Example: `10e-4`
+    func solve(for variable: String, in interval: (BigNumber, BigNumber), at rate: BigNumber = 10e-1, with precision: BigNumber = 10e-3) throws -> [BigNumber] {
+        var simplify = Simplify(self.node)
+        let simplified = simplify.simple()
+        guard simplified.children.count <= 2 else { throw SolveError.moreThan2SubExpressions }
+        
+        var single = simplified
+        
+        if single.children.count == 2 {
+            let expr = ExpressionNode(OperatorNode("-", children: [
+                single.children[0],
+                single.children[1]
+            ]))
+            simplify = Simplify(expr)
+            single = simplify.simple()
+        }
+        
+        func f(_ x: BigNumber) throws -> BigNumber {
+            if let s = self as? Polynomial {
+                return s.evaluate(at: x)
+            }
+            let value = try single.evaluate([variable : x]).number
+            
+            guard let y = value else { throw SolveError.evalError }
+            return y
+        }
+        
+        let (a, b) = interval
+        
+        var intervals = [(BigDouble, BigDouble)]()
+        var beginning = a
+        guard var pastImage = try? f(a) else { throw SolveError.evalError }
+        var x = a
+//        for x in stride(from: a, to: b, by: precision) {: Far too slow...
+        while x <= b {
+            guard let i = try? f(x) else { continue }
+            if i.sign != pastImage.sign {
+                intervals.append((beginning, x))
+                beginning = x
+            }
+            pastImage = i
+            
+            x += rate
+        }
+        let results = try intervals.map { try self.singleSolve(for: variable, in: $0, with: precision) }
+        return results
     }
 }

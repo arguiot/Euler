@@ -44,11 +44,17 @@ public class ExpressionNode: NSObject, Node {
     /// - Parameter nodes: a Node of any type
     public init(_ nodes: Node...) {
         self.children = nodes
+        var string = nodes.map { $0.toString() }.joined(separator: " = ")
+        string = string.replacingOccurrences(of: "^", with: "**")
+        nsExpression = NSExpression(format: string)
     }
     /// Create a ExpressionNode
     /// - Parameter nodes: an array of Node of any type
     public init(_ nodes: [Node]) {
         self.children = nodes
+        var string = nodes.map { $0.toString() }.joined(separator: " = ")
+        string = string.replacingOccurrences(of: "^", with: "**")
+        nsExpression = NSExpression(format: string)
     }
     
     /// Compiles ExpressionNode to simpler node (useless here, but required by protocol)
@@ -61,8 +67,13 @@ public class ExpressionNode: NSObject, Node {
         guard let child = try self.children.first?.evaluate(params, fList) else { throw EvaluationError.missingChildren }
         return child
     }
+    
+    internal var nsExpression: NSExpression
+    
     /// Converts ExpressionNode to BigNumber
     public func evaluate(_ params: [String: BigNumber]) throws -> CellValue {
+//        guard let value = nsExpression.expressionValue(with: params, context: nil) as? Double else { return try self.evaluate(params, Tables.functions) }
+//        return CellValue(number: BN(value))
         return try self.evaluate(params, Tables.functions)
     }
 }

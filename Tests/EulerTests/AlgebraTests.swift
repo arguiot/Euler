@@ -32,7 +32,14 @@ class AlgebraTests: XCTestCase {
         XCTAssertEqual(roots.count, 4)
     }
     
+    func testExpression() {
+        // Roots
+        let golden = try! Polynomial(1, -1, -1)
+        XCTAssert(try golden.solve(for: "x", in: (-5, 5), with: 10e-6)[0].nearlyEquals((1 - 5.squareRoot()) / 2)) // Golden Ratio, simplified
+    }
+    
     static var allTests = [
-        ("Polynomial", testPolynomial)
+        ("Polynomial", testPolynomial),
+        ("Expression", testExpression)
     ]
 }

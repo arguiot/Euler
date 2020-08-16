@@ -356,7 +356,7 @@ public class Polynomial: Expression {
             
             var zeros = [BN]()
             for i in intervals {
-                if let root = try? studied_poly.solve(for: "x", in: i, with: 10e-4) {
+                if let root = try? studied_poly.singleSolve(for: "x", in: i, with: 10e-4) {
                     zeros.append(root.simplified)
                 }
             }

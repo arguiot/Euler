@@ -26,7 +26,8 @@ public struct BigDouble:
     CustomStringConvertible,
     SignedNumeric,
     Comparable,
-    Hashable
+    Hashable,
+    Strideable
 {
     //
     //
@@ -478,9 +479,19 @@ public struct BigDouble:
         
         return retVal
     }
-    
+    /// Hashable
     public func hash(into hasher: inout Hasher) {
         hasher.combine("\(self.sign)\(self.numerator)\(self.denominator)")
+    }
+    /// Stride
+    public typealias Stride = BigDouble
+    /// Similar to `+` operator
+    public func advanced(by n: BigDouble) -> BigDouble {
+        return self + n
+    }
+    /// Returns the value that is offset the specified distance from `self`.
+    public func distance(to other: BigDouble) -> BigDouble {
+        return other - self
     }
     
     /**

@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		68834B1424E98B3F004D709C /* ExpressionSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68834B1324E98B3F004D709C /* ExpressionSolver.swift */; };
 		689F568324912A89003097E2 /* CommonLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568224912A89003097E2 /* CommonLinker.swift */; };
 		689F568524912B0F003097E2 /* LogicalLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568424912B0F003097E2 /* LogicalLinker.swift */; };
 		689F568724912B92003097E2 /* EngineeringLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568624912B92003097E2 /* EngineeringLinker.swift */; };
@@ -210,6 +211,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68834B1324E98B3F004D709C /* ExpressionSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionSolver.swift; sourceTree = "<group>"; };
 		689F568224912A89003097E2 /* CommonLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLinker.swift; sourceTree = "<group>"; };
 		689F568424912B0F003097E2 /* LogicalLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalLinker.swift; sourceTree = "<group>"; };
 		689F568624912B92003097E2 /* EngineeringLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineeringLinker.swift; sourceTree = "<group>"; };
@@ -389,6 +391,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68834B1224E98B28004D709C /* Expression */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_10 /* Expression.swift */,
+				68834B1324E98B3F004D709C /* ExpressionSolver.swift */,
+			);
+			path = Expression;
+			sourceTree = "<group>";
+		};
 		689F568124912A72003097E2 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,7 +837,7 @@
 		OBJ_9 /* Algebra */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_10 /* Expression.swift */,
+				68834B1224E98B28004D709C /* Expression */,
 				OBJ_11 /* Parser */,
 				OBJ_28 /* Polynomial.swift */,
 				OBJ_29 /* Simplify */,
@@ -1074,6 +1085,7 @@
 				OBJ_226 /* sum.swift in Sources */,
 				68ADEAD524843775006C65CD /* DateTime.swift in Sources */,
 				OBJ_227 /* Average.swift in Sources */,
+				68834B1424E98B3F004D709C /* ExpressionSolver.swift in Sources */,
 				OBJ_228 /* Correlation.swift in Sources */,
 				689F568F249135EA003097E2 /* Fisher.swift in Sources */,
 				OBJ_229 /* Quantile.swift in Sources */,
