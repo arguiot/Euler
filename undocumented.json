@@ -44,77 +44,77 @@
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 63,
+      "line": 64,
       "symbol": "BigDouble.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 89,
+      "line": 90,
       "symbol": "BigDouble.init(_:over:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 97,
+      "line": 98,
       "symbol": "BigDouble.init(_:over:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 105,
+      "line": 106,
       "symbol": "BigDouble.init(_:over:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 115,
+      "line": 116,
       "symbol": "BigDouble.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 224,
+      "line": 225,
       "symbol": "BigDouble.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 228,
+      "line": 229,
       "symbol": "BigDouble.init(_:withPrecision:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 262,
+      "line": 263,
       "symbol": "BigDouble.init(constant:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 297,
+      "line": 298,
       "symbol": "BigDouble.locale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 513,
+      "line": 524,
       "symbol": "BigDouble.rawData()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/arguiot/Euler/Sources/Euler/BigNumber/BigDouble/BigDouble.swift",
-      "line": 530,
+      "line": 541,
       "symbol": "BigDouble.minimize()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
