@@ -103,8 +103,6 @@
 		OBJ_240 /* Pointers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* Pointers.swift */; };
 		OBJ_241 /* UnsafeMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* UnsafeMemory.swift */; };
 		OBJ_242 /* UnsafeMutableMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* UnsafeMutableMemory.swift */; };
-		OBJ_244 /* SVGRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftPlot::SVGRenderer::Product" /* SVGRenderer.framework */; };
-		OBJ_245 /* SwiftPlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftPlot::SwiftPlot::Product" /* SwiftPlot.framework */; };
 		OBJ_255 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_266 /* AlgebraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* AlgebraTests.swift */; };
 		OBJ_267 /* BigDoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* BigDoubleTests.swift */; };
@@ -118,88 +116,15 @@
 		OBJ_275 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* Convenience.swift */; };
 		OBJ_276 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* Math.swift */; };
 		OBJ_278 /* Euler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Euler::Euler::Product" /* Euler.framework */; };
-		OBJ_279 /* SVGRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftPlot::SVGRenderer::Product" /* SVGRenderer.framework */; };
-		OBJ_280 /* SwiftPlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftPlot::SwiftPlot::Product" /* SwiftPlot.framework */; };
-		OBJ_288 /* SVGRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* SVGRenderer.swift */; };
-		OBJ_290 /* SwiftPlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftPlot::SwiftPlot::Product" /* SwiftPlot.framework */; };
-		OBJ_296 /* AdaptersNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* AdaptersNamespace.swift */; };
-		OBJ_297 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* Axis.swift */; };
-		OBJ_298 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* BarChart.swift */; };
-		OBJ_299 /* BarGraphSeriesOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* BarGraphSeriesOptions.swift */; };
-		OBJ_300 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* Color.swift */; };
-		OBJ_301 /* ColorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ColorMap.swift */; };
-		OBJ_302 /* ColorMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* ColorMapData.swift */; };
-		OBJ_303 /* FloatConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* FloatConvertible.swift */; };
-		OBJ_304 /* EdgeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* EdgeComponents.swift */; };
-		OBJ_305 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* Rect.swift */; };
-		OBJ_306 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* Size.swift */; };
-		OBJ_307 /* GraphLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* GraphLayout.swift */; };
-		OBJ_308 /* Heatmap-adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* Heatmap-adapter.swift */; };
-		OBJ_309 /* Heatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* Heatmap.swift */; };
-		OBJ_310 /* HelperFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* HelperFunction.swift */; };
-		OBJ_311 /* Histogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* Histogram.swift */; };
-		OBJ_312 /* HistogramSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* HistogramSeries.swift */; };
-		OBJ_313 /* HistogramSeriesOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* HistogramSeriesOptions.swift */; };
-		OBJ_314 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* Label.swift */; };
-		OBJ_315 /* LayoutComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* LayoutComponent.swift */; };
-		OBJ_316 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_144 /* Spacing.swift */; };
-		OBJ_317 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_145 /* LineChart.swift */; };
-		OBJ_318 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* Pair.swift */; };
-		OBJ_319 /* Plot.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_147 /* Plot.swift */; };
-		OBJ_320 /* PlotDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_148 /* PlotDimensions.swift */; };
-		OBJ_321 /* PlotMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* PlotMarkers.swift */; };
-		OBJ_322 /* PlotStyleHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_150 /* PlotStyleHelpers.swift */; };
-		OBJ_323 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_151 /* Renderer.swift */; };
-		OBJ_324 /* ScatterChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* ScatterChart.swift */; };
-		OBJ_325 /* ScatterPlotSeriesOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_153 /* ScatterPlotSeriesOptions.swift */; };
-		OBJ_326 /* SequencePlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* SequencePlots.swift */; };
-		OBJ_327 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_155 /* Series.swift */; };
-		OBJ_328 /* SubPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_156 /* SubPlot.swift */; };
-		OBJ_335 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_158 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6804E44F2480121E00B65E40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "SwiftPlot::SVGRenderer";
-			remoteInfo = SVGRenderer;
-		};
-		6804E4502480121E00B65E40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "SwiftPlot::SwiftPlot";
-			remoteInfo = SwiftPlot;
-		};
-		6804E4512480121E00B65E40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "SwiftPlot::SwiftPlot";
-			remoteInfo = SwiftPlot;
-		};
 		6804E4522480121E00B65E40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Euler::Euler";
 			remoteInfo = Euler;
-		};
-		6804E4532480121E00B65E40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "SwiftPlot::SVGRenderer";
-			remoteInfo = SVGRenderer;
-		};
-		6804E4542480121E00B65E40 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "SwiftPlot::SwiftPlot";
-			remoteInfo = SwiftPlot;
 		};
 		6804E4552480122000B65E40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -238,44 +163,9 @@
 		OBJ_106 /* NodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTests.swift; sourceTree = "<group>"; };
 		OBJ_108 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		OBJ_109 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		OBJ_119 /* SVGRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGRenderer.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Grouper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grouper.swift; sourceTree = "<group>"; };
-		OBJ_121 /* AdaptersNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptersNamespace.swift; sourceTree = "<group>"; };
-		OBJ_122 /* Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis.swift; sourceTree = "<group>"; };
-		OBJ_123 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
-		OBJ_124 /* BarGraphSeriesOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphSeriesOptions.swift; sourceTree = "<group>"; };
-		OBJ_126 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		OBJ_127 /* ColorMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMap.swift; sourceTree = "<group>"; };
-		OBJ_128 /* ColorMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMapData.swift; sourceTree = "<group>"; };
-		OBJ_129 /* FloatConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatConvertible.swift; sourceTree = "<group>"; };
 		OBJ_13 /* LaTeX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaTeX.swift; sourceTree = "<group>"; };
-		OBJ_131 /* EdgeComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeComponents.swift; sourceTree = "<group>"; };
-		OBJ_132 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
-		OBJ_133 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
-		OBJ_134 /* GraphLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphLayout.swift; sourceTree = "<group>"; };
-		OBJ_135 /* Heatmap-adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Heatmap-adapter.swift"; sourceTree = "<group>"; };
-		OBJ_136 /* Heatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heatmap.swift; sourceTree = "<group>"; };
-		OBJ_137 /* HelperFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunction.swift; sourceTree = "<group>"; };
-		OBJ_138 /* Histogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Histogram.swift; sourceTree = "<group>"; };
-		OBJ_139 /* HistogramSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramSeries.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
-		OBJ_140 /* HistogramSeriesOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramSeriesOptions.swift; sourceTree = "<group>"; };
-		OBJ_142 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		OBJ_143 /* LayoutComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutComponent.swift; sourceTree = "<group>"; };
-		OBJ_144 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
-		OBJ_145 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		OBJ_146 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
-		OBJ_147 /* Plot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plot.swift; sourceTree = "<group>"; };
-		OBJ_148 /* PlotDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotDimensions.swift; sourceTree = "<group>"; };
-		OBJ_149 /* PlotMarkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotMarkers.swift; sourceTree = "<group>"; };
-		OBJ_150 /* PlotStyleHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotStyleHelpers.swift; sourceTree = "<group>"; };
-		OBJ_151 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		OBJ_152 /* ScatterChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScatterChart.swift; sourceTree = "<group>"; };
-		OBJ_153 /* ScatterPlotSeriesOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScatterPlotSeriesOptions.swift; sourceTree = "<group>"; };
-		OBJ_154 /* SequencePlots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencePlots.swift; sourceTree = "<group>"; };
-		OBJ_155 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
-		OBJ_156 /* SubPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubPlot.swift; sourceTree = "<group>"; };
-		OBJ_158 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/arguiot/GitHub/Euler/.build/checkouts/swiftplot/Package.swift; sourceTree = "<group>"; };
 		OBJ_16 /* CellAddressNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAddressNode.swift; sourceTree = "<group>"; };
 		OBJ_164 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = SOURCE_ROOT; };
 		OBJ_165 /* Configs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configs; sourceTree = SOURCE_ROOT; };
@@ -349,8 +239,6 @@
 		OBJ_95 /* UnsafeMutableMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutableMemory.swift; sourceTree = "<group>"; };
 		OBJ_98 /* AlgebraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgebraTests.swift; sourceTree = "<group>"; };
 		OBJ_99 /* BigDoubleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigDoubleTests.swift; sourceTree = "<group>"; };
-		"SwiftPlot::SVGRenderer::Product" /* SVGRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVGRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"SwiftPlot::SwiftPlot::Product" /* SwiftPlot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftPlot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,8 +246,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_244 /* SVGRenderer.framework in Frameworks */,
-				OBJ_245 /* SwiftPlot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,23 +254,6 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_278 /* Euler.framework in Frameworks */,
-				OBJ_279 /* SVGRenderer.framework in Frameworks */,
-				OBJ_280 /* SwiftPlot.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_289 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_290 /* SwiftPlot.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_329 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,153 +304,6 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		OBJ_110 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_111 /* SwiftPlot */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		OBJ_111 /* SwiftPlot */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_112 /* AGG */,
-				OBJ_113 /* AGGRenderer */,
-				OBJ_114 /* CAGGRenderer */,
-				OBJ_115 /* CFreeType */,
-				OBJ_116 /* CPPAGGRenderer */,
-				OBJ_117 /* QuartzRenderer */,
-				OBJ_118 /* SVGRenderer */,
-				OBJ_120 /* SwiftPlot */,
-				OBJ_157 /* lodepng */,
-				OBJ_158 /* Package.swift */,
-			);
-			name = SwiftPlot;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_112 /* AGG */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AGG;
-			path = .build/checkouts/swiftplot/Sources/AGG;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_113 /* AGGRenderer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AGGRenderer;
-			path = .build/checkouts/swiftplot/Sources/AGGRenderer/AGGRenderer;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_114 /* CAGGRenderer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CAGGRenderer;
-			path = .build/checkouts/swiftplot/Sources/AGGRenderer/CAGGRenderer;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_115 /* CFreeType */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CFreeType;
-			path = .build/checkouts/swiftplot/Sources/CFreeType;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_116 /* CPPAGGRenderer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CPPAGGRenderer;
-			path = .build/checkouts/swiftplot/Sources/AGGRenderer/CPPAGGRenderer;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_117 /* QuartzRenderer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = QuartzRenderer;
-			path = .build/checkouts/swiftplot/Sources/QuartzRenderer;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_118 /* SVGRenderer */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_119 /* SVGRenderer.swift */,
-			);
-			name = SVGRenderer;
-			path = .build/checkouts/swiftplot/Sources/SVGRenderer;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_120 /* SwiftPlot */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_121 /* AdaptersNamespace.swift */,
-				OBJ_122 /* Axis.swift */,
-				OBJ_123 /* BarChart.swift */,
-				OBJ_124 /* BarGraphSeriesOptions.swift */,
-				OBJ_125 /* Color */,
-				OBJ_129 /* FloatConvertible.swift */,
-				OBJ_130 /* Geometry */,
-				OBJ_134 /* GraphLayout.swift */,
-				OBJ_135 /* Heatmap-adapter.swift */,
-				OBJ_136 /* Heatmap.swift */,
-				OBJ_137 /* HelperFunction.swift */,
-				OBJ_138 /* Histogram.swift */,
-				OBJ_139 /* HistogramSeries.swift */,
-				OBJ_140 /* HistogramSeriesOptions.swift */,
-				OBJ_141 /* LayoutComponents */,
-				OBJ_145 /* LineChart.swift */,
-				OBJ_146 /* Pair.swift */,
-				OBJ_147 /* Plot.swift */,
-				OBJ_148 /* PlotDimensions.swift */,
-				OBJ_149 /* PlotMarkers.swift */,
-				OBJ_150 /* PlotStyleHelpers.swift */,
-				OBJ_151 /* Renderer.swift */,
-				OBJ_152 /* ScatterChart.swift */,
-				OBJ_153 /* ScatterPlotSeriesOptions.swift */,
-				OBJ_154 /* SequencePlots.swift */,
-				OBJ_155 /* Series.swift */,
-				OBJ_156 /* SubPlot.swift */,
-			);
-			name = SwiftPlot;
-			path = .build/checkouts/swiftplot/Sources/SwiftPlot;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_125 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_126 /* Color.swift */,
-				OBJ_127 /* ColorMap.swift */,
-				OBJ_128 /* ColorMapData.swift */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
-		OBJ_130 /* Geometry */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_131 /* EdgeComponents.swift */,
-				OBJ_132 /* Rect.swift */,
-				OBJ_133 /* Size.swift */,
-			);
-			path = Geometry;
-			sourceTree = "<group>";
-		};
-		OBJ_141 /* LayoutComponents */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_142 /* Label.swift */,
-				OBJ_143 /* LayoutComponent.swift */,
-				OBJ_144 /* Spacing.swift */,
-			);
-			path = LayoutComponents;
-			sourceTree = "<group>";
-		};
 		OBJ_15 /* Node */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,21 +320,11 @@
 			path = Node;
 			sourceTree = "<group>";
 		};
-		OBJ_157 /* lodepng */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = lodepng;
-			path = .build/checkouts/swiftplot/Sources/lodepng;
-			sourceTree = SOURCE_ROOT;
-		};
 		OBJ_159 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				"Euler::Euler::Product" /* Euler.framework */,
-				"SwiftPlot::SVGRenderer::Product" /* SVGRenderer.framework */,
 				"Euler::EulerTests::Product" /* EulerTests.xctest */,
-				"SwiftPlot::SwiftPlot::Product" /* SwiftPlot.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -696,7 +408,6 @@
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_96 /* Tests */,
-				OBJ_110 /* Dependencies */,
 				OBJ_159 /* Products */,
 				OBJ_164 /* docs */,
 				OBJ_165 /* Configs */,
@@ -897,8 +608,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_246 /* PBXTargetDependency */,
-				OBJ_248 /* PBXTargetDependency */,
 			);
 			name = Euler;
 			productName = Euler;
@@ -916,8 +625,6 @@
 			);
 			dependencies = (
 				OBJ_281 /* PBXTargetDependency */,
-				OBJ_282 /* PBXTargetDependency */,
-				OBJ_283 /* PBXTargetDependency */,
 			);
 			name = EulerTests;
 			productName = EulerTests;
@@ -936,53 +643,6 @@
 			);
 			name = EulerPackageDescription;
 			productName = EulerPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
-		"SwiftPlot::SVGRenderer" /* SVGRenderer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_284 /* Build configuration list for PBXNativeTarget "SVGRenderer" */;
-			buildPhases = (
-				OBJ_287 /* Sources */,
-				OBJ_289 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_291 /* PBXTargetDependency */,
-			);
-			name = SVGRenderer;
-			productName = SVGRenderer;
-			productReference = "SwiftPlot::SVGRenderer::Product" /* SVGRenderer.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"SwiftPlot::SwiftPMPackageDescription" /* SwiftPlotPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_331 /* Build configuration list for PBXNativeTarget "SwiftPlotPackageDescription" */;
-			buildPhases = (
-				OBJ_334 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftPlotPackageDescription;
-			productName = SwiftPlotPackageDescription;
-			productType = "com.apple.product-type.framework";
-		};
-		"SwiftPlot::SwiftPlot" /* SwiftPlot */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_292 /* Build configuration list for PBXNativeTarget "SwiftPlot" */;
-			buildPhases = (
-				OBJ_295 /* Sources */,
-				OBJ_329 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftPlot;
-			productName = SwiftPlot;
-			productReference = "SwiftPlot::SwiftPlot::Product" /* SwiftPlot.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1011,9 +671,6 @@
 				"Euler::SwiftPMPackageDescription" /* EulerPackageDescription */,
 				"Euler::EulerPackageTests::ProductTarget" /* EulerPackageTests */,
 				"Euler::EulerTests" /* EulerTests */,
-				"SwiftPlot::SVGRenderer" /* SVGRenderer */,
-				"SwiftPlot::SwiftPlot" /* SwiftPlot */,
-				"SwiftPlot::SwiftPMPackageDescription" /* SwiftPlotPackageDescription */,
 			);
 		};
 /* End PBXProject section */
@@ -1134,75 +791,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_287 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_288 /* SVGRenderer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_295 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_296 /* AdaptersNamespace.swift in Sources */,
-				OBJ_297 /* Axis.swift in Sources */,
-				OBJ_298 /* BarChart.swift in Sources */,
-				OBJ_299 /* BarGraphSeriesOptions.swift in Sources */,
-				OBJ_300 /* Color.swift in Sources */,
-				OBJ_301 /* ColorMap.swift in Sources */,
-				OBJ_302 /* ColorMapData.swift in Sources */,
-				OBJ_303 /* FloatConvertible.swift in Sources */,
-				OBJ_304 /* EdgeComponents.swift in Sources */,
-				OBJ_305 /* Rect.swift in Sources */,
-				OBJ_306 /* Size.swift in Sources */,
-				OBJ_307 /* GraphLayout.swift in Sources */,
-				OBJ_308 /* Heatmap-adapter.swift in Sources */,
-				OBJ_309 /* Heatmap.swift in Sources */,
-				OBJ_310 /* HelperFunction.swift in Sources */,
-				OBJ_311 /* Histogram.swift in Sources */,
-				OBJ_312 /* HistogramSeries.swift in Sources */,
-				OBJ_313 /* HistogramSeriesOptions.swift in Sources */,
-				OBJ_314 /* Label.swift in Sources */,
-				OBJ_315 /* LayoutComponent.swift in Sources */,
-				OBJ_316 /* Spacing.swift in Sources */,
-				OBJ_317 /* LineChart.swift in Sources */,
-				OBJ_318 /* Pair.swift in Sources */,
-				OBJ_319 /* Plot.swift in Sources */,
-				OBJ_320 /* PlotDimensions.swift in Sources */,
-				OBJ_321 /* PlotMarkers.swift in Sources */,
-				OBJ_322 /* PlotStyleHelpers.swift in Sources */,
-				OBJ_323 /* Renderer.swift in Sources */,
-				OBJ_324 /* ScatterChart.swift in Sources */,
-				OBJ_325 /* ScatterPlotSeriesOptions.swift in Sources */,
-				OBJ_326 /* SequencePlots.swift in Sources */,
-				OBJ_327 /* Series.swift in Sources */,
-				OBJ_328 /* SubPlot.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_334 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_335 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_246 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "SwiftPlot::SVGRenderer" /* SVGRenderer */;
-			targetProxy = 6804E44F2480121E00B65E40 /* PBXContainerItemProxy */;
-		};
-		OBJ_248 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "SwiftPlot::SwiftPlot" /* SwiftPlot */;
-			targetProxy = 6804E4512480121E00B65E40 /* PBXContainerItemProxy */;
-		};
 		OBJ_260 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Euler::EulerTests" /* EulerTests */;
@@ -1212,21 +803,6 @@
 			isa = PBXTargetDependency;
 			target = "Euler::Euler" /* Euler */;
 			targetProxy = 6804E4522480121E00B65E40 /* PBXContainerItemProxy */;
-		};
-		OBJ_282 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "SwiftPlot::SVGRenderer" /* SVGRenderer */;
-			targetProxy = 6804E4532480121E00B65E40 /* PBXContainerItemProxy */;
-		};
-		OBJ_283 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "SwiftPlot::SwiftPlot" /* SwiftPlot */;
-			targetProxy = 6804E4542480121E00B65E40 /* PBXContainerItemProxy */;
-		};
-		OBJ_291 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "SwiftPlot::SwiftPlot" /* SwiftPlot */;
-			targetProxy = 6804E4502480121E00B65E40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1353,118 +929,6 @@
 			};
 			name = Release;
 		};
-		OBJ_285 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Euler.xcodeproj/SVGRenderer_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = SVGRenderer;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = SVGRenderer;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		OBJ_286 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Euler.xcodeproj/SVGRenderer_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = SVGRenderer;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = SVGRenderer;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		OBJ_293 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Euler.xcodeproj/SwiftPlot_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = SwiftPlot;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = SwiftPlot;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		OBJ_294 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Euler.xcodeproj/SwiftPlot_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = SwiftPlot;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = SwiftPlot;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1518,24 +982,6 @@
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
-		};
-		OBJ_332 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		OBJ_333 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1.0";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
 		};
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1631,33 +1077,6 @@
 			buildConfigurations = (
 				OBJ_263 /* Debug */,
 				OBJ_264 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_284 /* Build configuration list for PBXNativeTarget "SVGRenderer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_285 /* Debug */,
-				OBJ_286 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_292 /* Build configuration list for PBXNativeTarget "SwiftPlot" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_293 /* Debug */,
-				OBJ_294 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		OBJ_331 /* Build configuration list for PBXNativeTarget "SwiftPlotPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_332 /* Debug */,
-				OBJ_333 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
