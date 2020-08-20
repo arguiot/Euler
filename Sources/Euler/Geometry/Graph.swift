@@ -4,7 +4,7 @@
 //
 //  Created by Arthur Guiot on 2020-03-04.
 //
-#if canImport(SwiftPlot)
+#if canImport(SwiftPlot) && canImport(SVGRenderer)
 import Foundation
 import SwiftPlot
 import SVGRenderer
