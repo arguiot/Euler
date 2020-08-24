@@ -82,6 +82,7 @@ public class OperatorNode: NSObject, Node {
             case "-":
                 return NullNode()
             case "/":
+                guard 0 != (try? c2.evaluate([:], Tables.functions).number) else { return self }
                 return ConstantNode(1)
             case "*":
                 return OperatorNode("^", children: [c1, ConstantNode(2)])

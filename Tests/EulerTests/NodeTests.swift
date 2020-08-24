@@ -80,6 +80,7 @@ class NodeTests: XCTestCase {
             XCTAssertEqual(comp.toString(), "x + y * 2 + 3")
             
             XCTAssertEqual(try Parser("(4*2)").parse().compile().toString(), "8")
+            XCTAssertEqual(try Parser("0 / 0").parse().compile().toString(), "0 / 0")
             XCTAssertEqual(try Parser("x+x - y*y").parse().compile().toString(), "2 * x - y ^ 2")
         } catch {
             print(error.localizedDescription)
