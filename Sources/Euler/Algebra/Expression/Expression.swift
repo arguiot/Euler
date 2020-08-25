@@ -27,4 +27,25 @@ public class Expression: NSObject {
         
         self.node = ExpressionNode(comp)
     }
+    
+    /// Returns all the symbols from the expression.
+    ///
+    /// Useful when you want to get a list of possible parameters
+    ///
+    public var symbols: [SymbolNode] {
+        func symbolChildren(node: Node) -> [SymbolNode] {
+            var out = [SymbolNode]()
+            guard !(node is SymbolNode) else { return [node as! SymbolNode] }
+            node.children.forEach { (child) in
+                if child is SymbolNode {
+                    out.append(child as! SymbolNode)
+                } else {
+                    out.append(contentsOf: symbolChildren(node: child))
+                }
+            }
+            return out
+        }
+        
+        return symbolChildren(node: self.node).map(\.content).uniques.map { SymbolNode($0) }
+    }
 }

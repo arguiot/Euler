@@ -36,6 +36,9 @@ class AlgebraTests: XCTestCase {
         // Roots
         let golden = try! Polynomial(1, -1, -1)
         XCTAssert(try golden.solve(for: "x", in: (-5, 5), with: 10e-6)[0].nearlyEquals((1 - 5.squareRoot()) / 2)) // Golden Ratio, simplified
+        
+        // Symbols
+        XCTAssertEqual(try Expression("x + y -(2 * c) / sin(x)").symbols.map(\.content), ["x", "y", "c"])
     }
     
     static var allTests = [

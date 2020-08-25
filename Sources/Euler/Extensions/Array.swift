@@ -124,3 +124,14 @@ public extension Array {
         return tmp
     }
 }
+
+public extension Array where Element: Equatable {
+    /// Removes duplicate elements
+    var uniques: Array {
+        reduce(into: []) { uniqueElements, element in
+            if !uniqueElements.contains(element) {
+                uniqueElements.append(element)
+            }
+        }
+    }
+}

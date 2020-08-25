@@ -68,10 +68,6 @@ public class SymbolNode: NSObject, Node {
     ///   - rhs: Any `SymbolNode`
     static func ==(lhs: SymbolNode, rhs: SymbolNode) -> Bool {
         guard lhs.content == rhs.content || lhs.content == "Any" || rhs.content == "Any" else { return false }
-        guard lhs.children.count == rhs.children.count else { return false }
-        for i in 0..<lhs.children.count {
-            guard lhs.children[i] == rhs.children[i] else { return false }
-        }
         return true
     }
 }
