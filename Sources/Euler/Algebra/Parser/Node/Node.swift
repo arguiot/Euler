@@ -34,7 +34,7 @@ public protocol Node: NSObject {
 /// A type of error thrown when evaluation fails
 public enum EvaluationError: LocalizedError {
     /// Parameter isn't found or somehting went wrong with them
-    case parameters
+    case parameters(String)
     /// The function provided is missing
     case functionError
     /// Children are missing
@@ -48,8 +48,8 @@ public enum EvaluationError: LocalizedError {
     ///
     public var errorDescription: String? {
         switch self {
-        case .parameters:
-            return "Couldn't find parameters"
+        case .parameters(let parameter):
+            return "Couldn't find the parameter named: \(parameter)"
         case .functionError:
             return "The function returned an error"
         case .missingChildren:

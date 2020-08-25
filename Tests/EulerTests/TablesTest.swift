@@ -43,6 +43,8 @@ class TablesTests: XCTestCase {
     }
 
     static var allTests = [
+        ("Common", testCommon),
+        ("Date", testDate),
         ("Engineering", testEngineering)
     ]
 }

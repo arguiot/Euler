@@ -57,7 +57,7 @@ public class SymbolNode: NSObject, Node {
         if self.content == "e" {
             return CellValue(number: e)
         }
-        throw EvaluationError.parameters
+        throw EvaluationError.parameters(self.content)
     }
     
     /// Make sure that two `SymbolNode` are equals (used in pattern matching)
