@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Euler"
-  s.version      = "0.2.6"
+  s.version      = "0.2.7"
   s.summary      = "The open source computational framework for the Swift language (early stage)"
   s.description  = <<-DESC
     The open source computational framework for the Swift language (early stage)

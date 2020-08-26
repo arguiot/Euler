@@ -49,4 +49,9 @@ public struct Point: Equatable {
     static public func ==(rhs: Point, lhs: Point) -> Bool {
         return rhs.dims == lhs.dims
     }
+    
+    /// Vector that translate the point (0,0) to the current point in space.
+    var vector: Vector {
+        return Vector(multipleDimensions: self.dims)
+    }
 }
