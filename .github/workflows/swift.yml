@@ -16,12 +16,12 @@ jobs:
       run: sudo apt-get install clang libicu-dev
       if: runner.os == 'Linux'
     - name: Download Swift
-      run: wget "https://swift.org/builds/swift-5.1.3-release/ubuntu1804/swift-5.1.3-RELEASE/swift-5.1.3-RELEASE-ubuntu18.04.tar.gz"
+      run: wget "https://swift.org/builds/swift-5.2.5-release/ubuntu1804/swift-5.2.5-RELEASE/swift-5.2.5-RELEASE-ubuntu18.04.tar.gz"
       if: runner.os == 'Linux'
     - name: Install Swift
       run: |
-        tar xzf swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
-        echo "::add-path::$(pwd)/swift-5.1.3-RELEASE-ubuntu18.04/usr/bin"
+        tar xzf swift-5.2.5-RELEASE-ubuntu18.04.tar.gz
+        echo "::add-path::$(pwd)/swift-5.2.5-RELEASE-ubuntu18.04/usr/bin"
       if: runner.os == 'Linux'
     - name: Build
       run: swift build -v
