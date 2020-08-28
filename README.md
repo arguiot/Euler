@@ -1,4 +1,4 @@
-<div align="center"><img src="./Euler.svg" alt="Logo" height="200"><h1>Euler [WIP]</h1>
+<div align="center"><img src="https://euler.arguiot.com/Euler.svg" alt="Logo" height="200"><h1>Euler</h1>
 A computanional framework written in Swift
 </div>
 
