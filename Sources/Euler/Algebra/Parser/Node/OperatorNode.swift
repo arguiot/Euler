@@ -51,12 +51,17 @@ public class OperatorNode: NSObject, Node {
     /// The left and right hand sides of the operator
     public var children = [Node]()
     
-    internal func replaceDeepestRight(_ node: Node) {
+    internal func replaceDeepestRight(_ node: Node, penultimate: Bool = false) {
         guard children.count == 2 else { return }
         if children[1] is OperatorNode {
-            (children[1] as! OperatorNode).replaceDeepestRight(node)
+            (children[1] as! OperatorNode).replaceDeepestRight(node, penultimate: penultimate)
         } else {
-            children[1] = node
+            if penultimate == true {
+                content = node.content
+                children = node.children
+            } else {
+                children[1] = node
+            }
         }
     }
     

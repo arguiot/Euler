@@ -67,6 +67,9 @@ class NodeTests: XCTestCase {
             XCTAssertEqual(try? l.evaluate([:], Tables().linker).number?.nearlyEquals(0.007053378588205258), true)
             l = try Parser(latex: "2-\\frac{9}{3}3\\cdot\\sqrt{812}-9.0").parse()
             XCTAssertEqual(try? l.evaluate([:], Tables().linker).number?.nearlyEquals(-263.4605), true)
+            
+            XCTAssertEqual(try Expression("2-10^6 * 10").node.evaluate([:]).number, -9999998)
+            XCTAssertEqual(try Expression("2-10^9-15*10^6*10").node.evaluate([:]).number, -1149999998)
         } catch {
             print(error.localizedDescription)
             XCTFail()

@@ -122,6 +122,8 @@ public class Parser {
     }
     
     /// Links the nodes to create a tree
+    ///
+    /// It is a very sensitive part. Generally, when a calculation is wrong, it's often due to the linker.
     /// - Parameter chain: The chain given by `chainMaker`
     internal func linker(chain: [Node]) throws -> ExpressionNode {
         // Less priority means higher position in tree
@@ -141,29 +143,54 @@ public class Parser {
         var nodes: [Node] = [chain[0]]
         
         while index < chain.count - 1 { // Iterating over the array, ommiting last element
-            guard let current = nodes.last else { throw ParseError.UnexpectedError }
+            guard let overall = nodes.last else { throw ParseError.UnexpectedError }
+            let current = chain[index]
             let next = chain[index + 1]
             
-            if current is OperatorNode && next is OperatorNode {
-                guard let p1 = priorities[current.content] else { throw ParseError.UnexpectedOperator }
+            if overall is OperatorNode && next is OperatorNode {
+                guard let p1 = priorities[overall.content] else { throw ParseError.UnexpectedOperator }
                 guard let p2 = priorities[next.content] else { throw ParseError.UnexpectedOperator }
                 
                 if p1 < p2 { // So we'll chose next over current
-                    (current as! OperatorNode).replaceDeepestRight(next)
+                    if let p3 = priorities[current.content] {
+                        if p2 < p3 {
+                            let choosedSign = next.content
+                            let lhs = current.children[0]
+                            let mhs = current.children[1]
+                            let rhs = next.children[1]
+                            
+        //                    guard mhs == next.children[0] else {
+        //                        throw ParseError.FailedToParse
+        //                    }
+                            
+                            let op1 = OperatorNode(current.content, children: [lhs, mhs])
+                            let op2 = OperatorNode(choosedSign, children: [op1, rhs])
+                            
+                            (overall as! OperatorNode).replaceDeepestRight(op2, penultimate: true)
+                            
+                            nodes.remove(at: 0) // Empty array
+                            nodes.append(overall)
+                            
+                            index += 1
+                            
+                            continue
+                        }
+                    }
+                    (overall as! OperatorNode).replaceDeepestRight(next)
                     
                     nodes.remove(at: 0) // Empty array
-                    nodes.append(current)
+                    nodes.append(overall)
                 } else {
                     let choosedSign = next.content
-                    let lhs = current.children[0]
-                    let mhs = current.children[1]
+                    let lhs = overall.children[0]
+                    let mhs = overall.children[1]
                     let rhs = next.children[1]
                     
 //                    guard mhs == next.children[0] else {
 //                        throw ParseError.FailedToParse
 //                    }
                     
-                    let op1 = OperatorNode(current.content, children: [lhs, mhs])
+                    let op1 = OperatorNode(overall.content, children: [lhs, mhs])
                     let op2 = OperatorNode(choosedSign, children: [op1, rhs])
                     
                     nodes.remove(at: 0) // Empty array
