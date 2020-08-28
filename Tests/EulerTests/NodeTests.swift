@@ -70,6 +70,8 @@ class NodeTests: XCTestCase {
             
             XCTAssertEqual(try Expression("2-10^6 * 10").node.evaluate([:]).number, -9999998)
             XCTAssertEqual(try Expression("2-10^9-15*10^6*10").node.evaluate([:]).number, -1149999998)
+            XCTAssertEqual(try Expression("10^(3)10").node.evaluate([:]).number, 10000)
+            XCTAssertEqual(try Expression(latex: "10^110").node.evaluate([:]).number, 100)
         } catch {
             print(error.localizedDescription)
             XCTFail()

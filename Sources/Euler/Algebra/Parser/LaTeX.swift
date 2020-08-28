@@ -38,6 +38,7 @@ public extension Parser {
         out = out.replacingOccurrences(of: "}", with: ")")
 //        out = out.replacingOccurrences(of: "ar", with: "a")
         out = out.replacingOccurrences(of: "\\", with: "")
+        out = out.replace(regex: "\\^(\\d)", with: "^($1)")
         return out
     }
     
