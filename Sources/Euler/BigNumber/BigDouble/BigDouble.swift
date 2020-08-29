@@ -301,7 +301,7 @@ public struct BigDouble:
      */
     public var scientificDescription: String {
         if self == .zero {
-            return "0×10⁰"
+            return "0.\(String(repeating: "0", count: self.precision))×10⁰"
         }
         var d = BN(sign: false, numerator: self.numerator, denominator: self.denominator).decimalDescription // Make sure that "." is the separator and that number is positive
         var power: Int

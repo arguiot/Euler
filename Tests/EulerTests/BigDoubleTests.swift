@@ -259,8 +259,11 @@ class BigDoubleTests : XCTestCase {
         var bigD = BigDouble("123456789.123456789")
         bigD?.locale = Locale(identifier: "fr_FR")
         bigD?.precision = 2
+        BN.precision = 2
         XCTAssertEqual(bigD?.decimalDescription, "123456789,12")
         XCTAssertEqual(bigD?.scientificDescription, "1,23×10⁸")
+        XCTAssertEqual(BN.zero.scientificDescription, "0.00×10⁰")
+        BN.precision = 4
         bigD?.precision = 4
         bigD?.locale = Locale(identifier: "en_US")
         XCTAssertEqual(bigD?.decimalDescription, "123456789.1235")
