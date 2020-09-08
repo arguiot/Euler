@@ -158,18 +158,17 @@ extension BigDouble {
         return base * (base ** (exponent - 1))
     }
     
-    public static func **(_ base: BigDouble, _ exponent: BigInt) -> BigDouble
-    {
-        if exponent == 0
-        {
+    public static func **(_ base: BigDouble, _ exponent: BigInt) -> BigDouble {
+        if exponent == 0 {
             return BigDouble(1)
         }
-        if exponent == 1
-        {
+        if exponent == 1 {
             return base
         }
-        if exponent < 0
-        {
+        if exponent < 0 {
+            if let expo = exponent.asInt() {
+                return base.nthroot(-expo) ?? BigDouble(1) / (base ** -exponent)
+            }
             return BigDouble(1) / (base ** -exponent)
         }
         
@@ -180,6 +179,11 @@ extension BigDouble {
      * - reference: http://rosettacode.org/wiki/Nth_root
      */
     public static func **(_ base: BigDouble, _ exponent: BigDouble) -> BigDouble {
+        
+        if BN(exponent.rounded()) == exponent {
+            return base ** exponent.rounded()
+        }
+        
         double: if let b = base.asDouble(), let e = exponent.asDouble() {
             guard b.isFinite && e.isFinite else { break double }
             let p = pow(b, e)
