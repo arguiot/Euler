@@ -585,6 +585,8 @@ internal extension Array where Element == Limb {
         
         if self.equalTo(0) { return ([0], [0]) }
         
+        if self.lessThan(divisor) { return ([0], self) }
+        
         var (quotient, remainder): (Limbs, Limbs) = ([0], [0])
         var (previousCarry, carry, ele): (Limb, Limb, Limb) = (0, 0, 0)
         
