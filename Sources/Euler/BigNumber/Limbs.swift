@@ -579,7 +579,7 @@ internal extension Array where Element == Limb {
     //
     //
     
-    /// An O(n) division algorithm that returns quotient and remainder.
+    /// An O(n^2) division algorithm that returns quotient and remainder.
     func divMod(_ divisor: Limbs) -> (quotient: Limbs, remainder: Limbs) {
         precondition(!divisor.equalTo(0), "Division or Modulo by zero not allowed")
         
