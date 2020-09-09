@@ -593,102 +593,31 @@ internal extension Array where Element == Limb {
          contain, which is a fast O(1) check.  Only when the number of limbs are
          equal is an O(n) compare required.
          */
-        if divisor.count > self.count ||
-            (divisor.count == self.count && self.lessThan(divisor))
+        if divisor.count > self.count
+            || (divisor.count == self.count && self.lessThan(divisor))
         {
             return (quotient: [0], remainder: self)
         }
         
+        // If divisor has just 1 digit, we can do an even more efficient divide
+        guard divisor.count > 1 else
+        {
+            var q = Limbs(repeating: 0, count: self.count)
+            let r = divide(self, by: divisor.first!, result: &q)
+            while q.count > 1 && q.last! == 0 { q.removeLast() }
+            return (quotient: q, remainder: [r])
+        }
+
         let maxQuotientSize = self.count - divisor.count + 1
         let maxRemanderSize = divisor.count
         var quotient = Limbs(repeating: 0, count: maxQuotientSize)
         var remainder = Limbs(repeating: 0, count: maxRemanderSize)
         
-        divideWithRemainder_KnuthD(
-            self,
-            by: divisor,
-            quotient: &quotient,
-            remainder: &remainder
-        )
-        
-        // The aglorithm leaves leading zeros, so they are stripped
-        while quotient.count > 1 && quotient.last! == 0 {
-            quotient.removeLast()
-        }
-        while remainder.count > 1 && remainder.last! == 0 {
-            remainder.removeLast()
-        }
-
-        #else // original shift-subtract algorithm is left here for now
-        if self.equalTo(0) { return ([0], [0]) }
-        
-        if self.lessThan(divisor) { return ([0], self) }
-        
-        var (quotient, remainder): (Limbs, Limbs) = ([0], [0])
-        var (previousCarry, carry, ele): (Limb, Limb, Limb) = (0, 0, 0)
-        
-        // bits of lhs minus one bit
-        var i = (64 * (self.count - 1)) + Int(log2(Double(self.last!)))
-        
-        while i >= 0 {
-            // shift remainder by 1 to the left
-            for r in 0..<remainder.count
-            {
-                ele = remainder[r]
-                carry = ele >> 63
-                ele <<= 1
-                ele |= previousCarry // carry from last step
-                previousCarry = carry
-                remainder[r] = ele
-            }
-            if previousCarry != 0 { remainder.append(previousCarry) }
-            
-            remainder.setBit(at: 0, to: self.getBit(at: i))
-            
-            if !remainder.lessThan(divisor) {
-                remainder.difference(divisor)
-                quotient.setBit(at: i, to: true)
-            }
-            
-            i -= 1
-        }
-        #endif
-        
-        return (quotient, remainder)
-    }
-    
-    // -------------------------------------
-    /**
-     Divide multiprecision unsigned integer, `x`, by multiprecision unsigned
-     integer, `y`, obtaining both the quotient and remainder.
-     
-     Implements Alogorithm D, from Donald Knuth's, *The Art of Computer Programming*
-     , Volume 2,*Semi-numerical Algorithms*, Chapter 4.3.3.
-          
-     - Parameters:
-        - dividend: The dividend stored as an unsigned multiprecision integer with
-            its least signficant digit at index 0 (ie, little endian). Must have at
-            least as many digits as `divisor`.
-        - divisor: The divisor stored as a an unsigned multiprecision integer with
-            its least signficant digit stored at index 0 (ie. little endian).
-        - quotient: Buffer to receive the quotient (`x / y`).  Must be the size of
-            the dividend minus the size of the divisor plus one.
-        - remainder: Buffer to receive the remainder (`x % y`).  Must be the size
-            of the divisor.
-     */
-    func divideWithRemainder_KnuthD(
-        _ dividend: Limbs,
-        by divisor: Limbs,
-        quotient: inout Limbs,
-        remainder: inout Limbs)
-    {
         typealias TwoLimbs = (high: UInt64, low: UInt64)
         let digitWidth = Digit.bitWidth
-        let m = dividend.count
+        let m = self.count
         let n = divisor.count
         
-        assert(n > 0, "Divisor must have at least one limb")
-        assert(divisor.reduce(0) { $0 | $1 } != 0, "Division by 0")
         assert(m >= n, "Dividend must have at least as many limbs as the divisor")
         assert(
             quotient.count >= m - n + 1,
@@ -699,21 +628,15 @@ internal extension Array where Element == Limb {
             remainder.count == n,
             "Remainder must have space for the same number of limbs as the divisor"
         )
-
-        guard n > 1 else
-        {
-            remainder[0] = divide(dividend, by: divisor.first!, result: &quotient)
-            return
-        }
-
+        
         let shift = divisor.last!.leadingZeroBitCount
         
         var v = Limbs(repeating: 0, count: n)
         leftShift(divisor, by: shift, into: &v)
 
         var u = Limbs(repeating: 0, count: m + 1)
-        u[m] = dividend[m - 1] >> (digitWidth - shift)
-        leftShift(dividend, by: shift, into: &u)
+        u[m] = self[m - 1] >> (digitWidth - shift)
+        leftShift(self, by: shift, into: &u)
         
         let vLast: UInt64 = v.last!
         let vNextToLast: UInt64 = v[n - 2]
@@ -755,8 +678,53 @@ internal extension Array where Element == Limb {
         }
         
         rightShift(u[0..<n], by: shift, into: &remainder)
-    }
 
+        // The aglorithm leaves leading zeros, so they are stripped
+        while quotient.count > 1 && quotient.last! == 0 {
+            quotient.removeLast()
+        }
+        while remainder.count > 1 && remainder.last! == 0 {
+            remainder.removeLast()
+        }
+
+        #else // original shift-subtract algorithm is left here for now
+        if self.equalTo(0) { return ([0], [0]) }
+        
+        if self.lessThan(divisor) { return ([0], self) }
+        
+        var (quotient, remainder): (Limbs, Limbs) = ([0], [0])
+        var (previousCarry, carry, ele): (Limb, Limb, Limb) = (0, 0, 0)
+        
+        // bits of lhs minus one bit
+        var i = (64 * (self.count - 1)) + Int(log2(Double(self.last!)))
+        
+        while i >= 0
+        {
+            // shift remainder by 1 to the left
+            for r in 0..<remainder.count
+            {
+                ele = remainder[r]
+                carry = ele >> 63
+                ele <<= 1
+                ele |= previousCarry // carry from last step
+                previousCarry = carry
+                remainder[r] = ele
+            }
+            if previousCarry != 0 { remainder.append(previousCarry) }
+            
+            remainder.setBit(at: 0, to: self.getBit(at: i))
+            
+            if !remainder.lessThan(divisor) {
+                remainder.difference(divisor)
+                quotient.setBit(at: i, to: true)
+            }
+            
+            i -= 1
+        }
+        #endif
+        
+        return (quotient, remainder)
+    }
     
     /// Division with limbs, result is floored to nearest whole number.
     func dividing(_ divisor: Limbs) -> Limbs {
