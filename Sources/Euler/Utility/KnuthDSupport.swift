@@ -22,11 +22,11 @@ internal extension FixedWidthInteger
 /**
  Subtract two `UInt64`s, `x`, and `y`, storing the result back to
  `y`. (ie. `x -= y`)
- 
+
  - Parameters:
     - x: The minuend and recipient of the resulting difference.
     - y: The subtrahend
- 
+
  - Returns: Borrow out of the difference.
  */
 internal func subtractReportingBorrow(_ x: inout UInt64, _ y: UInt64) -> UInt64
@@ -40,11 +40,11 @@ internal func subtractReportingBorrow(_ x: inout UInt64, _ y: UInt64) -> UInt64
 /**
  Add two `UInt64`s, `x`, and `y`, storing the result back to `x`.
  (ie. `x += y`)
- 
+
  - Parameters:
     - x: The first addend and recipient of the resulting sum.
     - y: The second addend
- 
+
  - Returns: Carry out of the sum.
  */
 internal func addReportingCarry(_ x: inout UInt64, _ y: UInt64) -> UInt64
@@ -57,7 +57,7 @@ internal func addReportingCarry(_ x: inout UInt64, _ y: UInt64) -> UInt64
 // -------------------------------------
 /**
  Compute `y = y - x * k`
- 
+
  - Parameters:
     - x: A multiprecision number with the least signficant limb
         stored at index 0 (ie. little endian).  It is multiplied by the "limb",
@@ -66,7 +66,7 @@ internal func addReportingCarry(_ x: inout UInt64, _ y: UInt64) -> UInt64
     - y: Both the number being subtracted from, and the storage for the result,
         represented as a collection of limbs with the least signficant limbs
         at index 0.
- 
+
  - Returns: The borrow out of the most signficant limb of `y`.
  */
 internal func subtractReportingBorrow(
@@ -75,7 +75,7 @@ internal func subtractReportingBorrow(
     from y: inout Limbs.SubSequence) -> Bool
 {
     assert(x.count + 1 <= y.count)
-    
+
     var i = x.startIndex
     var j = y.startIndex
 
@@ -86,18 +86,18 @@ internal func subtractReportingBorrow(
         let (pHi, pLo) = k.multipliedFullWidth(by: x[i])
         borrow &+= pHi
         borrow &+= subtractReportingBorrow(&y[j], pLo)
-        
+
         i &+= 1
         j &+= 1
     }
-    
+
     return 0 != subtractReportingBorrow(&y[j], borrow)
 }
 
 // -------------------------------------
 /**
  Add two multiprecision numbers.
- 
+
  - Parameters:
     - x: The first addend as a collection limbs with the least signficant
         limb at index 0 (ie. little endian).
@@ -109,25 +109,25 @@ internal func += (left: inout Limbs.SubSequence, right: Limbs.SubSequence)
 {
     assert(right.count + 1 == left.count)
     var carry: UInt64 = 0
-    
+
     var i = right.startIndex
     var j = left.startIndex
     while i < right.endIndex
     {
         carry = addReportingCarry(&left[j], carry)
         carry &+= addReportingCarry(&left[j], right[i])
-        
+
         i &+= 1
         j &+= 1
     }
-    
+
     left[j] &+= carry
 }
 
 // -------------------------------------
 /**
  Shift the multiprecision unsigned integer, `x`, left by `shift` bits.
- 
+
  - Parameters:
     - x: The mutliprecision unsigned integer to be left-shfited, stored as a
         collection of limbs with the least signficant limb stored at index 0.
@@ -139,7 +139,7 @@ internal func leftShift(_ x: Limbs, by shift: Int, into y: inout Limbs)
 {
     assert(y.count >= x.count)
     assert(y.startIndex == x.startIndex)
-    
+
     let bitWidth = UInt64.bitWidth
 
     for i in (1..<x.count).reversed() {
@@ -151,7 +151,7 @@ internal func leftShift(_ x: Limbs, by shift: Int, into y: inout Limbs)
 // -------------------------------------
 /**
  Shift the multiprecision unsigned integer,`x`, right by `shift` bits.
- 
+
  - Parameters:
     - x: The mutliprecision unsigned integer to be right-shfited, stored as a
         collection of limbs with the least signficant limb stored at index 0.
@@ -162,7 +162,7 @@ internal func leftShift(_ x: Limbs, by shift: Int, into y: inout Limbs)
 internal func rightShift(_ x: inout Limbs.SubSequence, by shift: Int)
 {
     let bitWidth = UInt64.bitWidth
-    
+
     let lastElemIndex = x.count - 1
     for i in 0..<lastElemIndex {
         x[i] = (x[i] >> shift) | (x[i + 1] << (bitWidth - shift))
@@ -173,7 +173,7 @@ internal func rightShift(_ x: inout Limbs.SubSequence, by shift: Int)
 // -------------------------------------
 /**
  Divide the multiprecision number stored in `x`, by the "limb",`y.`
- 
+
  - Parameters:
     - x: The dividend as a multiprecision number with the least signficant limb
         stored at index 0 (ie. little endian).
@@ -187,13 +187,13 @@ internal func divide(_ x: Limbs, by y: UInt64, result z: inout Limbs) -> UInt64
 {
     assert(x.count == z.count)
     assert(x.startIndex == z.startIndex)
-    
+
     var r: UInt64 = 0
     var i = x.count - 1
-    
+
     (z[i], r) = x[i].quotientAndRemainder(dividingBy: y)
     i -= 1
-    
+
     while i >= 0
     {
         (z[i], r) = y.dividingFullWidth((r, x[i]))
@@ -221,7 +221,7 @@ internal func * (left: (high: UInt64, low: UInt64), right: UInt64)
     assert(productHigh.high == 0, "multiplication overflow")
     let c = addReportingCarry(&product.high, productHigh.low)
     assert(c == 0, "multiplication overflow")
-    
+
     return product
 }
 
@@ -239,14 +239,14 @@ internal func /% (left: (high: UInt64, low: UInt64), right: UInt64)
     let q: (high: UInt64, low: UInt64)
     (q.high, r) = left.high.quotientAndRemainder(dividingBy: right)
     (q.low, r) = right.dividingFullWidth((high: r, low: left.low))
-    
+
     return (q, (high: 0, low: r))
 }
 
 // -------------------------------------
 /**
  Tests if  the typle, `left`, is greater than tuple, `right`.
- 
+
  - Returns: `UInt8` that has the value of 1 if `left` is greater than right;
     otherwise, 0.  This is done in place of returning a boolean as part of an
     optimization to avoid hidden conditional branches in boolean expressions.
@@ -293,15 +293,15 @@ internal func sameResultsAsShiftSubtract(
     func divMod_ShiftSubtract(_ dividend: Limbs, _ divisor: Limbs) -> (quotient: Limbs, remainder: Limbs)
     {
         if dividend.equalTo(0) { return ([0], [0]) }
-        
+
         if dividend.lessThan(divisor) { return ([0], dividend) }
-        
+
         var (quotient, remainder): (Limbs, Limbs) = ([0], [0])
         var (previousCarry, carry, ele): (Limb, Limb, Limb) = (0, 0, 0)
-        
+
         // bits of lhs minus one bit
         var i = (64 * (dividend.count - 1)) + Int(log2(Double(dividend.last!)))
-        
+
         while i >= 0
         {
             // shift remainder by 1 to the left
@@ -315,22 +315,22 @@ internal func sameResultsAsShiftSubtract(
                 remainder[r] = ele
             }
             if previousCarry != 0 { remainder.append(previousCarry) }
-            
+
             remainder.setBit(at: 0, to: dividend.getBit(at: i))
-            
+
             if !remainder.lessThan(divisor) {
                 remainder.difference(divisor)
                 quotient.setBit(at: i, to: true)
             }
-            
+
             i -= 1
         }
-        
+
         return (quotient, remainder)
     }
-    
+
     let (q2, r2) = divMod_ShiftSubtract(dividend, divisor)
-    
+
     return quotient == q2 && remainder == r2
     #endif
 }
