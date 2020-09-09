@@ -28,8 +28,9 @@ internal extension FixedWidthInteger
  
  - Returns: Borrow out of the difference.
  */
-@usableFromInline @inline(__always)
-func subtractReportingBorrow<T: FixedWidthInteger>(_ x: inout T, _ y: T) -> T
+internal func subtractReportingBorrow<T: FixedWidthInteger>(
+    _ x: inout T,
+    _ y: T) -> T
 {
     let b: Bool
     (x, b) = x.subtractingReportingOverflow(y)
@@ -47,8 +48,9 @@ func subtractReportingBorrow<T: FixedWidthInteger>(_ x: inout T, _ y: T) -> T
  
  - Returns: Carry out of the sum.
  */
-@usableFromInline @inline(__always)
-func addReportingCarry<T: FixedWidthInteger>(_ x: inout T, _ y: T) -> T
+internal func addReportingCarry<T: FixedWidthInteger>(
+    _ x: inout T,
+    _ y: T) -> T
 {
     let c: Bool
     (x, c) = x.addingReportingOverflow(y)
@@ -70,8 +72,7 @@ func addReportingCarry<T: FixedWidthInteger>(_ x: inout T, _ y: T) -> T
  
  - Returns: The borrow out of the most signficant digit of `y`.
  */
-@usableFromInline @inline(__always)
-func subtractReportingBorrow<T, U>(
+internal func subtractReportingBorrow<T, U>(
     _ x: T,
     times k: T.Element,
     from y: inout U) -> Bool
@@ -115,8 +116,7 @@ func subtractReportingBorrow<T, U>(
         collection of digits with the the least signficant digit at index 0
         (ie. little endian).
  */
-@usableFromInline @inline(__always)
-func += <T, U>(left: inout U, right: T )
+internal func += <T, U>(left: inout U, right: T )
     where T: RandomAccessCollection,
     T.Element == UInt64,
     T.Index == Int,
@@ -153,8 +153,7 @@ func += <T, U>(left: inout U, right: T )
     - shift: the number of bits to shift `x` by.
     - y: Storage for the resulting shift of `x`.  May alias `x`.
  */
-@usableFromInline @inline(__always)
-func leftShift<T, U>(_ x: T, by shift: Int, into y: inout U)
+internal func leftShift<T, U>(_ x: T, by shift: Int, into y: inout U)
     where
     T: RandomAccessCollection,
     T.Element == UInt64,
@@ -186,8 +185,7 @@ func leftShift<T, U>(_ x: T, by shift: Int, into y: inout U)
     - shift: the number of bits to shift `x` by.
     - y: Storage for the resulting shift of `x`.  May alias `x`.
  */
-@usableFromInline @inline(__always)
-func rightShift<T, U>(_ x: T, by shift: Int, into y: inout U)
+internal func rightShift<T, U>(_ x: T, by shift: Int, into y: inout U)
     where
     T: RandomAccessCollection,
     T.Element:BinaryInteger,
@@ -221,8 +219,7 @@ func rightShift<T, U>(_ x: T, by shift: Int, into y: inout U)
 
 - Returns: A single digit remainder.
  */
-@usableFromInline @inline(__always)
-func divide<T, U>(_ x: T, by y: T.Element, result z: inout U) -> T.Element
+internal func divide<T, U>(_ x: T, by y: T.Element, result z: inout U) -> T.Element
     where T: RandomAccessCollection,
     T.Element == UInt64,
     T.Index == Int,
@@ -259,7 +256,6 @@ directly.
 
 // -------------------------------------
 /// Multiply a tuple of digits by 1 digit
-@usableFromInline @inline(__always)
 internal func * (left: (high: UInt64, low: UInt64), right: UInt64)
     -> (high: UInt64, low: UInt64)
 {
@@ -276,7 +272,6 @@ infix operator /% : MultiplicationPrecedence
 
 // -------------------------------------
 /// Divide a tuple of digits by 1 digit obtaining both quotient and remainder
-@usableFromInline @inline(__always)
 internal func /% (left: (high: UInt64, low: UInt64), right: UInt64)
     -> (
         quotient: (high: UInt64, low: UInt64),
@@ -300,7 +295,6 @@ internal func /% (left: (high: UInt64, low: UInt64), right: UInt64)
     optimization to avoid hidden conditional branches in boolean expressions.
  */
 
-@usableFromInline @inline(__always)
 internal func > (
     left: (high: UInt64, low: UInt64),
     right: (high: UInt64, low: UInt64)) -> UInt8
@@ -311,15 +305,13 @@ internal func > (
 
 // -------------------------------------
 /// Add a digit to a tuple's low part, carrying to the high part.
-@usableFromInline @inline(__always)
-func += (left: inout (high: UInt64, low: UInt64), right: UInt64) {
+internal func += (left: inout (high: UInt64, low: UInt64), right: UInt64) {
     left.high &+= addReportingCarry(&left.low, right)
 }
 
 // -------------------------------------
 /// Add one tuple to another tuple
-@usableFromInline @inline(__always)
-func += (
+internal func += (
     left: inout (high: UInt64, low: UInt64),
     right: (high: UInt64, low: UInt64))
 {
@@ -329,7 +321,6 @@ func += (
 
 // -------------------------------------
 /// Subtract a digit from a tuple, borrowing the high part if necessary
-@usableFromInline @inline(__always)
-func -= (left: inout (high: UInt64, low: UInt64), right: UInt64) {
+internal func -= (left: inout (high: UInt64, low: UInt64), right: UInt64) {
     left.high &-= subtractReportingBorrow(&left.low, right)
 }
