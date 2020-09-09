@@ -583,8 +583,6 @@ internal extension Array where Element == Limb {
     func divMod(_ divisor: Limbs) -> (quotient: Limbs, remainder: Limbs) {
         precondition(!divisor.equalTo(0), "Division or Modulo by zero not allowed")
         
-        #if true
-        
         // Handle the case of a divisor greater than the dividend.  The fast
         // test of limb counts is based on Euler maintaining limbs without
         // leading zeros.
@@ -696,48 +694,18 @@ internal extension Array where Element == Limb {
         }
         while u.count > 1 && u.last! == 0 { u.removeLast() }
         
+        assert(
+            sameResultsAsShiftSubtract(
+                dividend: self,
+                divisor: divisor,
+                quotient: quotient,
+                remainder: u
+            )
+        )
+        
         return (quotient, u)
-
-        #else // original shift-subtract algorithm is left here for now
-        
-        if self.equalTo(0) { return ([0], [0]) }
-        
-        if self.lessThan(divisor) { return ([0], self) }
-        
-        var (quotient, remainder): (Limbs, Limbs) = ([0], [0])
-        var (previousCarry, carry, ele): (Limb, Limb, Limb) = (0, 0, 0)
-        
-        // bits of lhs minus one bit
-        var i = (64 * (self.count - 1)) + Int(log2(Double(self.last!)))
-        
-        while i >= 0
-        {
-            // shift remainder by 1 to the left
-            for r in 0..<remainder.count
-            {
-                ele = remainder[r]
-                carry = ele >> 63
-                ele <<= 1
-                ele |= previousCarry // carry from last step
-                previousCarry = carry
-                remainder[r] = ele
-            }
-            if previousCarry != 0 { remainder.append(previousCarry) }
-            
-            remainder.setBit(at: 0, to: self.getBit(at: i))
-            
-            if !remainder.lessThan(divisor) {
-                remainder.difference(divisor)
-                quotient.setBit(at: i, to: true)
-            }
-            
-            i -= 1
-        }
-        
-        return (quotient, remainder)
-        #endif
     }
-    
+
     /// Division with limbs, result is floored to nearest whole number.
     func dividing(_ divisor: Limbs) -> Limbs {
         return self.divMod(divisor).quotient
