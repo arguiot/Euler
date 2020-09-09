@@ -19,7 +19,7 @@ internal extension FixedWidthInteger
 
 // -------------------------------------
 /**
- Subtract two `FixedWidthInteger`s, `x`, and `y`, storing the result back to
+ Subtract two `UInt64`s, `x`, and `y`, storing the result back to
  `y`. (ie. `x -= y`)
  
  - Parameters:
@@ -28,18 +28,16 @@ internal extension FixedWidthInteger
  
  - Returns: Borrow out of the difference.
  */
-internal func subtractReportingBorrow<T: FixedWidthInteger>(
-    _ x: inout T,
-    _ y: T) -> T
+internal func subtractReportingBorrow(_ x: inout UInt64, _ y: UInt64) -> UInt64
 {
     let b: Bool
     (x, b) = x.subtractingReportingOverflow(y)
-    return T(b)
+    return UInt64(b)
 }
 
 // -------------------------------------
 /**
- Add two `FixedWidthInteger`s, `x`, and `y`, storing the result back to `x`.
+ Add two `UInt64`s, `x`, and `y`, storing the result back to `x`.
  (ie. `x += y`)
  
  - Parameters:
@@ -48,13 +46,11 @@ internal func subtractReportingBorrow<T: FixedWidthInteger>(
  
  - Returns: Carry out of the sum.
  */
-internal func addReportingCarry<T: FixedWidthInteger>(
-    _ x: inout T,
-    _ y: T) -> T
+internal func addReportingCarry(_ x: inout UInt64, _ y: UInt64) -> UInt64
 {
     let c: Bool
     (x, c) = x.addingReportingOverflow(y)
-    return T(c)
+    return UInt64(c)
 }
 
 // -------------------------------------
@@ -62,35 +58,27 @@ internal func addReportingCarry<T: FixedWidthInteger>(
  Compute `y = y - x * k`
  
  - Parameters:
-    - x: A multiprecision number with the least signficant digit
-        stored at index 0 (ie. little endian).  It is multiplied by the "digit",
+    - x: A multiprecision number with the least signficant limb
+        stored at index 0 (ie. little endian).  It is multiplied by the "limb",
         `k`, with the resulting product being subtracted from `y`
     - k: Scalar multiple to apply to `x` prior to subtraction
     - y: Both the number being subtracted from, and the storage for the result,
-        represented as a collection of digits with the least signficant digits
+        represented as a collection of limbs with the least signficant limbs
         at index 0.
  
- - Returns: The borrow out of the most signficant digit of `y`.
+ - Returns: The borrow out of the most signficant limb of `y`.
  */
-internal func subtractReportingBorrow<T, U>(
-    _ x: T,
-    times k: T.Element,
-    from y: inout U) -> Bool
-    where T: RandomAccessCollection,
-    T.Element == UInt64,
-    T.Element.Magnitude == T.Element,
-    T.Index == Int,
-    U: RandomAccessCollection,
-    U: MutableCollection,
-    U.Element == T.Element,
-    U.Index == T.Index
+internal func subtractReportingBorrow(
+    _ x: Limbs.SubSequence,
+    times k: UInt64,
+    from y: inout Limbs.SubSequence) -> Bool
 {
     assert(x.count + 1 <= y.count)
     
     var i = x.startIndex
     var j = y.startIndex
 
-    var borrow: T.Element = 0
+    var borrow: UInt64 = 0
     while i < x.endIndex
     {
         borrow = subtractReportingBorrow(&y[j], borrow)
@@ -110,23 +98,16 @@ internal func subtractReportingBorrow<T, U>(
  Add two multiprecision numbers.
  
  - Parameters:
-    - x: The first addend as a collection digits with the least signficant
-        digit at index 0 (ie. little endian).
+    - x: The first addend as a collection limbs with the least signficant
+        limb at index 0 (ie. little endian).
     - y: The second addend and the storage for the resulting sum as a
-        collection of digits with the the least signficant digit at index 0
+        collection of limbs with the the least signficant limb at index 0
         (ie. little endian).
  */
-internal func += <T, U>(left: inout U, right: T )
-    where T: RandomAccessCollection,
-    T.Element == UInt64,
-    T.Index == Int,
-    U: RandomAccessCollection,
-    U: MutableCollection,
-    U.Element == T.Element,
-    U.Index == T.Index
+internal func += (left: inout Limbs.SubSequence, right: Limbs.SubSequence)
 {
     assert(right.count + 1 == left.count)
-    var carry: T.Element = 0
+    var carry: UInt64 = 0
     
     var i = right.startIndex
     var j = left.startIndex
@@ -148,7 +129,7 @@ internal func += <T, U>(left: inout U, right: T )
  
  - Parameters:
     - x: The mutliprecision unsigned integer to be left-shfited, stored as a
-        collection of digits with the least signficant digit stored at index 0.
+        collection of limbs with the least signficant limb stored at index 0.
         (ie. little endian)
     - shift: the number of bits to shift `x` by.
     - y: Storage for the resulting shift of `x`.  May alias `x`.
@@ -180,7 +161,7 @@ internal func leftShift<T, U>(_ x: T, by shift: Int, into y: inout U)
  
  - Parameters:
     - x: The mutliprecision unsigned integer to be right-shfited, stored as a
-        collection of digits with the least signficant digit stored at index 0.
+        collection of limbs with the least signficant limb stored at index 0.
         (ie. little endian)
     - shift: the number of bits to shift `x` by.
     - y: Storage for the resulting shift of `x`.  May alias `x`.
@@ -188,7 +169,7 @@ internal func leftShift<T, U>(_ x: T, by shift: Int, into y: inout U)
 internal func rightShift<T, U>(_ x: T, by shift: Int, into y: inout U)
     where
     T: RandomAccessCollection,
-    T.Element:BinaryInteger,
+    T.Element == UInt64,
     T.Index == Int,
     U: RandomAccessCollection,
     U: MutableCollection,
@@ -208,30 +189,23 @@ internal func rightShift<T, U>(_ x: T, by shift: Int, into y: inout U)
 
 // -------------------------------------
 /**
- Divide the multiprecision number stored in `x`, by the "digit",`y.`
+ Divide the multiprecision number stored in `x`, by the "limb",`y.`
  
  - Parameters:
-    - x: The dividend as a multiprecision number with the least signficant digit
+    - x: The dividend as a multiprecision number with the least signficant limb
         stored at index 0 (ie. little endian).
-    - y: The single digit divisor (where digit is the same radix as digits of
+    - y: The single limb divisor (where limb is the same radix as limbs of
         `x`).
     - z: storage to receive the quotient on exit.  Must be same size as `x`
 
-- Returns: A single digit remainder.
+- Returns: A single limb remainder.
  */
-internal func divide<T, U>(_ x: T, by y: T.Element, result z: inout U) -> T.Element
-    where T: RandomAccessCollection,
-    T.Element == UInt64,
-    T.Index == Int,
-    U: RandomAccessCollection,
-    U: MutableCollection,
-    U.Element == T.Element,
-    U.Index == T.Index
+internal func divide(_ x: Limbs, by y: UInt64, result z: inout Limbs) -> UInt64
 {
     assert(x.count == z.count)
     assert(x.startIndex == z.startIndex)
     
-    var r: T.Element = 0
+    var r: UInt64 = 0
     var i = x.count - 1
     
     (z[i], r) = x[i].quotientAndRemainder(dividingBy: y)
@@ -247,7 +221,7 @@ internal func divide<T, U>(_ x: T, by y: T.Element, result z: inout U) -> T.Elem
 
 // MARK:- Tuple Arithmetic Operations
 /*
-The operators in this file implement the tuple operations for the 2-digit
+The operators in this file implement the tuple operations for the 2-limb
 arithmetic needed for Knuth's Algorithm D, and *only* those operations.
 There is no attempt to be a complete set. They are meant to make the code that
 uses them more readable than if the operations they express were written out
@@ -255,7 +229,7 @@ directly.
 */
 
 // -------------------------------------
-/// Multiply a tuple of digits by 1 digit
+/// Multiply a tuple of limbs by 1 limb
 internal func * (left: (high: UInt64, low: UInt64), right: UInt64)
     -> (high: UInt64, low: UInt64)
 {
@@ -271,7 +245,7 @@ internal func * (left: (high: UInt64, low: UInt64), right: UInt64)
 infix operator /% : MultiplicationPrecedence
 
 // -------------------------------------
-/// Divide a tuple of digits by 1 digit obtaining both quotient and remainder
+/// Divide a tuple of limbs by 1 limb obtaining both quotient and remainder
 internal func /% (left: (high: UInt64, low: UInt64), right: UInt64)
     -> (
         quotient: (high: UInt64, low: UInt64),
@@ -304,7 +278,7 @@ internal func > (
 }
 
 // -------------------------------------
-/// Add a digit to a tuple's low part, carrying to the high part.
+/// Add a limb to a tuple's low part, carrying to the high part.
 internal func += (left: inout (high: UInt64, low: UInt64), right: UInt64) {
     left.high &+= addReportingCarry(&left.low, right)
 }
@@ -320,7 +294,7 @@ internal func += (
 }
 
 // -------------------------------------
-/// Subtract a digit from a tuple, borrowing the high part if necessary
+/// Subtract a limb from a tuple, borrowing the high part if necessary
 internal func -= (left: inout (high: UInt64, low: UInt64), right: UInt64) {
     left.high &-= subtractReportingBorrow(&left.low, right)
 }
