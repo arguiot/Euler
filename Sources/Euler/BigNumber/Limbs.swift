@@ -583,6 +583,43 @@ internal extension Array where Element == Limb {
     func divMod(_ divisor: Limbs) -> (quotient: Limbs, remainder: Limbs) {
         precondition(!divisor.equalTo(0), "Division or Modulo by zero not allowed")
         
+        #if true
+        /*
+         Knuth's algorithm requires the dividend to be greater than the the
+         divisor. If divisor is greater, the quotient is immediately known to
+         be 0, and the remainder is the dividend.  Since limbs are maintained
+         without leading zeros, most cases of the dividend being greater than
+         the divisor can be handled by just checking the number of limbs they
+         contain, which is a fast O(1) check.  Only when the number of limbs are
+         equal is an O(n) compare required.
+         */
+        if divisor.count > self.count ||
+            (divisor.count == self.count && self.lessThan(divisor))
+        {
+            return (quotient: [0], remainder: self)
+        }
+        
+        let maxQuotientSize = self.count - divisor.count + 1
+        let maxRemanderSize = divisor.count
+        var quotient = Limbs(repeating: 0, count: maxQuotientSize)
+        var remainder = Limbs(repeating: 0, count: maxRemanderSize)
+        
+        divideWithRemainder_KnuthD(
+            self,
+            by: divisor,
+            quotient: &quotient,
+            remainder: &remainder
+        )
+        
+        // The aglorithm leaves leading zeros, so they are stripped
+        while quotient.count > 1 && quotient.last! == 0 {
+            quotient.removeLast()
+        }
+        while remainder.count > 1 && remainder.last! == 0 {
+            remainder.removeLast()
+        }
+
+        #else // original shift-subtract algorithm is left here for now
         if self.equalTo(0) { return ([0], [0]) }
         
         if self.lessThan(divisor) { return ([0], self) }
@@ -615,9 +652,112 @@ internal extension Array where Element == Limb {
             
             i -= 1
         }
+        #endif
         
         return (quotient, remainder)
     }
+    
+    // -------------------------------------
+    /**
+     Divide multiprecision unsigned integer, `x`, by multiprecision unsigned
+     integer, `y`, obtaining both the quotient and remainder.
+     
+     Implements Alogorithm D, from Donald Knuth's, *The Art of Computer Programming*
+     , Volume 2,*Semi-numerical Algorithms*, Chapter 4.3.3.
+          
+     - Parameters:
+        - dividend: The dividend stored as an unsigned multiprecision integer with
+            its least signficant digit at index 0 (ie, little endian). Must have at
+            least as many digits as `divisor`.
+        - divisor: The divisor stored as a an unsigned multiprecision integer with
+            its least signficant digit stored at index 0 (ie. little endian).
+        - quotient: Buffer to receive the quotient (`x / y`).  Must be the size of
+            the dividend minus the size of the divisor plus one.
+        - remainder: Buffer to receive the remainder (`x % y`).  Must be the size
+            of the divisor.
+     */
+    func divideWithRemainder_KnuthD(
+        _ dividend: Limbs,
+        by divisor: Limbs,
+        quotient: inout Limbs,
+        remainder: inout Limbs)
+    {
+        typealias Digit = UInt64
+        typealias TwoLimbs = (high: UInt64, low: UInt64)
+        let digitWidth = Digit.bitWidth
+        let m = dividend.count
+        let n = divisor.count
+        
+        assert(n > 0, "Divisor must have at least one limb")
+        assert(divisor.reduce(0) { $0 | $1 } != 0, "Division by 0")
+        assert(m >= n, "Dividend must have at least as many limbs as the divisor")
+        assert(
+            quotient.count >= m - n + 1,
+            "Must have space for the number of limbs in the dividend minus the "
+            + "number of digits in the divisor plus one more limbs."
+        )
+        assert(
+            remainder.count == n,
+            "Remainder must have space for the same number of limbs as the divisor"
+        )
+
+        guard n > 1 else
+        {
+            remainder[0] = divide(dividend, by: divisor.first!, result: &quotient)
+            return
+        }
+
+        let shift = divisor.last!.leadingZeroBitCount
+        
+        var v = Limbs(repeating: 0, count: n)
+        leftShift(divisor, by: shift, into: &v)
+
+        var u = Limbs(repeating: 0, count: m + 1)
+        u[m] = dividend[m - 1] >> (digitWidth - shift)
+        leftShift(dividend, by: shift, into: &u)
+        
+        let vLast: UInt64 = v.last!
+        let vNextToLast: UInt64 = v[n - 2]
+        let partialDividendDelta: TwoLimbs = (high: vLast, low: 0)
+
+        for j in (0...(m - n)).reversed()
+        {
+            let jPlusN = j &+ n
+            
+            let dividendHead: TwoLimbs = (high: u[jPlusN], low: u[jPlusN &- 1])
+            
+            // These are tuple arithemtic operations.  `/%` is custom combined
+            // division and remainder operator.  See TupleMath.swift
+            var (q̂, r̂) = dividendHead /% vLast
+            var partialProduct = q̂ * vNextToLast
+            var partialDividend:TwoLimbs = (high: r̂.low, low: u[jPlusN &- 2])
+            
+            while true
+            {
+                if (UInt8(q̂.high != 0) | (partialProduct > partialDividend)) == 1
+                {
+                    q̂ -= 1
+                    r̂ += vLast
+                    partialProduct -= vNextToLast
+                    partialDividend += partialDividendDelta
+                    
+                    if r̂.high == 0 { continue }
+                }
+                break
+            }
+
+            quotient[j] = q̂.low
+            
+            if subtractReportingBorrow(v[0..<n], times: q̂.low, from: &u[j...jPlusN])
+            {
+                quotient[j] &-= 1
+                u[j...jPlusN] += v[0..<n] // digit collection addition!
+            }
+        }
+        
+        rightShift(u[0..<n], by: shift, into: &remainder)
+    }
+
     
     /// Division with limbs, result is floored to nearest whole number.
     func dividing(_ divisor: Limbs) -> Limbs {
