@@ -682,7 +682,6 @@ internal extension Array where Element == Limb {
         quotient: inout Limbs,
         remainder: inout Limbs)
     {
-        typealias Digit = UInt64
         typealias TwoLimbs = (high: UInt64, low: UInt64)
         let digitWidth = Digit.bitWidth
         let m = dividend.count
