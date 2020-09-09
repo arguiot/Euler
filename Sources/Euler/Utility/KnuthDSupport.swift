@@ -134,21 +134,13 @@ internal func += (left: inout Limbs.SubSequence, right: Limbs.SubSequence)
     - shift: the number of bits to shift `x` by.
     - y: Storage for the resulting shift of `x`.  May alias `x`.
  */
-internal func leftShift<T, U>(_ x: T, by shift: Int, into y: inout U)
-    where
-    T: RandomAccessCollection,
-    T.Element == UInt64,
-    T.Index == Int,
-    U: RandomAccessCollection,
-    U: MutableCollection,
-    U.Element == T.Element,
-    U.Index == T.Index
+internal func leftShift(_ x: Limbs, by shift: Int, into y: inout Limbs)
 {
     assert(y.count >= x.count)
     assert(y.startIndex == x.startIndex)
     
-    let bitWidth = MemoryLayout<T.Element>.size * 8
-    
+    let bitWidth = UInt64.bitWidth
+
     for i in (1..<x.count).reversed() {
         y[i] = (x[i] << shift) | (x[i - 1] >> (bitWidth - shift))
     }
@@ -166,25 +158,15 @@ internal func leftShift<T, U>(_ x: T, by shift: Int, into y: inout U)
     - shift: the number of bits to shift `x` by.
     - y: Storage for the resulting shift of `x`.  May alias `x`.
  */
-internal func rightShift<T, U>(_ x: T, by shift: Int, into y: inout U)
-    where
-    T: RandomAccessCollection,
-    T.Element == UInt64,
-    T.Index == Int,
-    U: RandomAccessCollection,
-    U: MutableCollection,
-    U.Element == T.Element,
-    U.Index == T.Index
+internal func rightShift(_ x: inout Limbs.SubSequence, by shift: Int)
 {
-    assert(y.count == x.count)
-    assert(y.startIndex == x.startIndex)
-    let bitWidth = MemoryLayout<T.Element>.size * 8
+    let bitWidth = UInt64.bitWidth
     
     let lastElemIndex = x.count - 1
     for i in 0..<lastElemIndex {
-        y[i] = (x[i] >> shift) | (x[i + 1] << (bitWidth - shift))
+        x[i] = (x[i] >> shift) | (x[i + 1] << (bitWidth - shift))
     }
-    y[lastElemIndex] = x[lastElemIndex] >> shift
+    x[lastElemIndex] = x[lastElemIndex] >> shift
 }
 
 // -------------------------------------
