@@ -583,42 +583,129 @@ internal extension Array where Element == Limb {
     func divMod(_ divisor: Limbs) -> (quotient: Limbs, remainder: Limbs) {
         precondition(!divisor.equalTo(0), "Division or Modulo by zero not allowed")
         
-        if self.equalTo(0) { return ([0], [0]) }
-        
-        if self.lessThan(divisor) { return ([0], self) }
-        
-        var (quotient, remainder): (Limbs, Limbs) = ([0], [0])
-        var (previousCarry, carry, ele): (Limb, Limb, Limb) = (0, 0, 0)
-        
-        // bits of lhs minus one bit
-        var i = (64 * (self.count - 1)) + Int(log2(Double(self.last!)))
-        
-        while i >= 0 {
-            // shift remainder by 1 to the left
-            for r in 0..<remainder.count
-            {
-                ele = remainder[r]
-                carry = ele >> 63
-                ele <<= 1
-                ele |= previousCarry // carry from last step
-                previousCarry = carry
-                remainder[r] = ele
-            }
-            if previousCarry != 0 { remainder.append(previousCarry) }
-            
-            remainder.setBit(at: 0, to: self.getBit(at: i))
-            
-            if !remainder.lessThan(divisor) {
-                remainder.difference(divisor)
-                quotient.setBit(at: i, to: true)
-            }
-            
-            i -= 1
+        // Handle the case of a divisor greater than the dividend.  The fast
+        // test of limb counts is based on Euler maintaining limbs without
+        // leading zeros.
+        if divisor.count > self.count
+            || (divisor.count == self.count && self.lessThan(divisor))
+        {
+            return (quotient: [0], remainder: self)
         }
         
-        return (quotient, remainder)
+        guard divisor.count > 1 else
+        {
+            // Knuth's algorithm requires at least 2 divisor digits, so handle
+            // that case specially.
+            var q = Limbs(repeating: 0, count: self.count)
+            let r = divide(self, by: divisor.first!, result: &q)
+            while q.count > 1 && q.last! == 0 { q.removeLast() }
+            return (quotient: q, remainder: [r])
+        }
+
+        /*
+         The actual algorithm starts here.  The variable names, u, v, m, and n
+         are based on the names published in Knuth's Alogirthm D in his The Art
+         of Computer Programming, and are maintained so that anyone following
+         the algorithm from TAOCP can identify them in this code.  For
+         everyone else, here's a legend:
+         
+                u = the normalized dividend that is transformed into the
+                    remainder (initially a normalized copy of self).
+                v = the normalized divisor
+                m = the number of limbs in the dividend
+                n = the number of limbs in the divisor
+         */
+        let maxQuotientSize = self.count - divisor.count + 1
+        var quotient = Limbs(repeating: 0, count: maxQuotientSize)
+
+        typealias TwoLimbs = (high: UInt64, low: UInt64)
+        let digitWidth = Digit.bitWidth
+        let m = self.count
+        let n = divisor.count
+        
+        // Normalize divisor so its most significant bit is 1.
+        let shift = divisor.last!.leadingZeroBitCount
+        var v = Limbs(repeating: 0, count: n)
+        leftShift(divisor, by: shift, into: &v)
+        
+        // Normalize dividend by the same amount so its ratio with the divisor
+        // is maintained.
+        var u = Limbs(repeating: 0, count: m + 1)
+        u[m] = self[m - 1] >> (digitWidth - shift)
+        leftShift(self, by: shift, into: &u)
+        
+        let vLast: UInt64 = v.last!
+        let vNextToLast: UInt64 = v[n - 2]
+        let partialDividendDelta: TwoLimbs = (high: vLast, low: 0)
+
+        for j in (0...(m - n)).reversed()
+        {
+            let jPlusN = j &+ n
+            
+            let dividendHead: TwoLimbs = (high: u[jPlusN], low: u[jPlusN &- 1])
+            
+            // Compute estimated quotient digit, q̂, and partial remainder, r̂
+            // These are tuple arithemtic operations.  `/%` is custom combined
+            // division and remainder operator.  See TupleMath.swift
+            var (q̂, r̂) = dividendHead /% vLast
+            var partialProduct = q̂ * vNextToLast
+            var partialDividend:TwoLimbs = (high: r̂.low, low: u[jPlusN &- 2])
+            
+            // Revise estimated q̂ based on the first two digits of the divisor
+            // and first two digits of the dividend.  It corrects most of the
+            // cases when q̂ is one too big, and all of the cases when q̂ is two
+            // too big.
+            // Corresponds to Step D3 in TAOCP
+            while true
+            {
+                if (UInt8(q̂.high != 0) | (partialProduct > partialDividend)) == 1
+                {
+                    q̂ -= 1
+                    r̂ += vLast
+                    partialProduct -= vNextToLast
+                    partialDividend += partialDividendDelta
+                    
+                    if r̂.high == 0 { continue }
+                }
+                break
+            }
+
+            // Set quotient digit, and compute an updated remainder
+            quotient[j] = q̂.low
+            if subtractReportingBorrow(v[0..<n], times: q̂.low, from: &u[j...jPlusN])
+            {
+                // If the subtraction borrowed out of the high limb, then q̂
+                // was still one too big, so decrement it and adjust the
+                // updated remainder.  Because of the above while loop, this is
+                // rare, but possible.
+                quotient[j] &-= 1
+                u[j...jPlusN] += v[0..<n] // Limbs subsequence addition!
+            }
+        }
+        
+        // Quotient is already correct, but remainder needs denormalization
+        rightShift(&u[0..<n], by: shift)
+
+        // The division algorithm is done, but now we clean up the results for
+        // Euler's requirements. quotient and remainder both may have leading
+        // zeros that need removing.
+        while quotient.count > 1 && quotient.last! == 0 {
+            quotient.removeLast()
+        }
+        while u.count > 1 && u.last! == 0 { u.removeLast() }
+        
+        assert(
+            sameResultsAsShiftSubtract(
+                dividend: self,
+                divisor: divisor,
+                quotient: quotient,
+                remainder: u
+            )
+        )
+        
+        return (quotient, u)
     }
-    
+
     /// Division with limbs, result is floored to nearest whole number.
     func dividing(_ divisor: Limbs) -> Limbs {
         return self.divMod(divisor).quotient

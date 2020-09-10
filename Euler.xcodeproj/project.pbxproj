@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		45C423802509687A00D22532 /* KnuthDSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C4237F2509687A00D22532 /* KnuthDSupport.swift */; };
 		68834B1424E98B3F004D709C /* ExpressionSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68834B1324E98B3F004D709C /* ExpressionSolver.swift */; };
 		689F568324912A89003097E2 /* CommonLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568224912A89003097E2 /* CommonLinker.swift */; };
 		689F568524912B0F003097E2 /* LogicalLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F568424912B0F003097E2 /* LogicalLinker.swift */; };
@@ -136,6 +137,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45C4237F2509687A00D22532 /* KnuthDSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuthDSupport.swift; sourceTree = "<group>"; };
 		68834B1324E98B3F004D709C /* ExpressionSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionSolver.swift; sourceTree = "<group>"; };
 		689F568224912A89003097E2 /* CommonLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLinker.swift; sourceTree = "<group>"; };
 		689F568424912B0F003097E2 /* LogicalLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicalLinker.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				OBJ_94 /* UnsafeMemory.swift */,
 				OBJ_95 /* UnsafeMutableMemory.swift */,
 				68C12AD22483392C00BB4B3A /* Substring.swift */,
+				45C4237F2509687A00D22532 /* KnuthDSupport.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				OBJ_223 /* leastFactor.swift in Sources */,
 				OBJ_224 /* modulo.swift in Sources */,
 				OBJ_225 /* random.swift in Sources */,
+				45C423802509687A00D22532 /* KnuthDSupport.swift in Sources */,
 				OBJ_226 /* sum.swift in Sources */,
 				68ADEAD524843775006C65CD /* DateTime.swift in Sources */,
 				OBJ_227 /* Average.swift in Sources */,
