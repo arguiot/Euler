@@ -82,9 +82,21 @@ class BigIntTests: XCTestCase {
         XCTAssert(BigInt("923492349",radix:32)! == 9967689075849)
     }
     
-    func testPerformanceDivision() {
+    func testDivision() {
+        
+        for _ in (0...150) {
+            let a = BigInt(Int.random(in: Int.min...Int.max)) * BigInt(Int.random(in: Int.min...Int.max))
+            let b = BigInt(Int.random(in: Int.min...Int.max)) * BigInt(Int.random(in: Int.min...Int.max))
+            let (q, r) = a.limbs.divMod(b.limbs)
+            
+            let (q2, r2) = a.limbs.divMod_ShiftSubtract(b.limbs)
+            
+            XCTAssertEqual(q, q2)
+            XCTAssertEqual(r, r2)
+        }
+        
         self.measure {
-            for _ in (0...150) {
+            for _ in (0...15000) {
                 let _ = BigInt(Int.random(in: 0...Int.max)) / BigInt(Int.random(in: 0...Int.max))
             }
         }
@@ -140,7 +152,7 @@ class BigIntTests: XCTestCase {
     static var allTests = [
         ("Initialisation", testRadixInitializerAndGetter),
         ("Radix", testRadix),
-        ("Division performance", testPerformanceDivision),
+        ("Division performance", testDivision),
         ("String Performance", testPerformanceStringInit),
         ("String multiple performances", testPerformanceStringRadixInit),
         ("Number Theory", testNumberTheory)

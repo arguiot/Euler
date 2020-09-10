@@ -694,18 +694,50 @@ internal extension Array where Element == Limb {
         }
         while u.count > 1 && u.last! == 0 { u.removeLast() }
         
-        assert(
-            sameResultsAsShiftSubtract(
-                dividend: self,
-                divisor: divisor,
-                quotient: quotient,
-                remainder: u
-            )
-        )
-        
         return (quotient, u)
     }
-
+    
+    /// Old divMod
+    func divMod_ShiftSubtract(_ divisor: Limbs) -> (quotient: Limbs, remainder: Limbs) {
+        let dividend = self
+        
+        if dividend.equalTo(0) { return ([0], [0]) }
+        
+        if dividend.lessThan(divisor) { return ([0], dividend) }
+        
+        var (quotient, remainder): (Limbs, Limbs) = ([0], [0])
+        var (previousCarry, carry, ele): (Limb, Limb, Limb) = (0, 0, 0)
+        
+        // bits of lhs minus one bit
+        var i = (64 * (dividend.count - 1)) + Int(log2(Double(dividend.last!)))
+        
+        while i >= 0
+        {
+            // shift remainder by 1 to the left
+            for r in 0..<remainder.count
+            {
+                ele = remainder[r]
+                carry = ele >> 63
+                ele <<= 1
+                ele |= previousCarry // carry from last step
+                previousCarry = carry
+                remainder[r] = ele
+            }
+            if previousCarry != 0 { remainder.append(previousCarry) }
+            
+            remainder.setBit(at: 0, to: dividend.getBit(at: i))
+            
+            if !remainder.lessThan(divisor) {
+                remainder.difference(divisor)
+                quotient.setBit(at: i, to: true)
+            }
+            
+            i -= 1
+        }
+        
+        return (quotient, remainder)
+    }
+    
     /// Division with limbs, result is floored to nearest whole number.
     func dividing(_ divisor: Limbs) -> Limbs {
         return self.divMod(divisor).quotient
