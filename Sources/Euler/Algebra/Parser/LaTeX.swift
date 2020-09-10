@@ -184,21 +184,37 @@ public extension Parser {
             }
             // Finding Group2
             open = 1
-            index += 6 // skipping `\\left(`
+            var simple = false
+            if index < out.count && out[index] == "(" {
+                simple = true
+                index += 1 // skipping `(`
+            } else {
+                index += 6 // skipping `\\left(`
+            }
             let endg1 = index
             while open > 0 {
-                guard index + 6 < out.count else { return latex }
-                if out[index..<index + 6] == "\\left(" {
-                    open += 1
-                    index += 5
-                } else if out[index...index + 6] == "\\right)" {
-                    open -= 1
-                    index += 6
+                if simple {
+                    guard index < out.count else { return latex }
+                    if out[index] == "(" {
+                        open += 1
+                    } else if out[index] == ")" {
+                        open -= 1
+                    }
+                } else {
+                    guard index + 6 < out.count else { return latex }
+                    if out[index..<index + 6] == "\\left(" {
+                        open += 1
+                        index += 5
+                    } else if out[index...index + 6] == "\\right)" {
+                        open -= 1
+                        index += 6
+                    }
                 }
+                
                 index += 1
             }
             let g2start = out.index(out.startIndex, offsetBy: endg1)
-            let g2end = out.index(out.startIndex, offsetBy: index - 7)
+            let g2end = out.index(out.startIndex, offsetBy: index - (simple ? 1 : 7))
             
             guard g2start < g2end else { return latex }
             
