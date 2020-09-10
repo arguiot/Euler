@@ -646,7 +646,7 @@ internal extension Array where Element == Limb {
             
             // Compute estimated quotient digit, q̂, and partial remainder, r̂
             // These are tuple arithemtic operations.  `/%` is custom combined
-            // division and remainder operator.  See TupleMath.swift
+            // division and remainder operator.
             var (q̂, r̂) = dividendHead /% vLast
             var partialProduct = q̂ * vNextToLast
             var partialDividend:TwoLimbs = (high: r̂.low, low: u[jPlusN &- 2])
