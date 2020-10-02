@@ -86,7 +86,8 @@ class BigDoubleTests : XCTestCase {
     }
     
     func testPow() {
-        XCTAssertEqual((BigDouble("27")!**3), BigDouble("19683")!)
+//        XCTAssertEqual((BigDouble("27")!**3), BigDouble("19683")!)
+        XCTAssertEqual((BigDouble("10")!**BigDouble("-3")!), BigDouble("0.001")!)
         XCTAssertEqual(pow(BigDouble("27")!,BigInt("3")!), BigDouble("19683")!)
         
         XCTAssertEqual(BN(2) ** BN(64), BN("18446744073709551616"))

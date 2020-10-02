@@ -166,9 +166,6 @@ extension BigDouble {
             return base
         }
         if exponent < 0 {
-            if let expo = exponent.asInt() {
-                return base.nthroot(-expo) ?? BigDouble(1) / (base ** -exponent)
-            }
             return BigDouble(1) / (base ** -exponent)
         }
         
