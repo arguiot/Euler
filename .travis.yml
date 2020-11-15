@@ -1,6 +1,6 @@
 language:       ruby
 os:             osx
-osx_image:      xcode11.5
+osx_image:      xcode12.2
 env:
   global:
     - FRAMEWORK_NAME=Euler
@@ -21,7 +21,7 @@ jobs:
       - cd docs && echo "euler.arguiot.com" > CNAME # Keeps the URL
       deploy:
       - provider:     pages
-        skip_cleanup: true
+        cleanup:      false
         github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
         keep-history: true
         local-dir:    docs
