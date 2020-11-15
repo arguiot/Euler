@@ -41,6 +41,8 @@ class NodeTests: XCTestCase {
         XCTAssertEqual(op2.toString(), "5 + 2 * x")
     }
     func testParser() {
+        XCTAssertEqual(try Expression("5^(5^5)").node.evaluate([:]).number, 298023223876953125)
+        
         let src = "3(4*5-sqrt(4)) = 3"
         let lexer = Lexer(input: src)
         let tokens = lexer.tokenize()

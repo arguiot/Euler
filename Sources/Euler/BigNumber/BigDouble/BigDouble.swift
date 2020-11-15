@@ -27,7 +27,8 @@ public struct BigDouble:
     SignedNumeric,
     Comparable,
     Hashable,
-    Strideable
+    Strideable,
+    Codable
 {
     //
     //

@@ -165,7 +165,8 @@ infix operator ** : ExponentiationPrecedence
 public struct BigInt:
     SignedNumeric, // Implies Numeric, Equatable, ExpressibleByIntegerLiteral
     BinaryInteger, // Implies Hashable, CustomStringConvertible, Strideable, Comparable
-    ExpressibleByFloatLiteral
+    ExpressibleByFloatLiteral,
+    Codable
 {
     //
     //
