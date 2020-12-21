@@ -443,13 +443,22 @@ public struct BigDouble:
         
         let separator = self.locale.decimalSeparator ?? "."
         
-        if(rounded && precision > 0) {
+        if(precision > 0) {
             currentPrecision = currentPrecision + 1
         }
         
         let multiplier = [10].exponentiating(currentPrecision)
         let limbs = self.numerator.multiplyingBy(multiplier).divMod(self.denominator).quotient
-        var res = BigInt(limbs: limbs).description
+        let bi = BigInt(limbs: limbs)
+        var res = bi.description
+            
+        if (rounded && precision > 0) {
+            let lastDigit = Int(res.suffix(1))!
+            if (lastDigit >= 5) {
+                let toTen = 10 - lastDigit
+                res = (bi + toTen).description
+            }
+        }
         
         if currentPrecision <= res.count {
             res.insert(contentsOf: separator, at: res.index(res.startIndex, offsetBy: res.count - currentPrecision))
@@ -459,26 +468,13 @@ public struct BigDouble:
             res = "0\(separator)" + String(repeating: "0", count: currentPrecision - res.count) + res
         }
         
-        var retVal = self.isNegative() && !limbs.equalTo(0) ? "-" + res : res
+        let retVal = self.isNegative() && !limbs.equalTo(0) ? "-" + res : res
         
-        if(rounded && precision > 0) {
-            
-            let lastDigit = Int(retVal.suffix(1))! // this should always be a number
-            let secondDigit = String(retVal.suffix(2).prefix(1)) // this could be a decimal
-            
-            retVal = String(retVal.prefix(retVal.count-2))
-            if (secondDigit != separator) {
-                if lastDigit >= 5 {
-                    retVal = retVal + String(Int(secondDigit)! + 1)
-                } else {
-                    retVal = retVal + String(Int(secondDigit)!)
-                }
-            } else {
-                retVal = retVal + separator + String(lastDigit)
-            }
+        var correctPrec = String(retVal.dropLast()) // To counter precision + 1
+        if (correctPrec.suffix(1) == separator) {
+            correctPrec = String(correctPrec.dropLast())
         }
-        
-        return retVal
+        return correctPrec
     }
     /// Hashable
     public func hash(into hasher: inout Hasher) {

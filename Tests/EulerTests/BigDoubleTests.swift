@@ -118,16 +118,16 @@ class BigDoubleTests : XCTestCase {
     
     func testDecimalExpansionWithoutRounding() {
         let testValues = [
-            ("0", "0.0", 0),
+            ("0", "0", 0),
             ("0", "0.0", 1),
             ("0", "0.00", 2),
             ("0", "0.000", 3),
-            ("12.345", "12.0", 0),
+            ("12.345", "12", 0),
             ("12.345", "12.3", 1),
             ("12.345", "12.34", 2),
             ("12.345", "12.345", 3),
             ("12.345", "12.3450", 4),
-            ("-0.00009", "0.0000", 4),
+            ("-0.00009", "-0.0000", 4),
             ("-0.00009", "-0.00009", 5),
             ("-0.00009", "-0.000090", 6),
             ]
@@ -140,11 +140,11 @@ class BigDoubleTests : XCTestCase {
     
     func testDecimalExpansionWithRounding() {
         let testValues = [
-            ("0", "0.0", 0),
+            ("0", "0", 0),
             ("0", "0.0", 1),
             ("0", "0.00", 2),
             ("0", "0.000", 3),
-            ("12.345", "12.0", 0),
+            ("12.345", "12", 0),
             ("12.345", "12.3", 1),
             ("12.345", "12.35", 2),
             ("12.345", "12.345", 3),
@@ -162,6 +162,7 @@ class BigDoubleTests : XCTestCase {
     }
     
     func test_decimalExpansionRandom() {
+        BN.precision = 4
         func generateDoubleString(preDecimalCount: Int, postDecimalCount: Int) -> String {
             var numStr = ""
             
@@ -207,7 +208,7 @@ class BigDoubleTests : XCTestCase {
             
             let toBigDoubleAndBack = BigDouble(doubleString)!.decimalExpansion(precisionAfterDecimalPoint: postDecimalCount)
             
-            if toBigDoubleAndBack != doubleString {
+            if toBigDoubleAndBack != doubleString && toBigDoubleAndBack.contains(".") {
                 if toBigDoubleAndBack == "0.0" && ["0", "-0"].contains(doubleString) { continue }
                 // For expmple, input: "13" and output "13.0" is okay
                 
@@ -270,6 +271,7 @@ class BigDoubleTests : XCTestCase {
         bigD?.locale = Locale(identifier: "en_US")
         XCTAssertEqual(bigD?.decimalDescription, "123456789.1235")
         XCTAssertEqual(bigD?.scientificDescription, "1.2346×10⁸")
+        XCTAssertEqual(BN("1.999999")?.decimalDescription, "2.0000")
         bigD?.precision = 10
         XCTAssertEqual(bigD?.decimalDescription, "123456789.1234567890")
         XCTAssertEqual(bigD?.scientificDescription, "1.2345678912×10⁸")
@@ -277,7 +279,7 @@ class BigDoubleTests : XCTestCase {
         XCTAssertEqual(bigD?.decimalDescription, "123456789.12345678900000000000")
         XCTAssertEqual(bigD?.scientificDescription, "1.23456789123500000000×10⁸")
         bigD?.precision = 0
-        XCTAssertEqual(bigD?.decimalDescription, "123456789.0")
+        XCTAssertEqual(bigD?.decimalDescription, "123456789")
         XCTAssertEqual(bigD?.scientificDescription, "1×10⁸")
         
         
@@ -295,12 +297,12 @@ class BigDoubleTests : XCTestCase {
         XCTAssertEqual(bigD?.decimalDescription, "-123456789.12345678900000000000")
         XCTAssertEqual(bigD?.scientificDescription, "-1.23456789123500000000×10⁸")
         bigD?.precision = 0
-        XCTAssertEqual(bigD?.decimalDescription, "-123456789.0")
+        XCTAssertEqual(bigD?.decimalDescription, "-123456789")
         XCTAssertEqual(bigD?.scientificDescription, "-1×10⁸")
         
         bigD = BigDouble("0.0000000003") // nine zeroes
         bigD?.precision = 0
-        XCTAssertEqual(bigD?.decimalDescription, "0.0")
+        XCTAssertEqual(bigD?.decimalDescription, "0")
         XCTAssertEqual(bigD?.scientificDescription, "3×10⁻¹⁰")
         bigD?.precision = 10
         XCTAssertEqual(bigD?.decimalDescription, "0.0000000003")
