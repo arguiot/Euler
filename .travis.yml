@@ -31,7 +31,7 @@ jobs:
       name: "Tests"
     - stage: Deploy
       name: "CocoaPods"
-      script: pod trunk push Euler.podspec --allow-warnings
+      script: pod trunk push Euler.podspec --allow-warnings --verbose
       if: commit_message =~ /v[0-9]/
 notifications:
   email:
