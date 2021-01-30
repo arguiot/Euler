@@ -88,7 +88,7 @@ public extension Tables {
         if BN.radians == true {
             return BigDouble(atan2(d1, d2))
         }
-        return BigDouble(atan2(d1, d2)) * 180 / pi
+        return atan2(d1, d2) * 180 / pi
     }
     
     /// Hyperbolic Arc-Tangent of a number.
