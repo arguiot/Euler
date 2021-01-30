@@ -80,12 +80,15 @@ public extension Tables {
     
     /// ATAN2(Y,X) returns the four-quadrant inverse tangent (tan-1) of Y and X, which must be real. The atan2 function follows the convention that atan2(x,x) returns 0 when x is mathematically zero (either 0 or -0).
     /// - Parameters:
-    ///   - n1: X coordinate
-    ///   - n2: Y coordinate
+    ///   - n1: Y coordinate
+    ///   - n2: X coordinate
     func ATAN2(_ n1: BigNumber, _ n2: BigNumber) throws -> BigNumber {
         guard let d1 = n1.asDouble() else { throw TablesError.Overflow }
         guard let d2 = n2.asDouble() else { throw TablesError.Overflow }
-        return BigDouble(atan2(d1, d2))
+        if BN.radians == true {
+            return BigDouble(atan2(d1, d2))
+        }
+        return BigDouble(atan2(d1, d2)) * 180 / pi
     }
     
     /// Hyperbolic Arc-Tangent of a number.
