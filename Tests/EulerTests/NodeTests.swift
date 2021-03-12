@@ -98,6 +98,12 @@ class NodeTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testMultipleArgs() {
+        XCTAssertEqual(try Parser("average(2,-1)").parse().toString(), "average(2, 0 - 1)")
+        XCTAssertEqual(try Parser("average(2,-1)").parse().compile().toString(), "average(2, -1)")
+    }
+    
     static var allTests = [
         ("Constant Node", testConstantNode),
         ("Operator Node", testOperatorNode),

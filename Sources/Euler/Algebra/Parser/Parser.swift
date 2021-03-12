@@ -55,7 +55,7 @@ public class Parser {
     
     internal var tablesContext: Tables?
     
-    /// Initialize `Parser` with a mathematical expression as a String ( ASCIIMath)
+    /// Initialize `Parser` with a mathematical expression as a String (ASCIIMath)
     /// - Parameter str: ASCIIMath expression
     /// - Parameter type: The mode in which the parser should be executed. Can be 2 options: math (for standard math expression) and tables (for excel like expression)
     /// - Parameter tablesContext: If the type is set to tables, then a Tables object is required to interact with the different cells
@@ -79,20 +79,20 @@ public class Parser {
     /// - Parameter type: The mode in which the parser should be executed. Can be 2 options: math (for standard math expression) and tables (for excel like expression)
     /// - Parameter tablesContext: If the type is set to tables, then a Tables object is required to interact with the different cells
     internal init(tokens: [Token], type: ParseContext = .math, tablesContext: Tables? = nil) {
-        var tokens = tokens
+        var tks = [Token]()
         if tokens.count > 0 {
-            if case let Token.Other(first) = tokens[0] {
-                if first == "-" {
-                    var tks = [Token.Number("0")]
-                    tks.append(contentsOf: tokens)
-                    
-                    tokens = tks
+            for i in 0..<tokens.count {
+                let c1 = tokens[i] == Token.Other("-") && i == 0
+                let c2 = i > 0 && tokens[i] == Token.Other("-") && tokens[i - 1] == Token.Other(",")
+                if (c1 || c2) {
+                    tks.append(Token.Number("0"))
                 }
+                tks.append(tokens[i])
             }
         }
         
         self.context = type
-        self.tokens = tokens
+        self.tokens = tks
         self.tablesContext = tablesContext
         self.grouper = Grouper(tokens: self.tokens, context: type, tablesContext: tablesContext)
     }
