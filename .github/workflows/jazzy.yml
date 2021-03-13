@@ -1,0 +1,21 @@
+name: Swift
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: Install Jazzy
+      run: gem install jazzy
+    - name: Build
+      run: jazzy --clean --no-objc
+    - name: Copy ressources
+      run: cp Euler.svg ./docs/Euler.svg && cp Euclid.png ./docs/Euclid.png && cd docs && echo "euler.arguiot.com" > CNAME
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
