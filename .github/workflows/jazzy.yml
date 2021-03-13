@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Copy ressources
-      run: ls && mkdir docs && cp Euler.svg ./docs/Euler.svg && cp Euclid.png ./docs/Euclid.png && cd docs && echo "euler.arguiot.com" > CNAME
+      run: mkdir docs & cp Euler.svg ./docs/Euler.svg & cp Euclid.png ./docs/Euclid.png & cd docs & echo "euler.arguiot.com" > CNAME
     - name: Publish Jazzy Docs
       # You may pin to the exact commit or the version.
       # uses: Steven0351/publish-jazzy-docs@9ac83856c845f4b7d4803f1ebb3bbc2fa85bbfdd
