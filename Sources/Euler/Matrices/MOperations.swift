@@ -13,9 +13,7 @@ extension Matrix {
     /// Inverse of the Matrix
     ///
     /// In linear algebra, an n-by-n square matrix A is called invertible (also nonsingular or nondegenerate) if there exists an n-by-n square matrix B such that
-    /// ```$
-    /// AB = BA = I_n
-    /// $```
+    /// `$AB = BA = I_n$`
     /// where In denotes the n-by-n identity matrix and the multiplication used is ordinary matrix multiplication.
     ///
     public func inverse() -> Matrix {
@@ -975,64 +973,26 @@ extension Matrix {
     /// Equations involving matrices and vectors of real numbers can often be solved by using methods from linear algebra. A finite set of linear equations in a finite set of variables, for example `$x_1, x_2,..., x_n$` or `$x, y, ..., z$`, is called a system of linear equations or a linear system. Systems of linear equations form a fundamental part of linear algebra. Historically, linear algebra and matrix theory has been developed for solving such systems. In the modern presentation of linear algebra through vector spaces and matrices, many problems may be interpreted in terms of linear systems.
     ///
     /// For example, let
-    /// ```
-    /// $$
-    ///  2x + y -  z =  8
-    /// -3x - y + 2z = -11
-    /// -2x + y + 2z = -3
-    /// $$
-    /// ```
+    /// `$$2x + y -  z =  8 \\ -3x - y + 2z = -11 \\ -2x + y + 2z = -3 \\$$`
     /// be a linear system.
     /// To such a system, one may associate its matrix
-    /// ```
-    ///   ⎛  2         1        -1 ⎞
-    /// M ⎜ -3        -1         2 ⎥
-    ///   ⎝ -2         1         2 ⎠
-    /// ```
+    /// `$$M\begin{pmatrix}2 & 1 & -1\\-3 & -1 & 2 \\-2 & 1 & 2\end{pmatrix}$$`
     /// and its right member vector
-    /// ```
-    ///   ⎛  8  ⎞
-    /// v ⎜ -11 ⎥
-    ///   ⎝ -3  ⎠
-    /// ```
+    /// `$$v\begin{pmatrix}8\\-11\\-3\end{pmatrix}$$`
     /// Let T be the linear transformation associated to the matrix M. A solution of the system (S) is a vector
-    /// ```
-    ///   ⎛ x ⎞
-    /// X ⎜ y ⎥
-    ///   ⎝ z ⎠
-    /// ```
+    /// `$$X\begin{pmatrix}x\\y\\z\end{pmatrix}$$``
     /// such that `$T(X)=v$`
     ///
     /// that is an element of the preimage of v by T.
     /// Let (S') be the associated homogeneous system, where the right-hand sides of the equations are put to zero:
-    /// ```
-    /// $$
-    ///  2x + y -  z = 0
-    /// -3x - y + 2z = 0
-    /// -2x + y + 2z = 0
-    /// $$
-    /// ```
+    /// `$$2x + y -  z =  0 \\ -3x - y + 2z = 0 \\ -2x + y + 2z = 0 \\$$`
     /// The solutions of (S') are exactly the elements of the kernel of T or, equivalently, M.
     /// The Gaussian-elimination consists of performing elementary row operations on the augmented matrix
-    /// ```
-    ///   ⎛  2         1        -1  |  8  ⎞
-    /// M ⎜ -3        -1         2  | -11 ⎥
-    ///   ⎝ -2         1         2  | -3  ⎠
-    /// ```
+    /// `$$M \left( \begin{array}{rrr|r}2 & 1 & -1 & 8 \\ -3 & -1 & 2 & -11 \\ -2 & 1 & 2 & -3 \end{array}\right)$$`
     /// for putting it in reduced row echelon form. These row operations do not change the set of solutions of the system of equations. In the example, the reduced echelon form is
-    /// ```
-    ///   ⎛  1        0        0  |  2 ⎞
-    /// M ⎜ 0         1        0  |  3 ⎥
-    ///   ⎝ 0         0        1  | -1 ⎠
-    /// ```
+    /// `$$M \left( \begin{array}{ccc|c}1 & 0 & 0 & 2 \\ 0 & 1 & 0 & 3 \\ 0 & 0 & 1 & -1 \end{array}\right)$$`
     /// showing that the system (S) has the unique solution
-    /// ```
-    /// $$
-    ///  x =  2
-    ///  y =  3
-    ///  z = -1
-    /// $$
-    /// ```
+    /// `$$x =  2 \\ y =  3 \\ z = -1$$`
     /// It follows from this matrix interpretation of linear systems that the same methods can be applied for solving linear systems and for many operations on matrices and linear transformations, which include the computation of the ranks, kernels, matrix inverses.
     ///
     /// So, you can reproduce the exact same process with:

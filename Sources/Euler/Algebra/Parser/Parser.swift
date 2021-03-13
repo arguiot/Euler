@@ -16,10 +16,8 @@ fileprivate enum ParseError: Error {
 /// The `Parser` converts a mathematical expression to a tree.
 ///
 /// As humans, we read and write math as a line of text. If you were to type a math expression, it would probably look something like this:
-/// ```
-/// (1 + 2) - abs(-3) * x²
-/// ```
-/// You could also just look at that math expression and use your intuition to prioritize where to start simplifying. But a computer will understand the expression best when it’s stored in a tree. These trees can be surprisingly complicated — even a short expression like `(1 + 2) - abs(-3) * x²` becomes this tree:
+/// `$$(1+2)-\left|-3\right|\times x^2$$`
+/// You could also just look at that math expression and use your intuition to prioritize where to start simplifying. But a computer will understand the expression best when it’s stored in a tree. These trees can be surprisingly complicated — even a short expression like `$(1+2)-\left|-3\right|\times x^2$` becomes this tree:
 /// ```
 ///           (-)
 ///          /   \
