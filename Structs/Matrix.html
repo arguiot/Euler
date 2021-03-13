@@ -2003,26 +2003,26 @@ Any columns not in the range are set to 0.</p>
 <p>Equations involving matrices and vectors of real numbers can often be solved by using methods from linear algebra. A finite set of linear equations in a finite set of variables, for example <span class='math m-inline'>x_1, x_2,&hellip;, x_n</span> or <span class='math m-inline'>x, y, &hellip;, z</span>, is called a system of linear equations or a linear system. Systems of linear equations form a fundamental part of linear algebra. Historically, linear algebra and matrix theory has been developed for solving such systems. In the modern presentation of linear algebra through vector spaces and matrices, many problems may be interpreted in terms of linear systems.</p>
 
 <p>For example, let
-<div class='math m-block'>2x + y -  z =  8 \ -3x - y + 2z = -11 \ -2x + y + 2z = -3 \</div>
+<div class='math m-block'>2x + y -  z =  8 \\ -3x - y + 2z = -11 \\ -2x + y + 2z = -3</div>
 be a linear system.
 To such a system, one may associate its matrix
-<div class='math m-block'>M\begin{pmatrix}2 &amp; 1 &amp; -1\-3 &amp; -1 &amp; 2 \-2 &amp; 1 &amp; 2\end{pmatrix}</div>
+<div class='math m-block'>M\begin{pmatrix}2 &amp; 1 &amp; -1\\-3 &amp; -1 &amp; 2 \\-2 &amp; 1 &amp; 2\end{pmatrix}</div>
 and its right member vector
-<div class='math m-block'>v\begin{pmatrix}8\-11\-3\end{pmatrix}</div>
+<div class='math m-block'>v\begin{pmatrix}8\\-11\\-3\end{pmatrix}</div>
 Let T be the linear transformation associated to the matrix M. A solution of the system (S) is a vector
-<div class='math m-block'>X\begin{pmatrix}x\y\z\end{pmatrix}</div><code>
+<div class='math m-block'>X\begin{pmatrix}x\\y\\z\end{pmatrix}</div><code>
 such that</code>$T(X)=v$`</p>
 
 <p>that is an element of the preimage of v by T.
 Let (S&rsquo;) be the associated homogeneous system, where the right-hand sides of the equations are put to zero:
-<div class='math m-block'>2x + y -  z =  0 \ -3x - y + 2z = 0 \ -2x + y + 2z = 0 \</div>
+<div class='math m-block'>2x + y -  z =  0 \\ -3x - y + 2z = 0 \\ -2x + y + 2z = 0 </div>
 The solutions of (S&rsquo;) are exactly the elements of the kernel of T or, equivalently, M.
 The Gaussian-elimination consists of performing elementary row operations on the augmented matrix
-<div class='math m-block'>M \left( \begin{array}{rrr|r}2 &amp; 1 &amp; -1 &amp; 8 \ -3 &amp; -1 &amp; 2 &amp; -11 \ -2 &amp; 1 &amp; 2 &amp; -3 \end{array}\right)</div>
+<div class='math m-block'>M \left( \begin{array}{rrr|r}2 &amp; 1 &amp; -1 &amp; 8 \\ -3 &amp; -1 &amp; 2 &amp; -11 \\ -2 &amp; 1 &amp; 2 &amp; -3 \end{array}\right)</div>
 for putting it in reduced row echelon form. These row operations do not change the set of solutions of the system of equations. In the example, the reduced echelon form is
-<div class='math m-block'>M \left( \begin{array}{ccc|c}1 &amp; 0 &amp; 0 &amp; 2 \ 0 &amp; 1 &amp; 0 &amp; 3 \ 0 &amp; 0 &amp; 1 &amp; -1 \end{array}\right)</div>
+<div class='math m-block'>M \left( \begin{array}{ccc|c}1 &amp; 0 &amp; 0 &amp; 2 \\ 0 &amp; 1 &amp; 0 &amp; 3 \\ 0 &amp; 0 &amp; 1 &amp; -1 \end{array}\right)</div>
 showing that the system (S) has the unique solution
-<div class='math m-block'>x =  2 \ y =  3 \ z = -1</div>
+<div class='math m-block'>x =  2 \\ y =  3 \\ z = -1</div>
 It follows from this matrix interpretation of linear systems that the same methods can be applied for solving linear systems and for many operations on matrices and linear transformations, which include the computation of the ranks, kernels, matrix inverses.</p>
 
 <p>So, you can reproduce the exact same process with:</p>
