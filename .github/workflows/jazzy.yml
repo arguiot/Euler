@@ -8,6 +8,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - uses: actions/checkout@v1
     - name: Copy ressources
       run: mkdir docs & cp Euler.svg ./docs/Euler.svg & cp Euclid.png ./docs/Euclid.png & cd docs & echo "euler.arguiot.com" > CNAME
     - name: Publish Jazzy Docs
