@@ -7,9 +7,7 @@ Euler is a mathematical framework that is packed up with tons of useful mathemat
 - **Documentation:** https://euler.arguiot.com
 
 ## Installation
-:warning: There is a known issue that causes the build to fail when using Xcode 11.4 or superior. When you want to use Euler on the latest Xcode versions, consider using Cocoapods. 
-
-I’m already working with Apple to fix this, but if you have the solution, please open a pull request.
+You can use the following options to install Euler, but we recommend using CocoaPods or SPM.
 ### CocoaPods
 
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate Euler into your Xcode project using CocoaPods, specify it in your `Podfile`:
