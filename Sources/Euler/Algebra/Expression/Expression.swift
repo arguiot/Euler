@@ -12,7 +12,11 @@ public class Expression: NSObject {
     public var node: ExpressionNode
     
     /// Creates an `Expression` with the string representation of an expression
-    public init(_ str: String) throws {
+    public init(_ str: String, decimalSeparator: String = ".", argumentSeparator: String = ",") throws {
+        let str = str
+            .replacingOccurrences(of: decimalSeparator, with: ".")
+            .replacingOccurrences(of: argumentSeparator, with: ",")
+        
         let p = Parser(str)
         let expression = try p.parse()
         let comp = expression.compile()
@@ -20,7 +24,10 @@ public class Expression: NSObject {
         self.node = ExpressionNode(comp)
     }
     /// Creates an `Expression` from `$\LaTeX$`
-    public init(latex: String) throws {
+    public init(latex: String, decimalSeparator: String = ".", argumentSeparator: String = ",") throws {
+        let latex = latex
+            .replacingOccurrences(of: decimalSeparator, with: ".")
+            .replacingOccurrences(of: argumentSeparator, with: ",")
         let p = Parser(latex: latex)
         let expression = try p.parse()
         let comp = expression.compile()

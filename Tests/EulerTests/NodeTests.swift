@@ -76,6 +76,9 @@ class NodeTests: XCTestCase {
             XCTAssertEqual(try Expression("10^10").node.evaluate([:]).number, 10000000000)
             XCTAssertEqual(try Expression(latex: "3\\left(\\frac{4}{2}^22-10^2\\right)*5^2").node.evaluate([:]).number, -6900) // WolframAlpha get it wrong (which is quite cool that Euler got it right the first time!
             
+            XCTAssertEqual(try Expression(latex: "\\operatorname{average}\\left(14;15,2;-16\\right)", decimalSeparator: ",", argumentSeparator: ";").node.evaluate([:]).number, 4.4)
+            
+            
             XCTAssertEqual(try Expression(latex: "\\log_{10}(11 - \\log_{10}(10))").node.evaluate([:]).number, 1)
             XCTAssertEqual(try Expression(latex: "\\log_{10}\\left(11-\\log_{10}\\left(10\\right)\\right)").node.evaluate([:]).number, 1)
         } catch {
