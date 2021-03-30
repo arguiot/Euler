@@ -1,6 +1,10 @@
 name: deploy_to_cocoapods
 
 on:
+  workflow_dispatch:
+    inputs:
+      desc:
+        description: 'Push description'  
   push:
     tags:
       - '*'
