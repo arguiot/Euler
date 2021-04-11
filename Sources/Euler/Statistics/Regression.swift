@@ -34,40 +34,36 @@ public extension Statistics {
         let intercept = (sum_y - slope * sum_x) / n
         return try Polynomial(slope, intercept)
     }
-    
-//    static func polynomialRegression(points: [Point], deg: Int = 2) throws -> Polynomial {
-//        var lhs = [BigDouble]()
-//        var rhs = [[BigDouble]]()
-//
-//        var a: BigDouble = 0
-//        var b: BigDouble = 0
-//        let len = points.count
-//
-//        let k = deg + 1
-//        for i in 0..<k {
-//            for l in 0..<len {
-//                a += points[l].x ** i * points[l].y
-//            }
-//            lhs.append(a)
-//            a = 0
-//
-//            var c = [BigDouble]()
-//
-//            for j in 0..<k {
-//                for l in 0..<len {
-//                    b += points[l].x ** (i + j)
-//                }
-//                c.append(b)
-//                b = 0
-//            }
-//            rhs.append(c)
-//        }
-//        rhs.append(lhs)
-//
-//        let matrix = Matrix(rhs)
-//
-//        let eq = try matrix.gaussElimination(vector: [Double(k)])
-//        let grid = eq.grid.map { BigDouble($0) }
-//        return try Polynomial(grid)
-//    }
+    #if !os(Linux)
+    /// Polynomial regression on a set of points
+    ///
+    /// Returns an affine function going through the set of point.
+    /// - Parameter points: A set of points
+    /// - Parameter deg: The polynomial degree
+    /// - Returns: Polynomial
+    static func polynomialRegression(points: [Point], deg: Int = 2) throws -> Polynomial {
+        var z = Matrix(rows: points.count, columns: deg + 1, repeatedValue: 0)
+        
+        for i in 0..<points.count {
+            for j in 0...deg {
+                let base = points[i].x
+                let val = pow(base, j)
+                z[i, j] = val.asDouble() ?? 0
+            }
+        }
+        
+        let y = Matrix(rows: points.count, columns: 1, grid: points.map { $0.y.asDouble() ?? 0 })
+
+        let z_transposed = z.transpose()
+
+        let l = z_transposed <*> z
+        let r = z_transposed <*> y
+
+        
+        let regression = try l.solveEquationsSystem(vector: r.grid)
+        
+        let coefs = regression.grid.map { BigDouble($0) }
+        return try Polynomial(coefs.reversed())
+    }
+    #endif
 }

@@ -12,7 +12,7 @@ public class Polynomial: Expression {
     /// List of coefficients
     public var coefs: [BigDouble] {
         didSet { // Won't be called inside `init`
-            var expr = ""
+            var expr = coefs.first?.sign == false ? "" : "-"
             for (i, c) in coefs.enumerated() {
                 if i < coefs.count - 1 {
                     let counted = coefs.count - 1
@@ -39,7 +39,7 @@ public class Polynomial: Expression {
     public init(_ coefficients: [BigDouble]) throws {
         self.coefs = coefficients
         
-        var expr = ""
+        var expr = coefs.first?.sign == false ? "" : "-"
         for (i, c) in self.coefs.enumerated() {
             if i < coefficients.count - 1 {
                 let counted = coefficients.count - 1
