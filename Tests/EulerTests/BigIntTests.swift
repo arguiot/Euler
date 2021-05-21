@@ -141,7 +141,7 @@ class BigIntTests: XCTestCase {
         // MARK: Gamma
         XCTAssertEqual(try? factorial(3), 6)
         XCTAssertEqual(try? factorial(11), 39916800)
-        XCTAssertEqual(try? gamma(3 / 2).nearlyEquals(0.8862269254527576), true)
+        XCTAssertEqual(try? gamma(BN(3, over: 2)).nearlyEquals(0.8862269254527576), true)
         // MARK: Logarithms
         XCTAssert(ln(15).nearlyEquals(2.708050201102210))
         

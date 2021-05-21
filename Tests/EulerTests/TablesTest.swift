@@ -24,7 +24,7 @@ class TablesTests: XCTestCase {
 
     func testEngineering() {
         let t = Tables()
-        XCTAssertEqual(try t.CONVERT(28, from_unit: "km/h", to_unit: "m/s"), 70/9)
+        XCTAssertEqual(try t.CONVERT(28, from_unit: "km/h", to_unit: "m/s"), BigDouble(70, over: 9))
     }
 
     static var allTests = [

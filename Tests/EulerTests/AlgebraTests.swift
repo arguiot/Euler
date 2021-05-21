@@ -24,7 +24,8 @@ class AlgebraTests: XCTestCase {
         
         // Roots
         let golden = try! Polynomial(1, -1, -1)
-        XCTAssertEqual(golden.roots.last, 102334155/63245986) // Golden Ratio, simplified
+        
+        XCTAssertEqual(golden.roots.last, BN(102334155, over: 63245986)) // Golden Ratio, simplified
         
         let higher = try! Polynomial(1, 2, -25, -26, 120)
         let roots = higher.roots

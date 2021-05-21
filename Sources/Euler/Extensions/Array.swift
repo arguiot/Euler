@@ -65,7 +65,7 @@ public extension Array {
     ///   - step: The step the function will use to generate the array
     ///   - offset: The offset you want to use to generate your array
     static func arange(start: Double, end: Double, step: Double = 1, offset: Double = 0) -> [Double] {
-        let len = (abs(end - start) + (offset * 2)) / step + 1
+        let len = (abs(end - start) + (offset * 2)) / step + Double(1)
         let direction: Double = start < end ? 1 : -1
         let startingPoint = start - (direction * offset)
         let stepSize = direction * step
