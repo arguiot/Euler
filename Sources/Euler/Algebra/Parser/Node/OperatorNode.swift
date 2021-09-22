@@ -74,7 +74,7 @@ public class OperatorNode: NSObject, Node {
         self.children = children
     }
     
-    /// Compiles ConstantNode to simpler node (useless here, but required by protocol)
+    /// Compiles OperatorNode to simpler node (or make the expression nicer to read)
     public func compile() -> Node {
         guard self.children.count == 2 else { return self }
         let c1 = self.children[0].compile()
