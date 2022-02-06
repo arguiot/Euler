@@ -40,6 +40,7 @@ public struct BigDouble:
     //
     //
     
+    /// True if the number is negative
     var sign = Bool()
     var numerator = Limbs()
     var denominator = Limbs()
@@ -410,6 +411,21 @@ public struct BigDouble:
         }
     }
     
+    /// The global setting for the precision mode. It forces the opertors to not simplify the BNs.
+    static public var highPrecision: Bool = false
+    
+    /// Use high precision mode for operations.
+    ///
+    /// The precision mode forces the opertors to not simplify the BNs.
+    public var highPrecision: Bool {
+        get {
+            return BN.highPrecision
+        }
+        set {
+            BN.highPrecision = newValue
+        }
+    }
+    
     /// Determines wether to use radians or degrees when using trigonometric functions
     ///
     /// This method acts as a proxy for the global `radians` setting
@@ -596,9 +612,12 @@ public struct BigDouble:
      * - warning: This may take a while. This is only precise up until precision. When comparing results after this function ` use` nearlyEqual`
      */
     public func nthroot(_ root: Int) -> BigDouble? {
-        if let d = self.asDouble() {
-            return BigDouble(pow(d, 1 / Double(root)))
+        let sign: BN = self.sign && root % 2 != 0 ? -1 : 1
+        if (root % 2 == 0 && self.sign) { return nil }
+        if let d = abs(self).asDouble() {
+            return BigDouble(pow(d, 1 / Double(root))) * sign
         }
+        
         var d = BN.zero
         var res = BN(1)
         let epsilon = 2.220446049250313e-16 // Good precision
@@ -612,11 +631,11 @@ public struct BigDouble:
         }
         
         while d >= epsilon * 10 || d <= -epsilon * 10 {
-            d = (self / res ** (root - 1) - res) / BN(root)
+            d = (abs(self) / res ** (root - 1) - res) / BN(root)
             res += d
         }
         
-        return res
+        return res * sign
         
         //        return self ** BigDouble(BigInt(1), over: BigInt(root))
     }

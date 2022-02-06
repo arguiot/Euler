@@ -97,6 +97,8 @@ class BigDoubleTests : XCTestCase {
         XCTAssertTrue(BigDouble.nearlyEqual(BigDouble("-27")!**BigDouble("1", over: "3")!, BigDouble("-3")!))
         
         XCTAssertTrue(BigDouble.nearlyEqual(BigDouble("4")!.nthroot(2)!, BigDouble(2.0)))
+        XCTAssertEqual(BN(-27).nthroot(3)!, BN(-3))
+        
         // Test that a number to the zero power is 1
         for i in 0..<100 {
             XCTAssertEqual(pow(BigDouble(Double(i)), 0), 1.0)
@@ -313,6 +315,11 @@ class BigDoubleTests : XCTestCase {
         bigD?.precision = 5
         XCTAssertEqual(bigD?.decimalDescription, "0.00000")
         XCTAssertEqual(bigD?.scientificDescription, "3×10⁻¹⁰")
+        
+        bigD?.highPrecision = true
+        bigD = bigD! / BN(1233456)
+        
+        XCTAssertEqual(bigD?.scientificDescription, "2.4322×10⁻¹⁶")
     }
     
     func testNearlyEqual() {

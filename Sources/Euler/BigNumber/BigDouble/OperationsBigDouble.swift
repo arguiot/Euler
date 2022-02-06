@@ -239,7 +239,7 @@ extension BigDouble {
         var denominator = lhs.denominator.multiplyingBy(rhs.numerator)
         var numerator = lhs.numerator.multiplyingBy(rhs.denominator)
         let precision = (BigInt(10) ** double_precision).limbs
-        while !denominator.lessThan(precision) {
+        while !denominator.lessThan(precision) && !BN.highPrecision {
             denominator = denominator.dividing([10])
             numerator = numerator.dividing([10])
         }
@@ -257,6 +257,7 @@ extension BigDouble {
     
     
     internal var simplified: BigDouble {
+        guard self.highPrecision == false else { return self }
         var b = self
         let digit_precision = BN.precision + 5 // While we limit the precision, we need something fine...
         if digit_precision > 18 {
