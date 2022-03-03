@@ -261,6 +261,11 @@ class BigDoubleTests : XCTestCase {
     }
     
     func testPrecision() {
+        
+        let bigN = BigInt("230000000000000000000")!
+        
+        XCTAssertEqual(BN(bigN, over: 10 ** 20).asDouble(), 2.3)
+        
         var bigD = BigDouble("123456789.123456789")
         bigD?.locale = Locale(identifier: "fr_FR")
         bigD?.precision = 2

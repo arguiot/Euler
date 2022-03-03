@@ -146,6 +146,7 @@ class BigIntTests: XCTestCase {
         // MARK: Logarithms
         XCTAssert(ln(15).nearlyEquals(2.708050201102210))
         
+        
         self.measure {
             let r1 = try? Statistics.polynomialRegression(points: [Point(x: 0, y: 2),Point(x: 2, y: 4),Point(x: 3, y: 5)])
             XCTAssert(r1!.evaluate(at: 4).nearlyEquals(6))
