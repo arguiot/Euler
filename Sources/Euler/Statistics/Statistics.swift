@@ -33,3 +33,18 @@ public class Statistics: NSObject {
         self.list = list.map { BigNumber($0) }
     }
 }
+
+// MARK: Basic Methods for the list
+public extension Statistics {
+    /// Returns the mode of the list.
+    ///
+    /// The mode is the value that appears most often in a set of data values.
+    var mode: BigNumber {
+        var counts: [BigNumber: Int] = [:]
+        for num in self.list {
+            counts[num, default: 0] += 1
+        }
+        let sorted = counts.sorted { $0.value > $1.value }
+        return sorted[0].key
+    }
+}
