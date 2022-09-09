@@ -33,9 +33,9 @@ public extension Statistics {
         let half = Int(floor(Double(sorted.count) / 2.0))
         
         if self.list.count % 2 == 0 {
-            return sorted[half]
-        } else {
             return (sorted[half - 1] + sorted[half]) / 2
+        } else {
+            return sorted[half]
         }
     }
     
@@ -49,8 +49,8 @@ public extension Statistics {
         var array = self.list
         let n = array.removeFirst()
         let sorted = array.sorted()
-        let index = (sorted.count - 1) * n
-        guard let floored = floor(index).asInt() else { throw QuantileError.ArrayLength }
+        let index = Double(sorted.count - 1) * percentage
+        let floored = Int(index)
         let diff = index - BigDouble(floored)
         
         if index + 1 >= BigDouble(sorted.count) {
