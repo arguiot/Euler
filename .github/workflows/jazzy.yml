@@ -19,7 +19,7 @@ jobs:
       uses: Steven0351/publish-jazzy-docs@v1.1.2
       with:
         # Path to .jazzy.yml file - preferred
-        config: .jazzy.yml
+        config: main/.jazzy.yml
         # Arguments to pass to Jazzy
         args: "--clean --no-objc"
         # Personal access token
