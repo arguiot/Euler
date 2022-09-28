@@ -155,7 +155,7 @@ public extension Tables {
         if BN.radians == false {
             number = number * pi / BN(180)
         }
-        let mod = number % (2 * BigDouble(constant: .pi))
+        let mod = number % (2 * pi)
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(cos(double))
     }
@@ -210,7 +210,7 @@ public extension Tables {
     /// Converts radians into degrees.
     /// - Parameter rad: The angle in radians that you want to convert.
     func DEGREES(_ rad: BigDouble) -> BigNumber {
-        let abs = rad * BigInt(180) / BigDouble(constant: .pi)
+        let abs = rad * BigInt(180) / pi
         let mod = abs % BigDouble(360)
         return mod
     }
@@ -589,7 +589,7 @@ public extension Tables {
         if BN.radians == false {
             n = n * pi / BN(180)
         }
-        let mod = n % (2 * BigDouble(constant: .pi))
+        let mod = n % (2 * pi)
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(sin(double))
     }
@@ -786,7 +786,7 @@ public extension Tables {
         if BN.radians == false {
             number = number * pi / BN(180)
         }
-        let mod = number % (2 * BigDouble(constant: .pi))
+        let mod = number % (2 * pi)
         guard let double = mod.asDouble() else { throw TablesError.Overflow }
         return BigDouble(tan(double))
     }

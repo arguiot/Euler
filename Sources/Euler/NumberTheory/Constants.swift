@@ -12,7 +12,7 @@ import Foundation
 /// Originally defined as the ratio of a circle's circumference to its diameter, it now has various equivalent definitions and appears in many formulas in all areas of mathematics and physics. It is approximately equal to 3.14159. It has been represented by the Greek letter "π" since the mid-18th century, though it is also sometimes spelled out as "pi". It is also called Archimedes' constant.
 ///
 public var pi: BigNumber {
-    return BigNumber("3.141592653589793238")!
+    return Constant.pi.value
 }
 
 /// The mathematical constant
@@ -20,99 +20,155 @@ public var pi: BigNumber {
 /// The number e is a mathematical constant that is the base of the natural logarithm: the unique number whose natural logarithm is equal to one. It is approximately equal to 2.71828, and is the limit of (1 + 1/n)n as n approaches infinity, an expression that arises in the study of compound interest. It can also be calculated as the sum of the infinite series
 ///
 public var e: BigNumber {
-    return BigNumber("2.718281828459045235")!
+    return Constant.e.value
 }
+/// Exponential function
 public func exp(_ r: BigNumber) -> BigNumber {
     if let d = r.asDouble() {
         return BigDouble(exp(d))
     }
-    let a = BigNumber(constant: .e)
-    return a ** r
+    return e ** r
 }
-/// A list of important mathematical and physical constants
-public enum Constant: String {
+
+/// Mathematical constant object
+public struct Constant {
+    /// The name of the constant
+    public var name: String
+    /// Quick description of the constant
+    public var description: String
+    /// The value of the constant
+    public var value: BigNumber
+}
+/// List of mathematical constants
+public extension Constant {
     /// The mass in `kg` of alpha particles
-    case alphaParticleMass = "6.64465675e-27"
+    static let alphaParticleMass = Constant(name: "Alpha Particle Mass", description: "The mass in kg of alpha particles", value: BigNumber("6.64465675e-27")!)
     /// The mass in `kg` of an atom (see Wikipedia for more info)
-    case atomicMass = "1.660538921e-27"
+    static let atomicMass = Constant(name: "Atomic Mass", description: "The mass in kg of an atom (see Wikipedia for more info)", value: BigNumber("1.660538921e-27")!)
     /// Avogadro constant in `mol^(-1)`
-    case Avogadro = "6.02214129e23"
+    static let Avogadro = Constant(name: "Avogadro", description: "Avogadro constant in mol^(-1)", value: BigNumber("6.02214129e23")!)
     /// Boltzmann constant in `J/K`
-    case Boltzmann = "1.3806488e-23"
+    static let Boltzmann = Constant(name: "Boltzmann", description: "Boltzmann constant in J/K", value: BigNumber("1.3806488e-23")!)
     /// Quantized unit of electrical conductance in `S`
-    case conductanceQuantum = "7.7480917346e-5"
+    static let conductanceQuantum = Constant(name: "Conductance Quantum", description: "Quantized unit of electrical conductance in S", value: BigNumber("7.7480917346e-5")!)
     /// The mathematical constant
-    case e = "2.7182818284590"
+    static let e = Constant(name: "e", description: "The mathematical constant", value: BigNumber("2.718281828459045235")!)
     /// Earth to moon distance in `km`
-    case earth_moon = "384401"
+    static let earth_moon = Constant(name: "Earth to Moon", description: "Earth to moon distance in km", value: BigNumber("384401")!)
     /// Earth to sun distance in `km`
-    case earth_sun = "1.496e8"
+    static let earth_sun = Constant(name: "Earth to Sun", description: "Earth to sun distance in km", value: BigNumber("1.496e8")!)
     /// Earth mass in `kg`
-    case earthMass = "5.974e+24"
+    static let earthMass = Constant(name: "Earth Mass", description: "Earth mass in kg", value: BigNumber("5.974e+24")!)
     /// Earth radius in `km`
-    case earthRadius = "6371"
+    static let earthRadius = Constant(name: "Earth Radius", description: "Earth radius in km", value: BigNumber("6371")!)
     /// Vacuum permittivity in `F/m`
-    case electric = "8.854187e-12"
+    static let electric = Constant(name: "Electric", description: "Vacuum permittivity in F/m", value: BigNumber("8.854187e-12")!)
     /// Electron mass in `kg`
-    case electronMass = "9.10938291e-31"
+    static let electronMass = Constant(name: "Electron Mass", description: "Electron mass in kg", value: BigNumber("9.10938291e-31")!)
     /// Elementary charge in `C`
-    case elementaryCharge = "1.602176565e-19"
+    static let elementaryCharge = Constant(name: "Elementary Charge", description: "Elementary charge in C", value: BigNumber("1.602176565e-19")!)
     /// Euler–Mascheroni Gamma constant
-    case EulerGamma = "0.57721566490153286"
+    static let EulerGamma = Constant(name: "Euler Gamma", description: "Euler–Mascheroni Gamma constant", value: BigNumber("0.57721566490153286")!)
     /// Faraday constant in `C/mol`
-    case Faraday = "96485.3365"
+    static let Faraday = Constant(name: "Faraday", description: "Faraday constant in C/mol", value: BigNumber("96485.3365")!)
     /// Fine structure constant
-    case fineStructure = "7.2973525698e-3"
+    static let fineStructure = Constant(name: "Fine Structure", description: "Fine structure constant", value: BigNumber("0.0072973525693")!)
     /// Golden ratio
-    case goldenRatio = "1.61803398874989484820"
-    /// Standard acceleration due to gravity constant in `m/s^2`
-    case gravity = "9.80665"
-    /// Invverse of fine structure constant
-    case inverseFineStructure = "137.035999074"
+    static let goldenRatio = Constant(name: "Golden Ratio", description: "Golden ratio", value: BigNumber("1.61803398874989484820")!)
+    /// Standard gravity in `m/s^2`
+    static let gravity = Constant(name: "Gravity", description: "Standard gravity in m/s^2", value: BigNumber("9.80665")!)
+    /// Inverse fine structure constant
+    static let inverseFineStructure = Constant(name: "Inverse Fine Structure", description: "Inverse fine structure constant", value: BigNumber("137.035999139")!)
     /// Vacuum permeability in `H/m`
-    case magnetic = "1.25663706212e-6"
-    /// Magnetic flux quantum constant in `Wb`
-    case magneticFluxQuantum = "2.067833758e-15"
-    /// Gas constant in `J/K/mol`
-    case molarGas = "8.3144621"
+    static let magnetic = Constant(name: "Magnetic", description: "Vacuum permeability in H/m", value: BigNumber("1.2566370614e-6")!)
+    /// Magnetic flux quantum in `Wb`
+    static let magneticFluxQuantum = Constant(name: "Magnetic Flux Quantum", description: "Magnetic flux quantum in Wb", value: BigNumber("2.067833831e-15")!)
+    /// Gas constant in `J/(mol K)`
+    static let molarGas = Constant(name: "Molar Gas", description: "Gas constant in J/(mol K)", value: BigNumber("8.3144621")!)
     /// Mass of the moon in `kg`
-    case moonMass = "7.348e22"
-    /// Moon radius in `km`
-    case moonRadius = "1738"
-    /// Mass of neutron in `kg`
-    case neutronMass = "1.674927351e-27"
-    /// Newton's gravitational constant in `m3⋅kg−1⋅s−2`
-    case NewtonGravitation = "6.67384e-11"
+    static let moonMass = Constant(name: "Moon Mass", description: "Mass of the moon in kg", value: BigNumber("7.348e+22")!)
+    /// Moon's radius in `km`
+    static let moonRadius = Constant(name: "Moon Radius", description: "Moon's radius in km", value: BigNumber("1737.4")!)
+    /// Mass of the neutron in `kg`
+    static let neutronMass = Constant(name: "Neutron Mass", description: "Mass of the neutron in kg", value: BigNumber("1.674927211e-27")!)
+    /// Newtonian constant of gravitation in `m3⋅kg−1⋅s−2`
+    static let NewtonianGravitation = Constant(name: "Newtonian Gravitation", description: "Newtonian constant of gravitation in m3⋅kg-1⋅s-2", value: BigNumber("6.67428e-11")!)
     /// The mathematical constant
-    case pi = "3.14159265358979323846"
-    /// Planck constant in `J s`
-    case Planck = "6.62606957e-34"
+    static let pi = Constant(name: "pi", description: "The mathematical constant", value: BigNumber("3.141592653589793238")!)
+    /// Planck constant in `J⋅s`
+    static let Planck = Constant(name: "Planck", description: "Planck constant in J⋅s", value: BigNumber("6.62606957e-34")!)
     /// Proton mass divided by electron mass
-    case proton_electronMassRatio = "1836.15267245"
+    static let protonElectronMassRatio = Constant(name: "Proton Electron Mass Ratio", description: "Proton mass divided by electron mass", value: BigNumber("1836.15267247")!)
     /// Proton mass divided by neutron mass
-    case proton_neutronMassRatio = "0.99862347826"
+    static let protonNeutronMassRatio = Constant(name: "Proton Neutron Mass Ratio", description: "Proton mass divided by neutron mass", value: BigNumber("0.99862347826")!)
     /// Proton mass in `kg`
-    case protonMass = "1.672621777e-27"
-    /// Rydberg constant in `m^(-1)`
-    case Rydberg = "10973731.568539"
+    static let protonMass = Constant(name: "Proton Mass", description: "Proton mass in kg", value: BigNumber("1.672621777e-27")!)
+    /// Rydberg constant in `m^-1`
+    static let Rydberg = Constant(name: "Rydberg", description: "Rydberg constant in m^-1", value: BigNumber("10973731.568539")!)
     /// Speed of light in `m/s`
-    case speedOfLight = "299792458"
+    static let speedOfLight = Constant(name: "Speed of Light", description: "Speed of light in m/s", value: BigNumber("299792458")!)
     /// Speed of sound in `m/s`
-    case speedOfSound = "340.27"
+    static let speedOfSound = Constant(name: "Speed of Sound", description: "Speed of sound in m/s", value: BigNumber("340.29")!)
     /// The square root of 2
-    case sqrt2 = "1.41421356237309504880"
-    /// Stefan-Boltzmann constant in `W m^(-2) K^(-4)`
-    case Stefan_Boltzmann = "5.670373e-8"
+    static let sqrt2 = Constant(name: "sqrt(2)", description: "The square root of 2", value: BigNumber("1.41421356237309504880")!)
+    /// Stefan–Boltzmann constant in `W⋅m−2⋅K−4`
+    static let StefanBoltzmann = Constant(name: "Stefan Boltzmann", description: "Stefan–Boltzmann constant in W⋅m-2⋅K-4", value: BigNumber("5.670373e-8")!)
     /// Mass of the sun in `kg`
-    case sunMass = "1.989e30"
+    static let sunMass = Constant(name: "Sun Mass", description: "Mass of the sun in kg", value: BigNumber("1.98892e+30")!)
     /// Sun's radius in `km`
-    case sunRadius = "695500"
-    /// Dwayne Johnson's mass. Can't mathematician have the sense of humour?
-    case TheRockMass = "124.73790175"
-    /// Thomson Cross Section constant in `m^2`
-    case ThomsonCrossSection = "0.6652458734e-28"
-    /// The Answer to the Ultimate Question of Life, the Universe, and Everything.
-    case UltimateAnswer = "42"
-    /// The coldest temperature in the universe in `C`
-    case zeroKelvin = "-273.15"
+    static let sunRadius = Constant(name: "Sun Radius", description: "Sun's radius in km", value: BigNumber("695700")!)
+    /// Dwayne "The Rock" Johnson's mass in `kg`
+    static let theRockMass = Constant(name: "The Rock Mass", description: "Dwayne \"The Rock\" Johnson's mass in kg. Can't mathematician have the sense of humour?", value: BigNumber("124.73790175")!)
+    /// Thomson cross section in `m2`
+    static let Thomson = Constant(name: "Thomson", description: "Thomson cross section in m2", value: BigNumber("0.6652458734e-28")!)
+    /// The answer to life, the universe, and everything
+    static let UltimateAnswer = Constant(name: "Ultimate Answer", description: "The answer to life, the universe, and everything", value: BigNumber("42")!)
+    /// The coldness of the universe in `C`
+    static let universeTemperature = Constant(name: "Universe Temperature", description: "The coldness of the universe in C", value: BigNumber("-273.15")!)
+
+    /// The list of all constants
+    static let all: [Constant] = [
+        .alphaParticleMass,
+        .atomicMass,
+        .Avogadro,
+        .Boltzmann,
+        .conductanceQuantum,
+        .e,
+        .earth_moon,
+        .earth_sun,
+        .earthMass,
+        .earthRadius,
+        .electric,
+        .electronMass,
+        .elementaryCharge,
+        .EulerGamma,
+        .Faraday,
+        .fineStructure,
+        .goldenRatio,
+        .gravity,
+        .inverseFineStructure,
+        .magnetic,
+        .magneticFluxQuantum,
+        .molarGas,
+        .moonMass,
+        .moonRadius,
+        .neutronMass,
+        .NewtonianGravitation,
+        .pi,
+        .Planck,
+        .protonElectronMassRatio,
+        .protonNeutronMassRatio,
+        .protonMass,
+        .Rydberg,
+        .speedOfLight,
+        .speedOfSound,
+        .sqrt2,
+        .StefanBoltzmann,
+        .sunMass,
+        .sunRadius,
+        .theRockMass,
+        .Thomson,
+        .UltimateAnswer,
+        .universeTemperature
+    ]
 }

@@ -116,62 +116,66 @@ public struct BigDouble:
     }
     
     public init?(_ nStr: String) {
-        if let bi = BigInt(nStr) {
-            self.init(bi, over: 1)
-        } else {
-            if let exp = nStr.firstIndex(of: "e")?.utf16Offset(in: nStr) {
-                let beforeExp = String(Array(nStr)[..<exp].filter{ $0 != "." })
-                var afterExp = String(Array(nStr)[(exp + 1)...])
-                var sign = false
-                
-                if let neg = afterExp.firstIndex(of: "-")?.utf16Offset(in: afterExp) {
-                    afterExp = String(Array(afterExp)[(neg + 1)...])
-                    sign = true
-                }
-                
-                if sign {
-                    if var safeAfterExp = Int(afterExp) {
-                        if beforeExp.starts(with: "+") || beforeExp.starts(with: "-") {
-                            safeAfterExp = safeAfterExp - beforeExp.count + 2
-                        } else {
-                            safeAfterExp = safeAfterExp - beforeExp.count + 1
-                        }
-                        guard safeAfterExp > 0 else { return nil }
-                        let den = ["1"] + [Character](repeating: "0", count: safeAfterExp)
-                        self.init(beforeExp, over: String(den))
-                        return
-                    }
-                    return nil
-                } else {
-                    if var safeAfterExp = Int(afterExp) {
-                        if beforeExp.starts(with: "+") || beforeExp.starts(with: "-") {
-                            safeAfterExp = safeAfterExp - beforeExp.count + 2
-                        } else {
-                            safeAfterExp = safeAfterExp - beforeExp.count + 1
-                        }
-                        let num = beforeExp + String([Character](repeating: "0", count: safeAfterExp))
-                        self.init(num, over: "1")
-                        return
-                    }
-                    return nil
-                }
-            }
-            
-            if let io = nStr.firstIndex(of: ".") {
-                let beforePoint = String(nStr[..<io])
-                let afterPoint  = String(nStr[nStr.index(io, offsetBy: 1)...])
-                
-                if afterPoint == "0" {
-                    self.init(beforePoint, over: "1")
-                }
-                else {
-                    let den = ["1"] + [Character](repeating: "0", count: afterPoint.count)
-                    self.init(beforePoint + afterPoint, over: String(den))
-                }
-            } else {
-                return nil
+        // Validating the string to be like a number using the following rules:
+        // 1. The string can't be empty
+        // 2. The string can't start with a dot
+        // 3. The string can't have more than one dot
+        // 4. Plus and minus signs can only be at the beginning of the string and should be followed by a digit
+        // 5. There should be only one exponent sign (e or E) and it should be followed by a valid integer (positive or negative)
+        // 6. Valid characters are: 0-9, +, -, ., e, E
+
+        guard !nStr.isEmpty else { return nil }
+        guard !nStr.hasPrefix(".") else { return nil }
+        guard nStr.filter({ $0 == "." }).count <= 1 else { return nil }
+        guard nStr.filter({ $0 == "+" || $0 == "-" }).count <= 2 else { return nil }
+        guard nStr.filter({ $0 == "e" || $0 == "E" }).count <= 1 else { return nil }
+        guard nStr.filter({ $0.isNumber || $0 == "+" || $0 == "-" || $0 == "." || $0 == "e" || $0 == "E" }).count == nStr.count else { return nil }
+
+        // If the string looks like an integer we can use the BigInt initializer
+        if !nStr.contains(".") {
+            if let n = BigInt(nStr) {
+                self.init(n, over: 1)
+                return
             }
         }
+
+        // We need to parse the exponent
+        var exp = 0
+        let components = nStr.lowercased().components(separatedBy: "e")
+        if components.count == 2, let e = Int(components[1]) {
+            exp = e
+        }
+
+        // We need to parse the decimal part
+        guard let decimal = components.first?.split(separator: ".") else { return nil }
+        let integerPart = decimal[0]
+        let decimalPart = decimal.count > 1 ? decimal[1] : ""
+
+        // Adjust the exponent
+        exp -= decimalPart.count
+
+        // Numerator
+        var num = [integerPart, decimalPart]
+        if exp > 0 {
+            let upperBound = exp
+            if upperBound > 0 {
+                num += Array(repeating: "0", count: upperBound)
+            } else { // we adjust the exp to shift the decimal point
+                exp = upperBound
+            }
+        }
+        let numerator = num.joined()
+
+        // Denominator
+        var den = ["1"]
+        if exp < 0 {
+            den += Array(repeating: "0", count: abs(exp))
+        }
+        let denominator = den.joined()
+        // We can now create the BigDouble
+        guard let n = BigInt(numerator) else { return nil }
+        guard let d = BigInt(denominator) else { return nil }
+        self.init(n, over: d)
     }
     
     /// Create an instance initialized to a string with the value of mathematical numerical system of the specified radix (base).
@@ -262,9 +266,6 @@ public struct BigDouble:
         self.init(value)
     }
     
-    public init(constant: Constant) {
-        self.init(constant.rawValue)!
-    }
     //
     //
     //    MARK: - Descriptions

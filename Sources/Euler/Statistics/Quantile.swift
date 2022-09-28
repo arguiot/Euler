@@ -47,7 +47,7 @@ public extension Statistics {
         guard percentage > 0.0 && percentage < 1.0 else { throw QuantileError.PercentageIssue }
         guard self.list.count > 1 else { throw QuantileError.ArrayLength }
         var array = self.list
-        let n = array.removeFirst()
+        _ = array.removeFirst()
         let sorted = array.sorted()
         let index = Double(sorted.count - 1) * percentage
         let floored = Int(index)

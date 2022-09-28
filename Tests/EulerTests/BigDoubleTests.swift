@@ -50,6 +50,11 @@ class BigDoubleTests : XCTestCase {
         }
     }
     
+    func testConstants() {
+        // Very easy way of testing all the constant init
+        XCTAssertEqual(Constant.all[3].value, BigNumber("1.3806488e-23"))
+    }
+    
     func testCompare() {
         XCTAssertEqual(BigDouble(1.0), BigDouble(1.0))
         XCTAssert(BigDouble(1.1) != BigDouble(1.0))
@@ -256,7 +261,7 @@ class BigDoubleTests : XCTestCase {
         XCTAssertEqual(ceil(BigDouble(1.1)), BigInt("2"))
         XCTAssertEqual(ceil(BigDouble(1.5)), BigInt("2"))
         XCTAssertEqual(ceil(BigDouble(1.6)), BigInt("2"))
-        XCTAssertEqual(ceil(BigDouble(constant: .pi)), BigInt("4"))
+        XCTAssertEqual(ceil(pi), BigInt("4"))
         XCTAssertEqual(ceil(e), BigInt(3))
     }
     
