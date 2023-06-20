@@ -259,6 +259,13 @@ public struct BigInt:
         self.sign = sign
     }
     
+    /// Create an instance initialized with a sign and a `Word` array
+    public init(sign: Bool, words: Words)
+    {
+        self.init(limbs: words.map { UInt64($0) })
+        self.sign = sign
+    }
+    
     /// Create an instance initialized with the value 0.
     init()
     {
