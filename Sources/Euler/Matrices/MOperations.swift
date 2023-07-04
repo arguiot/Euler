@@ -4,9 +4,12 @@
 //
 //  Created by Arthur Guiot on 2020-02-07.
 //
-#if !os(Linux)
 import Foundation
+#if canImport(Accelerate)
 import Accelerate
+#else
+import AccelerateLinux
+#endif
 
 // MARK: - Operations
 extension Matrix {
@@ -44,9 +47,21 @@ extension Matrix {
     /// In linear algebra, the transpose of a matrix is an operator which flips a matrix over its diagonal, that is it switches the row and column indices of the matrix by producing another matrix denoted as A'
     public func transpose() -> Matrix {
         var results = Matrix(rows: columns, columns: rows, repeatedValue: 0)
+        
+        let lda = rows // Leading dimension of the input matrix
+        let ldb = columns // Leading dimension of the output matrix
+        
+#if canImport(Accelerate)
         grid.withUnsafeBufferPointer { srcPtr in
             vDSP_mtransD(srcPtr.baseAddress!, 1, &results.grid, 1, vDSP_Length(results.rows), vDSP_Length(results.columns))
         }
+#else
+        grid.withUnsafeBufferPointer { srcPtr in
+            results.grid.withUnsafeMutableBufferPointer { destPtr in
+                cblas_dge_trans(CblasRowMajor, CblasTrans, Int32(rows), Int32(columns), 1.0, srcPtr.baseAddress!, Int32(lda), destPtr.baseAddress!, Int32(ldb))
+            }
+        }
+#endif
         return results
     }
 }
@@ -1040,5 +1055,3 @@ extension Matrix {
         }
     }
 }
-
-#endif

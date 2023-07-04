@@ -107,7 +107,12 @@ public extension BigInt {
     // Required by protocol Numeric
     static func *(lhs: BigInt, rhs: BigInt) -> BigInt {
         let sign = !(lhs.sign == rhs.sign || lhs.isZero() || rhs.isZero())
-        return BigInt(sign: sign, limbs: lhs.limbs.multiplyingBy(rhs.limbs))
+        let limbs = lhs.limbs.multiplyingBy(rhs.limbs)
+        let decimals = max(lhs.decimals, rhs.decimals)
+        let divDec = min(lhs.decimals, rhs.decimals)
+        var n = BigInt(sign: sign, limbs: limbs.dividing([10].exponentiating(divDec)))
+        n.decimals = decimals
+        return n
     }
     
     static func *(lhs: Int, rhs: BigInt) -> BigInt { return BigInt(lhs) * rhs }
@@ -150,7 +155,13 @@ public extension BigInt {
     }
     
     static func /(lhs: BigInt, rhs:BigInt) -> BigInt {
-        let limbs = lhs.limbs.divMod(rhs.limbs).quotient
+        let diff = rhs.decimals - lhs.decimals
+        let tmp = diff > 0 ? lhs.limbs
+            .multiplyingBy([10].exponentiating(diff))
+        : lhs.limbs
+            .dividing([10].exponentiating(-diff))
+        
+        let limbs = tmp.divMod(rhs.limbs).quotient
         let sign = (lhs.sign != rhs.sign) && !limbs.equalTo(0)
         
         return BigInt(sign: sign, limbs: limbs)

@@ -1,12 +1,15 @@
 //
-//  File.swift
-//  
+//  MProperties.swift
+//
 //
 //  Created by Arthur Guiot on 2020-02-07.
 //
-#if !os(Linux)
 import Foundation
+#if canImport(Accelerate)
 import Accelerate
+#else
+import AccelerateLinux
+#endif
 
 extension Matrix {
     /** Creates a matrix where each element is 0. */
@@ -39,7 +42,7 @@ extension Matrix {
         var m = zeros(rows: rows, columns: columns)
         for r in 0..<rows {
             for c in 0..<columns {
-                m[r, c] = Double(arc4random()) / 0xffffffff
+                m[r, c] = Double.random(in: 0.0...1.0)
             }
         }
         return m
@@ -253,5 +256,3 @@ extension Matrix {
         return a
     }
 }
-
-#endif

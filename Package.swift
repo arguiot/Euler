@@ -10,11 +10,17 @@ let package = Package(
         .library(
             name: "Euler",
             targets: ["Euler"]),
+        .library(name: "AccelerateLinux", targets: ["AccelerateLinux"])
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(name: "Euler"),
+        .target(name: "Euler",
+                dependencies: [
+                    .byNameItem(name: "AccelerateLinux", condition: .when(platforms: [.linux]))
+                ]
+        ),
+        .systemLibrary(name: "AccelerateLinux"),
         .testTarget(
             name: "EulerTests",
             dependencies: ["Euler"]),

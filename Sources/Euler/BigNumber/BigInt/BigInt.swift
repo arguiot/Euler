@@ -1,6 +1,6 @@
 //
-//  BigNumber.swift
-//  BigNumber
+//  BigInt.swift
+//  BigInt
 //
 //  Created by Arthur Guiot on 2019-12-04.
 //  Copyright © 2019 Euler. All rights reserved.
@@ -56,20 +56,6 @@
 //    - BigNumber conforms to SignedNumeric and BinaryInteger, this makes it very easy to write
 //      generic code.
 //    - BigDouble also conforms to SignedNumeric and has new functionalities.
-//
-//
-//
-//    ————————————————————————————————————————————————————————————————————————————————————————————
-//    ||||||||||||||||                         Evolution                          ||||||||||||||||
-//    ————————————————————————————————————————————————————————————————————————————————————————————
-//
-//
-//
-//    Planned features of BigNumber v3.0:
-//    - Implement some basic cryptography functions.
-//    - General code cleanup, better documentation.
-//    - More extensive tests.
-//    - Please contact me if you have any suggestions for new features!
 //
 //
 //
@@ -134,15 +120,15 @@ precedencegroup ExponentiationPrecedence {
 // Exponentiation operator
 infix operator ** : ExponentiationPrecedence
 
-//    MARK: - BigNumber
+//    MARK: - BigInt
 //    ————————————————————————————————————————————————————————————————————————————————————————————
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//    ||||||||        BigNumber        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//    ||||||||        BigInt        |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //    ————————————————————————————————————————————————————————————————————————————————————————————
-///    BigNumber is an arbitrary precision integer value type. It stores a number in base 2^64 notation
+///    BigInt is an arbitrary precision integer value type. It stores a number in base 2^64 notation
 ///    as an array.
 ///
 ///    Each element of the array is called a limb, which is of type UInt64, the whole
@@ -190,6 +176,11 @@ public struct BigInt:
     
     // Required by the protocol "Numeric".
     public typealias Magnitude = UInt64
+    
+    /// How many digits does the number has.
+    ///
+    /// Useful for representing decimals through integers (like Ethereum values)
+    public var decimals: Int = 0
     
     // Required by the protocol "Numeric". It's pretty useless because the magnitude of a BigNumber won't
     // fit into a UInt64 generally, so we just return the first limb of the BigNumber.
@@ -452,7 +443,12 @@ public struct BigInt:
     
     // Required by protocol CustomStringConvertible.
     public var description: String {
-        return (self.sign ? "-" : "").appending(self.limbs.decimalRepresentation)
+        var n = (self.sign ? "-" : "").appending(self.limbs.decimalRepresentation)
+        if self.decimals > 0 {
+            guard let index = n.index(n.endIndex, offsetBy: -self.decimals, limitedBy: n.startIndex) else { return n }
+            n.insert(".", at: index)
+        }
+        return n
     }
     // Locale used to format numbers
     public var locale = Locale(identifier: "en_US")
@@ -462,7 +458,7 @@ public struct BigInt:
      */
     public var scientificDescription: String {
         var d = self.limbs.decimalRepresentation
-        let power = d.count - 1
+        let power = d.count - 1 - self.decimals
         let precision = BN.precision
         while precision + 3 > d.count {
             d.append("0")
@@ -515,8 +511,7 @@ public struct BigInt:
     }
     
     /// Returns the BigNumber's value in the given base (radix) as a string.
-    public func asString(radix: Int) -> String
-    {
+    public func asString(radix: Int) -> String {
         let chars: [Character] = [
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g",
             "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x",
@@ -526,8 +521,7 @@ public struct BigInt:
         
         var (limbs, res) = (self.limbs, "")
         
-        while !limbs.equalTo(0)
-        {
+        while !limbs.equalTo(0) {
             let divmod = limbs.divMod([Limb(radix)])
             
             if let r = divmod.remainder.first, r < radix
@@ -547,11 +541,12 @@ public struct BigInt:
     
     ///    Returns BigNumber's value as an integer. Conversion only works when self has only one limb
     /// that's within the range of the type "Int".
-    func asInt() -> Int?
+    public func asInt() -> Int?
     {
-        if self.limbs.count != 1 { return nil }
+        let l = self.limbs.dividing([10].exponentiating(self.decimals))
+        if l.count != 1 { return nil }
         
-        let number = self.limbs[0]
+        let number = l[0]
         
         if number <= Limb(Int.max)
         {

@@ -156,6 +156,45 @@ class BigIntTests: XCTestCase {
         }
     }
     
+    func testDecimals() {
+        var n = BigInt(1000)
+        n.decimals = 2
+        
+        XCTAssertEqual(n.description, "10.00")
+        
+        var m = BigInt(1000)
+        m.decimals = 2
+        
+        XCTAssertEqual((n * m).asInt(), 100)
+        
+        var o = BigInt(1000)
+        o.decimals = 1
+        
+        XCTAssertEqual((n * m * o).asInt(), 10000)
+        
+        XCTAssertEqual((o / m).asInt(), 10)
+        
+        // Add more test scenarios
+        var p = BigInt(-1000)     // Testing negative numbers
+        p.decimals = 2
+        XCTAssertEqual(p.description, "-10.00")
+        
+        var q = BigInt(123456789) // Testing BigInt with more digits
+        q.decimals = 5
+        XCTAssertEqual(q.description, "1234.56789")
+        
+        XCTAssertEqual((q / n).asInt(), 123)
+        
+        var r = BigInt(1)
+        n.decimals = 4      // Testing with small numbers
+        XCTAssertEqual((r * n).asInt(), 0)
+        
+        var s = BigInt(1000000) // Testing edge case
+        s.decimals = 2
+        XCTAssertEqual((s / n).asInt(), 100000)
+    }
+
+    
     static var allTests = [
         ("Initialisation", testRadixInitializerAndGetter),
         ("Radix", testRadix),
