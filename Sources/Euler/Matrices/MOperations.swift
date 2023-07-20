@@ -7,9 +7,6 @@
 import Foundation
 #if canImport(Accelerate)
 import Accelerate
-#else
-import AccelerateLinux
-#endif
 
 // MARK: - Operations
 extension Matrix {
@@ -1055,3 +1052,4 @@ extension Matrix {
         }
     }
 }
+#endif

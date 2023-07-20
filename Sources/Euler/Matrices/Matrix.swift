@@ -7,9 +7,6 @@
 import Foundation
 #if canImport(Accelerate)
 import Accelerate
-#else
-import AccelerateLinux
-#endif
 
 /// Simple Matrix type
 ///
@@ -235,3 +232,4 @@ extension Matrix: Sequence {
         }
     }
 }
+#endif

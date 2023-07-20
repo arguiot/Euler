@@ -7,9 +7,6 @@
 import Foundation
 #if canImport(Accelerate)
 import Accelerate
-#else
-import AccelerateLinux
-#endif
 
 extension Matrix {
     /** Creates a matrix where each element is 0. */
@@ -256,3 +253,4 @@ extension Matrix {
         return a
     }
 }
+#endif
