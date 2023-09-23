@@ -31,7 +31,7 @@ public func permutationsWithRepitition(_ n: Int, _ k: Int) -> BigInt {
 public func combinationsWithRepetitions(_ n: Int, _ k: Int) throws -> BigInt {
     // (n + k - 1)! / (k! * (n - 1)!)
     guard k != 0 && n != 1 else { throw EulerError.DivisionByZero }
-    return try factorial(BigInt(n + k - 1)) / factorial(BigInt(k)) * factorial(BigInt(n - 1))
+    return try factorial(BigInt(n + k - 1)) / (factorial(BigInt(k)) * factorial(BigInt(n - 1)))
 }
 
 /// Combinations: `$\frac{n!}{k! * (n - k)!}$`.
@@ -42,5 +42,5 @@ public func combinationsWithRepetitions(_ n: Int, _ k: Int) throws -> BigInt {
 public func combinations(_ n: Int, _ k: Int) throws -> BigInt {
     // n! / (k! * (n - k)!)
     guard n - k != 0 else { throw EulerError.DivisionByZero }
-    return try factorial(BigInt(n)) / factorial(BigInt(k)) * factorial(BigInt(n - k))
+    return try factorial(BigInt(n)) / (factorial(BigInt(k)) * factorial(BigInt(n - k)))
 }
